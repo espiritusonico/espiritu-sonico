@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espíritu Sónico</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Raleway:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Marcellus SC', serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #2a004e, #6a1b9a);
+            color: #fff;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            padding: 20px;
+        }
+        .logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+        .carousel img {
+            width: 100%;
+            display: none;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin-top: 20px;
+            background-color: #8e24aa;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background-color: #ab47bc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Espíritu Sónico" class="logo">
+        <h1>Espíritu Sónico te abre sus alas</h1>
+        <p>Un viaje sensorial, donde el sonido se vuelve guía hacia lo sagrado y lo invisible.</p>
+
+        <div class="carousel">
+            <img src="imagen1.jpg" class="active" alt="Imagen 1">
+            <img src="imagen2.jpg" alt="Imagen 2">
+            <img src="imagen3.jpg" alt="Imagen 3">
+        </div>
+
+        <a href="#" class="button">Descargar App</a>
+    </div>
+
+    <script>
+        let index = 0;
+        const images = document.querySelectorAll(".carousel img");
+
+        function changeImage() {
+            images[index].classList.remove("active");
+            index = (index + 1) % images.length;
+            images[index].classList.add("active");
+        }
+        setInterval(changeImage, 3000);
+    </script>
+</body>
+</html>
