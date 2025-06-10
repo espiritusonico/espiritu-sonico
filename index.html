@@ -2,80 +2,76 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Espíritu Sónico</title>
-  <!-- Fuente Cormorant Garamond desde Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap" rel="stylesheet" />
-  <!-- Ícono favicon -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <!-- CSS principal -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Bienvenida completa -->
+  <div class="welcome-screen">
+    <div class="welcome-content">
+      <div class="welcome-logo">✦</div>
+      <h1>Espíritu Sónico</h1>
+      <p>Donde el sonido despierta el espíritu y guía al alma.</p>
+      <button class="btn-enter">Ingresar</button>
+    </div>
+  </div>
+
+  <!-- Header y navegación -->
   <header>
     <nav class="navbar">
-      <div class="logo">
-        <img src="logo.svg" alt="Espíritu Sónico" />
-      </div>
-      <button class="menu-toggle" aria-label="Abrir menú">
+      <div class="logo"><img src="logo.svg" alt="Espíritu Sónico" /></div>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
-        <li><a href="#" class="nav-link active" data-target="inicio">Inicio</a></li>
-        <li><a href="#" class="nav-link" data-target="acerca">Acerca de</a></li>
-        <li><a href="#" class="nav-link" data-target="viajes">Viajes Sonoros</a></li>
-        <li><a href="#" class="nav-link" data-target="productos">Productos</a></li>
-        <li><a href="#" class="nav-link" data-target="contacto">Contacto</a></li>
+        <li><a href="#inicio" class="nav-link" data-target="inicio">Inicio</a></li>
+        <li><a href="#acerca" class="nav-link" data-target="acerca">Acerca</a></li>
+        <li><a href="#viajes" class="nav-link" data-target="viajes">Viajes</a></li>
+        <li><a href="#productos" class="nav-link" data-target="productos">Productos</a></li>
+        <li><a href="#contacto" class="nav-link" data-target="contacto">Contacto</a></li>
       </ul>
     </nav>
   </header>
 
-<div class="welcome-message">
-  <h1>Bienvenido a Espíritu Sónico</h1>
-  <p>Explora un mundo de sonidos únicos y experiencias inmersivas.</p>
-</div>
+  <div class="menu-overlay"></div>
 
-  <!-- Sección Acerca de -->
-  <section id="acerca" class="page" tabindex="0" role="region" aria-label="Acerca de Espíritu Sónico">
-    <h2>Acerca de Espíritu Sónico</h2>
-    <p>Espíritu Sónico es un espacio místico y sonoro creado para acompañarte en tus procesos terapéuticos a través de viajes sonoros, sahumerios artesanales y meditaciones guiadas.</p>
-    <p>Nuestro objetivo es conectar tu espíritu con sonidos que abren puertas interiores y promueven la sanación y el bienestar profundo.</p>
-  </section>
-
-  <!-- Sección Viajes Sonoros -->
-  <section id="viajes" class="page" tabindex="0" role="region" aria-label="Viajes Sonoros">
-    <h2>Viajes Sonoros</h2>
-    <p>Ofrecemos viajes sonoros guiados y exclusivos, diseñados para cada variedad de sahumerio artesanal, con sonidos especialmente creados para abrir canales de paz y renovación interior.</p>
-    <p>Explora nuestras meditaciones y experiencias sonoras que te invitan a un viaje profundo y transformador.</p>
-  </section>
-
-  <!-- Sección Productos -->
-  <section id="productos" class="page" tabindex="0" role="region" aria-label="Productos">
-    <h2>Productos</h2>
-    <p>En Espíritu Sónico encontrarás sahumerios artesanales elaborados con resinas y hierbas naturales de alta calidad.</p>
-    <p>Cada caja incluye un código QR para acceder a viajes sonoros exclusivos que acompañan tu experiencia.</p>
-  </section>
-
-  <!-- Sección Contacto -->
-  <section id="contacto" class="page" tabindex="0" role="region" aria-label="Contacto">
-    <h2>Contacto</h2>
-    <form action="#" method="post" novalidate>
-      <label for="name">Nombre</label>
-      <input type="text" id="name" name="name" placeholder="Tu nombre" required />
-
-      <label for="email">Correo electrónico</label>
-      <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required />
-
-      <label for="message">Mensaje</label>
-      <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí..." required></textarea>
-
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
-</main>
+  <!-- Contenedor de secciones -->
+  <main id="content-container">
+    <section id="inicio" class="page visible">
+      <h2>Inicio</h2>
+      <p>Descubre un universo sonoro para reconectar con tu esencia.</p>
+    </section>
+    <section id="acerca" class="page">
+      <h2>Acerca de</h2>
+      <p>Espíritu Sónico nace con el fin de guiarte hacia espacios de paz y bienestar a través de sonidos sagrados.</p>
+    </section>
+    <section id="viajes" class="page">
+      <h2>Viajes Sonoros</h2>
+      <p>Una experiencia sonora para sanar, explorar y liberar tu ser interior.</p>
+    </section>
+    <section id="productos" class="page">
+      <h2>Productos</h2>
+      <p>Explora sahumerios con códigos QR para viajes sonoros exclusivos.</p>
+    </section>
+    <section id="contacto" class="page">
+      <h2>Contacto</h2>
+      <form>
+        <label for="name">Nombre</label>
+        <input id="name" type="text" required />
+        <label for="email">Correo</label>
+        <input id="email" type="email" required />
+        <label for="message">Mensaje</label>
+        <textarea id="message" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
 
   <footer>
-    <p>Espíritu Sónico © 2025 — Un universo donde el sonido despierta el espíritu y la calma te acompaña.</p>
+    <p>Espíritu Sónico © 2025 — Un viaje interior a través del sonido.</p>
   </footer>
 
   <script src="scripts.js"></script>
