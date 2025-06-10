@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const welcomeScreen = document.querySelector('.welcome-screen');
   const btnEnter = document.querySelector('.btn-enter');
 
-  // Mostrar la primera página y activar el primer link
   function showPage(pageId) {
     pageSections.forEach(page => {
       if (page.id === pageId) {
@@ -20,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Abrir/cerrar menú móvil con sombra y overlay
   function toggleMenu() {
     const isActive = menuToggle.classList.toggle('active');
     navLinks.classList.toggle('active', isActive);
@@ -33,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Cerrar menú cuando se hace click en overlay o en un link del menú
   menuOverlay.addEventListener('click', () => {
     toggleMenu();
   });
@@ -56,11 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleMenu();
   });
 
-  // Al hacer click en botón "Entrar" de bienvenida, oculta pantalla y muestra contenido
   btnEnter.addEventListener('click', () => {
     welcomeScreen.style.display = 'none';
 
-    // Inicializar mostrando primera página y primer link activo
     if (pageSections.length) {
       showPage(pageSections[0].id);
       navLinkItems.forEach(nav => nav.classList.remove('active'));
@@ -68,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Al cargar la página, ocultamos contenido y mostramos bienvenida
   pageSections.forEach(page => page.classList.remove('visible'));
   navLinkItems.forEach(nav => nav.classList.remove('active'));
   welcomeScreen.style.display = 'flex';
