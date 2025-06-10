@@ -33,8 +33,50 @@
   <div class="menu-overlay"></div>
 
   <main id="content-container" tabindex="-1" aria-live="polite" aria-atomic="true">
-    <!-- Aquí se cargan las secciones dinámicamente -->
-  </main>
+  <!-- Sección Inicio -->
+  <section id="inicio" class="page visible" tabindex="0" role="region" aria-label="Inicio">
+    <h1 class="welcome-message">Bienvenido a Espíritu Sónico</h1>
+    <p>Un universo donde el sonido despierta el espíritu y la calma te acompaña.</p>
+  </section>
+
+  <!-- Sección Acerca de -->
+  <section id="acerca" class="page" tabindex="0" role="region" aria-label="Acerca de Espíritu Sónico">
+    <h2>Acerca de Espíritu Sónico</h2>
+    <p>Espíritu Sónico es un espacio místico y sonoro creado para acompañarte en tus procesos terapéuticos a través de viajes sonoros, sahumerios artesanales y meditaciones guiadas.</p>
+    <p>Nuestro objetivo es conectar tu espíritu con sonidos que abren puertas interiores y promueven la sanación y el bienestar profundo.</p>
+  </section>
+
+  <!-- Sección Viajes Sonoros -->
+  <section id="viajes" class="page" tabindex="0" role="region" aria-label="Viajes Sonoros">
+    <h2>Viajes Sonoros</h2>
+    <p>Ofrecemos viajes sonoros guiados y exclusivos, diseñados para cada variedad de sahumerio artesanal, con sonidos especialmente creados para abrir canales de paz y renovación interior.</p>
+    <p>Explora nuestras meditaciones y experiencias sonoras que te invitan a un viaje profundo y transformador.</p>
+  </section>
+
+  <!-- Sección Productos -->
+  <section id="productos" class="page" tabindex="0" role="region" aria-label="Productos">
+    <h2>Productos</h2>
+    <p>En Espíritu Sónico encontrarás sahumerios artesanales elaborados con resinas y hierbas naturales de alta calidad.</p>
+    <p>Cada caja incluye un código QR para acceder a viajes sonoros exclusivos que acompañan tu experiencia.</p>
+  </section>
+
+  <!-- Sección Contacto -->
+  <section id="contacto" class="page" tabindex="0" role="region" aria-label="Contacto">
+    <h2>Contacto</h2>
+    <form action="#" method="post" novalidate>
+      <label for="name">Nombre</label>
+      <input type="text" id="name" name="name" placeholder="Tu nombre" required />
+
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required />
+
+      <label for="message">Mensaje</label>
+      <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí..." required></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+</main>
 
   <footer>
     <p>Espíritu Sónico © 2025 — Un universo donde el sonido despierta el espíritu y la calma te acompaña.</p>
