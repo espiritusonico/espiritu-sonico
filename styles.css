@@ -15,7 +15,7 @@ body {
 /* Navbar */
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.3);
@@ -28,13 +28,14 @@ body {
 .navbar .nav-links {
     list-style-type: none;
     display: flex;
-    gap: 20px;
+    gap: 30px;
+    margin-left: 40px;
 }
 
 .navbar .nav-links li a {
     text-decoration: none;
     color: #f4f4f4;
-    font-size: 18px;
+    font-size: 20px;
     transition: color 0.3s;
 }
 
@@ -54,7 +55,7 @@ body {
 .hero {
     text-align: center;
     max-width: 600px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
     padding: 40px;
     border-radius: 10px;
 }
@@ -85,87 +86,59 @@ body {
     color: #2E1A47;
 }
 
-/* Sección Acerca de */
-.acerca {
-    padding: 50px 20px;
-    text-align: center;
-    background-color: #3b1a53;
+/* Sección Viajes Sonoros */
+.viajes {
+    height: 100vh;
+    background: url('viaje-sonoro-background.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.acerca h2 {
+.parallax-background {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 700px;
+}
+
+.viajes-contenido h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
-.acerca p {
+.viajes-contenido p {
     font-size: 1.1rem;
-    max-width: 800px;
-    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
-/* Sección Productos */
+/* Productos */
 .productos {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 30px;
     padding: 50px 20px;
     background-color: #4b2d66;
+    text-align: center;
 }
 
 .producto-item {
+    display: inline-block;
+    margin: 20px;
+    width: 250px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 10px;
-    width: 300px;
 }
 
 .producto-item img {
-    max-width: 100%;
+    width: 100%;
     border-radius: 5px;
 }
 
 .producto-item h3 {
-    margin: 20px 0;
-}
-
-/* Sección Contacto */
-.contacto {
-    padding: 50px 20px;
-    background-color: #2E1A47;
-    text-align: center;
-}
-
-.contacto form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.contacto input,
-.contacto textarea {
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.contacto button {
-    padding: 10px;
-    background-color: #a8a8e3;
-    color: #2E1A47;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.contacto button:hover {
-    background-color: #f4f4f4;
+    margin: 15px 0;
 }
 
 /* Footer */
@@ -182,8 +155,14 @@ footer {
         flex-direction: column;
         gap: 15px;
     }
+
     .productos {
+        display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .producto-item {
+        width: 300px;
     }
 }
