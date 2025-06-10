@@ -217,7 +217,7 @@ footer {
     right: -260px; /* fuera de pantalla inicialmente */
     width: 260px;
     height: 100vh;
-    background-color: var(--violet-dark);
+    background-color: #1a0f2e; /* fondo violeta profundo sólido */
     flex-direction: column;
     padding-top: 80px;
     transition: right 0.3s ease;
