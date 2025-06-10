@@ -1,88 +1,91 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fuentes */
 body {
-    margin: 0;
-    font-family: 'Cormorant Garamond', serif;
-    background: url('background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #eee;
+    font-family: 'Gloock', sans-serif;
+    background-color: #1c1c1c;
+    color: white;
 }
 
-.overlay {
-    background-color: rgba(0, 0, 0, 0.75);
-    min-height: 100vh;
-    padding: 2rem;
-}
-
+/* Header / Menú superior */
 header {
-    text-align: center;
-    padding-bottom: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+    z-index: 10;
 }
-
-header h1 {
-    font-size: 3rem;
-    margin: 0;
-    color: #e0d4f7;
-}
-
-nav {
-    margin-top: 1rem;
-}
-
-nav a {
-    margin: 0 1rem;
-    text-decoration: none;
-    color: #c2b1ff;
-    font-weight: bold;
-}
-
-main {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-section {
-    margin: 3rem 0;
-}
-
-h2 {
-    font-size: 2rem;
-    color: #dac5ff;
-}
-
-.viajes-lista {
+header nav ul {
+    display: flex;
+    justify-content: center;
     list-style: none;
-    padding-left: 0;
 }
-
-.viajes-lista li {
-    margin: 1rem 0;
+header nav ul li {
+    margin: 0 2rem;
 }
-
-.viajes-lista a {
-    color: #c5f6fa;
+header nav ul li a {
+    color: white;
     font-size: 1.2rem;
-    text-decoration: underline;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+header nav ul li a:hover {
+    color: #9b59b6;
+    transform: scale(1.1);
 }
 
-footer {
+/* Sección Hero */
+.hero {
+    height: 100vh;
+    background-image: url('path/to/your-image.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     text-align: center;
-    margin-top: 4rem;
-    font-size: 0.9rem;
-    color: #999;
+    color: white;
+}
+.hero .content {
+    z-index: 1;
+}
+.hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+.hero p {
+    font-size: 1.5rem;
 }
 
-.oculto {
+/* Sección Productos y Experiencias */
+section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/* Sección App (Oculta por ahora) */
+.hidden {
     display: none;
 }
 
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 2rem;
-    }
-    nav a {
-        display: block;
-        margin: 0.5rem 0;
-    }
-    .viajes-lista a {
-        font-size: 1rem;
-    }
+/* Footer */
+footer {
+    background-color: #333;
+    text-align: center;
+    padding: 2rem;
+    color: white;
+}
+
+/* Efectos de Interactividad */
+a:hover {
+    color: #9b59b6;
 }
