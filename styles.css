@@ -300,9 +300,10 @@ footer {
 
 /* RESPONSIVE */
 
+/* Modificación de .nav-links en móvil */
 @media (max-width: 900px) {
   .nav-links {
-    display: none;
+    display: flex; /* Cambié de none a flex para que no desaparezca */
     position: fixed;
     top: 70px;
     right: 0;
@@ -313,20 +314,36 @@ footer {
     gap: 28px;
     padding: 40px 25px;
     box-shadow: -4px 0 15px rgba(0,0,0,0.6);
-    z-index: 1100;
+    z-index: 1200; /* mayor que header */
     overflow-y: auto;
     transition: transform 0.4s ease;
     transform: translateX(100%);
   }
 
   .nav-links.active {
-    display: flex;
     transform: translateX(0);
   }
+}
 
-  .nav-links li {
-    font-size: 1.4rem;
-  }
+/* Agregar estilos para overlay de menú */
+.menu-overlay {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(46, 26, 71, 0.75);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1150; /* justo debajo del nav-links */
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
 
   .menu-toggle {
     display: flex;
