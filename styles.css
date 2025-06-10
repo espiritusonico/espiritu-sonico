@@ -1,168 +1,229 @@
-/* General */
+/* Reset y base */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+body, html {
+    height: 100%;
     font-family: 'Cormorant Garamond', serif;
     background-color: #2E1A47;
     color: #fff;
-    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: #a8a8e3;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+a:hover {
+    color: #f4f4f4;
 }
 
 /* Navbar */
 .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(46, 26, 71, 0.95);
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px 30px;
+    z-index: 1000;
 }
 
-.navbar .logo img {
+.logo img {
     height: 50px;
 }
 
-.navbar .nav-links {
-    list-style-type: none;
+.nav-links {
+    list-style: none;
     display: flex;
     gap: 30px;
-    margin-left: 40px;
+    margin-left: auto;
 }
 
-.navbar .nav-links li a {
-    text-decoration: none;
-    color: #f4f4f4;
-    font-size: 20px;
-    transition: color 0.3s;
+.nav-links li a {
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 4px;
 }
 
-.navbar .nav-links li a:hover {
-    color: #a8a8e3;
+.nav-links li a.active, .nav-links li a:hover {
+    background-color: #a8a8e3;
+    color: #2E1A47;
 }
 
-/* Hero Section */
-.inicio {
+/* Menu toggle para móviles */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+/* Main y secciones */
+main {
+    padding-top: 80px; /* altura navbar */
+    height: calc(100vh - 80px);
+    position: relative;
+}
+
+/* Página individual */
+.page {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px);
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #392d5a, #2e1a47);
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: url('background.jpg') no-repeat center center/cover;
 }
 
-.hero {
+.page.visible {
+    opacity: 1;
+    pointer-events: auto;
+    position: relative;
+}
+
+/* Centrado del contenido */
+.content-center {
+    max-width: 900px;
     text-align: center;
-    max-width: 600px;
-    background-color: rgba(0, 0, 0, 0.4);
-    padding: 40px;
-    border-radius: 10px;
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    font-family: 'Cinzel', serif;
+.scrollable {
+    max-height: 100%;
+    overflow-y: auto;
 }
 
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-}
-
-.cta {
-    padding: 10px 20px;
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
     background-color: #a8a8e3;
     color: #2E1A47;
-    text-decoration: none;
-    font-size: 1.1rem;
-    border-radius: 5px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
     transition: background-color 0.3s;
 }
 
-.cta:hover {
+.btn:hover {
     background-color: #f4f4f4;
-    color: #2E1A47;
-}
-
-/* Sección Viajes Sonoros */
-.viajes {
-    height: 100vh;
-    background: url('viaje-sonoro-background.jpg') no-repeat center center/cover;
-    background-attachment: fixed;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.parallax-background {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 40px;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 700px;
-}
-
-.viajes-contenido h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.viajes-contenido p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
 }
 
 /* Productos */
-.productos {
-    padding: 50px 20px;
-    background-color: #4b2d66;
-    text-align: center;
+.productos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 30px;
 }
 
 .producto-item {
-    display: inline-block;
-    margin: 20px;
-    width: 250px;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px;
+    background-color: rgba(0,0,0,0.35);
     border-radius: 10px;
+    padding: 15px;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(168, 168, 227, 0.4);
+    transition: transform 0.3s;
+}
+
+.producto-item:hover {
+    transform: translateY(-8px);
 }
 
 .producto-item img {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 8px;
+    margin-bottom: 15px;
 }
 
-.producto-item h3 {
-    margin: 15px 0;
+/* Formulario Contacto */
+.contacto-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contacto-form input,
+.contacto-form textarea {
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.contacto-form button {
+    padding: 14px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #a8a8e3;
+    font-weight: 700;
+    color: #2E1A47;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contacto-form button:hover {
+    background-color: #f4f4f4;
 }
 
 /* Footer */
 footer {
-    background-color: #3b1a53;
-    padding: 20px;
     text-align: center;
+    padding: 15px 10px;
+    background-color: rgba(46, 26, 71, 0.85);
     font-size: 0.9rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #bbb;
 }
 
-/* Responsive */
+/* Responsivo */
+
 @media (max-width: 768px) {
-    .navbar .nav-links {
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        right: 0;
+        background-color: #392d5a;
         flex-direction: column;
-        gap: 15px;
+        width: 250px;
+        height: calc(100vh - 80px);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        padding-top: 20px;
+        gap: 20px;
+        z-index: 1001;
     }
 
-    .productos {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .nav-links.open {
+        transform: translateX(0);
     }
 
-    .producto-item {
-        width: 300px;
+    .menu-toggle {
+        display: block;
     }
 }
