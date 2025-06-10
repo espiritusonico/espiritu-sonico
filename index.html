@@ -1,86 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Espíritu Sónico - Templo Sonoro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Espíritu Sónico</title>
+  <!-- Fuente Cormorant Garamond desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap" rel="stylesheet" />
+  <!-- Ícono favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header>
     <nav class="navbar">
-        <div class="logo">
-            <img src="logo.png" alt="Espíritu Sónico" />
-        </div>
-        <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
-        <ul class="nav-links">
-            <li><a href="#" data-target="inicio" class="nav-link active">Inicio</a></li>
-            <li><a href="#" data-target="acerca" class="nav-link">Acerca de</a></li>
-            <li><a href="#" data-target="viajes" class="nav-link">Viajes Sonoros</a></li>
-            <li><a href="#" data-target="productos" class="nav-link">Productos</a></li>
-            <li><a href="#" data-target="contacto" class="nav-link">Contacto</a></li>
-        </ul>
+      <div class="logo">
+        <img src="logo.svg" alt="Espíritu Sónico" />
+      </div>
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link active" data-target="inicio">Inicio</a></li>
+        <li><a href="#" class="nav-link" data-target="acerca">Acerca de</a></li>
+        <li><a href="#" class="nav-link" data-target="viajes">Viajes Sonoros</a></li>
+        <li><a href="#" class="nav-link" data-target="productos">Productos</a></li>
+        <li><a href="#" class="nav-link" data-target="contacto">Contacto</a></li>
+      </ul>
     </nav>
+  </header>
 
-    <main>
-        <section id="inicio" class="page visible">
-            <div class="content-center">
-                <h1>Bienvenidos a Espíritu Sónico</h1>
-                <p>Explora el universo sonoro, donde el alma y la vibración se encuentran.</p>
-                <a href="#" data-target="viajes" class="btn cta">Explora Ahora</a>
-            </div>
-        </section>
+  <div class="menu-overlay"></div>
 
-        <section id="acerca" class="page hidden">
-            <div class="content-center scrollable">
-                <h2>Acerca de Espíritu Sónico</h2>
-                <p>Un viaje profundo hacia lo místico y sonoro, donde cada experiencia es única...</p>
-                <p>Espíritu Sónico es un templo dedicado a la conexión y la calma interior a través del sonido...</p>
-            </div>
-        </section>
+  <main id="content-container" tabindex="-1" aria-live="polite" aria-atomic="true">
+    <!-- Aquí se cargan las secciones dinámicamente -->
+  </main>
 
-        <section id="viajes" class="page hidden">
-            <div class="content-center scrollable">
-                <h2>Viajes Sonoros</h2>
-                <p>Déjate llevar por la vibración sonora que despierta la conexión interior.</p>
-                <!-- Podés agregar aquí galerías o más info -->
-            </div>
-        </section>
+  <footer>
+    <p>Espíritu Sónico © 2025 — Un universo donde el sonido despierta el espíritu y la calma te acompaña.</p>
+  </footer>
 
-        <section id="productos" class="page hidden">
-            <div class="content-center scrollable productos-container">
-                <h2>Productos</h2>
-                <div class="producto-item">
-                    <img src="sahumerio1.jpg" alt="Sahumerio Místico" />
-                    <h3>Sahumerio Místico</h3>
-                    <p>Con resinas naturales, cada sahumerio crea una atmósfera única.</p>
-                </div>
-                <div class="producto-item">
-                    <img src="sahumerio2.jpg" alt="Sahumerio Floral" />
-                    <h3>Sahumerio Floral</h3>
-                    <p>Una mezcla de pétalos y aromas para purificar el espacio.</p>
-                </div>
-                <!-- Agrega más productos -->
-            </div>
-        </section>
-
-        <section id="contacto" class="page hidden">
-            <div class="content-center scrollable contacto-form">
-                <h2>Contacto</h2>
-                <form>
-                    <input type="text" placeholder="Tu nombre" required />
-                    <input type="email" placeholder="Tu correo" required />
-                    <textarea placeholder="Tu mensaje..." required></textarea>
-                    <button type="submit">Enviar</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Espíritu Sónico. Todos los derechos reservados.</p>
-    </footer>
-
-    <script src="scripts.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>
