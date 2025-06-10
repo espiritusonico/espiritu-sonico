@@ -192,20 +192,29 @@ header {
 
 /* Animación de entrada flotante para mensaje bienvenida */
 .welcome-message {
-  font-weight: 600; /* un poco más peso */
-  font-size: 1.9rem;
-  color: var(--violet-pale);
-  text-align: justify;
-  line-height: 1.45;
-  letter-spacing: 0.04em;
-  text-shadow: 0 0 12px var(--violet-light);
-  animation: floatFadeIn 2.4s ease forwards;
-  font-style: italic;
-  max-width: 650px;
-  margin: 3rem auto 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  padding: 40px;
+  text-align: center;
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1.5s ease-out;
 }
 
-@keyframes floatFadeIn {
+.welcome-message h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.welcome-message p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+@keyframes fadeIn {
   0% {
     opacity: 0;
     transform: translateY(20px);
@@ -299,11 +308,11 @@ footer {
 /* RESPONSIVE */
 
 /* Modificación de .nav-links en móvil */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .nav-links {
-    display: flex; /* Cambié de none a flex para que no desaparezca */
+    display: none;
     position: fixed;
-    top: 70px;
+    top: 0;
     right: 0;
     background: var(--violet-dark);
     height: 100%;
@@ -312,36 +321,32 @@ footer {
     gap: 28px;
     padding: 40px 25px;
     box-shadow: -4px 0 15px rgba(0,0,0,0.6);
-    z-index: 1200; /* mayor que header */
+    z-index: 1100;
     overflow-y: auto;
     transition: transform 0.4s ease;
     transform: translateX(100%);
   }
 
   .nav-links.active {
+    display: flex;
     transform: translateX(0);
-  }
-
-  .nav-links li {
-    font-size: 1.4rem;
   }
 
   .menu-toggle {
     display: flex;
   }
-}
 
-/* Animación para el icono de menú cuando está activo */
-.menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
 
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
 
-.menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
 }
 
 /* Scrollbar personalizado para menú y páginas */
