@@ -4,14 +4,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuOverlay = document.querySelector('.menu-overlay');
   const pageSections = document.querySelectorAll('.page');
   const navLinkItems = document.querySelectorAll('.nav-link');
+  const welcomeScreen = document.querySelector('.welcome-screen');
+  const btnEnter = document.querySelector('.btn-enter');
 
-  // Función para abrir/cerrar menú móvil con animaciones y sombra
+  // Mostrar la primera página y activar el primer link
+  function showPage(pageId) {
+    pageSections.forEach(page => {
+      if (page.id === pageId) {
+        page.classList.add('visible');
+        page.style.animation = 'pageFadeZoomIn 0.6s ease forwards';
+      } else {
+        page.classList.remove('visible');
+        page.style.animation = '';
+      }
+    });
+  }
+
+  // Abrir/cerrar menú móvil con sombra y overlay
   function toggleMenu() {
     const isActive = menuToggle.classList.toggle('active');
     navLinks.classList.toggle('active', isActive);
     menuOverlay.classList.toggle('active', isActive);
 
-    // Sombra suave en menú lateral
     if (isActive) {
       navLinks.style.boxShadow = '0 0 25px 8px rgba(154, 119, 209, 0.7)';
     } else {
@@ -19,8 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Cerrar menú al hacer click en overlay o en un link
-  menuOverlay.addEventListener('click', () => toggleMenu());
+  // Cerrar menú cuando se hace click en overlay o en un link del menú
+  menuOverlay.addEventListener('click', () => {
+    toggleMenu();
+  });
 
   navLinkItems.forEach(link => {
     link.addEventListener('click', e => {
@@ -36,38 +52,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Mostrar solo la sección solicitada, con efecto de zoom y elisamiento
-  function showPage(pageId) {
-    pageSections.forEach(page => {
-      if (page.id === pageId) {
-        page.classList.add('visible');
-        page.style.animation = 'pageFadeZoomIn 0.6s ease forwards';
-      } else {
-        page.classList.remove('visible');
-        page.style.animation = '';
-      }
-    });
-  }
+  menuToggle.addEventListener('click', () => {
+    toggleMenu();
+  });
 
-  // Animación personalizada para las páginas
-  const styleSheet = document.createElement('style');
-  styleSheet.textContent = `
-    @keyframes pageFadeZoomIn {
-      0% {
-        opacity: 0;
-        transform: translateX(30px) scale(0.95);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-      }
+  // Al hacer click en botón "Entrar" de bienvenida, oculta pantalla y muestra contenido
+  btnEnter.addEventListener('click', () => {
+    welcomeScreen.style.display = 'none';
+
+    // Inicializar mostrando primera página y primer link activo
+    if (pageSections.length) {
+      showPage(pageSections[0].id);
+      navLinkItems.forEach(nav => nav.classList.remove('active'));
+      navLinkItems[0].classList.add('active');
     }
-  `;
-  document.head.appendChild(styleSheet);
+  });
 
-  // Inicializar mostrando la primera página y link activo
-  if (pageSections.length) {
-    showPage(pageSections[0].id);
-    navLinkItems[0].classList.add('active');
-  }
+  // Al cargar la página, ocultamos contenido y mostramos bienvenida
+  pageSections.forEach(page => page.classList.remove('visible'));
+  navLinkItems.forEach(nav => nav.classList.remove('active'));
+  welcomeScreen.style.display = 'flex';
 });
