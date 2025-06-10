@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">
@@ -22,7 +23,7 @@
         </ul>
     </nav>
 
-    <!-- Sección de Inicio -->
+    <!-- Sección Hero -->
     <section id="inicio" class="inicio">
         <div class="hero">
             <h1>Bienvenidos a Espíritu Sónico</h1>
@@ -39,11 +40,15 @@
         </div>
     </section>
 
-    <!-- Sección Viajes Sonoros -->
+    <!-- Sección Viajes Sonoros (Pantalla separada con Parallax) -->
     <section id="viajes" class="viajes">
-        <h2>Viajes Sonoros</h2>
-        <p>Déjate llevar por la vibración sonora que despierta la conexión interior.</p>
-        <!-- Aquí agregarías ejemplos o enlaces a los viajes sonoros -->
+        <div class="parallax-background">
+            <div class="viajes-contenido">
+                <h2>Viajes Sonoros</h2>
+                <p>Déjate llevar por la vibración sonora que despierta la conexión interior.</p>
+                <a href="#" class="cta">Explora más</a>
+            </div>
+        </div>
     </section>
 
     <!-- Sección Productos -->
@@ -54,7 +59,6 @@
             <h3>Sahumerio Místico</h3>
             <p>Con resinas naturales, cada sahumerio crea una atmósfera única.</p>
         </div>
-        <!-- Más productos pueden ir aquí -->
     </section>
 
     <!-- Sección Contacto -->
@@ -76,3 +80,4 @@
     <script src="scripts.js"></script>
 </body>
 </html>
+
