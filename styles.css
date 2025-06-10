@@ -192,12 +192,19 @@ header {
 
 /* Animación de entrada flotante para mensaje bienvenida */
 .welcome-message {
-  font-weight: 400;
-  font-size: 1.45rem;
+  font-weight: 500; /* Más peso */
+  font-size: 2rem;  /* Más grande */
   color: var(--violet-pale);
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   text-align: center;
+  line-height: 1.3;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 12px var(--violet-light);
   animation: floatFadeIn 2.4s ease forwards;
+  font-style: italic; /* estilo más místico */
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @keyframes floatFadeIn {
