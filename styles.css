@@ -321,27 +321,10 @@ footer {
   .nav-links.active {
     transform: translateX(0);
   }
-}
 
-/* Agregar estilos para overlay de menú */
-.menu-overlay {
-  position: fixed;
-  top: 70px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(46, 26, 71, 0.75);
-  backdrop-filter: blur(6px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 1150; /* justo debajo del nav-links */
-}
-
-.menu-overlay.active {
-  opacity: 1;
-  pointer-events: all;
-}
+  .nav-links li {
+    font-size: 1.4rem;
+  }
 
   .menu-toggle {
     display: flex;
