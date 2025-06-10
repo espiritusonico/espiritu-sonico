@@ -1,78 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espíritu Sónico</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Espíritu Sónico - Templo Sonoro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">
-            <img src="logo.png" alt="Espíritu Sónico">
+            <img src="logo.png" alt="Espíritu Sónico" />
         </div>
+        <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
         <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#acerca">Acerca de</a></li>
-            <li><a href="#viajes">Viajes Sonoros</a></li>
-            <li><a href="#productos">Productos</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#" data-target="inicio" class="nav-link active">Inicio</a></li>
+            <li><a href="#" data-target="acerca" class="nav-link">Acerca de</a></li>
+            <li><a href="#" data-target="viajes" class="nav-link">Viajes Sonoros</a></li>
+            <li><a href="#" data-target="productos" class="nav-link">Productos</a></li>
+            <li><a href="#" data-target="contacto" class="nav-link">Contacto</a></li>
         </ul>
     </nav>
 
-    <!-- Sección Hero -->
-    <section id="inicio" class="inicio">
-        <div class="hero">
-            <h1>Bienvenidos a Espíritu Sónico</h1>
-            <p>Explora el universo sonoro, donde el alma y la vibración se encuentran.</p>
-            <a href="#viajes" class="cta">Explora Ahora</a>
-        </div>
-    </section>
+    <main>
+        <section id="inicio" class="page visible">
+            <div class="content-center">
+                <h1>Bienvenidos a Espíritu Sónico</h1>
+                <p>Explora el universo sonoro, donde el alma y la vibración se encuentran.</p>
+                <a href="#" data-target="viajes" class="btn cta">Explora Ahora</a>
+            </div>
+        </section>
 
-    <!-- Sección Acerca de -->
-    <section id="acerca" class="acerca">
-        <div class="contenido">
-            <h2>Acerca de Espíritu Sónico</h2>
-            <p>Un viaje profundo hacia lo místico y sonoro, donde cada experiencia es única...</p>
-        </div>
-    </section>
+        <section id="acerca" class="page hidden">
+            <div class="content-center scrollable">
+                <h2>Acerca de Espíritu Sónico</h2>
+                <p>Un viaje profundo hacia lo místico y sonoro, donde cada experiencia es única...</p>
+                <p>Espíritu Sónico es un templo dedicado a la conexión y la calma interior a través del sonido...</p>
+            </div>
+        </section>
 
-    <!-- Sección Viajes Sonoros (Pantalla separada con Parallax) -->
-    <section id="viajes" class="viajes">
-        <div class="parallax-background">
-            <div class="viajes-contenido">
+        <section id="viajes" class="page hidden">
+            <div class="content-center scrollable">
                 <h2>Viajes Sonoros</h2>
                 <p>Déjate llevar por la vibración sonora que despierta la conexión interior.</p>
-                <a href="#" class="cta">Explora más</a>
+                <!-- Podés agregar aquí galerías o más info -->
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Sección Productos -->
-    <section id="productos" class="productos">
-        <h2>Productos</h2>
-        <div class="producto-item">
-            <img src="sahumerio1.jpg" alt="Sahumerio">
-            <h3>Sahumerio Místico</h3>
-            <p>Con resinas naturales, cada sahumerio crea una atmósfera única.</p>
-        </div>
-    </section>
+        <section id="productos" class="page hidden">
+            <div class="content-center scrollable productos-container">
+                <h2>Productos</h2>
+                <div class="producto-item">
+                    <img src="sahumerio1.jpg" alt="Sahumerio Místico" />
+                    <h3>Sahumerio Místico</h3>
+                    <p>Con resinas naturales, cada sahumerio crea una atmósfera única.</p>
+                </div>
+                <div class="producto-item">
+                    <img src="sahumerio2.jpg" alt="Sahumerio Floral" />
+                    <h3>Sahumerio Floral</h3>
+                    <p>Una mezcla de pétalos y aromas para purificar el espacio.</p>
+                </div>
+                <!-- Agrega más productos -->
+            </div>
+        </section>
 
-    <!-- Sección Contacto -->
-    <section id="contacto" class="contacto">
-        <h2>Contacto</h2>
-        <form>
-            <input type="text" placeholder="Tu nombre" required>
-            <input type="email" placeholder="Tu correo" required>
-            <textarea placeholder="Tu mensaje..." required></textarea>
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
+        <section id="contacto" class="page hidden">
+            <div class="content-center scrollable contacto-form">
+                <h2>Contacto</h2>
+                <form>
+                    <input type="text" placeholder="Tu nombre" required />
+                    <input type="email" placeholder="Tu correo" required />
+                    <textarea placeholder="Tu mensaje..." required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </section>
+    </main>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Espíritu Sónico. Todos los derechos reservados.</p>
     </footer>
@@ -80,4 +84,3 @@
     <script src="scripts.js"></script>
 </body>
 </html>
-
