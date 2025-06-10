@@ -4,21 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Espíritu Sónico</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Espíritu Sónico">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#acerca">Acerca de</a></li>
+            <li><a href="#viajes">Viajes Sonoros</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
 
-    <div class="container">
-        <h1>Bienvenido a Espíritu Sónico</h1>
-        <p>Un viaje sonoro profundo y transformador, diseñado para tu conexión espiritual.</p>
-        <button>Explora más</button>
-        <a href="#app">Descargar la App</a>
-    </div>
+    <!-- Sección de Inicio -->
+    <section id="inicio" class="inicio">
+        <div class="hero">
+            <h1>Bienvenidos a Espíritu Sónico</h1>
+            <p>Explora el universo sonoro, donde el alma y la vibración se encuentran.</p>
+            <a href="#viajes" class="cta">Explora Ahora</a>
+        </div>
+    </section>
 
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
+    <!-- Sección Acerca de -->
+    <section id="acerca" class="acerca">
+        <div class="contenido">
+            <h2>Acerca de Espíritu Sónico</h2>
+            <p>Un viaje profundo hacia lo místico y sonoro, donde cada experiencia es única...</p>
+        </div>
+    </section>
 
+    <!-- Sección Viajes Sonoros -->
+    <section id="viajes" class="viajes">
+        <h2>Viajes Sonoros</h2>
+        <p>Déjate llevar por la vibración sonora que despierta la conexión interior.</p>
+        <!-- Aquí agregarías ejemplos o enlaces a los viajes sonoros -->
+    </section>
+
+    <!-- Sección Productos -->
+    <section id="productos" class="productos">
+        <h2>Productos</h2>
+        <div class="producto-item">
+            <img src="sahumerio1.jpg" alt="Sahumerio">
+            <h3>Sahumerio Místico</h3>
+            <p>Con resinas naturales, cada sahumerio crea una atmósfera única.</p>
+        </div>
+        <!-- Más productos pueden ir aquí -->
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="contacto">
+        <h2>Contacto</h2>
+        <form>
+            <input type="text" placeholder="Tu nombre" required>
+            <input type="email" placeholder="Tu correo" required>
+            <textarea placeholder="Tu mensaje..." required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Espíritu Sónico. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
