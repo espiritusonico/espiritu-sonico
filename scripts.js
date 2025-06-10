@@ -5,35 +5,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const pageSections = document.querySelectorAll('.page');
   const navLinkItems = document.querySelectorAll('.nav-link');
 
-  // Función para abrir/cerrar menú móvil
+  // Función para abrir/cerrar menú móvil con animaciones y sombra
   function toggleMenu() {
-    menuToggle.classList.toggle('active');
-    navLinks.classList.toggle('active');
-    menuOverlay.classList.toggle('active');
+    const isActive = menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active', isActive);
+    menuOverlay.classList.toggle('active', isActive);
+
+    // Sombra suave en menú lateral
+    if (isActive) {
+      navLinks.style.boxShadow = '0 0 25px 8px rgba(154, 119, 209, 0.7)';
+    } else {
+      navLinks.style.boxShadow = 'none';
+    }
   }
 
-  // Cerrar menú al hacer click en overlay
-  menuOverlay.addEventListener('click', () => {
-    toggleMenu();
-  });
+  // Cerrar menú al hacer click en overlay o en un link
+  menuOverlay.addEventListener('click', () => toggleMenu());
 
-  // Abrir/cerrar menú al click en el botón hamburguesa
-  menuToggle.addEventListener('click', () => {
-    toggleMenu();
-  });
-
-  // Función para mostrar una sección y ocultar las demás
-  function showPage(pageId) {
-    pageSections.forEach(page => {
-      if (page.id === pageId) {
-        page.classList.add('visible');
-      } else {
-        page.classList.remove('visible');
-      }
-    });
-  }
-
-  // Escuchar clicks en enlaces de navegación
   navLinkItems.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -41,19 +29,44 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetPage = link.getAttribute('href').substring(1);
       showPage(targetPage);
 
-      // Actualizar clase active en el menú
       navLinkItems.forEach(nav => nav.classList.remove('active'));
       link.classList.add('active');
 
-      // Cerrar menú móvil si está abierto
-      if (navLinks.classList.contains('active')) {
-        toggleMenu();
-      }
+      if (navLinks.classList.contains('active')) toggleMenu();
     });
   });
 
-  // Inicializar mostrando la primera página (por ejemplo, 'inicio')
-  if (pageSections.length > 0) {
+  // Mostrar solo la sección solicitada, con efecto de zoom y elisamiento
+  function showPage(pageId) {
+    pageSections.forEach(page => {
+      if (page.id === pageId) {
+        page.classList.add('visible');
+        page.style.animation = 'pageFadeZoomIn 0.6s ease forwards';
+      } else {
+        page.classList.remove('visible');
+        page.style.animation = '';
+      }
+    });
+  }
+
+  // Animación personalizada para las páginas
+  const styleSheet = document.createElement('style');
+  styleSheet.textContent = `
+    @keyframes pageFadeZoomIn {
+      0% {
+        opacity: 0;
+        transform: translateX(30px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+  `;
+  document.head.appendChild(styleSheet);
+
+  // Inicializar mostrando la primera página y link activo
+  if (pageSections.length) {
     showPage(pageSections[0].id);
     navLinkItems[0].classList.add('active');
   }
