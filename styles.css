@@ -304,4 +304,81 @@ footer {
     width: 230px;
     flex-direction: column;
     gap: 28px;
-    padding: 40px 
+    padding: 40px 25px;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.6);
+    z-index: 1100;
+    overflow-y: auto;
+    transition: transform 0.4s ease;
+    transform: translateX(100%);
+  }
+
+  .nav-links.active {
+    display: flex;
+    transform: translateX(0);
+  }
+
+  .nav-links li {
+    font-size: 1.4rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+/* Animación para el icono de menú cuando está activo */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Scrollbar personalizado para menú y páginas */
+.menu-overlay::-webkit-scrollbar,
+.nav-links::-webkit-scrollbar,
+.page::-webkit-scrollbar {
+  width: 8px;
+}
+
+.menu-overlay::-webkit-scrollbar-thumb,
+.nav-links::-webkit-scrollbar-thumb,
+.page::-webkit-scrollbar-thumb {
+  background: var(--violet-light);
+  border-radius: 6px;
+}
+
+.menu-overlay::-webkit-scrollbar-track,
+.nav-links::-webkit-scrollbar-track,
+.page::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Ajustes de texto y espaciado en móviles */
+@media (max-width: 500px) {
+  body {
+    font-size: 1rem;
+  }
+
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .nav-links li {
+    gap: 20px;
+  }
+
+  #content-container {
+    padding: 0 15px;
+    margin: 1rem auto 2rem;
+  }
+}
