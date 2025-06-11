@@ -8,60 +8,60 @@ document.addEventListener('DOMContentLoaded', () => {
   const pantallaBienvenida = document.querySelector('.welcome-screen');  
   const contenedorPrincipal = document.getElementById('content-container');  
 
-  // Ocultar contenido principal al inicio
+  // Ocultamos contenido principal inicialmente
   contenedorPrincipal.style.display = 'none';
 
-  // Ocultar todas las secciones excepto inicio al iniciar
-  pageSections.forEach(sec => {
-    if (sec.id === 'inicio') {
-      sec.style.display = 'block';
-    } else {
-      sec.style.display = 'none';
-    }
+  // Inicializamos mostrando sólo la sección de inicio
+  pageSections.forEach(section => {
+    section.style.display = (section.id === 'inicio') ? 'block' : 'none';
   });
 
-  // Limpiamos cualquier clase active al inicio
+  // Limpia el estado de los links activos
   navLinkItems.forEach(link => link.classList.remove('active'));
 
-  // Función para abrir/cerrar menú móvil con animaciones y sombra
+  // Función para manejar el menú móvil
   function toggleMenu() {
     const isActive = menuToggle.classList.toggle('active');
     navLinks.classList.toggle('active', isActive);
     menuOverlay.classList.toggle('active', isActive);
   }
 
-  // Evento para botón ingresar
+  // Evento del botón de ingresar (bienvenida)
   btnIngresar.addEventListener('click', () => {
-    // Animar fade out antes de ocultar pantalla bienvenida
-    pantallaBienvenida.style.transition = 'opacity 0.6s ease';
+    pantallaBienvenida.style.transition = 'opacity 0.7s ease';
     pantallaBienvenida.style.opacity = '0';
 
     setTimeout(() => {
       pantallaBienvenida.style.display = 'none';
       contenedorPrincipal.style.display = 'block';
-    }, 600);
+    }, 700);
   });
 
+  // Evento para el botón de hamburguesa
   menuToggle.addEventListener('click', toggleMenu);
 
-  menuOverlay.addEventListener('click', () => toggleMenu());
+  // Cierre del menú al tocar fuera en móviles
+  menuOverlay.addEventListener('click', toggleMenu);
 
+  // Manejo de la navegación entre páginas internas
   navLinkItems.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
 
       const targetPage = link.dataset.target;
-      showPage(targetPage);
+      mostrarPagina(targetPage);
 
-      // Limpiamos el estado activo de todos los links y ponemos active al clickeado
       navLinkItems.forEach(nav => nav.classList.remove('active'));
       link.classList.add('active');
 
-      if (navLinks.classList.contains('active')) toggleMenu();
+      if (navLinks.classList.contains('active')) {
+        toggleMenu();
+      }
     });
   });
 
-  function showPage(pageId) {
+  // Función que muestra la sección seleccionada
+  function mostrarPagina(pageId) {
     pageSections.forEach(page => {
       if (page.id === pageId) {
         page.classList.add('visible');
@@ -75,21 +75,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Agregamos la animación keyframes
+  // Agregamos keyframes de animación por si acaso (refuerzo)
   const styleSheet = document.createElement('style');
   styleSheet.textContent = `
     @keyframes pageFadeZoomIn {
-      0% {
-        opacity: 0;
-        transform: translateX(30px) scale(0.95);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-      }
+      0% { opacity: 0; transform: translateX(30px) scale(0.95); }
+      100% { opacity: 1; transform: translateX(0) scale(1); }
     }
   `;
   document.head.appendChild(styleSheet);
+
+  // Cargamos la primera sección visible
+  if (pageSections.length) {
+    mostrarPagina('inicio');
+  }
+});
+
 
   // Inicializamos mostrando la primera página sin activar ningún link
   if (pageSections.length) {
