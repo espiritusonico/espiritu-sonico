@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.getElementById('nav-links');
@@ -17,98 +15,82 @@ document.addEventListener('DOMContentLoaded', () => {
   contentContainer.style.display = 'none';
   mainFooter.style.display = 'none';
 
-  // Función para saber si es móvil
-  function isMobile() {
-    return window.innerWidth <= 768;
+  // Mostrar primera sección sin activar links
+  if (pageSections.length) {
+    showPage(pageSections[0].id);
   }
 
-  // Mostrar la primera sección sin activar ningún link
+  // Función para mostrar página
   function showPage(pageId) {
     pageSections.forEach(page => {
       if (page.id === pageId) {
         page.classList.add('visible');
-        page.style.animation = 'none';
-        page.offsetHeight; // trigger reflow para reiniciar animación
-        page.style.animation = null;
-        page.focus();
+        page.style.animation = 'pageFadeZoomIn 0.6s ease forwards';
       } else {
         page.classList.remove('visible');
-      }
-    });
-    // Marcar activo en menú
-    navLinkItems.forEach(link => {
-      if (link.dataset.target === pageId) {
-        link.classList.add('active');
-        link.setAttribute('aria-current', 'page');
-      } else {
-        link.classList.remove('active');
-        link.removeAttribute('aria-current');
+        page.style.animation = '';
       }
     });
   }
 
-  // Abrir/cerrar menú móvil
-  function toggleMenu(open) {
-    if (open) {
+  // Función abrir/cerrar menú móvil
+  function toggleMenu() {
+    const isActive = menuToggle.classList.toggle('active');
+    if (isActive) {
+      navLinks.removeAttribute('hidden');
+      menuOverlay.removeAttribute('hidden');
       navLinks.classList.add('active');
       menuOverlay.classList.add('active');
-      navLinks.removeAttribute('hidden');
-      menuToggle.classList.add('active');
       menuToggle.setAttribute('aria-expanded', 'true');
-      // Enfocar primer enlace
-      navLinkItems[0].focus();
+      document.body.style.overflow = 'hidden';
     } else {
+      navLinks.setAttribute('hidden', '');
+      menuOverlay.setAttribute('hidden', '');
       navLinks.classList.remove('active');
       menuOverlay.classList.remove('active');
-      navLinks.setAttribute('hidden', '');
-      menuToggle.classList.remove('active');
       menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.focus();
+      document.body.style.overflow = '';
     }
   }
 
-  // Eventos menú toggle
-  menuToggle.addEventListener('click', () => {
-    const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-    toggleMenu(!expanded);
-  });
-  // Cerrar menú al pulsar overlay
+  // Evento click menú toggle
+  menuToggle.addEventListener('click', toggleMenu);
+
+  // Cerrar menú al click en overlay
   menuOverlay.addEventListener('click', () => {
-    toggleMenu(false);
+    if (menuToggle.classList.contains('active')) {
+      toggleMenu();
+    }
   });
 
-  // Navegación por menú
+  // Click en links menú para mostrar sección y cerrar menú
   navLinkItems.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      const targetId = link.dataset.target;
-      showPage(targetId);
-      if (isMobile()) toggleMenu(false);
+      const targetPage = link.dataset.target;
+      showPage(targetPage);
+      navLinkItems.forEach(nav => nav.classList.remove('active'));
+      link.classList.add('active');
+      if (menuToggle.classList.contains('active')) {
+        toggleMenu();
+      }
     });
   });
 
-  // Botón ingresar para bienvenida
+  // Botón ingresar: ocultar bienvenida y mostrar contenido
   enterBtn.addEventListener('click', () => {
-    // Animación fade out bienvenida
     welcomeScreen.classList.add('fade-out');
     setTimeout(() => {
       welcomeScreen.style.display = 'none';
       mainHeader.style.display = 'flex';
       contentContainer.style.display = 'block';
       mainFooter.style.display = 'block';
+      // Mostrar primera sección
       showPage('inicio');
-      // Foco accesible
-      document.getElementById('inicio').focus();
-    }, 900);
-  });
-
-  // Soporte para cerrar menú con ESC
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-      toggleMenu(false);
-    }
+      // Activar link inicio
+      navLinkItems.forEach(link => link.classList.remove('active'));
+      const firstLink = document.querySelector('.nav-link[data-target="inicio"]');
+      if (firstLink) firstLink.classList.add('active');
+    }, 700);
   });
 });
-
-
-
