@@ -4,7 +4,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuOverlay = document.querySelector('.menu-overlay');
   const pageSections = document.querySelectorAll('.page');
   const navLinkItems = document.querySelectorAll('.nav-link');
+  const btnIngresar = document.getElementById('btnIngresar');
+  const pantallaBienvenida = document.getElementById('pantallaBienvenida');
+  const contenedorPrincipal = document.getElementById('contenedorPrincipal');
+  const secciones = document.querySelectorAll('.page');
 
+   // Ocultar todas las secciones excepto inicio al iniciar
+  secciones.forEach(sec => {
+    if (sec.id === 'inicio') {
+      sec.style.display = 'block';
+    } else {
+      sec.style.display = 'none';
+    }
+  });
+
+  btnIngresar.addEventListener('click', () => {
+    // Opcional: animar fade out antes de ocultar
+    pantallaBienvenida.style.transition = 'opacity 0.6s ease';
+    pantallaBienvenida.style.opacity = '0';
+
+    setTimeout(() => {
+      pantallaBienvenida.style.display = 'none';
+      contenedorPrincipal.style.display = 'block';
+    }, 600);
+  });
+});
+  
   // Limpiamos cualquier clase active al inicio
   navLinkItems.forEach(link => link.classList.remove('active'));
 
