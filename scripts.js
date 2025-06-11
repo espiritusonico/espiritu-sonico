@@ -32,13 +32,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Evento para botón "Ingresar" que oculta bienvenida y muestra contenido principal
   btnIngresar.addEventListener('click', () => {
-    pantallaBienvenida.style.transition = 'opacity 0.6s ease';
-    pantallaBienvenida.style.opacity = '0';
-    setTimeout(() => {
-      pantallaBienvenida.style.display = 'none';
-      contenedorPrincipal.style.display = 'block';
-    }, 600);
+  pantallaBienvenida.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  pantallaBienvenida.style.opacity = '0';
+  pantallaBienvenida.style.transform = 'scale(1.1)';
+  setTimeout(() => {
+    pantallaBienvenida.style.display = 'none';
+    contenedorPrincipal.style.display = 'block';
+    contenedorPrincipal.style.opacity = '0';
+    contenedorPrincipal.style.transition = 'opacity 0.8s ease';
+    setTimeout(() => contenedorPrincipal.style.opacity = '1', 50);
+   }, 600);
   });
+
 
   // Eventos para menú hamburguesa
   menuToggle.addEventListener('click', toggleMenu);
