@@ -4,17 +4,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuOverlay = document.querySelector('.menu-overlay');
   const pageSections = document.querySelectorAll('.page');
   const navLinkItems = document.querySelectorAll('.nav-link');
+  const welcomeScreen = document.getElementById('welcome-screen');
+  const enterBtn = document.getElementById('enter-btn');
 
   // Limpiamos cualquier clase active al inicio
   navLinkItems.forEach(link => link.classList.remove('active'));
 
-  // Función para abrir/cerrar menú móvil con animaciones y sombra
-  function toggleMenu() {
-  const isActive = menuToggle.classList.toggle('active');
-  navLinks.classList.toggle('active', isActive);
-  menuOverlay.classList.toggle('active', isActive);
-}
+  // Inicializamos mostrando la primera página SIN activar ningún link
+  if (pageSections.length) {
+    showPage(pageSections[0].id);
+  }
 
+  // Función para abrir/cerrar menú móvil
+  function toggleMenu() {
+    const isActive = menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active', isActive);
+    menuOverlay.classList.toggle('active', isActive);
+  }
 
   // Cerrar menú al hacer click en overlay o en un link
   menuOverlay.addEventListener('click', () => toggleMenu());
@@ -22,18 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
   navLinkItems.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-
       const targetPage = link.dataset.target;
       showPage(targetPage);
-
-      // Aquí limpiamos el estado activo de todos los links
       navLinkItems.forEach(nav => nav.classList.remove('active'));
       link.classList.add('active');
-
       if (navLinks.classList.contains('active')) toggleMenu();
     });
   });
 
+  // Mostrar la sección deseada
   function showPage(pageId) {
     pageSections.forEach(page => {
       if (page.id === pageId) {
@@ -46,23 +49,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Animación personalizada de entrada de páginas
   const styleSheet = document.createElement('style');
   styleSheet.textContent = `
     @keyframes pageFadeZoomIn {
-      0% {
-        opacity: 0;
-        transform: translateX(30px) scale(0.95);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-      }
+      0% { opacity: 0; transform: translateX(30px) scale(0.95); }
+      100% { opacity: 1; transform: translateX(0) scale(1); }
     }
   `;
   document.head.appendChild(styleSheet);
 
-  // Inicializamos mostrando la primera página SIN activar ningún link
-  if (pageSections.length) {
-    showPage(pageSections[0].id);
-  }
+  // Acción del botón "Ingresar"
+  enterBtn.addEventListener('click', () => {
+    welcomeScreen.classList.add('fade-out');
+    setTimeout(() => {
+      welcomeScreen.style.display = 'none';
+      showPage('inicio'); // mostramos la sección de inicio al entrar
+    }, 800);
+  });
 });
+
