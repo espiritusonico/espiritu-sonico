@@ -8,8 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const pantallaBienvenida = document.querySelector('.welcome-screen');
   const contenedorPrincipal = document.getElementById('content-container');
 
+  // Ocultar contenido principal al inicio
   contenedorPrincipal.style.display = 'none';
 
+  // Inicializar páginas - solo mostrar la de "inicio"
   pageSections.forEach(sec => {
     if (sec.id === 'inicio') {
       sec.style.display = 'block';
@@ -18,14 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Remover clase active de links (por si queda alguna)
   navLinkItems.forEach(link => link.classList.remove('active'));
 
+  // Función para abrir/cerrar menú hamburguesa
   function toggleMenu() {
     const isActive = menuToggle.classList.toggle('active');
     navLinks.classList.toggle('active', isActive);
     menuOverlay.classList.toggle('active', isActive);
   }
 
+  // Evento para botón "Ingresar" que oculta bienvenida y muestra contenido principal
   btnIngresar.addEventListener('click', () => {
     pantallaBienvenida.style.transition = 'opacity 0.6s ease';
     pantallaBienvenida.style.opacity = '0';
@@ -35,9 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 600);
   });
 
+  // Eventos para menú hamburguesa
   menuToggle.addEventListener('click', toggleMenu);
   menuOverlay.addEventListener('click', () => toggleMenu());
 
+  // Eventos para navegación interna
   navLinkItems.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -49,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Función para mostrar página específica y ocultar las demás
   function showPage(pageId) {
     pageSections.forEach(page => {
       if (page.id === pageId) {
@@ -63,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Insertar animación CSS para la transición de páginas
   const styleSheet = document.createElement('style');
   styleSheet.textContent = `
     @keyframes pageFadeZoomIn {
@@ -72,12 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
   document.head.appendChild(styleSheet);
 
-  if (pageSections.length) {
-    showPage(pageSections[0].id);
-  }
-});
-
-  // Inicializamos mostrando la primera página sin activar ningún link
+  // Inicializar mostrando la primera página ("inicio")
   if (pageSections.length) {
     showPage(pageSections[0].id);
   }
