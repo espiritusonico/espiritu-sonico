@@ -66,9 +66,3 @@ document.addEventListener('DOMContentLoaded', () => {
     showPage(pageSections[0].id);
   }
 });
-
-
-  pageSections.forEach(page => page.classList.remove('visible'));
-  navLinkItems.forEach(nav => nav.classList.remove('active'));
-  welcomeScreen.style.display = 'flex';
-});
