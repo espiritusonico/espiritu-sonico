@@ -229,32 +229,25 @@ footer {
   .nav-links {
     position: fixed;
     top: 0;
-    right: -260px;
-    width: 260px;
+    right: -300px;
+    width: 300px;
     height: 100vh;
-    background-color: #1a0f2e;
+    background: rgba(42, 26, 66, 0.85);
+    backdrop-filter: blur(12px);
+    border-left: 1px solid rgba(255,255,255,0.1);
     display: flex;
     flex-direction: column;
     padding-top: 100px;
     padding-left: 24px;
     padding-right: 24px;
-    gap: 1rem;
-    transition: right 0.3s ease;
+    gap: 1.5rem;
+    transition: right 0.4s ease, opacity 0.4s ease;
     z-index: 1500;
-    overflow-y: auto;
-    box-shadow: 0 0 25px 8px rgba(154, 119, 209, 0.7);
+    box-shadow: -8px 0 30px rgba(154, 119, 209, 0.7);
   }
 
   .nav-links.active {
     right: 0;
-  }
-
-  .menu-toggle {
-    display: flex !important;
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    z-index: 1600;
   }
 
   .menu-overlay.active {
