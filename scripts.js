@@ -1,26 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.getElementById('nav-links');
+  const navLinks = document.querySelector('.nav-links');
   const menuOverlay = document.querySelector('.menu-overlay');
   const pageSections = document.querySelectorAll('.page');
   const navLinkItems = document.querySelectorAll('.nav-link');
-  const welcomeScreen = document.getElementById('welcome-screen');
-  const enterBtn = document.getElementById('enter-btn');
-  const mainHeader = document.getElementById('main-header');
-  const contentContainer = document.getElementById('content-container');
-  const mainFooter = document.getElementById('main-footer');
 
-  // Inicialmente ocultar header, main y footer
-  mainHeader.style.display = 'none';
-  contentContainer.style.display = 'none';
-  mainFooter.style.display = 'none';
+  // Limpiamos cualquier clase active al inicio
+  navLinkItems.forEach(link => link.classList.remove('active'));
 
-  // Mostrar primera sección sin activar links
-  if (pageSections.length) {
-    showPage(pageSections[0].id);
-  }
+  // Función para abrir/cerrar menú móvil con animaciones y sombra
+  function toggleMenu() {
+  const isActive = menuToggle.classList.toggle('active');
+  navLinks.classList.toggle('active', isActive);
+  menuOverlay.classList.toggle('active', isActive);
+}
 
-  // Función para mostrar página
+
+  // Cerrar menú al hacer click en overlay o en un link
+  menuOverlay.addEventListener('click', () => toggleMenu());
+
+  navLinkItems.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+
+      const targetPage = link.dataset.target;
+      showPage(targetPage);
+
+      // Aquí limpiamos el estado activo de todos los links
+      navLinkItems.forEach(nav => nav.classList.remove('active'));
+      link.classList.add('active');
+
+      if (navLinks.classList.contains('active')) toggleMenu();
+    });
+  });
+
   function showPage(pageId) {
     pageSections.forEach(page => {
       if (page.id === pageId) {
@@ -33,64 +46,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Función abrir/cerrar menú móvil
-  function toggleMenu() {
-    const isActive = menuToggle.classList.toggle('active');
-    if (isActive) {
-      navLinks.removeAttribute('hidden');
-      menuOverlay.removeAttribute('hidden');
-      navLinks.classList.add('active');
-      menuOverlay.classList.add('active');
-      menuToggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    } else {
-      navLinks.setAttribute('hidden', '');
-      menuOverlay.setAttribute('hidden', '');
-      navLinks.classList.remove('active');
-      menuOverlay.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-  }
-
-  // Evento click menú toggle
-  menuToggle.addEventListener('click', toggleMenu);
-
-  // Cerrar menú al click en overlay
-  menuOverlay.addEventListener('click', () => {
-    if (menuToggle.classList.contains('active')) {
-      toggleMenu();
-    }
-  });
-
-  // Click en links menú para mostrar sección y cerrar menú
-  navLinkItems.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const targetPage = link.dataset.target;
-      showPage(targetPage);
-      navLinkItems.forEach(nav => nav.classList.remove('active'));
-      link.classList.add('active');
-      if (menuToggle.classList.contains('active')) {
-        toggleMenu();
+  const styleSheet = document.createElement('style');
+  styleSheet.textContent = `
+    @keyframes pageFadeZoomIn {
+      0% {
+        opacity: 0;
+        transform: translateX(30px) scale(0.95);
       }
-    });
-  });
+      100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+  `;
+  document.head.appendChild(styleSheet);
 
-  // Botón ingresar: ocultar bienvenida y mostrar contenido
-  enterBtn.addEventListener('click', () => {
-    welcomeScreen.classList.add('fade-out');
-    setTimeout(() => {
-      welcomeScreen.style.display = 'none';
-      mainHeader.style.display = 'flex';
-      contentContainer.style.display = 'block';
-      mainFooter.style.display = 'block';
-      // Mostrar primera sección
-      showPage('inicio');
-      // Activar link inicio
-      navLinkItems.forEach(link => link.classList.remove('active'));
-      const firstLink = document.querySelector('.nav-link[data-target="inicio"]');
-      if (firstLink) firstLink.classList.add('active');
-    }, 700);
-  });
+  // Inicializamos mostrando la primera página SIN activar ningún link
+  if (pageSections.length) {
+    showPage(pageSections[0].id);
+  }
 });
