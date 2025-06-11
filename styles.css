@@ -1,106 +1,68 @@
+/* styles.css */
+
+/* --- Fuentes --- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background: #1a0033;
+  color: #eee;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
 /* --- Bienvenida --- */
 #welcome-screen {
   position: fixed;
   inset: 0;
-  background: linear-gradient(135deg, #4b0082, #7b2ff7); /* violetas profundos */
+  background: linear-gradient(135deg, #4b0082, #7b2ff7);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #eee;
-  font-family: 'Cormorant Garamond', serif;
   font-size: 1.6rem;
   text-align: center;
   z-index: 9999;
   transition: opacity 0.8s ease;
+  padding: 2rem;
 }
-
 #welcome-screen.fade-out {
   opacity: 0;
   pointer-events: none;
 }
-
-/* --- Menú --- */
-
-/* menú siempre visible en desktop */
-@media (min-width: 769px) {
-  .menu-toggle {
-    display: none;
-  }
-  #nav-links {
-    display: flex !important;
-    position: static !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    width: auto !important;
-    height: auto !important;
-    overflow: visible !important;
-  }
-  .menu-overlay {
-    display: none !important;
-  }
+#welcome-screen h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px #c3a0ff;
+}
+#welcome-screen p {
+  margin-bottom: 2rem;
+  font-weight: 500;
+  max-width: 400px;
+}
+#enter-btn {
+  padding: 0.75rem 1.8rem;
+  border: none;
+  background: #7b2ff7;
+  color: white;
+  font-size: 1.3rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #9f7fff;
+  transition: background-color 0.3s ease;
+}
+#enter-btn:hover {
+  background: #5a00d1;
 }
 
-/* menú toggle en móvil */
-@media (max-width: 768px) {
-  #nav-links {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 250px;
-    background: #4b0082;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.7);
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    overflow-y: auto;
-    z-index: 1000;
-  }
-
-  #nav-links.active {
-    transform: translateX(0);
-  }
-
-  .menu-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(75,0,130, 0.6);
-    z-index: 900;
-    display: none;
-  }
-
-  .menu-overlay.active {
-    display: block;
-  }
-}
-
-/* Link activo */
-.nav-link.active {
-  color: #d8b4fe; /* lila claro */
-  font-weight: 600;
-}
-
-/* Secciones */
-.page {
-  display: none;
-  opacity: 0;
-}
-
-.page.visible {
-  display: block;
-  opacity: 1;
-}
-
-/* Header, footer y contenido */
-
-#main-header, #content-container, #main-footer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  color: #eee;
-  font-family: 'Cormorant Garamond', serif;
-}
-
+/* --- Header --- */
 #main-header {
   background: linear-gradient(90deg, #5a2a83, #a07fff);
   display: flex;
@@ -108,35 +70,153 @@
   align-items: center;
   padding: 1rem 2rem;
   color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-weight: 600;
+  font-size: 1.2rem;
+  user-select: none;
 }
 
+/* --- Menú toggle --- */
+.menu-toggle {
+  background: none;
+  border: 2px solid #d8b4fe;
+  color: #d8b4fe;
+  padding: 0.3rem 0.7rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  user-select: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.menu-toggle:hover,
+.menu-toggle.active {
+  background-color: #d8b4fe;
+  color: #4b0082;
+}
+
+/* --- Navegación --- */
+#nav-links {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  background: #4b0082;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.7);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  z-index: 1000;
+  padding-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#nav-links.active {
+  transform: translateX(0);
+}
+
+.nav-link {
+  color: #c3a0ff;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+.nav-link:hover,
+.nav-link.active {
+  background-color: #9f7fff;
+  color: #2c004b;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+/* --- Overlay menú móvil --- */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(75,0,130, 0.6);
+  z-index: 900;
+  display: none;
+}
+.menu-overlay.active {
+  display: block;
+}
+
+/* --- Contenido --- */
+#content-container {
+  background: #2c004b;
+  padding: 2rem;
+  min-height: 70vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #eee;
+  font-size: 1.2rem;
+  user-select: text;
+}
+
+/* --- Footer --- */
 #main-footer {
   background: #3b0054;
   padding: 1rem 2rem;
   text-align: center;
   font-size: 0.9rem;
   color: #ccc;
+  max-width: 1200px;
+  margin: 1rem auto 2rem;
 }
 
-/* Contenedor principal */
-#content-container {
-  background: #2c004b;
-  padding: 2rem;
-  min-height: 70vh;
+/* --- Secciones --- */
+.page {
+  display: none;
+  opacity: 0;
+}
+.page.visible {
+  display: block;
+  opacity: 1;
+  animation: pageFadeZoomIn 0.6s ease forwards;
 }
 
-/* Botón ingresar */
-#enter-btn {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  background: #7b2ff7;
-  color: white;
-  font-size: 1.2rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+/* --- Animación --- */
+@keyframes pageFadeZoomIn {
+  0% { opacity: 0; transform: translateX(30px) scale(0.95); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
 }
 
-#enter-btn:hover {
-  background: #5a00d1;
+/* --- Responsive --- */
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+  #nav-links {
+    position: static !important;
+    height: auto !important;
+    width: auto !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+    flex-direction: row;
+    padding: 0;
+    gap: 2rem;
+  }
+  .menu-overlay {
+    display: none !important;
+  }
+  .nav-link {
+    padding: 0.25rem 0;
+    font-size: 1rem;
+    color: #d8b4fe;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    background-color: transparent;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 0;
+    text-decoration: underline;
+  }
 }
+
