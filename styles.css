@@ -26,6 +26,8 @@ body {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -54,36 +56,45 @@ a:focus {
   align-items: center;
   z-index: 2000;
   transition: opacity 0.6s ease;
+  backdrop-filter: blur(10px);
 }
 
 .welcome-content {
   text-align: center;
   color: var(--text-light);
-  padding: 2rem;
+  padding: 2rem 3rem;
+  max-width: 400px;
+  user-select: none;
 }
 
 .welcome-logo {
   font-size: 4rem;
   margin-bottom: 1rem;
   text-shadow: 0 0 15px var(--violet-pale);
+  font-weight: 700;
+  letter-spacing: 0.1em;
 }
 
 .enter-btn {
-  background: #a37bde;
+  background: linear-gradient(135deg, #a37bde, #815cc1);
   border: none;
-  padding: 0.8rem 2rem;
+  padding: 0.8rem 2.5rem;
   border-radius: 30px;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   color: #1a0f2e;
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(163, 123, 222, 0.6);
-  transition: background-color 0.3s ease;
-  margin-top: 2rem;
+  box-shadow: 0 5px 20px rgba(163, 123, 222, 0.7);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  margin-top: 2.5rem;
 }
 
-.enter-btn:hover {
-  background: #815cc1;
+.enter-btn:hover,
+.enter-btn:focus {
+  background: linear-gradient(135deg, #815cc1, #6c49a9);
+  box-shadow: 0 6px 25px rgba(129, 92, 193, 0.9);
+  outline: none;
 }
 
 /* Animación fundido bienvenida */
@@ -100,7 +111,7 @@ a:focus {
 
 header {
   background-color: var(--violet-dark);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.6);
   position: sticky;
   top: 0;
   z-index: 1100;
@@ -117,21 +128,24 @@ header {
 }
 
 .logo img {
-  height: 50px;
-  filter: drop-shadow(0 0 4px var(--violet-pale));
+  height: 52px;
+  filter: drop-shadow(0 0 6px var(--violet-pale));
   transition: transform 0.4s ease;
 }
 
-.logo img:hover {
-  transform: scale(1.05) rotate(2deg);
+.logo img:hover,
+.logo img:focus {
+  transform: scale(1.06) rotate(3deg);
+  outline: none;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 32px;
-  font-weight: 500;
-  font-size: 1.15rem;
+  gap: 36px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
 }
 
 .nav-links li {
@@ -139,26 +153,30 @@ header {
 }
 
 .nav-link {
-  padding: 5px 0;
+  padding: 6px 0;
   color: var(--text-light);
   font-weight: 600;
   font-size: 1.1rem;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
-  transition: all 0.3s ease;
+  letter-spacing: 0.04em;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  user-select: none;
 }
 
 .nav-link:hover,
+.nav-link:focus,
 .nav-link.active {
   color: var(--violet-pale);
+  text-shadow: 0 0 8px var(--violet-pale);
+  outline: none;
 }
 
 /* Contenido general */
 
 #content-container {
   max-width: 900px;
-  margin: 2rem auto 3rem;
-  padding: 0 20px;
+  margin: 2.5rem auto 4rem;
+  padding: 0 24px;
   position: relative;
   min-height: 75vh;
   outline: none;
@@ -172,13 +190,14 @@ header {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background: transparent;
-  padding: 0 15px;
+  padding: 0 18px;
   overflow-y: auto;
   color: var(--text-light);
-  font-size: 1.1rem;
-  line-height: 1.55;
-  border-radius: 8px;
-  box-shadow: inset 0 0 15px rgba(90, 62, 138, 0.2);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  border-radius: 10px;
+  box-shadow: inset 0 0 20px rgba(90, 62, 138, 0.25);
+  user-select: text;
 }
 
 .page.visible {
@@ -186,7 +205,8 @@ header {
   opacity: 1;
   transform: translateX(0) scale(1);
   position: relative;
-  box-shadow: 0 0 40px var(--violet-pale), inset 0 0 20px var(--violet-light);
+  box-shadow: 0 0 48px var(--violet-pale), inset 0 0 30px var(--violet-light);
+  background: rgba(90, 62, 138, 0.05);
 }
 
 /* Formulario de contacto */
@@ -196,62 +216,66 @@ form {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
 input[type="text"],
 input[type="email"],
 textarea {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  padding: 10px 12px;
+  font-size: 1.15rem;
+  padding: 12px 14px;
   border: 2px solid var(--violet-light);
-  border-radius: 6px;
+  border-radius: 8px;
   background: transparent;
   color: var(--text-light);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   resize: vertical;
-  min-height: 40px;
+  min-height: 44px;
 }
 
 input[type="text"]:focus,
 input[type="email"]:focus,
 textarea:focus {
   border-color: var(--violet-pale);
-  box-shadow: 0 0 12px var(--violet-pale);
+  box-shadow: 0 0 16px var(--violet-pale);
   outline: none;
 }
 
 textarea {
-  min-height: 100px;
-  line-height: 1.4;
+  min-height: 120px;
+  line-height: 1.5;
 }
 
 label {
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: var(--violet-pale);
+  user-select: none;
 }
 
 button[type="submit"] {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  padding: 12px 25px;
+  font-size: 1.25rem;
+  padding: 14px 30px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   background: linear-gradient(135deg, var(--violet-pale), var(--violet-light));
   color: var(--violet-dark);
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 0 20px var(--violet-pale);
+  box-shadow: 0 0 28px var(--violet-pale);
   transition: background 0.4s ease, box-shadow 0.4s ease;
   align-self: center;
-  max-width: 200px;
+  max-width: 220px;
+  user-select: none;
 }
 
-button[type="submit"]:hover {
+button[type="submit"]:hover,
+button[type="submit"]:focus {
   background: linear-gradient(135deg, var(--violet-light), var(--violet-pale));
-  box-shadow: 0 0 30px var(--violet-light);
+  box-shadow: 0 0 38px var(--violet-light);
+  outline: none;
 }
 
 /* Footer */
@@ -260,11 +284,12 @@ footer {
   background: var(--violet-dark);
   color: var(--violet-pale);
   text-align: center;
-  padding: 18px 10px;
-  font-size: 0.95rem;
-  letter-spacing: 0.05em;
+  padding: 22px 12px;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
   user-select: none;
-  box-shadow: inset 0 2px 10px rgba(90, 62, 138, 0.3);
+  box-shadow: inset 0 2px 12px rgba(90, 62, 138, 0.35);
+  font-weight: 500;
 }
 
 /* RESPONSIVE (MÓVIL) */
@@ -274,42 +299,42 @@ footer {
     box-shadow: none !important;
     position: fixed;
     top: 0;
-    right: -260px;
-    width: 260px;
+    right: -280px;
+    width: 280px;
     height: 100vh;
-    background-color: #1a0f2e;
+    background-color: var(--violet-dark);
     display: flex;
     flex-direction: column;
-    padding-top: 100px;
-    padding-left: 24px;
-    padding-right: 24px;
-    gap: 1rem;
-    transition: right 0.3s ease;
+    padding-top: 110px;
+    padding-left: 28px;
+    padding-right: 28px;
+    gap: 1.2rem;
+    transition: right 0.35s ease;
     z-index: 1500;
     overflow-y: auto;
   }
 
   .nav-links.active {
     right: 0;
-    box-shadow: 0 0 25px 8px rgba(154, 119, 209, 0.7);
+    box-shadow: 0 0 28px 10px rgba(154, 119, 209, 0.75);
   }
 
   .nav-links li a {
     display: block;
-    padding: 14px 20px;
+    padding: 16px 22px;
     color: #e9dcff;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.07);
     text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 1.15rem;
+    font-weight: 600;
     border-left: 4px solid transparent;
     transition: all 0.3s ease;
-    border-radius: 8px;
+    border-radius: 10px;
   }
 
   .nav-links li a:hover,
   .nav-links li a.active {
-    background: rgba(129, 92, 193, 0.3);
+    background: rgba(129, 92, 193, 0.35);
     border-left: 4px solid #b99eff;
     color: #fff;
   }
@@ -317,11 +342,26 @@ footer {
   .menu-toggle {
     display: flex !important;
     position: fixed;
-    top: 16px;
-    right: 16px;
+    top: 20px;
+    right: 20px;
     z-index: 1600;
     background: transparent;
     border: none;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .menu-toggle svg {
+    fill: var(--violet-pale);
+    width: 30px;
+    height: 30px;
+    transition: fill 0.3s ease;
+  }
+
+  .menu-toggle:hover svg,
+  .menu-toggle:focus svg {
+    fill: var(--violet-light);
+    outline: none;
   }
 
   .menu-overlay {
@@ -329,12 +369,13 @@ footer {
     top: 0; left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
     z-index: 1400;
     visibility: hidden;
+    backdrop-filter: blur(4px);
   }
 
   .menu-overlay.active {
