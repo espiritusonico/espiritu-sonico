@@ -234,6 +234,7 @@ footer {
 
   .nav-links.active {
     right: 0;
+    box-shadow: 0 0 25px 8px rgba(154, 119, 209, 0.7);
   }
 
   .nav-links li {
