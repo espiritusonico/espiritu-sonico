@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuOverlay = document.querySelector('.menu-overlay');
   const pageSections = document.querySelectorAll('.page');
   const navLinkItems = document.querySelectorAll('.nav-link');
-  const btnIngresar = document.getElementById('enter-btn');  // <- corregido
-  const pantallaBienvenida = document.querySelector('.welcome-screen');  // <- corregido
-  const contenedorPrincipal = document.getElementById('content-container');  // <- corregido
+  const btnIngresar = document.getElementById('enter-btn');  
+  const pantallaBienvenida = document.querySelector('.welcome-screen');  
+  const contenedorPrincipal = document.getElementById('content-container');  
 
   // Ocultar contenido principal al inicio
   contenedorPrincipal.style.display = 'none';
@@ -96,4 +96,3 @@ document.addEventListener('DOMContentLoaded', () => {
     showPage(pageSections[0].id);
   }
 });
-
