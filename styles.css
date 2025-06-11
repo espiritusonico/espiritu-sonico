@@ -280,11 +280,13 @@ footer {
     pointer-events: none;
     transition: opacity 0.3s ease;
     z-index: 1400;
+    visibility: hidden;
   }
 
   .menu-overlay.active {
     opacity: 1;
     pointer-events: all;
+    visibility: visible;
   }
 }
 
