@@ -9,14 +9,16 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Bienvenida -->
+
+  <!-- Pantalla de bienvenida -->
   <div class="welcome-screen">
     <div class="welcome-content">
       <div class="welcome-logo">
-       <img src="logo.png" alt="Logo Espíritu Sónico" />
+        <img src="logo.png" alt="Logo Espíritu Sónico" />
+      </div>
       <h1>Espíritu Sónico</h1>
       <p>Donde el sonido despierta el espíritu y guía al alma.</p>
-      <button id="enter-btn">Ingresar</button>
+      <button id="enter-btn" class="btn-enter">Ingresar</button>
     </div>
   </div>
 
@@ -48,37 +50,34 @@
 
     <section id="acerca" class="page">
       <h2>Acerca de</h2>
-      <p>Espíritu Sónico nace con el fin de guiarte hacia espacios de paz y bienestar a través de sonidos sagrados y aromas rituales.</p>
+      <p>Espíritu Sónico nace con el fin de guiarte hacia espacios de paz y bienestar a través de sonidos sagrados.</p>
     </section>
 
     <section id="viajes" class="page">
       <h2>Viajes Sonoros</h2>
-      <p>Cada sahumerio tiene un viaje sonoro asociado, diseñado para amplificar su alquimia aromática y expandir la experiencia sensorial.</p>
+      <p>Una experiencia sonora para sanar, explorar y liberar tu ser interior.</p>
     </section>
 
     <section id="productos" class="page">
       <h2>Sahumerios Artesanales</h2>
-      <p class="intro">Cada sahumerio es elaborado de forma completamente natural, sin esencias artificiales, sin químicos, solo resinas e ingredientes puros, molidos a mano y preparados según rituales de la vieja alquimia aromática.</p>
+      <p class="intro">Cada sahumerio es un puente entre el futuro y el origen, un susurro ancestral molido a mano, sin artificios, solo la esencia pura de la tierra.</p>
 
       <div class="sahumerios-grid">
 
-        <!-- Variedad 1 -->
-        <article class="sahumerio-card" data-grimorio="lavanda">
-          <img src="img/lavanda-eucaliptus-menta.jpg" alt="Lavanda, Eucaliptus y Menta" />
+        <article class="sahumerio-card">
+          <img src="img/lavanda-eucaliptus-menta.jpg" alt="Sahumerio Lavanda, Eucaliptus y Menta" />
           <h3>Lavanda, Eucaliptus y Menta</h3>
-          <p>Equilibrio y frescura. Limpia el aire, despeja la mente y armoniza el espacio.</p>
-          <button class="btn-grimorio" data-grimorio="lavanda">Ver Grimorio</button>
+          <p>Un frescor etéreo que limpia, relaja y despierta claridad. El viaje sonoro asociado armoniza mente y respiración, ideal para purificación cotidiana.</p>
         </article>
 
-        <!-- Variedad 2 -->
-        <article class="sahumerio-card" data-grimorio="salvia">
-          <img src="img/salvia-benjui-palosanto.jpg" alt="Salvia, Benjuí y Palo Santo" />
+        <article class="sahumerio-card">
+          <img src="img/salvia-benjui-palosanto.jpg" alt="Sahumerio Salvia, Benjuí y Palo Santo" />
           <h3>Salvia, Benjuí y Palo Santo</h3>
-          <p>Purificación profunda, protección energética y apertura espiritual.</p>
-          <button class="btn-grimorio" data-grimorio="salvia">Ver Grimorio</button>
+          <p>Una alquimia protectora y sagrada: limpia, nutre y eleva. Su viaje sonoro acompaña procesos de transformación interior y apertura de espacios rituales.</p>
         </article>
 
       </div>
+
     </section>
 
     <section id="contacto" class="page">
@@ -99,15 +98,6 @@
     <p>Espíritu Sónico © 2025 — Un viaje interior a través del sonido.</p>
   </footer>
 
-  <!-- Grimorio Desplegable -->
-  <div id="grimorio-modal" class="grimorio-modal">
-    <div class="grimorio-content">
-      <button class="close-grimorio">&times;</button>
-      <div id="grimorio-texto"></div>
-    </div>
-  </div>
-
   <script src="scripts.js"></script>
 </body>
 </html>
-
