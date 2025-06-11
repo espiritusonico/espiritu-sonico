@@ -86,6 +86,12 @@ body {
   animation: breathe 3s infinite ease-in-out;
 }
 
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+
 /* --- Navegación --- */
 
 header {
@@ -206,10 +212,11 @@ footer {
 
 /* ANIMACIÓN GENERAL DE PÁGINA */
 
-@keyframes breathe {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
+@keyframes pageFadeZoomIn {
+  0% {
+    opacity: 0;
+    transform: translateX(30px) scale(0.95);
+  }
   100% {
     opacity: 1;
     transform: translateX(0) scale(1);
@@ -358,3 +365,13 @@ footer {
   color: #a682d1;
 }
 
+.welcome-screen {
+  opacity: 0;
+  transform: scale(1.05);
+  animation: bienvenidaFadeIn 1.5s ease forwards;
+}
+
+@keyframes bienvenidaFadeIn {
+  0% { opacity: 0; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
