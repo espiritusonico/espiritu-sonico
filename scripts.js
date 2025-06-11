@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const contenedorPrincipal = document.getElementById('contenedorPrincipal');
   const secciones = document.querySelectorAll('.page');
 
-   // Ocultar todas las secciones excepto inicio al iniciar
+  // Ocultar todas las secciones excepto inicio al iniciar
   secciones.forEach(sec => {
     if (sec.id === 'inicio') {
       sec.style.display = 'block';
@@ -18,8 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Limpiamos cualquier clase active al inicio
+  navLinkItems.forEach(link => link.classList.remove('active'));
+
+  // Función para abrir/cerrar menú móvil con animaciones y sombra
+  function toggleMenu() {
+    const isActive = menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active', isActive);
+    menuOverlay.classList.toggle('active', isActive);
+  }
+
+  // Event listeners
   btnIngresar.addEventListener('click', () => {
-    // Opcional: animar fade out antes de ocultar
+    // Animar fade out antes de ocultar pantalla bienvenida
     pantallaBienvenida.style.transition = 'opacity 0.6s ease';
     pantallaBienvenida.style.opacity = '0';
 
@@ -28,20 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
       contenedorPrincipal.style.display = 'block';
     }, 600);
   });
-});
-  
-  // Limpiamos cualquier clase active al inicio
-  navLinkItems.forEach(link => link.classList.remove('active'));
 
-  // Función para abrir/cerrar menú móvil con animaciones y sombra
-  function toggleMenu() {
-  const isActive = menuToggle.classList.toggle('active');
-  navLinks.classList.toggle('active', isActive);
-  menuOverlay.classList.toggle('active', isActive);
-}
+  menuToggle.addEventListener('click', toggleMenu);
 
-
-  // Cerrar menú al hacer click en overlay o en un link
   menuOverlay.addEventListener('click', () => toggleMenu());
 
   navLinkItems.forEach(link => {
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetPage = link.dataset.target;
       showPage(targetPage);
 
-      // Aquí limpiamos el estado activo de todos los links
+      // Limpiamos el estado activo de todos los links y ponemos active al clickeado
       navLinkItems.forEach(nav => nav.classList.remove('active'));
       link.classList.add('active');
 
@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Agregamos la animación keyframes
   const styleSheet = document.createElement('style');
   styleSheet.textContent = `
     @keyframes pageFadeZoomIn {
@@ -86,8 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
   document.head.appendChild(styleSheet);
 
-  // Inicializamos mostrando la primera página SIN activar ningún link
+  // Inicializamos mostrando la primera página sin activar ningún link
   if (pageSections.length) {
     showPage(pageSections[0].id);
   }
 });
+
