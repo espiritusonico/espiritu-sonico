@@ -90,4 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (pageSections.length) {
     showPage(pageSections[0].id);
   }
+
+  // Animación de sahumerios tipo papiro
+const sahumerioCards = document.querySelectorAll('.sahumerio-card');
+sahumerioCards.forEach((card, index) => {
+  card.style.animation = `papiroReveal 0.8s ease forwards`;
+  card.style.animationDelay = `${index * 0.2}s`;
 });
+
