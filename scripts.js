@@ -61,11 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Acción del botón "Ingresar"
   enterBtn.addEventListener('click', () => {
-    welcomeScreen.classList.add('fade-out');
-    setTimeout(() => {
-      welcomeScreen.style.display = 'none';
-      showPage('inicio'); // mostramos la sección de inicio al entrar
-    }, 800);
-  });
-});
+  welcomeScreen.classList.add('fade-out');
+  setTimeout(() => {
+    welcomeScreen.style.display = 'none';
 
+    // Mostrar el resto de la página
+    document.getElementById('main-header').style.display = 'block';
+    document.getElementById('content-container').style.display = 'block';
+    document.getElementById('main-footer').style.display = 'block';
+
+    showPage('inicio');
+  }, 800);
+});
