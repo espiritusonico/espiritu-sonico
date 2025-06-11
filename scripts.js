@@ -4,22 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuOverlay = document.querySelector('.menu-overlay');
   const pageSections = document.querySelectorAll('.page');
   const navLinkItems = document.querySelectorAll('.nav-link');
-  const btnIngresar = document.getElementById('enter-btn');  // Aquí el id correcto
-  const pantallaBienvenida = document.querySelector('.welcome-screen');
-  const contenedorPrincipal = document.getElementById('content-container');
-  const secciones = document.querySelectorAll('.page');
+  const btnIngresar = document.getElementById('enter-btn');  // <- corregido
+  const pantallaBienvenida = document.querySelector('.welcome-screen');  // <- corregido
+  const contenedorPrincipal = document.getElementById('content-container');  // <- corregido
+
+  // Ocultar contenido principal al inicio
+  contenedorPrincipal.style.display = 'none';
 
   // Ocultar todas las secciones excepto inicio al iniciar
-  secciones.forEach(sec => {
+  pageSections.forEach(sec => {
     if (sec.id === 'inicio') {
       sec.style.display = 'block';
     } else {
       sec.style.display = 'none';
     }
   });
-
-  // Ocultar contenedor principal inicialmente porque está oculto tras bienvenida
-  contenedorPrincipal.style.display = 'none';
 
   // Limpiamos cualquier clase active al inicio
   navLinkItems.forEach(link => link.classList.remove('active'));
@@ -31,7 +30,70 @@ document.addEventListener('DOMContentLoaded', () => {
     menuOverlay.classList.toggle('active', isActive);
   }
 
-  // Evento click para botón Ingresar
+  // Evento para botón ingresar
   btnIngresar.addEventListener('click', () => {
     // Animar fade out antes de ocultar pantalla bienvenida
-    pantallaBienvenida.style.transition = 'opacity 0.
+    pantallaBienvenida.style.transition = 'opacity 0.6s ease';
+    pantallaBienvenida.style.opacity = '0';
+
+    setTimeout(() => {
+      pantallaBienvenida.style.display = 'none';
+      contenedorPrincipal.style.display = 'block';
+    }, 600);
+  });
+
+  menuToggle.addEventListener('click', toggleMenu);
+
+  menuOverlay.addEventListener('click', () => toggleMenu());
+
+  navLinkItems.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+
+      const targetPage = link.dataset.target;
+      showPage(targetPage);
+
+      // Limpiamos el estado activo de todos los links y ponemos active al clickeado
+      navLinkItems.forEach(nav => nav.classList.remove('active'));
+      link.classList.add('active');
+
+      if (navLinks.classList.contains('active')) toggleMenu();
+    });
+  });
+
+  function showPage(pageId) {
+    pageSections.forEach(page => {
+      if (page.id === pageId) {
+        page.classList.add('visible');
+        page.style.animation = 'pageFadeZoomIn 0.6s ease forwards';
+        page.style.display = 'block';
+      } else {
+        page.classList.remove('visible');
+        page.style.animation = '';
+        page.style.display = 'none';
+      }
+    });
+  }
+
+  // Agregamos la animación keyframes
+  const styleSheet = document.createElement('style');
+  styleSheet.textContent = `
+    @keyframes pageFadeZoomIn {
+      0% {
+        opacity: 0;
+        transform: translateX(30px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+  `;
+  document.head.appendChild(styleSheet);
+
+  // Inicializamos mostrando la primera página sin activar ningún link
+  if (pageSections.length) {
+    showPage(pageSections[0].id);
+  }
+});
+
