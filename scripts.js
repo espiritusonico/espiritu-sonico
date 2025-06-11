@@ -10,16 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Función para abrir/cerrar menú móvil con animaciones y sombra
   function toggleMenu() {
-    const isActive = menuToggle.classList.toggle('active');
-    navLinks.classList.toggle('active', isActive);
-    menuOverlay.classList.toggle('active', isActive);
+  const isActive = menuToggle.classList.toggle('active');
+  navLinks.classList.toggle('active', isActive);
+  menuOverlay.classList.toggle('active', isActive);
+}
 
-    if (isActive) {
-      navLinks.style.boxShadow = '0 0 25px 8px rgba(154, 119, 209, 0.7)';
-    } else {
-      navLinks.style.boxShadow = 'none';
-    }
-  }
 
   // Cerrar menú al hacer click en overlay o en un link
   menuOverlay.addEventListener('click', () => toggleMenu());
