@@ -1,49 +1,76 @@
 document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  const pageSections = document.querySelectorAll('.page');
-  const navLinkItems = document.querySelectorAll('.nav-link');
+  const sideMenu = document.querySelector('.side-menu');
+  const menuOverlay = document.querySelector('.menu-overlay');
+  const navLinks = document.querySelectorAll('.nav-link');
   const welcomeScreen = document.getElementById('welcome-screen');
   const enterBtn = document.getElementById('enter-btn');
+  const pages = document.querySelectorAll('.page');
 
-  if (pageSections.length) {
-    showPage(pageSections[0].id);
+  // Primero: al cargar solo mostramos la pantalla de bienvenida.
+  pages.forEach(page => {
+    page.style.display = 'none';
+  });
+
+  // Al ingresar, ocultamos bienvenida y mostramos Inicio
+  enterBtn.addEventListener('click', () => {
+    welcomeScreen.style.opacity = 0;
+    setTimeout(() => {
+      welcomeScreen.style.display = 'none';
+      showPage('inicio');
+    }, 800);
+  });
+
+  // Mostrar la sección correspondiente
+  function showPage(pageId) {
+    pages.forEach(page => {
+      if (page.id === pageId) {
+        page.style.display = 'flex';
+        setTimeout(() => {
+          page.classList.add('visible');
+        }, 50);
+      } else {
+        page.classList.remove('visible');
+        setTimeout(() => {
+          page.style.display = 'none';
+        }, 500);
+      }
+    });
+    closeMenu();
   }
 
-  function toggleMenu() {
-    navLinks.classList.toggle('active');
-  }
-
-  menuToggle.addEventListener('click', toggleMenu);
-
-  navLinkItems.forEach(link => {
-    link.addEventListener('click', e => {
+  // Acciones al hacer click en los links del menú
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
       e.preventDefault();
       const targetPage = link.dataset.target;
       showPage(targetPage);
-      navLinkItems.forEach(nav => nav.classList.remove('active'));
-      link.classList.add('active');
-      if (navLinks.classList.contains('active')) toggleMenu();
     });
   });
 
-  function showPage(pageId) {
-    pageSections.forEach(page => {
-      if (page.id === pageId) {
-        page.classList.add('visible');
-      } else {
-        page.classList.remove('visible');
-      }
-    });
+  // Toggle del menú hamburguesa
+  menuToggle.addEventListener('click', () => {
+    const isOpen = sideMenu.style.right === '0px';
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  // Overlay click cierra menú
+  menuOverlay.addEventListener('click', () => {
+    closeMenu();
+  });
+
+  function openMenu() {
+    sideMenu.style.right = '0';
+    menuOverlay.style.display = 'block';
   }
 
-  enterBtn.addEventListener('click', () => {
-    welcomeScreen.classList.add('fade-out');
-    setTimeout(() => {
-      welcomeScreen.style.display = 'none';
-      document.getElementById('main-header').style.display = 'block';
-      document.getElementById('content-container').style.display = 'block';
-      document.getElementById('main-footer').style.display = 'block';
-    }, 800);
-  });
+  function closeMenu() {
+    sideMenu.style.right = '-250px';
+    menuOverlay.style.display = 'none';
+  }
 });
+
