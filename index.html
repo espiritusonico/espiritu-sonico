@@ -4,60 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Espíritu Sónico</title>
-
-  <!-- Enlace a la fuente -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet" />
-
-  <!-- Aquí enlazas tu archivo CSS externo -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- Contenido HTML: bienvenida, header, nav, main, footer, etc -->
-  <div id="welcome-screen" role="dialog" aria-modal="true" aria-labelledby="welcome-title" tabindex="-1">
-    <h1 id="welcome-title">Bienvenid@ a Espíritu Sónico</h1>
-    <p>Explora nuestro universo sonoro y místico.</p>
-    <button id="enter-btn" aria-label="Ingresar al sitio">Ingresar</button>
-  </div>
+  <!-- Pantalla bienvenida -->
+  <section id="welcome-screen" class="welcome-screen">
+    <div class="welcome-content">
+      <h1>Bienvenido a Espíritu Sónico</h1>
+      <button id="enter-btn" class="btn-enter" aria-label="Ingresar al sitio">Ingresar</button>
+    </div>
+  </section>
 
-  <header id="main-header" role="banner" aria-label="Navegación principal">
-    <div>Espíritu Sónico</div>
-    <button class="menu-toggle" aria-controls="nav-links" aria-expanded="false" aria-label="Abrir menú de navegación">☰</button>
+  <!-- Header principal (oculto al inicio) -->
+  <header id="main-header" class="main-header" role="banner" style="display:none;">
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+      <span class="hamburger"></span>
+    </button>
+    <nav id="nav-links" class="nav-links" hidden>
+      <ul>
+        <li><a href="#" class="nav-link" data-target="inicio">Inicio</a></li>
+        <li><a href="#" class="nav-link" data-target="nosotros">Nosotros</a></li>
+        <li><a href="#" class="nav-link" data-target="servicios">Servicios</a></li>
+        <li><a href="#" class="nav-link" data-target="contacto">Contacto</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <nav id="nav-links" aria-label="Menú principal" hidden>
-    <a href="#" class="nav-link" data-target="inicio" tabindex="-1">Inicio</a>
-    <a href="#" class="nav-link" data-target="viajes-sonoros" tabindex="-1">Viajes Sonoros</a>
-    <a href="#" class="nav-link" data-target="terapias" tabindex="-1">Terapias</a>
-    <a href="#" class="nav-link" data-target="contacto" tabindex="-1">Contacto</a>
-  </nav>
+  <!-- Overlay menú móvil -->
+  <div class="menu-overlay" hidden></div>
 
-  <div class="menu-overlay" tabindex="-1" hidden></div>
-
-  <main id="content-container" tabindex="-1">
-    <section id="inicio" class="page" tabindex="0" aria-label="Sección de Inicio">
+  <!-- Contenedor principal del contenido (oculto al inicio) -->
+  <main id="content-container" class="content-container" style="display:none;">
+    <section id="inicio" class="page visible">
       <h2>Inicio</h2>
-      <p>Bienvenido a Espíritu Sónico...</p>
+      <p>Contenido de la página de inicio...</p>
     </section>
-    <section id="viajes-sonoros" class="page" tabindex="0" aria-label="Sección de Viajes Sonoros">
-      <h2>Viajes Sonoros</h2>
-      <p>Descubre nuestras experiencias auditivas...</p>
+
+    <section id="nosotros" class="page">
+      <h2>Nosotros</h2>
+      <p>Información sobre Espíritu Sónico...</p>
     </section>
-    <section id="terapias" class="page" tabindex="0" aria-label="Sección de Terapias">
-      <h2>Terapias</h2>
-      <p>Explora nuestros procesos terapéuticos...</p>
+
+    <section id="servicios" class="page">
+      <h2>Servicios</h2>
+      <p>Detalle de los servicios que ofrecemos...</p>
     </section>
-    <section id="contacto" class="page" tabindex="0" aria-label="Sección de Contacto">
+
+    <section id="contacto" class="page">
       <h2>Contacto</h2>
-      <p>Contáctanos para más información...</p>
+      <p>Datos de contacto...</p>
     </section>
   </main>
 
-  <footer id="main-footer" role="contentinfo">
-    <p>© 2025 Espíritu Sónico. Todos los derechos reservados.</p>
+  <footer id="main-footer" class="main-footer" style="display:none;">
+    <p>&copy; 2025 Espíritu Sónico - Todos los derechos reservados</p>
   </footer>
 
-  <!-- Aquí enlazas tu archivo JS externo -->
-  <script src="script.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>
