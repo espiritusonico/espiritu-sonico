@@ -53,12 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Toggle del menú hamburguesa
   menuToggle.addEventListener('click', () => {
-    const isOpen = sideMenu.style.right === '0px';
-    if (isOpen) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+  const isActive = menuToggle.classList.toggle('active');
+  navLinks.classList.toggle('active', isActive);
+  menuOverlay.classList.toggle('active', isActive);
   });
 
   // Overlay click cierra menú
