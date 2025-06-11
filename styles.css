@@ -271,7 +271,16 @@ footer {
   border-radius: 15px;
   padding: 1rem;
   box-shadow: 0 0 20px rgba(129, 71, 175, 0.6);
-  transition: transform 0.3s ease;
+  transform-origin: top;
+  opacity: 0;
+  transform: rotateX(-90deg);
+  animation: desplegarPapiro 0.8s ease forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes desplegarPapiro {
+  0% { transform: rotateX(-90deg); opacity: 0; }
+  100% { transform: rotateX(0deg); opacity: 1; }
 }
 
 .sahumerio-card img {
