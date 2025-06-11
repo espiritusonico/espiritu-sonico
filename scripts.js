@@ -14,12 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Al ingresar, ocultamos bienvenida y mostramos Inicio
   enterBtn.addEventListener('click', () => {
-    welcomeScreen.style.opacity = 0;
-    setTimeout(() => {
-      welcomeScreen.style.display = 'none';
-      showPage('inicio');
-    }, 800);
-  });
+  welcomeScreen.classList.add('fade-out');
+  setTimeout(() => {
+    welcomeScreen.style.display = 'none';
+    mainHeader.style.display = 'block';
+    contentContainer.style.display = 'block';
+    mainFooter.style.display = 'block';
+    showPage('inicio');
+  }, 800);
+});
 
   // Mostrar la sección correspondiente
   function showPage(pageId) {
