@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Bienvenida completa -->
+  <!-- Bienvenida -->
   <div class="welcome-screen">
     <div class="welcome-content">
       <div class="welcome-logo">
@@ -39,46 +39,48 @@
 
   <div class="menu-overlay"></div>
 
-  <!-- Contenedor de secciones -->
+  <!-- Contenido -->
   <main id="content-container">
     <section id="inicio" class="page visible">
       <h2>Inicio</h2>
       <p>Descubre un universo sonoro para reconectar con tu esencia.</p>
     </section>
+
     <section id="acerca" class="page">
       <h2>Acerca de</h2>
-      <p>Espíritu Sónico nace con el fin de guiarte hacia espacios de paz y bienestar a través de sonidos sagrados.</p>
+      <p>Espíritu Sónico nace con el fin de guiarte hacia espacios de paz y bienestar a través de sonidos sagrados y aromas rituales.</p>
     </section>
+
     <section id="viajes" class="page">
       <h2>Viajes Sonoros</h2>
-      <p>Una experiencia sonora para sanar, explorar y liberar tu ser interior.</p>
+      <p>Cada sahumerio tiene un viaje sonoro asociado, diseñado para amplificar su alquimia aromática y expandir la experiencia sensorial.</p>
     </section>
-     <section id="productos" class="page visible">
+
+    <section id="productos" class="page">
       <h2>Sahumerios Artesanales</h2>
-      <p class="intro">Cada sahumerio es un puente entre el futuro y el origen, un susurro ancestral molido a mano, sin artificios, solo la esencia pura de la tierra.</p>
+      <p class="intro">Cada sahumerio es elaborado de forma completamente natural, sin esencias artificiales, sin químicos, solo resinas e ingredientes puros, molidos a mano y preparados según rituales de la vieja alquimia aromática.</p>
+
       <div class="sahumerios-grid">
-      <article class="sahumerio-card">
-       <img src="img/eucaliptus-menta-lavanda.jpg" alt="Sahumerio Eucaliptus, Menta y Lavanda" />
-       <h3>Eucaliptus, Menta y Lavanda</h3>
-       <p>Frescura que limpia el aire y calma el espíritu, un abrazo de la naturaleza que despierta el alma.</p>
-     </article>
-      <article class="sahumerio-card">
-       <img src="img/palo-santo.jpg" alt="Sahumerio Palo Santo" />
-       <h3>Palo Santo</h3>
-       <p>El fuego sagrado que purifica, tallado en resina molida a mano, un ritual para el alma en cada llama.</p>
-     </article>
-      <article class="sahumerio-card">
-       <img src="img/salvia.jpg" alt="Sahumerio Salvia" />
-       <h3>Salvia</h3>
-       <p>Viento ancestral que limpia y protege, hierba escogida sin intervención química, pura como el tiempo.</p>
-     </article>
-      <article class="sahumerio-card">
-      <img src="img/benjui.jpg" alt="Sahumerio Benjui" />
-       <h3>Benjui</h3>
-       <p>Resina antigua que envuelve el alma en calma y misterio, un soplo místico en cada humo.</p>
-     </article>
-   </div>
-   </section>
+
+        <!-- Variedad 1 -->
+        <article class="sahumerio-card" data-grimorio="lavanda">
+          <img src="img/lavanda-eucaliptus-menta.jpg" alt="Lavanda, Eucaliptus y Menta" />
+          <h3>Lavanda, Eucaliptus y Menta</h3>
+          <p>Equilibrio y frescura. Limpia el aire, despeja la mente y armoniza el espacio.</p>
+          <button class="btn-grimorio" data-grimorio="lavanda">Ver Grimorio</button>
+        </article>
+
+        <!-- Variedad 2 -->
+        <article class="sahumerio-card" data-grimorio="salvia">
+          <img src="img/salvia-benjui-palosanto.jpg" alt="Salvia, Benjuí y Palo Santo" />
+          <h3>Salvia, Benjuí y Palo Santo</h3>
+          <p>Purificación profunda, protección energética y apertura espiritual.</p>
+          <button class="btn-grimorio" data-grimorio="salvia">Ver Grimorio</button>
+        </article>
+
+      </div>
+    </section>
+
     <section id="contacto" class="page">
       <h2>Contacto</h2>
       <form>
@@ -97,6 +99,15 @@
     <p>Espíritu Sónico © 2025 — Un viaje interior a través del sonido.</p>
   </footer>
 
+  <!-- Grimorio Desplegable -->
+  <div id="grimorio-modal" class="grimorio-modal">
+    <div class="grimorio-content">
+      <button class="close-grimorio">&times;</button>
+      <div id="grimorio-texto"></div>
+    </div>
+  </div>
+
   <script src="scripts.js"></script>
 </body>
 </html>
+
