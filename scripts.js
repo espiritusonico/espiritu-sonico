@@ -1,3 +1,5 @@
+// script.js
+
 document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.getElementById('nav-links');
@@ -15,97 +17,98 @@ document.addEventListener('DOMContentLoaded', () => {
   contentContainer.style.display = 'none';
   mainFooter.style.display = 'none';
 
-  // Quitar la clase active de todos los links
-  navLinkItems.forEach(link => link.classList.remove('active'));
-
-  // Mostrar la primera sección sin activar ningún link
-  if (pageSections.length) {
-    showPage(pageSections[0].id);
+  // Función para saber si es móvil
+  function isMobile() {
+    return window.innerWidth <= 768;
   }
 
-  // Función para mostrar página
+  // Mostrar la primera sección sin activar ningún link
   function showPage(pageId) {
     pageSections.forEach(page => {
       if (page.id === pageId) {
         page.classList.add('visible');
-        page.style.animation = 'pageFadeZoomIn 0.6s ease forwards';
+        page.style.animation = 'none';
+        page.offsetHeight; // trigger reflow para reiniciar animación
+        page.style.animation = null;
+        page.focus();
       } else {
         page.classList.remove('visible');
-        page.style.animation = '';
+      }
+    });
+    // Marcar activo en menú
+    navLinkItems.forEach(link => {
+      if (link.dataset.target === pageId) {
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.classList.remove('active');
+        link.removeAttribute('aria-current');
       }
     });
   }
 
-  // Función para abrir/cerrar menú lateral en móvil
-  function toggleMenu() {
-    const isActive = menuToggle.classList.toggle('active');
-    if (isActive) {
-      navLinks.removeAttribute('hidden');
-      menuOverlay.removeAttribute('hidden');
+  // Abrir/cerrar menú móvil
+  function toggleMenu(open) {
+    if (open) {
       navLinks.classList.add('active');
       menuOverlay.classList.add('active');
+      navLinks.removeAttribute('hidden');
+      menuToggle.classList.add('active');
       menuToggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden'; // evitar scroll mientras menu está abierto
+      // Enfocar primer enlace
+      navLinkItems[0].focus();
     } else {
-      navLinks.setAttribute('hidden', '');
-      menuOverlay.setAttribute('hidden', '');
       navLinks.classList.remove('active');
       menuOverlay.classList.remove('active');
+      navLinks.setAttribute('hidden', '');
+      menuToggle.classList.remove('active');
       menuToggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = ''; // restaurar scroll
+      menuToggle.focus();
     }
   }
 
-  // Evento click para botón de menú
-  menuToggle.addEventListener('click', toggleMenu);
-
-  // Cerrar menú al hacer click en overlay
+  // Eventos menú toggle
+  menuToggle.addEventListener('click', () => {
+    const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    toggleMenu(!expanded);
+  });
+  // Cerrar menú al pulsar overlay
   menuOverlay.addEventListener('click', () => {
-    if (menuToggle.classList.contains('active')) {
-      toggleMenu();
-    }
+    toggleMenu(false);
   });
 
-  // Click en links del menú para mostrar sección y cerrar menú si está abierto
+  // Navegación por menú
   navLinkItems.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      const targetPage = link.dataset.target;
-      showPage(targetPage);
-      navLinkItems.forEach(nav => nav.classList.remove('active'));
-      link.classList.add('active');
-      if (menuToggle.classList.contains('active')) {
-        toggleMenu();
-      }
+      const targetId = link.dataset.target;
+      showPage(targetId);
+      if (isMobile()) toggleMenu(false);
     });
   });
 
-  // Animación keyframes inyectada (por si no está en CSS)
-  const styleSheet = document.createElement('style');
-  styleSheet.textContent = `
-    @keyframes pageFadeZoomIn {
-      0% { opacity: 0; transform: translateX(30px) scale(0.95); }
-      100% { opacity: 1; transform: translateX(0) scale(1); }
-    }
-  `;
-  document.head.appendChild(styleSheet);
-
-  // Acción botón Ingresar: ocultar bienvenida y mostrar contenido
+  // Botón ingresar para bienvenida
   enterBtn.addEventListener('click', () => {
+    // Animación fade out bienvenida
     welcomeScreen.classList.add('fade-out');
     setTimeout(() => {
       welcomeScreen.style.display = 'none';
       mainHeader.style.display = 'flex';
       contentContainer.style.display = 'block';
       mainFooter.style.display = 'block';
-      // Mostrar primera sección al entrar
       showPage('inicio');
-      // Activar link inicio
-      navLinkItems.forEach(link => link.classList.remove('active'));
-      const firstLink = document.querySelector('.nav-link[data-target="inicio"]');
-      if (firstLink) firstLink.classList.add('active');
-    }, 800);
+      // Foco accesible
+      document.getElementById('inicio').focus();
+    }, 900);
+  });
+
+  // Soporte para cerrar menú con ESC
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+      toggleMenu(false);
+    }
   });
 });
+
 
 
