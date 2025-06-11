@@ -1,146 +1,255 @@
-body {
+/* Fuente mística */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap');
+
+/* Reseteo básico */
+* {
   margin: 0;
-  font-family: 'Cardo', serif;
-  background: #1a0923;
-  color: #f0e6f6;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background: linear-gradient(135deg, #1a002b, #3b0a54, #5c2479);
+  color: #fff;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Pantalla de bienvenida */
 .welcome-screen {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(135deg, #3a0b4f, #1a0923);
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #3e0a58, #1a002b);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 10;
-  transition: opacity 0.8s;
+  z-index: 999;
+  transition: opacity 0.8s ease;
 }
 
 .welcome-content {
   text-align: center;
-  padding: 2rem;
+  animation: fadeIn 2s ease;
 }
 
 .welcome-logo {
   font-size: 5rem;
   margin-bottom: 1rem;
-  color: #ffccff;
+  color: #d1a0ff;
 }
 
 .enter-btn {
-  margin-top: 1.5rem;
-  padding: 0.8rem 2rem;
-  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid #fff;
   border-radius: 50px;
-  background: #b37ac4;
-  color: #fff;
+  padding: 0.7rem 2rem;
+  margin-top: 2rem;
   font-size: 1.2rem;
+  color: #fff;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.4s;
 }
 
 .enter-btn:hover {
-  background: #944fb3;
+  background: rgba(255, 255, 255, 0.3);
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: #2d1439;
-  position: relative;
-}
-
-.navbar .logo img {
-  height: 40px;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-links li a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-.nav-links li a:hover {
-  color: #ffccff;
-}
-
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.menu-toggle span {
-  height: 3px;
-  width: 25px;
-  background: #fff;
-  border-radius: 2px;
-}
-
-.menu-overlay {
-  display: none;
-}
-
+/* Transiciones de páginas */
 .page {
-  padding: 3rem 2rem;
-  max-width: 900px;
-  margin: auto;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 5% 10%;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.7s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page.visible {
+  opacity: 1;
+  z-index: 2;
 }
 
 .page h2 {
   font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid #b37ac4;
-  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-.card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1.5rem;
-  border-radius: 15px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-  transition: transform 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-footer {
+.page p {
+  font-size: 1.3rem;
+  max-width: 600px;
   text-align: center;
-  padding: 2rem;
-  background: #2d1439;
-  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
 }
 
-/* Responsive: Menú hamburguesa */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
+.travel-item, .product-item {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.travel-item h3, .product-item h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #d1a0ff;
+}
+
+/* Menú superior */
+.navbar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(20, 0, 40, 0.4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+}
+
+.logo img {
+  height: 40px;
+}
+
+/* Menú hamburguesa */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.menu-toggle span {
+  height: 3px;
+  width: 100%;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+/* Menú lateral */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background: rgba(20, 0, 40, 0.97);
+  backdrop-filter: blur(10px);
+  padding-top: 80px;
+  transition: right 0.5s ease;
+  z-index: 1200;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu ul li {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.side-menu ul li a {
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.side-menu ul li a:hover {
+  color: #d1a0ff;
+}
+
+/* Overlay negro al abrir menú */
+.menu-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1100;
+  display: none;
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 80%;
+  max-width: 500px;
+}
+
+input, textarea {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  border-radius: 30px;
+  background: #d1a0ff;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+  background: #f2d6ff;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  z-index: 10;
+}
+
+/* Animación bienvenida */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .page {
+    padding: 15% 5%;
   }
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background: #2d1439;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    padding: 1rem 0;
+
+  .page h2 {
+    font-size: 2rem;
   }
-  .nav-links.active {
-    display: flex;
+
+  .travel-item h3, .product-item h3 {
+    font-size: 1.5rem;
   }
 }
+
