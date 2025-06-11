@@ -213,6 +213,7 @@ footer {
 
 @media (max-width: 900px) {
   .nav-links {
+    box-shadow: none !important;
     position: fixed;
     top: 0;
     right: -260px;
