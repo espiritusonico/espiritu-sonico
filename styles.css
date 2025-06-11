@@ -278,9 +278,16 @@ footer {
   animation-delay: var(--delay, 0s);
 }
 
-@keyframes desplegarPapiro {
-  0% { transform: rotateX(-90deg); opacity: 0; }
-  100% { transform: rotateX(0deg); opacity: 1; }
+@keyframes papiroReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) rotateX(90deg);
+    transform-origin: top;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
 }
 
 .sahumerio-card img {
