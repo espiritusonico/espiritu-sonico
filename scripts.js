@@ -61,15 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Acción del botón "Ingresar"
   enterBtn.addEventListener('click', () => {
-  welcomeScreen.classList.add('fade-out');
-  setTimeout(() => {
-    welcomeScreen.style.display = 'none';
+    welcomeScreen.classList.add('fade-out');
+    setTimeout(() => {
+      welcomeScreen.style.display = 'none';
+      
+      // >>> ESTO ES LO NUEVO QUE FALTABA EN TU JS <<<
+      document.getElementById('main-header').style.display = 'block';
+      document.getElementById('content-container').style.display = 'block';
+      document.getElementById('main-footer').style.display = 'block';
 
-    // Mostrar el resto de la página
-    document.getElementById('main-header').style.display = 'block';
-    document.getElementById('content-container').style.display = 'block';
-    document.getElementById('main-footer').style.display = 'block';
-
-    showPage('inicio');
-  }, 800);
+      showPage('inicio');
+    }, 800);
+  });
 });
+
