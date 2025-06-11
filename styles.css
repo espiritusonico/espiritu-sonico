@@ -32,12 +32,10 @@ body {
   user-select: none;
 }
 
-.welcome-logo {
-  font-size: 4rem;
-  color: #a37bde;
-  margin-bottom: 1rem;
-  letter-spacing: 0.3em;
-  font-weight: 700;
+.welcome-logo img {
+  width: 120px; /* o el tamaño que quieras */
+  height: auto;
+  user-select: none;
 }
 
 .welcome-content h1 {
