@@ -4,59 +4,82 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Espíritu Sónico</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- Bienvenida con fundido -->
   <div class="welcome-screen" id="welcome-screen">
     <div class="welcome-content">
       <div class="welcome-logo">✦</div>
       <h1>Espíritu Sónico</h1>
       <p>Donde el sonido despierta el espíritu y guía al alma.</p>
-      <button id="enter-btn" class="enter-btn" aria-label="Ingresar a Espíritu Sónico">Ingresar</button>
+      <button id="enter-btn" class="enter-btn">Ingresar</button>
     </div>
   </div>
 
-  <!-- Header y navegación (oculto inicialmente) -->
   <header id="main-header" style="display:none;">
-    <nav class="navbar" role="navigation" aria-label="Menú principal">
+    <nav class="navbar">
       <div class="logo"><img src="logo.svg" alt="Espíritu Sónico" /></div>
-      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+      <button class="menu-toggle" aria-label="Abrir menú">
         <span></span><span></span><span></span>
       </button>
-      <ul class="nav-links" id="nav-links" hidden>
-        <li><a href="#inicio" class="nav-link" data-target="inicio">Inicio</a></li>
-        <li><a href="#acerca" class="nav-link" data-target="acerca">Acerca</a></li>
-        <li><a href="#viajes" class="nav-link" data-target="viajes">Viajes</a></li>
-        <li><a href="#productos" class="nav-link" data-target="productos">Productos</a></li>
-        <li><a href="#contacto" class="nav-link" data-target="contacto">Contacto</a></li>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link" data-target="inicio">Inicio</a></li>
+        <li><a href="#" class="nav-link" data-target="acerca">Acerca</a></li>
+        <li><a href="#" class="nav-link" data-target="viajes">Viajes Sonoros</a></li>
+        <li><a href="#" class="nav-link" data-target="productos">Sahumerios</a></li>
+        <li><a href="#" class="nav-link" data-target="contacto">Contacto</a></li>
       </ul>
     </nav>
   </header>
 
-  <div class="menu-overlay" hidden></div>
+  <div class="menu-overlay"></div>
 
-  <!-- Contenedor de secciones (oculto inicialmente) -->
   <main id="content-container" style="display:none;">
-    <section id="inicio" class="page">
-      <h2>Inicio</h2>
-      <p>Descubre un universo sonoro para reconectar con tu esencia.</p>
+    <section id="inicio" class="page visible">
+      <h2>Bienvenido a Espíritu Sónico</h2>
+      <p>Una escuela mística donde el sonido, el cuerpo y el alma se integran.</p>
     </section>
+
     <section id="acerca" class="page">
-      <h2>Acerca de</h2>
-      <p>Espíritu Sónico nace con el fin de guiarte hacia espacios de paz y bienestar a través de sonidos sagrados.</p>
+      <h2>Acerca de Nosotros</h2>
+      <p>Espíritu Sónico nace como un templo de aprendizaje sonoro y terapéutico, integrando sahumerios, viajes de sonido, talleres y procesos evolutivos.</p>
     </section>
+
     <section id="viajes" class="page">
       <h2>Viajes Sonoros</h2>
-      <p>Una experiencia sonora para sanar, explorar y liberar tu ser interior.</p>
+      <div class="card">
+        <h3>Viaje Lunar</h3>
+        <p>Un recorrido introspectivo guiado por frecuencias lunares, ideal para reconectar en fases emocionales profundas.</p>
+      </div>
+      <div class="card">
+        <h3>Purificación Elemental</h3>
+        <p>Vibraciones armónicas acompañadas por sahumerios de eucalipto, salvia y palo santo, limpian los campos energéticos.</p>
+      </div>
+      <div class="card">
+        <h3>Expansión Solar</h3>
+        <p>Un viaje activador de energía vital, con sonidos de cuencos, pulsos rítmicos y esencias cítricas.</p>
+      </div>
     </section>
+
     <section id="productos" class="page">
-      <h2>Productos</h2>
-      <p>Explora sahumerios con códigos QR para viajes sonoros exclusivos.</p>
+      <h2>Sahumerios Artesanales</h2>
+      <div class="card">
+        <h3>Palo Santo & Rosa</h3>
+        <p>Ideal para meditaciones de apertura del corazón y sanación emocional.</p>
+      </div>
+      <div class="card">
+        <h3>Salvia & Eucalipto</h3>
+        <p>Perfecto para limpiezas energéticas y espacios terapéuticos.</p>
+      </div>
+      <div class="card">
+        <h3>Lavanda & Jazmín</h3>
+        <p>Para promover el descanso, el sueño profundo y la serenidad mental.</p>
+      </div>
     </section>
+
     <section id="contacto" class="page">
       <h2>Contacto</h2>
       <form>
@@ -78,4 +101,5 @@
   <script src="scripts.js"></script>
 </body>
 </html>
+
 
