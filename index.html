@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Espíritu Sónico</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -16,18 +16,18 @@
       <div class="welcome-logo">✦</div>
       <h1>Espíritu Sónico</h1>
       <p>Donde el sonido despierta el espíritu y guía al alma.</p>
-      <button id="enter-btn" class="enter-btn">Ingresar</button>
+      <button id="enter-btn" class="enter-btn" aria-label="Ingresar a Espíritu Sónico">Ingresar</button>
     </div>
   </div>
 
-  <!-- Header y navegación -->
-  <header>
-    <nav class="navbar">
+  <!-- Header y navegación (oculto inicialmente) -->
+  <header id="main-header" style="display:none;">
+    <nav class="navbar" role="navigation" aria-label="Menú principal">
       <div class="logo"><img src="logo.svg" alt="Espíritu Sónico" /></div>
-      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links" hidden>
         <li><a href="#inicio" class="nav-link" data-target="inicio">Inicio</a></li>
         <li><a href="#acerca" class="nav-link" data-target="acerca">Acerca</a></li>
         <li><a href="#viajes" class="nav-link" data-target="viajes">Viajes</a></li>
@@ -37,10 +37,10 @@
     </nav>
   </header>
 
-  <div class="menu-overlay"></div>
+  <div class="menu-overlay" hidden></div>
 
-  <!-- Contenedor de secciones -->
-  <main id="content-container">
+  <!-- Contenedor de secciones (oculto inicialmente) -->
+  <main id="content-container" style="display:none;">
     <section id="inicio" class="page visible">
       <h2>Inicio</h2>
       <p>Descubre un universo sonoro para reconectar con tu esencia.</p>
@@ -71,10 +71,11 @@
     </section>
   </main>
 
-  <footer>
+  <footer id="main-footer" style="display:none;">
     <p>Espíritu Sónico © 2025 — Un viaje interior a través del sonido.</p>
   </footer>
 
   <script src="scripts.js"></script>
 </body>
 </html>
+
