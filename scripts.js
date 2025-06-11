@@ -92,4 +92,3 @@ document.addEventListener('DOMContentLoaded', () => {
     showPage(pageSections[0].id);
   }
 });
-
