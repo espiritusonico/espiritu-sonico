@@ -1,255 +1,365 @@
-/* Fuente mística */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap');
-
-/* Reseteo básico */
+/* Fuentes y reset básico */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
   font-family: 'Cormorant Garamond', serif;
-  background: linear-gradient(135deg, #1a002b, #3b0a54, #5c2479);
-  color: #fff;
-  overflow: hidden;
-  height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Pantalla de bienvenida */
+body, html {
+  height: 100%;
+  background: linear-gradient(135deg, #3a1a4f, #6c4a8f);
+  color: #ddd;
+  overflow-x: hidden;
+}
+
+/* --- PANTALLA DE BIENVENIDA --- */
 .welcome-screen {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, #3e0a58, #1a002b);
+  inset: 0;
+  background: linear-gradient(135deg, #4b2a6d, #8b61ba);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  z-index: 999;
-  transition: opacity 0.8s ease;
-}
-
-.welcome-content {
+  justify-content: center;
+  flex-direction: column;
   text-align: center;
-  animation: fadeIn 2s ease;
+  color: #e8d9ff;
+  padding: 2rem;
+  z-index: 1000;
+  animation: fadeIn 1.2s ease forwards;
 }
 
 .welcome-logo {
-  font-size: 5rem;
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 5px #b19cd9);
+}
+
+.welcome-screen h1 {
+  font-weight: 700;
+  font-size: 2.8rem;
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 10px #b19cd9;
   margin-bottom: 1rem;
-  color: #d1a0ff;
+}
+
+.welcome-screen p {
+  font-weight: 300;
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+  max-width: 320px;
+  line-height: 1.5;
+  text-shadow: 0 0 6px #a588dbaa;
 }
 
 .enter-btn {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid #fff;
-  border-radius: 50px;
+  background: transparent;
+  border: 2px solid #c3a7f3;
+  color: #e8d9ff;
   padding: 0.7rem 2rem;
-  margin-top: 2rem;
-  font-size: 1.2rem;
-  color: #fff;
+  font-size: 1.1rem;
+  border-radius: 30px;
   cursor: pointer;
-  transition: background 0.4s;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  box-shadow: 0 0 12px #8c75dbbb;
+  user-select: none;
 }
 
-.enter-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
+.enter-btn:hover,
+.enter-btn:focus {
+  background-color: #a584f3;
+  color: #2f1c4c;
+  outline: none;
 }
 
-/* Transiciones de páginas */
-.page {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 5% 10%;
-  opacity: 0;
-  z-index: 1;
-  transition: opacity 0.7s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.page.visible {
-  opacity: 1;
-  z-index: 2;
-}
-
-.page h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.page p {
-  font-size: 1.3rem;
-  max-width: 600px;
-  text-align: center;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.travel-item, .product-item {
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.travel-item h3, .product-item h3 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-  color: #d1a0ff;
-}
-
-/* Menú superior */
-.navbar {
+/* --- HEADER y NAV --- */
+#main-header {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
   width: 100%;
-  height: 60px;
-  background: rgba(20, 0, 40, 0.4);
+  background: transparent;
+  z-index: 900;
+  padding: 1rem 1.5rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.navbar {
+  max-width: 1100px;
+  width: 100%;
+  display: flex;
   align-items: center;
-  padding: 0 20px;
-  z-index: 1000;
-  backdrop-filter: blur(6px);
+  justify-content: space-between;
+  color: #eee;
+  font-weight: 500;
 }
 
 .logo img {
-  height: 40px;
+  height: 45px;
+  filter: drop-shadow(0 0 3px #b19cd9);
 }
 
-/* Menú hamburguesa */
+/* BOTÓN HAMBURGUESA */
 .menu-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 30px;
   height: 22px;
-  cursor: pointer;
-  background: none;
-  border: none;
+  width: 30px;
+  padding: 0;
+  z-index: 1001;
 }
 
 .menu-toggle span {
-  height: 3px;
-  width: 100%;
-  background: #fff;
-  border-radius: 2px;
-  transition: 0.4s;
+  display: block;
+  height: 3.5px;
+  background: #d1c7f9;
+  border-radius: 3px;
+  box-shadow: 0 0 5px #a38cfb;
+  transition: all 0.3s ease;
 }
 
-/* Menú lateral */
-.side-menu {
+/* Animación cuando se abre el menú */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* --- MENÚ LATERAL --- */
+.nav-links {
   position: fixed;
   top: 0;
-  right: -250px;
-  width: 250px;
-  height: 100%;
-  background: rgba(20, 0, 40, 0.97);
-  backdrop-filter: blur(10px);
-  padding-top: 80px;
-  transition: right 0.5s ease;
-  z-index: 1200;
+  right: 0;
+  height: 100vh;
+  width: 270px;
+  background: rgba(75, 42, 109, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: -3px 0 15px rgba(80, 40, 120, 0.9);
+  padding-top: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  font-size: 1.15rem;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 999;
 }
 
-.side-menu ul {
+.nav-links.show {
+  transform: translateX(0);
+}
+
+.nav-links li {
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
-.side-menu ul li {
-  margin: 30px 0;
-  text-align: center;
-}
-
-.side-menu ul li a {
-  font-size: 1.5rem;
-  color: #fff;
+.nav-links a {
+  color: #ddd;
   text-decoration: none;
-  transition: color 0.3s;
+  padding: 0.5rem 2rem;
+  transition: color 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.03em;
 }
 
-.side-menu ul li a:hover {
-  color: #d1a0ff;
+.nav-links a:hover,
+.nav-links a:focus {
+  color: #b19cd9;
+  outline: none;
 }
 
-/* Overlay negro al abrir menú */
+/* OVERLAY semi-transparente */
 .menu-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 1100;
-  display: none;
+  inset: 0;
+  background: rgba(45, 21, 72, 0.65);
+  backdrop-filter: blur(3px);
+  z-index: 990;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
-/* Formulario */
+.menu-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+#content-container {
+  margin-top: 80px; /* espacio para header fijo */
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem 1.2rem;
+  min-height: calc(100vh - 80px);
+  position: relative;
+  background: transparent;
+  color: #e5dbff;
+}
+
+/* SECCIONES */
+.page {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  /* No usar cajas, solo texto centrado o alineado con estilo */
+  font-weight: 300;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.page.visible {
+  display: block;
+  opacity: 1;
+}
+
+/* Títulos secciones */
+.page h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #cdb6ff;
+  text-shadow: 0 0 8px #b19cd9;
+  letter-spacing: 0.1em;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Viajes sonoros - items */
+.viaje-item {
+  margin-top: 1.2rem;
+  padding-left: 0.3rem;
+  border-left: 3px solid #9a82ff;
+  font-style: italic;
+  color: #d1c7f9;
+}
+
+/* Productos */
+.productos-lista {
+  list-style: none;
+  margin-top: 1rem;
+  padding-left: 0;
+}
+
+.productos-lista li {
+  margin-bottom: 1rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.productos-lista li a {
+  margin-left: 0.5rem;
+  font-weight: 600;
+  color: #b49df9;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.productos-lista li a:hover,
+.productos-lista li a:focus {
+  color: #d4c3ff;
+  outline: none;
+}
+
+/* FORMULARIO CONTACTO */
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 80%;
-  max-width: 500px;
+  max-width: 450px;
+  margin: 1rem auto 0 auto;
 }
 
-input, textarea {
-  padding: 10px 15px;
-  border-radius: 8px;
+form label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #cbbfff;
+  letter-spacing: 0.04em;
+}
+
+form input,
+form textarea {
+  padding: 0.6rem 0.8rem;
   border: none;
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  border-radius: 12px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  background: rgba(107, 70, 168, 0.25);
+  color: #ddd;
+  resize: vertical;
+  box-shadow: inset 0 0 6px #a892e3;
+  transition: background-color 0.3s ease;
 }
 
-button[type="submit"] {
-  padding: 10px 20px;
+form input:focus,
+form textarea:focus {
+  background: rgba(150, 100, 240, 0.45);
+  outline: none;
+  box-shadow: 0 0 12px #b19cd9;
+}
+
+form button {
+  background-color: #8e70e3;
+  color: #e3dbff;
+  font-weight: 700;
+  padding: 0.8rem 0;
+  border: none;
   border-radius: 30px;
-  background: #d1a0ff;
-  border: none;
-  color: #000;
-  font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s;
+  box-shadow: 0 0 15px #a892e3;
+  transition: background-color 0.4s ease;
+  user-select: none;
 }
 
-button[type="submit"]:hover {
-  background: #f2d6ff;
+form button:hover,
+form button:focus {
+  background-color: #a395f7;
+  outline: none;
 }
 
-/* Footer */
+/* PIE DE PÁGINA */
 footer {
-  position: fixed;
-  bottom: 10px;
-  width: 100%;
   text-align: center;
+  color: #b19cd9aa;
+  padding: 2rem 1rem 1rem 1rem;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-  z-index: 10;
+  user-select: none;
+  font-style: italic;
 }
 
-/* Animación bienvenida */
+/* Animaciones */
 @keyframes fadeIn {
-  0% { opacity: 0; transform: scale(0.9); }
-  100% { opacity: 1; transform: scale(1); }
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .page {
-    padding: 15% 5%;
+/* Media Queries para responsividad */
+@media (max-width: 700px) {
+  .nav-links {
+    width: 80vw;
   }
 
-  .page h2 {
-    font-size: 2rem;
-  }
-
-  .travel-item h3, .product-item h3 {
-    font-size: 1.5rem;
+  #content-container {
+    padding: 1.2rem 1rem;
   }
 }
+
 
