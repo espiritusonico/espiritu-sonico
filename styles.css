@@ -4,23 +4,24 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: 'Cormorant Garamond', serif;
-  background: linear-gradient(180deg, #2a004f 0%, #4d1b7b 50%, #150033 100%);
+  background: linear-gradient(180deg, #21002d, #3e005c, #150033);
   color: #f3eaff;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* Bienvenida corregida */
+/* Pantalla de bienvenida mejorada */
 #welcome {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background: linear-gradient(160deg, #2a004f, #3f005f, #1a002f);
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 10;
+  align-items: center;
+  z-index: 100;
 }
 
 .welcome-content {
@@ -31,7 +32,7 @@ body, html {
 
 .logo-container {
   margin-bottom: 30px;
-  animation: pulse 4s infinite;
+  animation: pulse 5s infinite;
 }
 
 .logo {
@@ -39,9 +40,10 @@ body, html {
 }
 
 .intro-text {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 20px;
   opacity: 0.85;
+  line-height: 1.6;
 }
 
 #welcome button {
@@ -64,7 +66,7 @@ header {
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 9;
+  z-index: 200;
 }
 
 .menu-button {
