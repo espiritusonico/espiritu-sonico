@@ -8,16 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const pages = document.querySelectorAll('.page');
   const grimorioBtns = document.querySelectorAll('.btn-grimorio');
 
-  if (enterBtn) {
-    enterBtn.addEventListener('click', () => {
-      welcomeScreen.style.opacity = '0';
-      setTimeout(() => {
-        welcomeScreen.style.display = 'none';
-        mainContent.style.opacity = '1';
-        mainContent.style.pointerEvents = 'auto';
-      }, 1000);
-    });
-  }
+  enterBtn.addEventListener('click', () => {
+    welcomeScreen.style.opacity = '0';
+    setTimeout(() => {
+      welcomeScreen.style.display = 'none';
+      mainContent.style.opacity = '1';
+      mainContent.style.pointerEvents = 'auto';
+    }, 1000);
+  });
 
   menuToggle.addEventListener('click', () => {
     menuOverlay.classList.toggle('open');
@@ -41,7 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
   grimorioBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const contenido = btn.nextElementSibling;
-      contenido.style.maxHeight = contenido.style.maxHeight ? null : contenido.scrollHeight + "px";
+      if (contenido.style.maxHeight) {
+        contenido.style.maxHeight = null;
+      } else {
+        contenido.style.maxHeight = contenido.scrollHeight + "px";
+      }
     });
   });
 });
