@@ -306,6 +306,16 @@ audio {
   box-shadow: 0 0 15px #8e5db3;
 }
 
+.grimorio-contenido {
+  display: none;
+  margin-top: 15px;
+  color: #d6c9f9;
+  background: rgba(109, 63, 141, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 8px #8e5db3;
+}
+
 /* Cambiar texto botón "Abrir Papiro" */
 .btn-grimorio::after {
   content: "Abrir Papiro";
