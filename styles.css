@@ -27,10 +27,16 @@ body, html {
   align-items: center;
   z-index: 9999;
   transition: opacity 1s ease;
+  padding: 20px;
 }
 
 .welcome-content {
   text-align: center;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo-animado {
@@ -45,12 +51,12 @@ body, html {
 }
 
 .welcome-content h1 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin: 10px 0;
 }
 
 .welcome-content p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin-bottom: 20px;
 }
 
@@ -105,30 +111,41 @@ header {
   border: none;
   cursor: pointer;
   position: relative;
-  z-index: 1001;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.menu-icon {
+.menu-icon, .menu-icon::before, .menu-icon::after {
+  content: '';
+  position: absolute;
   width: 30px;
   height: 3px;
-  background: white;
-  position: relative;
-  display: block;
+  background: linear-gradient(90deg, #a084ca, #f3eaff);
+  border-radius: 3px;
+  transition: all 0.4s ease;
 }
+
+.menu-icon::before { transform: translateY(-10px); }
+.menu-icon::after  { transform: translateY(10px); }
+
+.menu-toggle.active .menu-icon { background: transparent; }
+.menu-toggle.active .menu-icon::before { transform: rotate(45deg); }
+.menu-toggle.active .menu-icon::after { transform: rotate(-45deg); }
 
 .menu-overlay {
   position: fixed;
-  top: 0; 
-  right: 0;
-  width: 200px; /* REDUCIDO el ancho */
-  height: 100%;
-  background: linear-gradient(135deg, #4b1d6f, #301934);
+  top: 0; right: 0;
+  width: 200px;
+  height: 100vh;
+  background: #2d033b;
+  box-shadow: -4px 0 15px rgba(160,132,202,0.8);
   transform: translateX(100%);
-  transition: transform 0.5s ease;
-  z-index: 1000;
-  padding-top: 100px;
-  box-shadow: -2px 0 10px rgba(0,0,0,0.5);
-  border-left: 2px solid #a084ca;
+  transition: transform 0.4s ease;
+  z-index: 999;
+  padding-top: 80px;
 }
 
 .menu-overlay.active {
@@ -137,55 +154,236 @@ header {
 
 .nav-links {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-left: 20px;
 }
 
-.nav-links li {
-  margin: 30px 0;
-  text-align: center;
-}
-
-.nav-links li a {
-  color: #f3eaff;
-  font-size: 1.3rem;
+.nav-link {
+  color: #e6d7ff;
   text-decoration: none;
-  transition: all 0.3s;
-  padding: 10px 20px;
-  border-radius: 30px;
+  font-weight: 500;
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  transition: color 0.3s ease;
 }
 
-.nav-links li a:hover,
-.nav-links li a.active {
-  background: #a084ca;
-  color: #150050;
-  box-shadow: 0 0 10px #a084ca;
+.nav-link:hover,
+.nav-link.active {
+  color: #a084ca;
+  font-weight: 700;
 }
 
-/* Páginas */
-main {
-  padding: 120px 20px 60px;
+/* Contenido Principal */
+#content-container {
+  margin-top: 70px;
+  padding: 20px 30px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .page {
   display: none;
+  animation: fadeInPage 1s forwards;
 }
 
 .page.visible {
   display: block;
-  animation: fadeIn 0.8s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes fadeInPage {
+  from {opacity: 0; transform: translateY(15px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Viajes sonoros */
+.viajes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.viaje-card {
+  background: rgba(55, 23, 99, 0.7);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 15px #a084caaa;
+  transition: transform 0.3s ease;
+}
+
+.viaje-card:hover {
+  transform: translateY(-5px);
+}
+
+.viaje-card h3 {
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #d7c7ff;
+}
+
+.viaje-card p {
+  font-weight: 300;
+  margin-bottom: 15px;
+  color: #e6d7ffcc;
+}
+
+audio {
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+  background: #2d033b;
+}
+
+/* Productos - Sahumerios */
+.sahumerios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.sahumerio-card {
+  background: rgba(55, 23, 99, 0.85);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 25px #a084caee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #e6d7ff;
+  position: relative;
+}
+
+.sahumerio-card img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 15px #a084caaa;
+}
+
+.sahumerio-card h3 {
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #d7c7ff;
+}
+
+.sahumerio-card p {
+  font-weight: 300;
+  margin-bottom: 12px;
+  color: #cfc3ffdd;
+}
+
+.download-btn {
+  background: #a084ca;
+  color: #150050;
+  border-radius: 40px;
+  padding: 10px 25px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+  transition: background 0.4s ease;
+  box-shadow: 0 0 12px #a084cacc;
+}
+
+.download-btn:hover {
+  background: #f3eaff;
+  box-shadow: 0 0 25px #f3eaffcc;
+  color: #150050;
+}
+
+.papiro {
+  background: rgba(243, 234, 255, 0.12);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin-top: 18px;
+  color: #d0c3ffdd;
+  box-shadow: inset 0 0 8px #a084ca88;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+/* Formulario de contacto */
+form {
+  max-width: 480px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form label {
+  font-weight: 600;
+  color: #d7c7ff;
+}
+
+form input, form textarea {
+  border-radius: 10px;
+  border: 1.5px solid #a084caaa;
+  padding: 10px 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  resize: vertical;
+  background: transparent;
+  color: #f3eaff;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus, form textarea:focus {
+  border-color: #f3eaff;
+  outline: none;
+}
+
+form button {
+  background: #a084ca;
+  color: #150050;
+  padding: 14px 30px;
+  font-weight: 700;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.4s ease;
+  box-shadow: 0 0 15px #a084cacc;
+}
+
+form button:hover {
+  background: #f3eaff;
+  color: #150050;
+  box-shadow: 0 0 25px #f3eaffcc;
 }
 
 /* Footer */
 footer {
-  margin-top: auto;
-  padding: 20px;
   text-align: center;
+  padding: 18px 20px;
+  background: rgba(21, 0, 80, 0.9);
   font-size: 0.9rem;
-  background: rgba(0, 0, 0, 0.6);
+  color: #b4a6ffdd;
+  margin-top: auto;
+}
+
+/* Animación fade-in main content tras pantalla bienvenida */
+#main-content.show {
+  opacity: 1;
+  transition-delay: 0.8s;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  #content-container {
+    padding: 40px 60px;
+  }
+  .menu-overlay {
+    width: 240px;
+  }
 }
