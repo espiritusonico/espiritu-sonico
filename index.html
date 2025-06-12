@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -21,13 +22,16 @@
     </div>
   </section>
 
+  <!-- Overlay de fondo para el menú -->
+  <div id="menu-backdrop"></div>
+
   <!-- Contenido Principal -->
   <div id="main-content">
 
     <header>
       <nav class="navbar">
         <div class="logo-header"><img src="logo.png" alt="Espíritu Sónico" /></div>
-        <button class="menu-toggle" aria-label="Abrir menú">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
           <div class="menu-icon">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -36,7 +40,7 @@
         </button>
       </nav>
 
-      <div class="menu-overlay">
+      <div class="menu-overlay" id="menu-overlay">
         <ul class="nav-links">
           <li><a href="#" class="nav-link" data-target="inicio">Inicio</a></li>
           <li><a href="#" class="nav-link" data-target="acerca">Acerca</a></li>
@@ -73,7 +77,7 @@
 
         <div class="sahumerios-grid">
           <article class="sahumerio-card">
-            <div class="producto-img">
+            <div class="producto-circle">
               <img src="img/lavanda-eucaliptus-menta.jpg" alt="Lavanda, Eucaliptus y Menta" />
             </div>
             <div class="producto-info">
@@ -90,7 +94,7 @@
           </article>
 
           <article class="sahumerio-card">
-            <div class="producto-img">
+            <div class="producto-circle">
               <img src="img/salvia-benjui-palosanto.jpg" alt="Salvia, Benjuí y Palo Santo" />
             </div>
             <div class="producto-info">
@@ -120,6 +124,18 @@
           <textarea id="message" required></textarea>
           <button type="submit">Enviar</button>
         </form>
+
+        <div class="contacto-redes">
+          <a href="https://www.instagram.com/espiritu.sonico?igsh=MXhoNnEwdGlwdWM5dw==" target="_blank">
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
+          <a href="mailto:espiritusonicoviajero@gmail.com">
+            <i class="fas fa-envelope"></i> Email
+          </a>
+          <a href="https://wa.me/5491125171969" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+        </div>
       </section>
 
     </main>
