@@ -2,38 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Espíritu Sónico</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-
-  <!-- Estilos -->
   <link rel="stylesheet" href="styles.css" />
-
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <!-- Menú global fuera del main-content -->
-  <header>
-    <div class="navbar">
-      <div class="logo-header"><img src="logo.png" alt="Espíritu Sónico" /></div>
-      <button class="menu-toggle" aria-label="Abrir menú">
-        <span class="menu-icon"></span>
-      </button>
-    </div>
-
-    <div class="menu-overlay">
-      <ul class="nav-links">
-        <li><a href="#inicio" class="nav-link" data-target="inicio">Inicio</a></li>
-        <li><a href="#acerca" class="nav-link" data-target="acerca">Acerca</a></li>
-        <li><a href="#viajes" class="nav-link" data-target="viajes">Viajes</a></li>
-        <li><a href="#productos" class="nav-link" data-target="productos">Productos</a></li>
-        <li><a href="#contacto" class="nav-link" data-target="contacto">Contacto</a></li>
-      </ul>
-    </div>
-  </header>
 
   <!-- Pantalla de Bienvenida -->
   <section id="welcome-screen">
@@ -47,8 +22,25 @@
 
   <!-- Contenido Principal -->
   <div id="main-content">
+    <header>
+      <nav class="navbar">
+        <div class="logo-header"><img src="logo.png" alt="Espíritu Sónico" /></div>
+        <button class="menu-toggle" aria-label="Abrir menú"><span class="menu-icon"></span></button>
+      </nav>
+
+      <div class="menu-overlay">
+        <ul class="nav-links">
+          <li><a href="#" class="nav-link" data-target="inicio">Inicio</a></li>
+          <li><a href="#" class="nav-link" data-target="acerca">Acerca</a></li>
+          <li><a href="#" class="nav-link" data-target="viajes">Viajes</a></li>
+          <li><a href="#" class="nav-link" data-target="productos">Productos</a></li>
+          <li><a href="#" class="nav-link" data-target="contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </header>
+
     <main id="content-container">
-      <section id="inicio" class="page visible">
+      <section id="inicio" class="page">
         <h2>Inicio</h2>
         <p>Descubre un universo sonoro para reconectar con tu esencia.</p>
       </section>
@@ -68,16 +60,21 @@
 
         <div class="sahumerios-grid">
           <article class="sahumerio-card">
-            <img src="img/lavanda-eucaliptus-menta.jpg" alt="Sahumerio Lavanda, Eucaliptus y Menta" />
+            <img src="img/lavanda-eucaliptus-menta.jpg" alt="Lavanda, Eucaliptus y Menta" />
             <h3>Lavanda, Eucaliptus y Menta</h3>
             <p>Un frescor etéreo que limpia, relaja y despierta claridad.</p>
-            <p><strong>Viaje Sonoro:</strong> Relajación profunda y claridad mental.</p>
-            <audio controls class="mini-player">
+            <audio controls class="audio-mini">
               <source src="audio/purificacion-elementos.mp3" type="audio/mp3">
             </audio>
-            <div class="papiro">
-              <p>En antiguos rituales celtas, la lavanda y el eucalipto combinaban sus esencias para limpiar el cuerpo astral.</p>
-            </div>
+          </article>
+
+          <article class="sahumerio-card">
+            <img src="img/salvia-benjui-palosanto.jpg" alt="Salvia, Benjuí y Palo Santo" />
+            <h3>Salvia, Benjuí y Palo Santo</h3>
+            <p>Una alquimia protectora y sagrada: limpia, nutre y eleva.</p>
+            <audio controls class="audio-mini">
+              <source src="audio/viaje-transformador.mp3" type="audio/mp3">
+            </audio>
           </article>
         </div>
       </section>
