@@ -6,7 +6,8 @@
   <title>Espíritu Sónico</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Cinzel+Decorative&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
 
@@ -26,9 +27,9 @@
       <nav class="navbar">
         <div class="logo-header"><img src="logo.png" alt="Espíritu Sónico" /></div>
         <button class="menu-toggle" aria-label="Abrir menú">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
+          <div class="bar top"></div>
+          <div class="bar middle"></div>
+          <div class="bar bottom"></div>
         </button>
       </nav>
 
@@ -45,25 +46,25 @@
 
     <main id="content-container">
       <section id="inicio" class="page">
-        <h2>Inicio</h2>
-        <p>Descubre un universo sonoro para reconectar con tu esencia.</p>
+        <h2 data-aos="fade-up">Inicio</h2>
+        <p data-aos="fade-up" data-aos-delay="300">Descubre un universo sonoro para reconectar con tu esencia.</p>
       </section>
 
       <section id="acerca" class="page">
-        <h2>Acerca de</h2>
-        <p>Espíritu Sónico nace con el fin de guiarte hacia espacios de paz y bienestar a través de sonidos sagrados.</p>
+        <h2 data-aos="fade-up">Acerca de</h2>
+        <p data-aos="fade-up" data-aos-delay="300">Espíritu Sónico nace con el fin de guiarte hacia espacios de paz y bienestar a través de sonidos sagrados.</p>
       </section>
 
       <section id="viajes" class="page">
-        <h2>Viajes Sonoros</h2>
-        <p>Una experiencia sonora para sanar, explorar y liberar tu ser interior.</p>
+        <h2 data-aos="fade-up">Viajes Sonoros</h2>
+        <p data-aos="fade-up" data-aos-delay="300">Una experiencia sonora para sanar, explorar y liberar tu ser interior.</p>
       </section>
 
       <section id="productos" class="page">
-        <h2>Sahumerios Artesanales</h2>
+        <h2 data-aos="fade-up">Sahumerios Artesanales</h2>
 
         <div class="sahumerios-grid">
-          <article class="sahumerio-card">
+          <article class="sahumerio-card" data-aos="zoom-in">
             <img src="img/lavanda-eucaliptus-menta.jpg" alt="Lavanda, Eucaliptus y Menta" />
             <h3>Lavanda, Eucaliptus y Menta</h3>
             <p>Un frescor etéreo que limpia, relaja y despierta claridad.</p>
@@ -76,7 +77,7 @@
             <button class="toggle-papiro">Ver más</button>
           </article>
 
-          <article class="sahumerio-card">
+          <article class="sahumerio-card" data-aos="zoom-in" data-aos-delay="200">
             <img src="img/salvia-benjui-palosanto.jpg" alt="Salvia, Benjuí y Palo Santo" />
             <h3>Salvia, Benjuí y Palo Santo</h3>
             <p>Una alquimia protectora y sagrada: limpia, nutre y eleva.</p>
@@ -92,8 +93,8 @@
       </section>
 
       <section id="contacto" class="page">
-        <h2>Contacto</h2>
-        <form class="mystic-form">
+        <h2 data-aos="fade-up">Contacto</h2>
+        <form class="mystic-form" data-aos="fade-up" data-aos-delay="300">
           <label for="name">Nombre</label>
           <input id="name" type="text" required />
           <label for="email">Correo</label>
@@ -111,5 +112,9 @@
   </div>
 
   <script src="scripts.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
