@@ -8,11 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const grimorioBtns = document.querySelectorAll('.btn-grimorio');
 
   if (enterBtn) {
-    enterBtn.addEventListener('click', () => {
-  welcomeScreen.style.transition = 'opacity 1s ease';
-  welcomeScreen.style.opacity = '0';
-  setTimeout(() => {
-    welcomeScreen.style.display = 'none';
+  enterBtn.addEventListener('click', () => {
+    welcomeScreen.style.opacity = '0';
+    setTimeout(() => {
+      welcomeScreen.style.display = 'none';
+      const mainContent = document.getElementById('main-content');
+      mainContent.style.opacity = '1';
+      mainContent.style.pointerEvents = 'auto';
+    }, 1000);
+  });
+}
     document.getElementById('main-content').style.display = 'flex';
   }, 1000);
 });
