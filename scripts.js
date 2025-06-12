@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuOverlay = document.querySelector('.menu-overlay');
   const navLinks = document.querySelectorAll('.nav-link');
   const pages = document.querySelectorAll('.page');
-  const grimorioBtns = document.querySelectorAll('.btn-grimorio');
 
   enterBtn.addEventListener('click', () => {
     welcomeScreen.style.opacity = '0';
@@ -19,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   menuToggle.addEventListener('click', () => {
     menuOverlay.classList.toggle('open');
+    menuToggle.classList.toggle('active');
   });
 
   navLinks.forEach(link => {
@@ -33,17 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
       menuOverlay.classList.remove('open');
-    });
-  });
-
-  grimorioBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const contenido = btn.nextElementSibling;
-      if (contenido.style.maxHeight) {
-        contenido.style.maxHeight = null;
-      } else {
-        contenido.style.maxHeight = contenido.scrollHeight + "px";
-      }
+      menuToggle.classList.remove('active');
     });
   });
 });
