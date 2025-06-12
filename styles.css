@@ -36,6 +36,7 @@ body, html {
 .logo-animado {
   width: 150px;
   animation: pulse 3s infinite;
+  margin-bottom: 30px;
 }
 
 @keyframes pulse {
@@ -44,13 +45,13 @@ body, html {
 }
 
 .welcome-content h1 {
-  font-size: 1.5rem;
-  margin: 20px 0;
+  font-size: 1.2rem;
+  margin: 10px 0;
 }
 
 .welcome-content p {
-  font-size: 1rem;
-  margin-bottom: 40px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
 }
 
 .btn-enter {
@@ -72,7 +73,7 @@ body, html {
 
 /* Main Content */
 #main-content {
-  display: none;
+  display: flex;
   flex-direction: column;
   min-height: 100vh;
   opacity: 0;
@@ -119,9 +120,9 @@ header {
   position: fixed;
   top: 0; 
   right: 0;
-  width: 250px;
+  width: 200px; /* REDUCIDO el ancho */
   height: 100%;
-  background: linear-gradient(135deg, #5e17eb, #301934);
+  background: linear-gradient(135deg, #4b1d6f, #301934);
   transform: translateX(100%);
   transition: transform 0.5s ease;
   z-index: 1000;
@@ -178,86 +179,6 @@ main {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
-}
-
-/* Sahumerios */
-.sahumerios-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-}
-
-.sahumerio-card {
-  background: rgba(255,255,255,0.05);
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  text-align: center;
-  transition: transform 0.3s;
-}
-
-.sahumerio-card:hover {
-  transform: scale(1.02);
-}
-
-.sahumerio-card img {
-  width: 100%;
-  border-radius: 20px;
-}
-
-.papiro {
-  margin-top: 20px;
-  padding: 20px;
-  background: url('img/papiro-textura.png');
-  background-size: cover;
-  border-radius: 15px;
-  font-size: 1rem;
-  color: #f3eaff;
-  text-shadow: 1px 1px 3px #000;
-}
-
-.download-btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  border: 1px solid #a084ca;
-  border-radius: 50px;
-  color: #f3eaff;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.download-btn:hover {
-  background: #a084ca;
-  color: #150050;
-}
-
-/* Contacto */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-input, textarea {
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-}
-
-button[type="submit"] {
-  padding: 10px 30px;
-  border: none;
-  border-radius: 50px;
-  background: #a084ca;
-  color: #150050;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background: #f3eaff;
 }
 
 /* Footer */
