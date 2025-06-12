@@ -16,25 +16,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   menuToggle.addEventListener("click", () => {
     menuOverlay.classList.toggle("active");
+    menuToggle.classList.toggle("active");
   });
 
   navLinks.forEach(link => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
-
-      document.querySelectorAll(".page").forEach(page => {
-        page.classList.remove("visible");
-      });
-
+      document.querySelectorAll(".page").forEach(page => page.classList.remove("visible"));
       const targetId = link.getAttribute("data-target");
       document.getElementById(targetId).classList.add("visible");
-
       menuOverlay.classList.remove("active");
-
-      navLinks.forEach(l => l.classList.remove("active"));
-      link.classList.add("active");
+      menuToggle.classList.remove("active");
     });
   });
 
   document.getElementById("inicio").classList.add("visible");
+
+  // Logica papiro
+  const toggles = document.querySelectorAll(".toggle-papiro");
+  toggles.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const papiro = btn.previousElementSibling;
+      papiro.style.display = papiro.style.display === "block" ? "none" : "block";
+    });
+  });
 });
