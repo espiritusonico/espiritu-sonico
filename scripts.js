@@ -8,8 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const grimorioBtns = document.querySelectorAll('.btn-grimorio');
 
   enterBtn.addEventListener('click', () => {
+  welcomeScreen.style.transition = 'opacity 1s ease';
+  welcomeScreen.style.opacity = '0';
+  setTimeout(() => {
     welcomeScreen.style.display = 'none';
-  });
+  }, 1000);
+});
+
 
   menuToggle.addEventListener('click', () => {
     menuOverlay.classList.toggle('open');
