@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
       mainContent.style.display = "flex";
       setTimeout(() => {
         mainContent.style.opacity = "1";
-      }, 100);
+      }, 50);
     }, 1000);
   });
 
