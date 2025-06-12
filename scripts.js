@@ -1,17 +1,46 @@
-const enterButton = document.getElementById("enterButton");
-const welcome = document.getElementById("welcome");
-const mainContent = document.getElementById("mainContent");
-const menuButton = document.getElementById("menuButton");
-const menu = document.getElementById("menu");
+document.addEventListener('DOMContentLoaded', () => {
+  const enterBtn = document.getElementById('enter-btn');
+  const welcomeScreen = document.getElementById('welcome-screen');
+  const mainContent = document.getElementById('main-content');
+  const banner = document.getElementById('top-banner');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menuOverlay = document.querySelector('.menu-overlay');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const pages = document.querySelectorAll('.page');
 
-enterButton.addEventListener("click", () => {
-  welcome.style.animation = "fadeOut 2s forwards";
-  setTimeout(() => {
-    welcome.classList.add("hidden");
-    mainContent.classList.remove("hidden");
-  }, 2000);
-});
+  // Cuando se hace clic en "Ingresar"
+  enterBtn.addEventListener('click', () => {
+    welcomeScreen.style.opacity = '0';
+    setTimeout(() => {
+      welcomeScreen.style.display = 'none';
+      mainContent.style.display = 'flex';
+      banner.style.display = 'flex';
+    }, 1000);
+  });
 
-menuButton.addEventListener("click", () => {
-  menu.classList.toggle("menu-hidden");
+  // Activación/desactivación del menú
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    menuOverlay.classList.toggle('open');
+  });
+
+  // Navegación entre secciones
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const target = link.dataset.target;
+
+      pages.forEach(page => {
+        if (page.id === target) {
+          page.classList.add('visible');
+        } else {
+          page.classList.remove('visible');
+        }
+      });
+
+      menuToggle.classList.remove('active');
+      menuOverlay.classList.remove('open');
+    });
+  });
 });
