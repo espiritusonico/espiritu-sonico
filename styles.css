@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Cinzel+Decorative&display=swap');
 
 * {
   margin: 0;
@@ -13,6 +13,7 @@ body, html {
   color: #f3eaff;
   display: flex;
   flex-direction: column;
+  scroll-behavior: smooth;
 }
 
 #welcome-screen {
@@ -40,24 +41,26 @@ body, html {
 
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  50% { transform: scale(1.07); }
 }
 
 .btn-enter {
   padding: 14px 40px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   border: 2px solid #a084ca;
   border-radius: 50px;
   background: transparent;
   color: #f3eaff;
   cursor: pointer;
   transition: all 0.4s ease;
+  font-family: 'Cinzel Decorative', cursive;
+  letter-spacing: 1px;
 }
 
 .btn-enter:hover {
   background: #a084ca;
   color: #150050;
-  box-shadow: 0 0 20px #a084ca;
+  box-shadow: 0 0 25px #a084ca;
 }
 
 #main-content {
@@ -66,65 +69,75 @@ body, html {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 header {
   position: fixed;
   top: 0; left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.65);
   z-index: 1000;
+  backdrop-filter: blur(8px);
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 12px 20px;
 }
 
 .logo-header img {
-  height: 40px;
+  height: 42px;
 }
 
+/* Menú hamburguesa profesional */
 .menu-toggle {
-  width: 30px;
+  width: 35px;
   height: 30px;
   position: relative;
   cursor: pointer;
+  z-index: 1100;
 }
 
 .menu-toggle .bar {
-  display: block;
+  position: absolute;
   width: 100%;
-  height: 3px;
+  height: 4px;
   background: #fff;
-  margin: 6px 0;
-  transition: 0.4s;
+  transition: 0.5s;
+  left: 0;
+  border-radius: 2px;
 }
 
-.menu-toggle.active .bar:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+.menu-toggle .top { top: 0; }
+.menu-toggle .middle { top: 50%; transform: translateY(-50%); }
+.menu-toggle .bottom { bottom: 0; }
+
+.menu-toggle.active .top {
+  transform: rotate(45deg) translate(7px, 7px);
 }
-.menu-toggle.active .bar:nth-child(2) {
+.menu-toggle.active .middle {
   opacity: 0;
 }
-.menu-toggle.active .bar:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+.menu-toggle.active .bottom {
+  transform: rotate(-45deg) translate(7px, -7px);
 }
 
 .menu-overlay {
   position: fixed;
   top: 0;
   right: 0;
-  width: 220px;
+  width: 240px;
   height: 100%;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.98);
   transform: translateX(100%);
   transition: transform 0.4s ease;
   z-index: 999;
   padding-top: 100px;
   border-left: 1px solid #a084ca;
+  backdrop-filter: blur(6px);
 }
 
 .menu-overlay.active {
@@ -137,14 +150,16 @@ header {
 }
 
 .nav-links li {
-  margin: 25px 0;
+  margin: 30px 0;
 }
 
 .nav-links li a {
   color: #f3eaff;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   text-decoration: none;
   transition: 0.3s;
+  font-family: 'Cinzel Decorative', cursive;
+  letter-spacing: 1px;
 }
 
 .nav-links li a:hover {
@@ -152,7 +167,7 @@ header {
 }
 
 main {
-  padding: 120px 20px 60px;
+  padding: 140px 20px 60px;
   flex: 1;
 }
 
@@ -162,30 +177,37 @@ main {
 
 .page.visible {
   display: block;
-  animation: fadeIn 0.8s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 
 .sahumerios-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.sahumerio-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  transition: transform 0.4s;
+}
+
+.sahumerio-card:hover {
+  transform: translateY(-10px);
 }
 
 .sahumerio-card img {
   width: 100%;
   border-radius: 15px;
   margin-bottom: 10px;
+  border: 2px solid #a084ca;
 }
 
 .audio-mini {
   width: 100%;
-  height: 30px;
-  margin-top: 5px;
+  height: 35px;
+  margin-top: 10px;
 }
 
 .papiro {
@@ -195,39 +217,54 @@ main {
   padding: 15px;
   margin-top: 10px;
   border-radius: 15px;
-  display: none;
   font-style: italic;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+}
+
+.papiro.open {
+  max-height: 300px;
+  padding: 15px;
 }
 
 .toggle-papiro {
-  margin-top: 8px;
-  padding: 5px 20px;
+  margin-top: 10px;
+  padding: 8px 30px;
   background: #a084ca;
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.toggle-papiro:hover {
+  background: #cdb4db;
+  color: #150050;
 }
 
 .mystic-form input, .mystic-form textarea {
   background: rgba(255,255,255,0.1);
   border: 1px solid #a084ca;
   color: #fff;
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 20px;
   width: 100%;
+  font-size: 1rem;
 }
 
 .mystic-form button {
   background-color: #a084ca;
   color: #150050;
-  padding: 12px 30px;
-  border-radius: 30px;
+  padding: 15px 40px;
+  border-radius: 40px;
   border: none;
   cursor: pointer;
   font-weight: bold;
   transition: 0.3s;
+  font-size: 1.1rem;
 }
 
 .mystic-form button:hover {
@@ -239,4 +276,6 @@ footer {
   padding: 20px;
   font-size: 0.9rem;
   background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  margin-top: auto;
 }
