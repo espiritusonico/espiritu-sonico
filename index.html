@@ -10,6 +10,9 @@
 </head>
 <body>
 
+  <!-- Fondo de partículas -->
+  <div id="particle-background"></div>
+
   <!-- Pantalla de bienvenida -->
   <div class="welcome-screen">
     <div class="welcome-content">
@@ -56,6 +59,25 @@
     <section id="viajes" class="page">
       <h2>Viajes Sonoros</h2>
       <p>Una experiencia sonora para sanar, explorar y liberar tu ser interior.</p>
+
+      <div class="viaje-item">
+        <h3>Purificación de los Elementos</h3>
+        <audio controls>
+          <source src="audio/purificacion-elementos.mp3" type="audio/mp3">
+          Tu navegador no soporta el reproductor.
+        </audio>
+        <a href="audio/purificacion-elementos.mp3" download class="download-btn">Descargar</a>
+      </div>
+
+      <div class="viaje-item">
+        <h3>Activación del Corazón Estelar</h3>
+        <audio controls>
+          <source src="audio/corazon-estelar.mp3" type="audio/mp3">
+          Tu navegador no soporta el reproductor.
+        </audio>
+        <a href="audio/corazon-estelar.mp3" download class="download-btn">Descargar</a>
+      </div>
+
     </section>
 
     <section id="productos" class="page">
@@ -68,16 +90,45 @@
           <img src="img/lavanda-eucaliptus-menta.jpg" alt="Sahumerio Lavanda, Eucaliptus y Menta" />
           <h3>Lavanda, Eucaliptus y Menta</h3>
           <p>Un frescor etéreo que limpia, relaja y despierta claridad. El viaje sonoro asociado armoniza mente y respiración, ideal para purificación cotidiana.</p>
+          <button class="btn-grimorio">Ver Grimorio</button>
+
+          <div class="grimorio-contenido">
+            <h4>Grimorio de este sahumerio</h4>
+            <p>En antiguos rituales celtas, la lavanda y el eucalipto combinaban sus esencias para limpiar el cuerpo astral. La menta elevaba la vibración mental, preparando el canal superior para la meditación profunda.</p>
+
+            <div class="viaje-asociado">
+              <h5>Viaje Sonoro Asociado</h5>
+              <audio controls>
+                <source src="audio/viaje-lavanda.mp3" type="audio/mp3">
+                Tu navegador no soporta el reproductor.
+              </audio>
+              <a href="audio/viaje-lavanda.mp3" download class="download-btn">Descargar</a>
+            </div>
+          </div>
         </article>
 
         <article class="sahumerio-card">
           <img src="img/salvia-benjui-palosanto.jpg" alt="Sahumerio Salvia, Benjuí y Palo Santo" />
           <h3>Salvia, Benjuí y Palo Santo</h3>
           <p>Una alquimia protectora y sagrada: limpia, nutre y eleva. Su viaje sonoro acompaña procesos de transformación interior y apertura de espacios rituales.</p>
+          <button class="btn-grimorio">Ver Grimorio</button>
+
+          <div class="grimorio-contenido">
+            <h4>Grimorio de este sahumerio</h4>
+            <p>Combinación ancestral de resinas y maderas. El Benjuí atrae las energías benéficas, la Salvia transmuta lo denso y el Palo Santo abre los portales de lo sutil. Ideal para rituales de cambio profundo.</p>
+
+            <div class="viaje-asociado">
+              <h5>Viaje Sonoro Asociado</h5>
+              <audio controls>
+                <source src="audio/viaje-salvia.mp3" type="audio/mp3">
+                Tu navegador no soporta el reproductor.
+              </audio>
+              <a href="audio/viaje-salvia.mp3" download class="download-btn">Descargar</a>
+            </div>
+          </div>
         </article>
 
       </div>
-
     </section>
 
     <section id="contacto" class="page">
@@ -101,3 +152,4 @@
   <script src="scripts.js" defer></script>
 </body>
 </html>
+
