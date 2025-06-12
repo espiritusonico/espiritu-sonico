@@ -243,10 +243,10 @@ h2 {
 
 footer {
   text-align: center;
-  padding: 30px;
+  padding: 10px;
   background: rgba(0,0,0,0.5);
-  margin-top: 50px;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  margin-top: 0;
 }
 
 input, textarea {
@@ -309,4 +309,30 @@ p {
   color: #150050;
   transform: scale(1.1);
   box-shadow: 0 0 20px #a084ca;
+}
+
+.grimorio-contenido {
+  overflow: hidden;
+  transition: max-height 0.6s ease;
+  max-height: 0;
+}
+
+audio {
+  width: 100%;
+  margin: 15px 0;
+  filter: drop-shadow(0 0 5px #a084ca);
+  border-radius: 10px;
+}
+
+body, html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
