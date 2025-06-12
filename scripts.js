@@ -1,46 +1,45 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const enterBtn = document.getElementById('enter-btn');
-  const welcomeScreen = document.getElementById('welcome-screen');
-  const mainContent = document.getElementById('main-content');
-  const banner = document.getElementById('top-banner');
-  const menuToggle = document.querySelector('.menu-toggle');
-  const menuOverlay = document.querySelector('.menu-overlay');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  const pages = document.querySelectorAll('.page');
+document.addEventListener("DOMContentLoaded", function () {
+  const enterBtn = document.getElementById("enter-btn");
+  const welcomeScreen = document.getElementById("welcome-screen");
+  const mainContent = document.getElementById("main-content");
 
-  // Cuando se hace clic en "Ingresar"
-  enterBtn.addEventListener('click', () => {
-    welcomeScreen.style.opacity = '0';
+  enterBtn.addEventListener("click", () => {
+    welcomeScreen.style.opacity = "0";
     setTimeout(() => {
-      welcomeScreen.style.display = 'none';
-      mainContent.style.display = 'flex';
-      banner.style.display = 'flex';
+      welcomeScreen.style.display = "none";
+      mainContent.style.display = "flex";
+      setTimeout(() => {
+        mainContent.style.opacity = "1";
+      }, 100);
     }, 1000);
   });
 
-  // Activación/desactivación del menú
-  menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
-    menuOverlay.classList.toggle('open');
+  // Menu toggle
+  const menuToggle = document.querySelector(".menu-toggle");
+  const menuOverlay = document.querySelector(".menu-overlay");
+
+  menuToggle.addEventListener("click", () => {
+    menuOverlay.classList.toggle("active");
   });
 
-  // Navegación entre secciones
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
+  // Navegación de secciones
+  const navLinks = document.querySelectorAll(".nav-link");
+  const pages = document.querySelectorAll(".page");
 
-      const target = link.dataset.target;
+  navLinks.forEach(link => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = this.getAttribute("data-target");
 
       pages.forEach(page => {
-        if (page.id === target) {
-          page.classList.add('visible');
-        } else {
-          page.classList.remove('visible');
-        }
+        page.classList.remove("visible");
       });
 
-      menuToggle.classList.remove('active');
-      menuOverlay.classList.remove('open');
+      document.getElementById(target).classList.add("visible");
+      menuOverlay.classList.remove("active");
+
+      navLinks.forEach(l => l.classList.remove("active"));
+      this.classList.add("active");
     });
   });
 });
