@@ -73,6 +73,11 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+  background: rgba(0,0,0,0.7);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 }
 
 .navbar .logo img {
@@ -80,18 +85,49 @@ header {
 }
 
 .menu-toggle {
-  font-size: 1.2rem;
+  font-size: 2rem;
   color: #fff;
   background: none;
   border: none;
   cursor: pointer;
 }
 
+.menu-icon {
+  display: block;
+  width: 30px;
+  height: 22px;
+  position: relative;
+}
+
+.menu-icon::before,
+.menu-icon::after,
+.menu-icon div {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: #fff;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+.menu-icon::before {
+  top: 0;
+}
+
+.menu-icon::after {
+  bottom: 0;
+}
+
+.menu-icon div {
+  top: 9px;
+}
+
 .menu-overlay {
   position: fixed;
   top: 0;
   right: 0;
-  width: 220px;
+  width: 300px;
   height: 100%;
   background: rgba(21, 0, 80, 0.95);
   z-index: 99;
@@ -107,7 +143,7 @@ header {
 .nav-links {
   list-style: none;
   text-align: center;
-  margin-top: 90px;
+  margin-top: 100px;
 }
 
 .nav-links li {
@@ -115,7 +151,7 @@ header {
 }
 
 .nav-link {
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: #fff;
   text-decoration: none;
   transition: color 0.3s;
