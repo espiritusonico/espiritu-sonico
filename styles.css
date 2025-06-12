@@ -146,3 +146,19 @@ footer {
   background: rgba(0,0,0,0.5);
   font-size: 0.9rem;
 }
+
+/* Sistema de páginas */
+.page {
+  display: none;
+  padding: 100px 20px 20px;
+}
+
+.page.visible {
+  display: block;
+}
+
+/* Mostrar main-content cuando toque */
+#main-content {
+  flex-direction: column;
+  min-height: 100vh;
+}
