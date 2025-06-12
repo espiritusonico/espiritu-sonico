@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   const enterBtn = document.getElementById('enter-btn');
   const welcomeScreen = document.querySelector('.welcome-screen');
-
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menuOverlay = document.querySelector('.menu-overlay');
+  
   enterBtn.addEventListener('click', () => {
     welcomeScreen.style.transition = 'opacity 1s ease';
     welcomeScreen.style.opacity = '0';
