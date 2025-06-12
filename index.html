@@ -17,7 +17,7 @@
   <div class="welcome-screen">
     <div class="welcome-content">
       <div class="welcome-logo">
-        <img src="logo.png" alt="Logo Espíritu Sónico" />
+        <img src="logo.png" alt="Logo Espíritu Sónico" class="logo-animado"/>
       </div>
       <h1>Espíritu Sónico</h1>
       <p>Donde el sonido despierta el espíritu y guía al alma.</p>
@@ -32,17 +32,18 @@
       <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <ul class="nav-links">
-        <li><a href="#inicio" class="nav-link" data-target="inicio">Inicio</a></li>
-        <li><a href="#acerca" class="nav-link" data-target="acerca">Acerca</a></li>
-        <li><a href="#viajes" class="nav-link" data-target="viajes">Viajes</a></li>
-        <li><a href="#productos" class="nav-link" data-target="productos">Productos</a></li>
-        <li><a href="#contacto" class="nav-link" data-target="contacto">Contacto</a></li>
-      </ul>
     </nav>
   </header>
 
-  <div class="menu-overlay"></div>
+  <div class="menu-overlay">
+    <ul class="nav-links">
+      <li><a href="#inicio" class="nav-link" data-target="inicio">Inicio</a></li>
+      <li><a href="#acerca" class="nav-link" data-target="acerca">Acerca</a></li>
+      <li><a href="#viajes" class="nav-link" data-target="viajes">Viajes</a></li>
+      <li><a href="#productos" class="nav-link" data-target="productos">Productos</a></li>
+      <li><a href="#contacto" class="nav-link" data-target="contacto">Contacto</a></li>
+    </ul>
+  </div>
 
   <!-- Contenido -->
   <main id="content-container">
@@ -64,7 +65,6 @@
         <h3>Purificación de los Elementos</h3>
         <audio controls>
           <source src="audio/purificacion-elementos.mp3" type="audio/mp3">
-          Tu navegador no soporta el reproductor.
         </audio>
         <a href="audio/purificacion-elementos.mp3" download class="download-btn">Descargar</a>
       </div>
@@ -73,7 +73,6 @@
         <h3>Activación del Corazón Estelar</h3>
         <audio controls>
           <source src="audio/corazon-estelar.mp3" type="audio/mp3">
-          Tu navegador no soporta el reproductor.
         </audio>
         <a href="audio/corazon-estelar.mp3" download class="download-btn">Descargar</a>
       </div>
@@ -85,22 +84,18 @@
       <p class="intro">Cada sahumerio es un puente entre el futuro y el origen, un susurro ancestral molido a mano, sin artificios, solo la esencia pura de la tierra.</p>
 
       <div class="sahumerios-grid">
-
         <article class="sahumerio-card">
           <img src="img/lavanda-eucaliptus-menta.jpg" alt="Sahumerio Lavanda, Eucaliptus y Menta" />
           <h3>Lavanda, Eucaliptus y Menta</h3>
           <p>Un frescor etéreo que limpia, relaja y despierta claridad. El viaje sonoro asociado armoniza mente y respiración, ideal para purificación cotidiana.</p>
-          <button class="btn-grimorio">Ver Grimorio</button>
-
+          <button class="btn-grimorio">Abrir Papiro</button>
           <div class="grimorio-contenido">
             <h4>Grimorio de este sahumerio</h4>
             <p>En antiguos rituales celtas, la lavanda y el eucalipto combinaban sus esencias para limpiar el cuerpo astral. La menta elevaba la vibración mental, preparando el canal superior para la meditación profunda.</p>
-
             <div class="viaje-asociado">
               <h5>Viaje Sonoro Asociado</h5>
               <audio controls>
                 <source src="audio/viaje-lavanda.mp3" type="audio/mp3">
-                Tu navegador no soporta el reproductor.
               </audio>
               <a href="audio/viaje-lavanda.mp3" download class="download-btn">Descargar</a>
             </div>
@@ -111,23 +106,19 @@
           <img src="img/salvia-benjui-palosanto.jpg" alt="Sahumerio Salvia, Benjuí y Palo Santo" />
           <h3>Salvia, Benjuí y Palo Santo</h3>
           <p>Una alquimia protectora y sagrada: limpia, nutre y eleva. Su viaje sonoro acompaña procesos de transformación interior y apertura de espacios rituales.</p>
-          <button class="btn-grimorio">Ver Grimorio</button>
-
+          <button class="btn-grimorio">Abrir Papiro</button>
           <div class="grimorio-contenido">
             <h4>Grimorio de este sahumerio</h4>
-            <p>Combinación ancestral de resinas y maderas. El Benjuí atrae las energías benéficas, la Salvia transmuta lo denso y el Palo Santo abre los portales de lo sutil. Ideal para rituales de cambio profundo.</p>
-
+            <p>Combinación ancestral de resinas y maderas. El Benjuí atrae las energías benéficas, la Salvia transmuta lo denso y el Palo Santo abre los portales de lo sutil.</p>
             <div class="viaje-asociado">
               <h5>Viaje Sonoro Asociado</h5>
               <audio controls>
                 <source src="audio/viaje-salvia.mp3" type="audio/mp3">
-                Tu navegador no soporta el reproductor.
               </audio>
               <a href="audio/viaje-salvia.mp3" download class="download-btn">Descargar</a>
             </div>
           </div>
         </article>
-
       </div>
     </section>
 
@@ -152,4 +143,3 @@
   <script src="scripts.js" defer></script>
 </body>
 </html>
-
