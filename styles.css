@@ -42,19 +42,19 @@ body, html {
 }
 
 .welcome-content h1 {
-  font-size: 3rem;
+  font-size: 1rem;
   margin: 20px 0;
   letter-spacing: 2px;
 }
 
 .welcome-content p {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   margin-bottom: 40px;
 }
 
 .btn-enter {
-  padding: 18px 40px;
-  font-size: 1.5rem;
+  padding: 14px 30px;
+  font-size: 1rem;
   border: 2px solid #a084ca;
   border-radius: 50px;
   background: transparent;
