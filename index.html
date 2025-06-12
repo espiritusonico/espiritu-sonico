@@ -1,86 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Espíritu Sónico</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <!-- Pantalla de Bienvenida -->
-  <section id="welcome">
+  <section id="welcome-screen">
     <div class="welcome-content">
-      <div class="logo-container">
-        <img src="logo.png" alt="Espíritu Sónico" class="logo" />
-      </div>
-      <p class="intro-text">
-        Abre la puerta del templo.<br>Permite que el sonido guíe tu viaje interior.
-      </p>
-      <button id="enterButton">Ingresar</button>
+      <img src="logo.png" alt="Logo Espíritu Sónico" class="logo-animado"/>
+      <h1>Espíritu Sónico</h1>
+      <p>Un portal sonoro hacia el viaje interior.</p>
+      <button id="enter-btn" class="btn-enter">Ingresar</button>
     </div>
   </section>
 
-  <!-- Menú -->
-  <header>
-    <div class="menu-button" id="menuButton">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
+  <!-- Banner Superior -->
+  <header id="top-banner">
+    <div class="logo-mini">
+      <img src="logo.svg" alt="Espíritu Sónico" />
     </div>
-    <nav id="menu" class="menu-hidden">
-      <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#productos">Productos</a></li>
-        <li><a href="#viajes">Viajes Sonoros</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span class="menu-icon"></span>
+    </button>
   </header>
 
-  <!-- Contenido principal por pantallas -->
-  <main id="mainContent" class="hidden">
+  <!-- Menú lateral -->
+  <div class="menu-overlay">
+    <ul class="nav-links">
+      <li><a href="#inicio" data-target="inicio">Inicio</a></li>
+      <li><a href="#acerca" data-target="acerca">Acerca</a></li>
+      <li><a href="#viajes" data-target="viajes">Viajes</a></li>
+      <li><a href="#productos" data-target="productos">Productos</a></li>
+      <li><a href="#contacto" data-target="contacto">Contacto</a></li>
+    </ul>
+  </div>
 
-    <section id="inicio" class="screen">
-      <h1>Bienvenido al templo sonoro</h1>
-      <p>Una experiencia donde el humo danza y el sonido guía el alma.</p>
+  <!-- Contenido Principal -->
+  <main id="main-content">
+    <section id="inicio" class="page visible">
+      <h2>Inicio</h2>
+      <p>Descubre un universo sonoro para reconectar con tu esencia.</p>
     </section>
 
-    <section id="productos" class="screen">
-      <h2>Sahumerios Artesanales</h2>
-      <div class="producto">
-        <h3>Lavanda, Eucaliptus y Menta</h3>
-        <p>Ideal para el despertar sutil del espíritu en las mañanas.</p>
-      </div>
-      <div class="producto">
-        <h3>Salvia, Benjuí y Palo Santo</h3>
-        <p>Perfecto para rituales de purificación y conexión interior profunda.</p>
-      </div>
+    <section id="acerca" class="page">
+      <h2>Acerca de</h2>
+      <p>Espíritu Sónico nace con el fin de guiarte hacia espacios de paz y bienestar a través de sonidos sagrados.</p>
     </section>
 
-    <section id="viajes" class="screen">
+    <section id="viajes" class="page">
       <h2>Viajes Sonoros</h2>
-      <p>Próximamente: sumérgete en los paisajes auditivos de Espíritu Sónico.</p>
+      <p>Una experiencia sonora para sanar, explorar y liberar tu ser interior.</p>
     </section>
 
-    <section id="contacto" class="screen">
+    <section id="productos" class="page">
+      <h2>Sahumerios Artesanales</h2>
+      <p>Cada sahumerio es un puente entre el origen y el futuro, un susurro ancestral.</p>
+    </section>
+
+    <section id="contacto" class="page">
       <h2>Contacto</h2>
       <form>
-        <label>Nombre:</label>
-        <input type="text" />
-        <label>Correo:</label>
-        <input type="email" />
-        <label>Mensaje:</label>
-        <textarea></textarea>
+        <label for="name">Nombre</label>
+        <input id="name" type="text" required />
+        <label for="email">Correo</label>
+        <input id="email" type="email" required />
+        <label for="message">Mensaje</label>
+        <textarea id="message" required></textarea>
         <button type="submit">Enviar</button>
       </form>
     </section>
-
   </main>
 
   <footer>
-    <p>© 2025 Espíritu Sónico - Todos los derechos reservados</p>
+    <p>Espíritu Sónico © 2025 — Un viaje interior a través del sonido.</p>
   </footer>
 
   <script src="scripts.js"></script>
