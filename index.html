@@ -10,10 +10,8 @@
 </head>
 <body>
 
-  <!-- Fondo de partículas -->
   <div id="particle-background"></div>
 
-  <!-- Pantalla de bienvenida -->
   <div class="welcome-screen">
     <div class="welcome-content">
       <div class="welcome-logo">
@@ -21,16 +19,15 @@
       </div>
       <h1>Espíritu Sónico</h1>
       <p>Donde el sonido despierta el espíritu y guía al alma.</p>
-      <button id="enter-btn" class="btn-enter">Ingresar</button>
+      <button id="enter-btn" class="btn-enter">Ingresar al Templo</button>
     </div>
   </div>
 
-  <!-- Header y navegación -->
   <header>
     <nav class="navbar">
       <div class="logo"><img src="logo.svg" alt="Espíritu Sónico" /></div>
       <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
+        <span class="seal-icon">⚜️</span>
       </button>
     </nav>
   </header>
@@ -45,7 +42,6 @@
     </ul>
   </div>
 
-  <!-- Contenido -->
   <main id="content-container">
     <section id="inicio" class="page visible">
       <h2>Inicio</h2>
@@ -60,7 +56,6 @@
     <section id="viajes" class="page">
       <h2>Viajes Sonoros</h2>
       <p>Una experiencia sonora para sanar, explorar y liberar tu ser interior.</p>
-
       <div class="viaje-item">
         <h3>Purificación de los Elementos</h3>
         <audio controls>
@@ -68,15 +63,6 @@
         </audio>
         <a href="audio/purificacion-elementos.mp3" download class="download-btn">Descargar</a>
       </div>
-
-      <div class="viaje-item">
-        <h3>Activación del Corazón Estelar</h3>
-        <audio controls>
-          <source src="audio/corazon-estelar.mp3" type="audio/mp3">
-        </audio>
-        <a href="audio/corazon-estelar.mp3" download class="download-btn">Descargar</a>
-      </div>
-
     </section>
 
     <section id="productos" class="page">
@@ -84,6 +70,7 @@
       <p class="intro">Cada sahumerio es un puente entre el futuro y el origen, un susurro ancestral molido a mano, sin artificios, solo la esencia pura de la tierra.</p>
 
       <div class="sahumerios-grid">
+
         <article class="sahumerio-card">
           <img src="img/lavanda-eucaliptus-menta.jpg" alt="Sahumerio Lavanda, Eucaliptus y Menta" />
           <h3>Lavanda, Eucaliptus y Menta</h3>
@@ -92,13 +79,7 @@
           <div class="grimorio-contenido">
             <h4>Grimorio de este sahumerio</h4>
             <p>En antiguos rituales celtas, la lavanda y el eucalipto combinaban sus esencias para limpiar el cuerpo astral. La menta elevaba la vibración mental, preparando el canal superior para la meditación profunda.</p>
-            <div class="viaje-asociado">
-              <h5>Viaje Sonoro Asociado</h5>
-              <audio controls>
-                <source src="audio/viaje-lavanda.mp3" type="audio/mp3">
-              </audio>
-              <a href="audio/viaje-lavanda.mp3" download class="download-btn">Descargar</a>
-            </div>
+            <p>Este sahumerio resulta perfecto para limpiezas energéticas ligeras antes de dormir, para abrir sesiones de respiración o cuando buscamos claridad mental al iniciar el día.</p>
           </div>
         </article>
 
@@ -109,16 +90,11 @@
           <button class="btn-grimorio">Abrir Papiro</button>
           <div class="grimorio-contenido">
             <h4>Grimorio de este sahumerio</h4>
-            <p>Combinación ancestral de resinas y maderas. El Benjuí atrae las energías benéficas, la Salvia transmuta lo denso y el Palo Santo abre los portales de lo sutil.</p>
-            <div class="viaje-asociado">
-              <h5>Viaje Sonoro Asociado</h5>
-              <audio controls>
-                <source src="audio/viaje-salvia.mp3" type="audio/mp3">
-              </audio>
-              <a href="audio/viaje-salvia.mp3" download class="download-btn">Descargar</a>
-            </div>
+            <p>Combinación ancestral de resinas y maderas. El Benjuí atrae energías benéficas, la Salvia transmuta lo denso y el Palo Santo abre los portales sutiles. Su humo es protector en rituales de apertura de espacios.</p>
+            <p>Ideal para limpiezas profundas, rituales de luna llena, meditaciones de desapego o preparación de altares personales.</p>
           </div>
         </article>
+
       </div>
     </section>
 
