@@ -1,5 +1,4 @@
 /* RESET GENERAL */
-* {/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +12,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
+  padding-bottom: 60px; /* para que no tape el footer */
 }
 
 /* Fondo partículas */
@@ -36,6 +36,14 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 999;
+  opacity: 1;
+  transition: opacity 1s ease;
+  pointer-events: auto;
+}
+
+.welcome-screen.oculto {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .welcome-content {
@@ -45,6 +53,34 @@ body {
 .welcome-logo img {
   width: 150px;
   margin-bottom: 20px;
+  animation: logoGlow 3s ease-in-out infinite;
+}
+
+/* Sutil efecto de brillo pulsante para el logo */
+@keyframes logoGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px #8e5db3);
+  }
+  50% {
+    filter: drop-shadow(0 0 6px #b392d6);
+  }
+}
+
+/* Título integrado con logo: blanco con sombra difusa púrpura-azulada */
+.welcome-screen h1 {
+  font-size: 3rem;
+  color: #fff;
+  text-shadow:
+    0 0 6px #8e5db3,
+    0 0 10px #6d3f8d;
+  margin-bottom: 10px;
+}
+
+.welcome-screen p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #d6c9f9;
+  text-shadow: 0 0 6px #6d3f8d;
 }
 
 .btn-enter {
@@ -56,11 +92,13 @@ body {
   color: #fff;
   border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background 0.3s ease;
+  box-shadow: 0 0 8px #6d3f8d;
 }
 
 .btn-enter:hover {
   background: #8e5db3;
+  box-shadow: 0 0 15px #8e5db3;
 }
 
 /* Header y navegación */
@@ -96,20 +134,62 @@ header {
   text-decoration: none;
   color: #f2e8dc;
   font-weight: 500;
-  transition: 0.3s;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
   color: #d2c4f2;
 }
 
-.menu-toggle {
-  display: none;
+/* Menú lateral (responsive, más ancho y más alto) */
+.menu-overlay {
+  position: fixed;
+  top: 0; right: 0;
+  height: 100vh;
+  background: rgba(45, 25, 60, 0.95);
+  width: 320px;
+  max-width: 80vw;
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 30px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #d6c9f9;
+  letter-spacing: 0.04em;
+}
+
+.menu-overlay.activo {
+  transform: translateX(0);
+}
+
+.menu-overlay ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-overlay li {
+  margin-bottom: 25px;
+}
+
+.menu-overlay li a {
+  color: #d6c9f9;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menu-overlay li a:hover {
+  color: #b392d6;
 }
 
 /* Contenido principal */
 main {
   padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .page {
@@ -127,30 +207,60 @@ h2, h3, h4, h5 {
   margin-bottom: 15px;
 }
 
-/* Viajes sonoros */
+/* Viajes sonoros: contenido más atractivo */
 .viaje-item {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(109, 63, 141, 0.25);
+  box-shadow:
+    0 0 10px rgba(109, 63, 141, 0.6),
+    inset 0 0 15px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
 }
 
+.viaje-item:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 0 20px rgba(141, 93, 179, 0.9),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.viaje-item h3 {
+  margin-bottom: 12px;
+  color: #b392d6;
+}
+
+audio {
+  width: 100%;
+  outline: none;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px #6d3f8d;
+}
+
+/* Botón descargar */
 .download-btn {
   display: inline-block;
-  margin-top: 10px;
-  padding: 8px 20px;
+  padding: 10px 25px;
   background: #6d3f8d;
   color: #fff;
   text-decoration: none;
-  border-radius: 6px;
-  transition: 0.3s;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  box-shadow: 0 0 10px #6d3f8d;
 }
 
 .download-btn:hover {
   background: #8e5db3;
+  box-shadow: 0 0 15px #8e5db3;
 }
 
 /* Productos */
 .sahumerios-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
   margin-top: 20px;
 }
@@ -162,7 +272,13 @@ h2, h3, h4, h5 {
   padding: 20px;
   position: relative;
   overflow: hidden;
-  transition: 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(109, 63, 141, 0.3);
+}
+
+.sahumerio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(141, 93, 179, 0.7);
 }
 
 .sahumerio-card img {
@@ -173,87 +289,76 @@ h2, h3, h4, h5 {
 
 .btn-grimorio {
   margin-top: 10px;
-  padding: 8px 20px;
-  font-weight: 600;
-  border: none;
+  padding: 10px 25px;
+  font-weight: 700;
+  font-size: 1.1rem;
   background: #6d3f8d;
   color: #fff;
-  border-radius: 8px;
+  border: none;
+  border-radius: 12px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background 0.3s ease;
+  box-shadow: 0 0 10px #6d3f8d;
 }
 
 .btn-grimorio:hover {
   background: #8e5db3;
+  box-shadow: 0 0 15px #8e5db3;
 }
 
-/* Grimorio efecto papiro */
-.grimorio-contenido {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.7s ease, padding 0.7s ease;
-  background: #fdf4e3;
-  color: #2a153c;
-  padding: 0 20px;
-  border-radius: 10px;
-  margin-top: 15px;
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+/* Cambiar texto botón "Abrir Papiro" */
+.btn-grimorio::after {
+  content: "Abrir Papiro";
+  font-weight: 700;
 }
 
-.grimorio-contenido.activo {
-  max-height: 1000px;
-  padding: 20px;
-}
-
-/* Formulario */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-input, textarea {
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-}
-
-/* Footer */
+/* Footer fijo */
 footer {
+  position: fixed;
+  bottom: 0; left: 0;
+  width: 100%;
+  background: rgba(45, 25, 60, 0.9);
   text-align: center;
-  padding: 20px;
-  font-size: 0.9rem;
-  color: #b3a3ca;
+  padding: 12px 20px;
+  font-size: 1rem;
+  color: #b392d6;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  box-shadow: 0 -3px 10px rgba(109, 63, 141, 0.6);
+  z-index: 150;
 }
 
-/* Responsivo */
-@media(max-width: 768px) {
+/* Scrollbar personalizado para páginas */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #130a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6d3f8d;
+  border-radius: 10px;
+  border: 2px solid #130a1a;
+}
+
+/* Adaptación responsiva */
+@media (max-width: 768px) {
+  .menu-overlay {
+    width: 90vw;
+    font-size: 1.1rem;
+    padding: 30px 20px;
+  }
+  .welcome-screen h1 {
+    font-size: 2.2rem;
+  }
+  .btn-enter {
+    padding: 8px 25px;
+    font-size: 1rem;
+  }
   .nav-links {
     display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 70px; right: 20px;
-    background: rgba(0,0,0,0.85);
-    padding: 20px;
-    border-radius: 8px;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .menu-toggle span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px;
-    background: #f2e8dc;
   }
 }
+
