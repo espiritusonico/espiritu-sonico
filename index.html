@@ -25,7 +25,11 @@
     <header>
       <nav class="navbar">
         <div class="logo-header"><img src="logo.png" alt="Espíritu Sónico" /></div>
-        <button class="menu-toggle" aria-label="Abrir menú"><span class="menu-icon"></span></button>
+        <button class="menu-toggle" aria-label="Abrir menú">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
       </nav>
 
       <div class="menu-overlay">
@@ -66,6 +70,10 @@
             <audio controls class="audio-mini">
               <source src="audio/purificacion-elementos.mp3" type="audio/mp3">
             </audio>
+            <div class="papiro">
+              <p>Esta combinación estimula la respiración profunda, reduce el estrés acumulado y propicia un estado de apertura energética.</p>
+            </div>
+            <button class="toggle-papiro">Ver más</button>
           </article>
 
           <article class="sahumerio-card">
@@ -75,13 +83,17 @@
             <audio controls class="audio-mini">
               <source src="audio/viaje-transformador.mp3" type="audio/mp3">
             </audio>
+            <div class="papiro">
+              <p>Este sahumerio brinda protección espiritual profunda, armoniza el ambiente y fomenta la meditación centrada.</p>
+            </div>
+            <button class="toggle-papiro">Ver más</button>
           </article>
         </div>
       </section>
 
       <section id="contacto" class="page">
         <h2>Contacto</h2>
-        <form>
+        <form class="mystic-form">
           <label for="name">Nombre</label>
           <input id="name" type="text" required />
           <label for="email">Correo</label>
