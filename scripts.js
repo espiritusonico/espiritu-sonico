@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const enterBtn = document.getElementById('enter-btn');
-  const welcomeScreen = document.querySelector('.welcome-screen');
+  const welcomeScreen = document.getElementById('welcome-screen');
   const menuToggle = document.querySelector('.menu-toggle');
   const menuOverlay = document.querySelector('.menu-overlay');
   const navLinks = document.querySelectorAll('.nav-link');
