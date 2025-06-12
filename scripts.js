@@ -4,9 +4,12 @@ const mainContent = document.getElementById("mainContent");
 const menuButton = document.getElementById("menuButton");
 const menu = document.getElementById("menu");
 
-enterButton.addEventListener("click", function () {
-  welcome.classList.add("hidden");
-  mainContent.classList.remove("hidden");
+enterButton.addEventListener("click", () => {
+  welcome.style.animation = "fadeOut 2s forwards";
+  setTimeout(() => {
+    welcome.classList.add("hidden");
+    mainContent.classList.remove("hidden");
+  }, 2000);
 });
 
 menuButton.addEventListener("click", () => {
