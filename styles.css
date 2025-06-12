@@ -1,206 +1,252 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap');
-
+/* General */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
+body {
   font-family: 'Cormorant Garamond', serif;
-  background: radial-gradient(circle at center, #3d087b, #150050);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background: url('fondo-mistico.jpg') no-repeat center center fixed;
   background-size: cover;
-  color: #f3eaff;
-  display: flex;
-  flex-direction: column;
+  color: #e8e4e1;
 }
 
+/* Pantalla de bienvenida */
 #welcome-screen {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(180deg, #200040 0%, #0b001f 100%);
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 10, 30, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  transition: opacity 1s ease;
-}
-
-.welcome-content {
-  text-align: center;
-  padding: 20px;
-}
-
-.welcome-title {
-  font-size: 3rem;
-  letter-spacing: 3px;
-  margin-bottom: 20px;
-}
-
-.welcome-subtitle {
-  font-size: 1.3rem;
-  margin-bottom: 40px;
-  font-style: italic;
-}
-
-.btn-enter {
-  padding: 15px 40px;
-  font-size: 1.1rem;
-  border: 2px solid #a084ca;
-  border-radius: 50px;
-  background: transparent;
-  color: #f3eaff;
-  cursor: pointer;
-  transition: all 0.4s ease;
-}
-
-.btn-enter:hover {
-  background: #a084ca;
-  color: #150050;
-  box-shadow: 0 0 15px #a084ca;
-}
-
-#main-content {
-  flex: 1;
-  display: flex;
   flex-direction: column;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1s ease;
+  z-index: 9999;
+  text-align: center;
+  padding: 2rem;
 }
 
+.logo-welcome img {
+  width: 120px;
+  margin-bottom: 1rem;
+}
+
+#welcome-screen h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+#welcome-screen p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+#welcome-screen button {
+  font-size: 1rem;
+  padding: 0.6rem 2rem;
+  background: #59216a;
+  border: none;
+  color: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#welcome-screen button:hover {
+  background: #8b2ca7;
+}
+
+/* Navbar */
 header {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1000;
-}
-
-.navbar {
+  z-index: 999;
+  background: rgba(15, 10, 30, 0.6);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 0.5rem 1rem;
 }
 
 .logo img {
-  height: 40px;
+  height: 50px;
 }
 
 .menu-toggle {
-  position: relative;
-  width: 30px;
-  height: 24px;
   cursor: pointer;
   background: none;
   border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 24px;
+  width: 30px;
 }
 
 .menu-toggle .bar {
-  position: absolute;
-  width: 100%;
   height: 3px;
-  background: #fff;
-  transition: 0.4s;
+  width: 100%;
+  background-color: #fff;
+  transition: all 0.3s;
 }
 
-.menu-toggle .bar:nth-child(1) { top: 0; }
-.menu-toggle .bar:nth-child(2) { top: 10px; }
-.menu-toggle .bar:nth-child(3) { top: 20px; }
-
-.menu-toggle.active .bar:nth-child(1) {
-  transform: rotate(45deg);
-  top: 10px;
-}
-.menu-toggle.active .bar:nth-child(2) {
-  opacity: 0;
-}
-.menu-toggle.active .bar:nth-child(3) {
-  transform: rotate(-45deg);
-  top: 10px;
-}
-
+/* Menú lateral místico */
 .menu-overlay {
   position: fixed;
-  top: 0; right: 0;
-  width: 280px;
+  top: 0;
+  right: -100%;
+  width: 80%;
   height: 100%;
-  background: rgba(15, 0, 40, 0.98);
-  transform: translateX(100%);
-  transition: transform 0.4s ease;
-  z-index: 999;
-  box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+  background: rgba(25, 10, 40, 0.98);
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.8);
+  transition: right 0.4s ease;
+  z-index: 998;
 }
 
 .menu-overlay.open {
-  transform: translateX(0);
+  right: 0;
 }
 
-.nav-links {
-  list-style: none;
-  padding: 80px 20px;
+.menu-inner {
+  padding: 4rem 2rem;
   text-align: center;
 }
 
-.nav-link {
-  font-size: 1.6rem;
-  color: #f3eaff;
-  text-decoration: none;
-  margin: 30px 0;
-  display: block;
-  transition: transform 0.3s, color 0.3s;
+.nav-links li {
+  list-style: none;
+  margin: 1.5rem 0;
 }
 
-.nav-link:hover {
-  transform: scale(1.1);
-  color: #a084ca;
+.nav-links li a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #f4f0eb;
+  transition: color 0.3s ease;
+  letter-spacing: 2px;
+}
+
+.nav-links li a:hover {
+  color: #d9b3ff;
+  text-shadow: 0 0 5px #fff;
+}
+
+/* Páginas */
+main {
+  padding-top: 80px;
 }
 
 .page {
   display: none;
-  padding: 120px 20px 40px;
-  max-width: 800px;
-  margin: 0 auto;
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: auto;
+  background: rgba(10, 5, 20, 0.7);
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .page.visible {
   display: block;
 }
 
-.sahumerios-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #555;
+  padding-bottom: 0.5rem;
 }
 
-.sahumerio-card {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
-  padding: 15px;
-  text-align: center;
+h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
 }
 
-.sahumerio-card img {
+p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Productos tipo papiro */
+.papiro {
+  background: url('papiro.png') repeat;
+  background-size: contain;
+  padding: 2rem;
+  border: 2px solid #c7b299;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  color: #2a1c2b;
+  text-shadow: none;
+}
+
+.papiro h3 {
+  color: #5e413d;
+}
+
+.grimorio {
+  margin-top: 1rem;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+audio {
+  margin: 1rem 0;
   width: 100%;
-  border-radius: 12px;
-  margin-bottom: 10px;
 }
 
+.download-btn {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background: #652e7d;
+  color: #fff;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.download-btn:hover {
+  background: #8a3dad;
+}
+
+/* Contacto */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+input, textarea {
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.8);
+  font-family: inherit;
+}
+
+button[type="submit"] {
+  padding: 0.8rem;
+  background: #59216a;
+  border: none;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background: #8b2ca7;
+}
+
+/* Footer */
 footer {
   text-align: center;
-  padding: 15px 10px;
-  background: rgba(0,0,0,0.5);
+  padding: 1rem;
+  background: rgba(10, 5, 20, 0.7);
+  margin-top: 2rem;
   font-size: 0.9rem;
-  margin-top: auto;
-}
-
-@media (max-width: 700px) {
-  .sahumerios-grid {
-    grid-template-columns: 1fr;
-  }
+  border-top: 1px solid #555;
 }
