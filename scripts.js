@@ -1,11 +1,13 @@
-document.getElementById("enterButton").addEventListener("click", function () {
-  document.getElementById("welcome").classList.add("hidden");
-  document.getElementById("mainContent").classList.remove("hidden");
-});
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("enterButton").addEventListener("click", function () {
+    document.getElementById("welcome").classList.add("hidden");
+    document.getElementById("mainContent").classList.remove("hidden");
+  });
 
-const menuButton = document.getElementById("menuButton");
-const menu = document.getElementById("menu");
+  const menuButton = document.getElementById("menuButton");
+  const menu = document.getElementById("menu");
 
-menuButton.addEventListener("click", () => {
-  menu.classList.toggle("hidden");
+  menuButton.addEventListener("click", () => {
+    menu.classList.toggle("menu-hidden");
+  });
 });
