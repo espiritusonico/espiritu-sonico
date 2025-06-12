@@ -38,7 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
   grimorioBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const contenido = btn.nextElementSibling;
-      contenido.style.display = (contenido.style.display === 'block') ? 'none' : 'block';
+      if (contenido.style.maxHeight) {
+  contenido.style.maxHeight = null;
+} else {
+  contenido.style.maxHeight = contenido.scrollHeight + "px";
+}
     });
   });
 });
