@@ -1,45 +1,64 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const enterBtn = document.getElementById("enter-btn");
-  const welcomeScreen = document.getElementById("welcome-screen");
-  const mainContent = document.getElementById("main-content");
+document.addEventListener('DOMContentLoaded', () => {
+  const welcomeScreen = document.getElementById('welcome-screen');
+  const enterBtn = document.getElementById('enter-btn');
+  const mainContent = document.getElementById('main-content');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menuOverlay = document.querySelector('.menu-overlay');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const pages = document.querySelectorAll('.page');
 
-  enterBtn.addEventListener("click", () => {
-    welcomeScreen.style.opacity = "0";
+  // Al hacer click en "Ingresar" se oculta pantalla bienvenida y muestra main content
+  enterBtn.addEventListener('click', () => {
+    welcomeScreen.style.opacity = '0';
     setTimeout(() => {
-      welcomeScreen.style.display = "none";
-      mainContent.style.display = "flex";
-      setTimeout(() => {
-        mainContent.style.opacity = "1";
-      }, 50);
+      welcomeScreen.style.display = 'none';
+      mainContent.classList.add('show');
     }, 1000);
   });
 
-  // Menu toggle
-  const menuToggle = document.querySelector(".menu-toggle");
-  const menuOverlay = document.querySelector(".menu-overlay");
-
-  menuToggle.addEventListener("click", () => {
-    menuOverlay.classList.toggle("active");
+  // Toggle menú
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
   });
 
-  // Navegación de secciones
-  const navLinks = document.querySelectorAll(".nav-link");
-  const pages = document.querySelectorAll(".page");
-
+  // Cerrar menú al hacer click en enlace y mostrar sección correspondiente
   navLinks.forEach(link => {
-    link.addEventListener("click", function (e) {
+    link.addEventListener('click', e => {
       e.preventDefault();
-      const target = this.getAttribute("data-target");
+      const targetId = link.getAttribute('data-target');
 
+      // Mostrar la sección seleccionada y ocultar las demás
       pages.forEach(page => {
-        page.classList.remove("visible");
+        if (page.id === targetId) {
+          page.classList.add('visible');
+        } else {
+          page.classList.remove('visible');
+        }
       });
 
-      document.getElementById(target).classList.add("visible");
-      menuOverlay.classList.remove("active");
+      // Actualizar estilos de menú
+      navLinks.forEach(lnk => lnk.classList.remove('active'));
+      link.classList.add('active');
 
-      navLinks.forEach(l => l.classList.remove("active"));
-      this.classList.add("active");
+      // Cerrar menú móvil
+      menuToggle.classList.remove('active');
+      menuOverlay.classList.remove('active');
     });
   });
+
+  // Marcar el primer enlace como activo por defecto al cargar main content
+  navLinks[0].classList.add('active');
+
+  // Opcional: Scroll suave (en caso de tener enlaces ancla en la página)
+  // Puedes activarlo si quieres.
+  /*
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = link.getAttribute('data-target');
+      document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+  */
 });
