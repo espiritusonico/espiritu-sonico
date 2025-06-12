@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const enterBtn = document.getElementById('enter-btn');
   const welcomeScreen = document.getElementById('welcome-screen');
+  const mainContent = document.getElementById('main-content');
   const menuToggle = document.querySelector('.menu-toggle');
   const menuOverlay = document.querySelector('.menu-overlay');
   const navLinks = document.querySelectorAll('.nav-link');
@@ -8,19 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const grimorioBtns = document.querySelectorAll('.btn-grimorio');
 
   if (enterBtn) {
-  enterBtn.addEventListener('click', () => {
-    welcomeScreen.style.opacity = '0';
-    setTimeout(() => {
-      welcomeScreen.style.display = 'none';
-      const mainContent = document.getElementById('main-content');
-      mainContent.style.opacity = '1';
-      mainContent.style.pointerEvents = 'auto';
-    }, 1000);
-  });
-}
-    document.getElementById('main-content').style.display = 'flex';
-  }, 1000);
-});
+    enterBtn.addEventListener('click', () => {
+      welcomeScreen.style.opacity = '0';
+      setTimeout(() => {
+        welcomeScreen.style.display = 'none';
+        mainContent.style.opacity = '1';
+        mainContent.style.pointerEvents = 'auto';
+      }, 1000);
+    });
+  }
 
   menuToggle.addEventListener('click', () => {
     menuOverlay.classList.toggle('open');
@@ -44,11 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   grimorioBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const contenido = btn.nextElementSibling;
-      if (contenido.style.maxHeight) {
-        contenido.style.maxHeight = null;
-      } else {
-        contenido.style.maxHeight = contenido.scrollHeight + "px";
-      }
+      contenido.style.maxHeight = contenido.style.maxHeight ? null : contenido.scrollHeight + "px";
     });
   });
 });
