@@ -1,43 +1,58 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const enterBtn = document.getElementById("enter-btn");
-  const welcomeScreen = document.getElementById("welcome-screen");
-  const mainContent = document.getElementById("main-content");
-  const menuToggle = document.querySelector(".menu-toggle");
-  const menuOverlay = document.querySelector(".menu-overlay");
-  const navLinks = document.querySelectorAll(".nav-link");
+// scripts.js
 
-  enterBtn.addEventListener("click", () => {
-    welcomeScreen.style.opacity = 0;
+document.addEventListener('DOMContentLoaded', () => {
+  // Bienvenida
+  const welcomeScreen = document.getElementById('welcome-screen');
+  const enterButton = document.getElementById('enter-btn');
+  const mainContent = document.getElementById('main-content');
+
+  enterButton.addEventListener('click', () => {
+    welcomeScreen.style.opacity = '0';
     setTimeout(() => {
-      welcomeScreen.style.display = "none";
-      mainContent.style.opacity = 1;
+      welcomeScreen.style.display = 'none';
+      mainContent.style.opacity = '1';
+      AOS.init(); // Iniciar animaciones AOS una vez dentro
     }, 1000);
   });
 
-  menuToggle.addEventListener("click", () => {
-    menuOverlay.classList.toggle("active");
-    menuToggle.classList.toggle("active");
+  // Menú hamburguesa
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menuOverlay = document.querySelector('.menu-overlay');
+
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
   });
 
+  // Navegación entre páginas
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const pages = document.querySelectorAll('.page');
+
   navLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
+    link.addEventListener('click', e => {
       e.preventDefault();
-      document.querySelectorAll(".page").forEach(page => page.classList.remove("visible"));
-      const targetId = link.getAttribute("data-target");
-      document.getElementById(targetId).classList.add("visible");
-      menuOverlay.classList.remove("active");
-      menuToggle.classList.remove("active");
+
+      // Ocultar el menú al hacer click
+      menuToggle.classList.remove('active');
+      menuOverlay.classList.remove('active');
+
+      const target = link.getAttribute('data-target');
+
+      pages.forEach(page => {
+        page.classList.remove('visible');
+      });
+
+      document.getElementById(target).classList.add('visible');
     });
   });
 
-  document.getElementById("inicio").classList.add("visible");
+  // Control de los papiros desplegables
+  const toggleButtons = document.querySelectorAll('.toggle-papiro');
 
-  // Logica papiro
-  const toggles = document.querySelectorAll(".toggle-papiro");
-  toggles.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const papiro = btn.previousElementSibling;
-      papiro.style.display = papiro.style.display === "block" ? "none" : "block";
+  toggleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const papiro = button.nextElementSibling;
+      papiro.classList.toggle('open');
     });
   });
 });
