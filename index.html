@@ -4,11 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Espíritu Sónico</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
   <link rel="stylesheet" href="styles.css" />
+
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <!-- Menú global fuera del main-content -->
+  <header>
+    <div class="navbar">
+      <div class="logo-header"><img src="logo.png" alt="Espíritu Sónico" /></div>
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <span class="menu-icon"></span>
+      </button>
+    </div>
+
+    <div class="menu-overlay">
+      <ul class="nav-links">
+        <li><a href="#inicio" class="nav-link" data-target="inicio">Inicio</a></li>
+        <li><a href="#acerca" class="nav-link" data-target="acerca">Acerca</a></li>
+        <li><a href="#viajes" class="nav-link" data-target="viajes">Viajes</a></li>
+        <li><a href="#productos" class="nav-link" data-target="productos">Productos</a></li>
+        <li><a href="#contacto" class="nav-link" data-target="contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </header>
 
   <!-- Pantalla de Bienvenida -->
   <section id="welcome-screen">
@@ -22,23 +47,6 @@
 
   <!-- Contenido Principal -->
   <div id="main-content">
-    <header>
-      <nav class="navbar">
-        <div class="logo-header"><img src="logo.png" alt="Espíritu Sónico" /></div>
-        <button class="menu-toggle" aria-label="Abrir menú"><span class="menu-icon"></span></button>
-      </nav>
-    </header>
-
-    <div class="menu-overlay">
-      <ul class="nav-links">
-        <li><a href="#inicio" class="nav-link" data-target="inicio">Inicio</a></li>
-        <li><a href="#acerca" class="nav-link" data-target="acerca">Acerca</a></li>
-        <li><a href="#viajes" class="nav-link" data-target="viajes">Viajes</a></li>
-        <li><a href="#productos" class="nav-link" data-target="productos">Productos</a></li>
-        <li><a href="#contacto" class="nav-link" data-target="contacto">Contacto</a></li>
-      </ul>
-    </div>
-
     <main id="content-container">
       <section id="inicio" class="page visible">
         <h2>Inicio</h2>
@@ -52,53 +60,23 @@
 
       <section id="viajes" class="page">
         <h2>Viajes Sonoros</h2>
-        <div class="viajes-grid">
-          <article class="viaje-card">
-            <h3>Purificación Elemental</h3>
-            <p>Sonido etéreo inspirado en el movimiento del agua y el viento sutil.</p>
-            <audio controls>
-              <source src="audio/purificacion-elementos.mp3" type="audio/mp3">
-            </audio>
-          </article>
-
-          <article class="viaje-card">
-            <h3>Ascensión Lunar</h3>
-            <p>Vibración expansiva que acompaña meditaciones de conexión galáctica.</p>
-            <audio controls>
-              <source src="audio/ascension-lunar.mp3" type="audio/mp3">
-            </audio>
-          </article>
-        </div>
+        <p>Una experiencia sonora para sanar, explorar y liberar tu ser interior.</p>
       </section>
 
       <section id="productos" class="page">
         <h2>Sahumerios Artesanales</h2>
+
         <div class="sahumerios-grid">
           <article class="sahumerio-card">
             <img src="img/lavanda-eucaliptus-menta.jpg" alt="Sahumerio Lavanda, Eucaliptus y Menta" />
             <h3>Lavanda, Eucaliptus y Menta</h3>
             <p>Un frescor etéreo que limpia, relaja y despierta claridad.</p>
             <p><strong>Viaje Sonoro:</strong> Relajación profunda y claridad mental.</p>
-            <audio controls>
+            <audio controls class="mini-player">
               <source src="audio/purificacion-elementos.mp3" type="audio/mp3">
             </audio>
-            <a href="audio/purificacion-elementos.mp3" download class="download-btn">Descargar</a>
             <div class="papiro">
-              <p>En antiguos rituales celtas, la lavanda y el eucalipto combinaban sus esencias para limpiar el cuerpo astral. La menta elevaba la vibración mental, preparando el canal superior para la meditación profunda.</p>
-            </div>
-          </article>
-
-          <article class="sahumerio-card">
-            <img src="img/salvia-benjui-palosanto.jpg" alt="Sahumerio Salvia, Benjuí y Palo Santo" />
-            <h3>Salvia, Benjuí y Palo Santo</h3>
-            <p>Una alquimia protectora y sagrada: limpia, nutre y eleva.</p>
-            <p><strong>Viaje Sonoro:</strong> Transformación y apertura de espacios rituales.</p>
-            <audio controls>
-              <source src="audio/viaje-transformador.mp3" type="audio/mp3">
-            </audio>
-            <a href="audio/viaje-transformador.mp3" download class="download-btn">Descargar</a>
-            <div class="papiro">
-              <p>El Benjuí atrae energías benéficas, la Salvia transmuta lo denso y el Palo Santo abre los portales sutiles. Ideal para limpiezas profundas, rituales de luna llena, meditaciones de desapego o preparación de altares personales.</p>
+              <p>En antiguos rituales celtas, la lavanda y el eucalipto combinaban sus esencias para limpiar el cuerpo astral.</p>
             </div>
           </article>
         </div>
