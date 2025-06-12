@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   welcomeScreen.style.opacity = '0';
   setTimeout(() => {
     welcomeScreen.style.display = 'none';
-    document.getElementById('main-content').style.display = 'flex'; // <-- Esta línea es la clave
+    document.getElementById('main-content').style.display = 'flex';
   }, 1000);
 });
 
