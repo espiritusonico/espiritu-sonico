@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (enterBtn) {
     enterBtn.addEventListener('click', () => {
-      welcomeScreen.style.transition = 'opacity 1s ease';
-      welcomeScreen.style.opacity = '0';
-      setTimeout(() => {
-        welcomeScreen.style.display = 'none';
-      }, 1000);
-    });
-  }
+  welcomeScreen.style.transition = 'opacity 1s ease';
+  welcomeScreen.style.opacity = '0';
+  setTimeout(() => {
+    welcomeScreen.style.display = 'none';
+    document.getElementById('main-content').style.display = 'flex'; // <-- Esta línea es la clave
+  }, 1000);
+});
 
   menuToggle.addEventListener('click', () => {
     menuOverlay.classList.toggle('open');
