@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Espíritu Sónico</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -13,12 +13,10 @@
   <!-- Pantalla de Bienvenida -->
   <section id="welcome-screen">
     <div class="welcome-content">
-      <div class="logo-welcome">
-        <img src="logo.svg" alt="Espíritu Sónico" />
-      </div>
+      <img src="logo.png" alt="Logo Espíritu Sónico" class="logo-animado"/>
       <h1>Espíritu Sónico</h1>
-      <p>Un portal hacia el templo interior</p>
-      <button id="enter-btn">Ingresar al templo</button>
+      <p>Un viaje sonoro donde el alma despierta, y el tiempo se detiene.</p>
+      <button id="enter-btn" class="btn-enter">Ingresar al Templo</button>
     </div>
   </section>
 
@@ -26,35 +24,32 @@
   <div id="main-content">
     <header>
       <nav class="navbar">
-        <div class="logo"><img src="logo.svg" alt="Espíritu Sónico" /></div>
-        <button class="menu-toggle" aria-label="Abrir menú">
-          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        <div class="logo"><img src="logo.svg" alt="Espíritu Sónico"/></div>
+        <button class="menu-toggle" aria-label="Menú">
+          <span></span><span></span><span></span>
         </button>
       </nav>
     </header>
 
     <div class="menu-overlay">
-      <div class="menu-inner">
-        <ul class="nav-links">
-          <li><a href="#inicio" data-target="inicio">Inicio</a></li>
-          <li><a href="#acerca" data-target="acerca">Sobre el Templo</a></li>
-          <li><a href="#viajes" data-target="viajes">Viajes Sonoros</a></li>
-          <li><a href="#productos" data-target="productos">Elixires Aromáticos</a></li>
-          <li><a href="#contacto" data-target="contacto">Invocación</a></li>
-        </ul>
-      </div>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-link" data-target="inicio">El Portal</a></li>
+        <li><a href="#" class="nav-link" data-target="acerca">Sobre el Camino</a></li>
+        <li><a href="#" class="nav-link" data-target="viajes">Viajes Sonoros</a></li>
+        <li><a href="#" class="nav-link" data-target="productos">Los Sahumerios</a></li>
+        <li><a href="#" class="nav-link" data-target="contacto">Contacto</a></li>
+      </ul>
     </div>
 
     <main id="content-container">
-
       <section id="inicio" class="page visible">
-        <h2>El Umbral</h2>
-        <p>Has cruzado la puerta. Aquí comienza el sendero sonoro hacia el despertar interior.</p>
+        <h2>Bienvenido al Portal</h2>
+        <p>Descubre un universo vibrante donde el sonido es medicina y el incienso un mensajero de los astros.</p>
       </section>
 
       <section id="acerca" class="page">
-        <h2>Sobre el Templo</h2>
-        <p>Espíritu Sónico es un espacio de vibración, resonancia y alquimia sonora. Cada viaje, cada aroma y cada susurro son parte de un rito mayor.</p>
+        <h2>Sobre el Camino</h2>
+        <p>Espíritu Sónico nace del encuentro entre los antiguos rituales de purificación y las tecnologías del sonido alquímico.</p>
       </section>
 
       <section id="viajes" class="page">
@@ -64,58 +59,56 @@
           <audio controls>
             <source src="audio/purificacion-elementos.mp3" type="audio/mp3">
           </audio>
-          <a href="audio/purificacion-elementos.mp3" download class="download-btn">Descargar Viaje</a>
+          <a href="audio/purificacion-elementos.mp3" download class="download-btn">Descargar</a>
         </div>
       </section>
 
       <section id="productos" class="page">
-        <h2>Elixires Aromáticos</h2>
+        <h2>Los Sahumerios</h2>
 
-        <div class="papiro">
-          <h3>Lavanda, Eucaliptus y Menta</h3>
-          <p>Un frescor etéreo que limpia, relaja y despierta claridad. <br><strong>Escucha el viaje asociado para potenciar su energía.</strong></p>
-          <audio controls>
-            <source src="audio/viaje-lavanda.mp3" type="audio/mp3">
-          </audio>
-          <a href="audio/viaje-lavanda.mp3" download class="download-btn">Descargar Viaje</a>
-          <div class="grimorio">
-            <h4>Grimorio Interno</h4>
-            <p>Lavanda y eucalipto limpian el cuerpo astral. La menta eleva la vibración mental, abriendo el canal superior.</p>
+        <div class="sahumerio-card">
+          <img src="img/lavanda-eucaliptus-menta.jpg" alt="Sahumerio Lavanda, Eucaliptus y Menta"/>
+          <div class="papiro">
+            <h3>Lavanda, Eucaliptus y Menta</h3>
+            <p>Este sahumerio abre las puertas al **Viaje Sonoro "Claridad de Amanecer"**. Te invitamos a oír la frecuencia mientras el humo danza.</p>
+            <audio controls>
+              <source src="audio/claridad-amanecer.mp3" type="audio/mp3">
+            </audio>
+            <a href="audio/claridad-amanecer.mp3" download class="download-btn">Descargar Viaje</a>
+            <p class="descripcion">La lavanda, el eucaliptus y la menta limpian y despiertan. Sus notas sutiles preparan cuerpo y mente para la conexión profunda. Ideal para rituales al alba.</p>
           </div>
         </div>
 
-        <div class="papiro">
-          <h3>Salvia, Benjuí y Palo Santo</h3>
-          <p>Alquimia protectora y sagrada: limpia, nutre y eleva.<br><strong>Escucha el viaje asociado para activar su fuerza.</strong></p>
-          <audio controls>
-            <source src="audio/viaje-salvia.mp3" type="audio/mp3">
-          </audio>
-          <a href="audio/viaje-salvia.mp3" download class="download-btn">Descargar Viaje</a>
-          <div class="grimorio">
-            <h4>Grimorio Interno</h4>
-            <p>El Benjuí atrae lo benéfico, la Salvia transmuta lo denso y el Palo Santo abre los portales sutiles.</p>
+        <div class="sahumerio-card">
+          <img src="img/salvia-benjui-palosanto.jpg" alt="Sahumerio Salvia, Benjuí y Palo Santo"/>
+          <div class="papiro">
+            <h3>Salvia, Benjuí y Palo Santo</h3>
+            <p>Este sahumerio acompaña el **Viaje Sonoro "Portales Sagrados"**. Sumérgete en su sonido mientras enciendes el incienso.</p>
+            <audio controls>
+              <source src="audio/portales-sagrados.mp3" type="audio/mp3">
+            </audio>
+            <a href="audio/portales-sagrados.mp3" download class="download-btn">Descargar Viaje</a>
+            <p class="descripcion">Esta mezcla crea un puente entre lo material y lo invisible. Ideal para limpiezas profundas, rituales de luna y apertura de altares personales.</p>
           </div>
         </div>
-
       </section>
 
       <section id="contacto" class="page">
-        <h2>Invocación</h2>
+        <h2>Contacto</h2>
         <form>
           <label for="name">Nombre</label>
-          <input id="name" type="text" required />
+          <input id="name" type="text" required/>
           <label for="email">Correo</label>
-          <input id="email" type="email" required />
+          <input id="email" type="email" required/>
           <label for="message">Mensaje</label>
           <textarea id="message" required></textarea>
           <button type="submit">Enviar</button>
         </form>
       </section>
-
     </main>
 
     <footer>
-      <p>Espíritu Sónico © 2025 — Un templo de resonancia interior</p>
+      <p>Espíritu Sónico © 2025 — Un viaje interior a través del sonido.</p>
     </footer>
   </div>
 
