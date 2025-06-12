@@ -9,6 +9,9 @@
 body {
   font-family: 'Cormorant Garamond', serif;
   background: linear-gradient(135deg, #2d033b, #3d087b, #150050);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #f3eaff;
   overflow-x: hidden;
 }
@@ -107,7 +110,8 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(5px);
   z-index: 100;
 }
 
@@ -123,7 +127,7 @@ header {
 }
 
 .menu-toggle {
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: #fff;
   background: none;
   border: none;
@@ -134,7 +138,7 @@ header {
   position: fixed;
   top: 0;
   right: 0;
-  width: 300px;
+  width: 220px;
   height: 100%;
   background: rgba(21, 0, 80, 0.95);
   z-index: 99;
@@ -150,7 +154,7 @@ header {
 .nav-links {
   list-style: none;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 90px;
 }
 
 .nav-links li {
@@ -243,9 +247,9 @@ h2 {
 
 footer {
   text-align: center;
-  padding: 10px;
+  padding: 5px;
   background: rgba(0,0,0,0.5);
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   margin-top: 0;
 }
 
