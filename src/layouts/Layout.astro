@@ -1,0 +1,113 @@
+---
+import "../styles/tailwind.css";
+import Navbar from "../components/Navbar.astro";
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Espíritu Sónico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:wght@300;500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-violetdeep text-gold font-serif min-h-screen antialiased overflow-x-hidden">
+
+    <!-- Fondo galáctico -->
+    <div class="fixed inset-0 -z-10">
+      <div id="parallax-bg" class="w-full h-full bg-[url('/images/fondo-galaxia.png')] bg-cover bg-center bg-no-repeat will-change-transform"></div>
+    </div>
+    <!-- Lienzos de animación -->
+    <canvas id="mist-canvas" class="fixed inset-0 w-full h-full z-0 pointer-events-none"></canvas>
+    <canvas id="particles-canvas" class="fixed inset-0 w-full h-full z-0 pointer-events-none"></canvas>
+
+    <Navbar />
+
+    <main class="pt-20 relative z-10">
+      <slot />
+    </main>
+
+    <!-- Scripts de fondo animado -->
+    <script is:inline>
+      // ---------- PARTICULAS ----------
+      const starsCanvas = document.getElementById("particles-canvas");
+      if (starsCanvas instanceof HTMLCanvasElement) {
+        const ctx = starsCanvas.getContext("2d");
+        let w = window.innerWidth;
+        let h = window.innerHeight;
+        starsCanvas.width = w;
+        starsCanvas.height = h;
+
+        window.addEventListener("resize", () => {
+          w = window.innerWidth;
+          h = window.innerHeight;
+          starsCanvas.width = w;
+          starsCanvas.height = h;
+          mistCanvas.width = w;
+          mistCanvas.height = h;
+        });
+
+        const stars = Array.from({ length: 120 }, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          r: Math.random() * 1.2 + 0.3,
+          alpha: Math.random() * 0.5 + 0.3,
+          speed: Math.random() * 0.0005 + 0.0002
+        }));
+
+        function animateStars() {
+          ctx.clearRect(0, 0, w, h);
+          stars.forEach(s => {
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+            const flicker = Math.abs(Math.sin(Date.now() * s.speed));
+            ctx.fillStyle = `rgba(236, 220, 184, ${flicker * s.alpha})`;
+            ctx.fill();
+          });
+          requestAnimationFrame(animateStars);
+        }
+
+        animateStars();
+      }
+
+      // ---------- NIEBLA ----------
+      const mistCanvas = document.getElementById("mist-canvas");
+      if (mistCanvas instanceof HTMLCanvasElement) {
+        const ctxMist = mistCanvas.getContext("2d");
+        mistCanvas.width = window.innerWidth;
+        mistCanvas.height = window.innerHeight;
+
+        const clouds = Array.from({ length: 6 }, () => ({
+          x: Math.random() * mistCanvas.width,
+          y: Math.random() * mistCanvas.height,
+          r: 200 + Math.random() * 250,
+          dx: (Math.random() - 0.5) * 0.03,
+          dy: (Math.random() - 0.5) * 0.03,
+          opacity: 0.015 + Math.random() * 0.02
+        }));
+
+        function animateMist() {
+          ctxMist.clearRect(0, 0, mistCanvas.width, mistCanvas.height);
+          clouds.forEach(cloud => {
+            const grad = ctxMist.createRadialGradient(cloud.x, cloud.y, 0, cloud.x, cloud.y, cloud.r);
+            grad.addColorStop(0, `rgba(100, 70, 150, ${cloud.opacity})`);
+            grad.addColorStop(1, "rgba(0,0,0,0)");
+            ctxMist.fillStyle = grad;
+            ctxMist.beginPath();
+            ctxMist.arc(cloud.x, cloud.y, cloud.r, 0, Math.PI * 2);
+            ctxMist.fill();
+
+            cloud.x += cloud.dx;
+            cloud.y += cloud.dy;
+
+            if (cloud.x < -cloud.r || cloud.x > mistCanvas.width + cloud.r) cloud.dx *= -1;
+            if (cloud.y < -cloud.r || cloud.y > mistCanvas.height + cloud.r) cloud.dy *= -1;
+          });
+          requestAnimationFrame(animateMist);
+        }
+
+        animateMist();
+      }
+    </script>
+  </body>
+</html>
