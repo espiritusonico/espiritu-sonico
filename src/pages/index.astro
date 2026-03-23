@@ -1,0 +1,67 @@
+---
+import "../styles/tailwind.css";
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Espíritu Sonico</title>
+
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet" />
+  </head>
+
+  <body class="bg-black text-[#ecdcb8] font-cinzel min-h-screen overflow-hidden antialiased m-0">
+
+    <!-- Fondo profundo y ritual -->
+    <div class="fixed inset-0 z-0 bg-gradient-to-b from-[#0a040f] via-[#1a0b23] to-[#100610]">
+      <!-- Niebla dorada ritual -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[120px] animate-pulseSlow"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(#ecdcb82a_1px,transparent_1px)] [background-size:24px_24px] opacity-5 pointer-events-none"></div>
+    </div>
+
+    <!-- Contenido central -->
+    <div class="relative z-10 flex flex-col items-center justify-center h-screen px-6 text-center space-y-10">
+
+      <!-- Logo -->
+      <div class="animate-logoZoom drop-shadow-xl">
+        <img src="/images/logo dorado.png" alt="Espíritu Sonico" class="h-24 sm:h-28 w-auto" />
+      </div>
+
+      <!-- Frase mística (2 líneas) -->
+      <div class="max-w-md animate-fadeinAll">
+        <p class="text-[15px] sm:text-[17px] md:text-lg tracking-wide leading-snug text-gold/90 italic font-light font-serif">
+          “Aquel que oye no es aquel que escucha,<br />
+          y sólo quien escucha puede despertar.”
+        </p>
+        <p class="text-xs mt-3 tracking-wider uppercase text-gold/60">— Peter Kingsley</p>
+      </div>
+
+      <!-- Botón atípico estilo egipcio -->
+      <button
+        id="ingresar-btn"
+        class="group relative inline-flex items-center justify-center px-8 py-2 rounded-full border border-gold text-gold font-[Cinzel Decorative] tracking-widest text-sm transition-all duration-700 overflow-hidden hover:text-violetdeep animate-fadeinAll delay-500"
+      >
+        <span class="absolute inset-0 bg-gold/10 group-hover:bg-gold/20 transition-all duration-200 blur-sm"></span>
+        <span class="absolute inset-0 rounded-full ring-1 ring-gold/30 group-hover:ring-2 group-hover:ring-gold/50 transition-all duration-200 animate-pulseSlow"></span>
+        <span class="relative z-10">Ingresar</span>
+      </button>
+    </div>
+
+    <!-- Delay de transición -->
+    <script type="module" is:inline>
+     const btn = document.getElementById("ingresar-btn");
+     const container = document.body;
+
+    btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    container.classList.add("fade-out");
+    setTimeout(() => {
+      window.location.href = "/inicio";
+     }, 800);
+   });
+  </script>
+  </body>
+</html>

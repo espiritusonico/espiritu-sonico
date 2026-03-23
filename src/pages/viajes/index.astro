@@ -1,0 +1,121 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const viajes = [
+  {
+    titulo: "Niebla Sagrada",
+    subtitulo: "Purificación",
+    descripcion:
+      "Una atmósfera más profunda, ideal para limpiar el campo energético, soltar cargas y abrir un espacio sutil de protección.",
+    duracion: "20 minutos",
+    recomendacion: "Ideal para sahumerios herbales",
+    audio: "/audios/viajes/niebla-sagrada.mp3",
+    descarga: "/audios/viajes/niebla-sagrada.mp3",
+  },
+  {
+    titulo: "Silencio Estelar",
+    subtitulo: "Sueño · Integración",
+    descripcion:
+      "Frecuencias suaves y espaciales para entrar en descanso profundo, ideal para antes de dormir o después de un ritual.",
+    duracion: "20 minutos",
+    recomendacion: "Para cualquier sahumerio que te acompañe",
+    audio: "/audios/viajes/silencio-estelar.mp3",
+    descarga: "/audios/viajes/silencio-estelar.mp3",
+  },
+];
+---
+
+<Layout title="Viajes Sonoros">
+  <section class="relative min-h-screen overflow-hidden px-6 pb-24 pt-20 text-white">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute left-1/2 top-10 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-[#ecdcb8]/[0.05] blur-3xl"></div>
+      <div class="absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-violet-400/[0.06] blur-3xl"></div>
+      <div class="absolute -right-24 bottom-20 h-80 w-80 rounded-full bg-fuchsia-300/[0.05] blur-3xl"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-6xl">
+      <div class="mb-20 text-center">
+        <p class="mb-5 text-xs uppercase tracking-[0.45em] text-[#ecdcb8]/55">
+          Espíritu Sónico
+        </p>
+
+        <h1 class="mx-auto mb-6 max-w-4xl text-4xl font-light leading-tight text-[#ecdcb8] md:text-6xl">
+          Viajes Sonoros
+        </h1>
+
+        <p class="mx-auto max-w-3xl text-base leading-relaxed text-white/70 md:text-lg">
+          Espacios de escucha diseñados para acompañar procesos internos, abrir percepción,
+          facilitar descanso, purificación y contemplación a través de arquitecturas sonoras
+          intencionales.
+        </p>
+
+        <div class="mx-auto mt-10 h-px w-32 bg-gradient-to-r from-transparent via-[#ecdcb8]/60 to-transparent"></div>
+      </div>
+
+      <div class="mx-auto mb-16 max-w-3xl rounded-[2rem] border border-white/10 bg-white/[0.04] px-6 py-6 text-center text-sm leading-relaxed text-white/60 backdrop-blur-xl md:px-10 md:py-7">
+        Auriculares. Pausa. Presencia.<br />
+        Un espacio cuidado puede cambiar por completo la experiencia.<br />
+        Entrar sin apuro. Dejar que el sonido haga su trabajo.
+      </div>
+
+      <div class="grid gap-10 lg:grid-cols-2">
+        {viajes.map((viaje) => (
+          <article class="group relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.025))] p-[1px] shadow-[0_10px_60px_rgba(0,0,0,0.22)] transition duration-500 hover:-translate-y-1 hover:border-white/20">
+            <div class="relative h-full rounded-[2.1rem] bg-[#120a18]/75 px-6 py-7 backdrop-blur-2xl md:px-8 md:py-8">
+              <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-[2.1rem]">
+                <div class="absolute -left-10 top-0 h-40 w-40 rounded-full bg-[#ecdcb8]/[0.06] blur-3xl transition duration-700 group-hover:bg-[#ecdcb8]/[0.09]"></div>
+                <div class="absolute bottom-0 right-0 h-36 w-36 rounded-full bg-violet-300/[0.07] blur-3xl"></div>
+              </div>
+
+              <div class="relative z-10">
+                <p class="mb-3 text-[11px] uppercase tracking-[0.32em] text-white/35">
+                  Viaje disponible
+                </p>
+
+                <h2 class="mb-2 text-3xl font-light leading-tight text-[#ecdcb8] md:text-[2.1rem]">
+                  {viaje.titulo}
+                </h2>
+
+                <p class="mb-6 text-xs uppercase tracking-[0.28em] text-white/45 md:text-sm">
+                  {viaje.subtitulo}
+                </p>
+
+                <p class="mb-7 text-[15px] leading-relaxed text-white/72 md:text-base">
+                  {viaje.descripcion}
+                </p>
+
+                <div class="mb-7 space-y-2 border-t border-white/8 pt-5 text-sm text-white/60">
+                  <p>
+                    <span class="text-[#ecdcb8]/85">Duración aproximada:</span> {viaje.duracion}
+                  </p>
+                  <p>{viaje.recomendacion}</p>
+                </div>
+
+                <div class="mb-6">
+                  <audio controls class="w-full opacity-90 transition duration-300 group-hover:opacity-100">
+                    <source src={viaje.audio} type="audio/mpeg" />
+                    Tu navegador no puede reproducir este audio.
+                  </audio>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3">
+                  <a
+                    href={viaje.descarga}
+                    download
+                    class="inline-flex items-center justify-center rounded-full border border-[#ecdcb8]/35 px-5 py-2.5 text-sm tracking-[0.08em] text-[#ecdcb8] transition duration-300 hover:bg-[#ecdcb8]/10 hover:border-[#ecdcb8]/55"
+                  >
+                    Descargar viaje
+                  </a>
+
+                  <span class="text-xs uppercase tracking-[0.22em] text-white/30">
+                    acceso sonoro
+                  </span>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,29 @@
+---
+import type { Producto } from '../../types';
+const props = Astro.props as Producto;
+const { imagen, nombre, descripcion, precio } = props;
+---
+
+<article class="relative w-full max-w-xs rounded-3xl border border-gold/20 bg-[rgba(0,0,0,0.2)] backdrop-blur-md overflow-hidden transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_0_12px_rgba(212,175,55,0.08)] hover:border-gold/30 active:scale-[0.98]">
+  <div class="absolute inset-0 bg-[url('/images/nebula-texture.png')] bg-cover bg-center opacity-5 pointer-events-none"></div>
+  <div class="flex flex-col h-full">
+    <img
+      src={imagen}
+      alt={`Imagen de ${nombre}`}
+      class="w-full h-[260px] object-contain p-4"
+      loading="lazy"
+    />
+    <div class="flex flex-col justify-between px-4 py-3 text-center bg-[rgba(255,255,255,0.02)] border-t border-gold/10">
+      <h3 class="text-base text-gold font-cormorant uppercase tracking-wide">{nombre}</h3>
+      <p class="text-sm italic text-gold font-cormorant mb-1">{descripcion}</p>
+      <p class="text-sm text-gold font-cormorant font-semibold">${precio}</p>
+    </div>
+  </div>
+</article>
+
+<style>
+  article:hover {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2), 0 0 25px rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.5);
+  }
+</style>

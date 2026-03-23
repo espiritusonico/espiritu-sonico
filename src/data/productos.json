@@ -1,0 +1,16 @@
+[
+  {
+    "nombre": "Sahumerio",
+    "descripcion": "Lavanda, Eucaliptus y Menta",
+    "precio": "6000",
+    "imagen": "/images/sahumerio1.png",
+    "enlace": "/tienda/sahumerio/lavanda"
+  },
+  {
+    "nombre": "Sahumerio",
+    "descripcion": "Salvia, Benjuí y Palo Santo",
+    "precio": "6000",
+    "imagen": "/images/sahumerio2.png",
+    "enlace": "/tienda/sahumerio/salvia"
+  }
+]
