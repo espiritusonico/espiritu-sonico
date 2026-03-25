@@ -40,4 +40,6 @@ dist
 .astro
 .env
 .env.*
-public/audios
+public/audios}
+.vscode
+.DS_Store

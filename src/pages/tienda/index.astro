@@ -1,6 +1,16 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
+const API_URL = import.meta.env.PUBLIC_API_URL ?? "http://localhost:3000";
+
+const productosRes = await fetch(`${API_URL}/productos`);
+
+if (!productosRes.ok) {
+  throw new Error("No se pudieron obtener los productos");
+}
+
+const productos = await productosRes.json();
+
 const destacados = [
   {
     etiqueta: "Acceso gratuito",
@@ -19,30 +29,6 @@ const destacados = [
     href: "#",
     cta: "Ver más",
     acceso: "Próximamente",
-  },
-];
-
-const sahumerios = [
-  {
-    nombre: "Lavanda, Eucaliptus y Menta",
-    descripcion: "Frescura herbal para despejar, limpiar y renovar el espacio.",
-    href: "/tienda/sahumerio/lavanda",
-    cta: "Ver producto",
-    acceso: "Próximamente",
-  },
-  {
-    nombre: "Salvia, Benjuí y Palo Santo",
-    descripcion: "Profundidad ritual para protección, purificación y apertura.",
-    href: "/tienda/sahumerio/salvia",
-    cta: "Ver producto",
-    acceso: "Próximamente",
-  },
-  {
-    nombre: "Tercera variedad",
-    descripcion: "Nueva combinación en preparación para ampliar la línea.",
-    href: "#",
-    cta: "Próximamente",
-    acceso: "En preparación",
   },
 ];
 
@@ -153,51 +139,46 @@ const digitales = [
         </div>
 
         <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {sahumerios.map((item) => (
-            <article class="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-[1px] transition duration-500 hover:-translate-y-1 hover:border-white/20">
-              <div class="flex h-full flex-col rounded-[1.95rem] bg-[#120a18]/80 px-6 py-7 backdrop-blur-xl">
-                <div class="mb-8">
-                  <div class="mb-5 flex items-center justify-between gap-3">
-                    <span class="text-[10px] uppercase tracking-[0.28em] text-white/35">
-                      Sahumerio artesanal
-                    </span>
-                    <span class="h-2.5 w-2.5 rounded-full bg-[#ecdcb8]/70 shadow-[0_0_12px_rgba(236,220,184,0.35)]"></span>
-                  </div>
+          {productos.map((item) => (
+  <article class="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-[1px] transition duration-500 hover:-translate-y-1 hover:border-white/20">
+    <div class="flex h-full flex-col rounded-[1.95rem] bg-[#120a18]/80 px-6 py-7 backdrop-blur-xl">
+      <div class="mb-8">
+        <div class="mb-5 flex items-center justify-between gap-3">
+          <span class="text-[10px] uppercase tracking-[0.28em] text-white/35">
+            {item.tipo}
+          </span>
+          <span class="h-2.5 w-2.5 rounded-full bg-[#ecdcb8]/70 shadow-[0_0_12px_rgba(236,220,184,0.35)]"></span>
+        </div>
 
-                  <h3 class="mb-4 text-2xl font-light leading-tight text-[#ecdcb8]">
-                    {item.nombre}
-                  </h3>
+        <h3 class="mb-4 text-2xl font-light leading-tight text-[#ecdcb8]">
+          {item.mezcla}
+        </h3>
 
-                  <p class="max-w-xs text-sm leading-relaxed text-white/70">
-                    {item.descripcion}
-                  </p>
-                </div>
+        <p class="max-w-xs text-sm leading-relaxed text-white/70">
+          {item.descripcionCorta}
+        </p>
+      </div>
 
-                <div class="mt-auto flex items-end justify-between gap-4 border-t border-white/10 pt-5">
-                  <div>
-                    <p class="mb-1 text-[10px] uppercase tracking-[0.22em] text-white/30">
-                      Acceso
-                    </p>
-                    <p class="text-sm text-[#ecdcb8]/85">
-                      {item.acceso}
-                    </p>
-                  </div>
+      <div class="mt-auto flex items-end justify-between gap-4 border-t border-white/10 pt-5">
+        <div>
+          <p class="mb-1 text-[10px] uppercase tracking-[0.22em] text-white/30">
+            Estado
+          </p>
+          <p class="text-sm text-[#ecdcb8]/85">
+            Disponible
+          </p>
+        </div>
 
-                  <a
-                    href={item.href}
-                    class:list={[
-                      "inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm tracking-[0.06em] transition duration-300",
-                      item.href === "#"
-                        ? "border-white/10 text-white/45 hover:border-white/20 hover:bg-white/5"
-                        : "border-[#ecdcb8]/35 text-[#ecdcb8] hover:border-[#ecdcb8]/55 hover:bg-[#ecdcb8]/10"
-                    ]}
-                  >
-                    {item.cta}
-                  </a>
-                </div>
-              </div>
-            </article>
-          ))}
+        <a
+          href={`/productos/${item.slug}`}
+          class="inline-flex items-center justify-center rounded-full border border-[#ecdcb8]/35 px-5 py-2.5 text-sm tracking-[0.06em] text-[#ecdcb8] transition duration-300 hover:border-[#ecdcb8]/55 hover:bg-[#ecdcb8]/10"
+        >
+          Ver producto
+        </a>
+      </div>
+    </div>
+  </article>
+))}
         </div>
       </section>
 

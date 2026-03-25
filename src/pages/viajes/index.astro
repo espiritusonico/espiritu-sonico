@@ -1,28 +1,27 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
-const viajes = [
-  {
-    titulo: "Niebla Sagrada",
-    subtitulo: "Purificación",
-    descripcion:
-      "Una atmósfera más profunda, ideal para limpiar el campo energético, soltar cargas y abrir un espacio sutil de protección.",
-    duracion: "20 minutos",
-    recomendacion: "Ideal para sahumerios herbales",
-    audio: "/audios/viajes/niebla-sagrada.mp3",
-    descarga: "/audios/viajes/niebla-sagrada.mp3",
-  },
-  {
-    titulo: "Silencio Estelar",
-    subtitulo: "Sueño · Integración",
-    descripcion:
-      "Frecuencias suaves y espaciales para entrar en descanso profundo, ideal para antes de dormir o después de un ritual.",
-    duracion: "20 minutos",
-    recomendacion: "Para cualquier sahumerio que te acompañe",
-    audio: "/audios/viajes/silencio-estelar.mp3",
-    descarga: "/audios/viajes/silencio-estelar.mp3",
-  },
-];
+const API_URL = import.meta.env.PUBLIC_API_URL ?? "http://localhost:3000";
+
+const res = await fetch(`${API_URL}/viajes-sonoros`);
+
+if (!res.ok) {
+  throw new Error("No se pudieron obtener los viajes sonoros");
+}
+
+const viajes = await res.json();
+
+const subtitulos = {
+  "niebla-sagrada": "Purificación",
+  "silencio-estelar": "Sueño · Integración",
+};
+
+const recomendaciones = {
+  "niebla-sagrada":
+    "Ideal para momentos de limpieza, transición o renovación del espacio interno.",
+  "silencio-estelar":
+    "Ideal para la noche, el descanso profundo o momentos de ansiedad que necesitan suavidad.",
+};
 ---
 
 <Layout title="Viajes Sonoros">
@@ -77,7 +76,7 @@ const viajes = [
                 </h2>
 
                 <p class="mb-6 text-xs uppercase tracking-[0.28em] text-white/45 md:text-sm">
-                  {viaje.subtitulo}
+                  {subtitulos[viaje.slug] ?? "Escucha ritual"}
                 </p>
 
                 <p class="mb-7 text-[15px] leading-relaxed text-white/72 md:text-base">
@@ -88,28 +87,23 @@ const viajes = [
                   <p>
                     <span class="text-[#ecdcb8]/85">Duración aproximada:</span> {viaje.duracion}
                   </p>
-                  <p>{viaje.recomendacion}</p>
-                </div>
-
-                <div class="mb-6">
-                  <audio controls class="w-full opacity-90 transition duration-300 group-hover:opacity-100">
-                    <source src={viaje.audio} type="audio/mpeg" />
-                    Tu navegador no puede reproducir este audio.
-                  </audio>
+                  <p>
+                    {recomendaciones[viaje.slug] ??
+                      "Escucha recomendada en un espacio cuidado y sin apuro."}
+                  </p>
                 </div>
 
                 <div class="flex flex-wrap items-center gap-3">
-                  <a
-                    href={viaje.descarga}
-                    download
-                    class="inline-flex items-center justify-center rounded-full border border-[#ecdcb8]/35 px-5 py-2.5 text-sm tracking-[0.08em] text-[#ecdcb8] transition duration-300 hover:bg-[#ecdcb8]/10 hover:border-[#ecdcb8]/55"
-                  >
-                    Descargar viaje
-                  </a>
+                <a
+                  href={`/viajes/${viaje.slug}`}
+                  class="inline-flex items-center justify-center rounded-full border border-[#ecdcb8]/35 px-5 py-2.5 text-sm tracking-[0.08em] text-[#ecdcb8] transition duration-300 hover:bg-[#ecdcb8]/10 hover:border-[#ecdcb8]/55"
+                >
+                 Abrir viaje
+                </a>
 
-                  <span class="text-xs uppercase tracking-[0.22em] text-white/30">
-                    acceso sonoro
-                  </span>
+                <span class="text-xs uppercase tracking-[0.22em] text-white/30">
+                 acceso sonoro
+                </span>
                 </div>
               </div>
             </div>

@@ -1,0 +1,264 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AudioPlayer from "../../components/AudioPlayer.astro";
+
+export async function getStaticPaths() {
+  const API_URL = import.meta.env.PUBLIC_API_URL ?? "http://localhost:3000";
+  const res = await fetch(`${API_URL}/viajes-sonoros`);
+
+  if (!res.ok) return [];
+
+  const viajes = await res.json();
+
+  return viajes.map((viaje) => ({
+    params: { slug: viaje.slug },
+    props: { viaje },
+  }));
+}
+
+const { viaje } = Astro.props;
+
+const detallesViaje = {
+  "silencio-estelar": {
+    subtitulo: "Descanso · Sueño · Regulación",
+    frase:
+      "Una arquitectura sonora orientada a reducir fricción interna, desacelerar el pensamiento y abrir un espacio real de descanso.",
+    proposito:
+      "Silencio Estelar fue desarrollado para acompañar momentos de ansiedad, saturación mental, dificultad para soltar el día o necesidad de entrar en una atmósfera de descanso profundo. No busca sedar ni impresionar. Su trabajo consiste en disminuir densidad interna, aflojar el ritmo perceptivo y permitir que el cuerpo recupere una relación más suave con el silencio.",
+    construccion:
+      "La construcción de este viaje combina composición, diseño sonoro y tratamiento fino de capas en software. Parte del proceso se trabaja en Ableton, utilizando distintos VST e instrumentos tratados como materia perceptiva más que como acompañamiento musical convencional. Los timbres, pulsos, colchones y desplazamientos espaciales se afinan según la función del viaje: en este caso, favorecer reposo, integración y una reducción progresiva de la tensión interna.",
+    detras:
+      "Detrás de esta escucha hay años de estudio, práctica y observación sobre cómo el sonido modifica estados. La búsqueda no se apoya en fórmulas rápidas sino en una investigación sostenida sobre frecuencia, ritmo, resonancia, silencio, repetición y ambiente. En ese cruce dialogan intuición ritual, producción digital y una sensibilidad afinada hacia cómo ciertas vibraciones inciden sobre el cuerpo y la mente cuando están dispuestas con intención.",
+    sonologia:
+      "La Sonología Ritual atraviesa todo este trabajo como una columna central. No se trata solo de música ni de meditación guiada: se trata de diseñar experiencias sonoras capaces de producir una atmósfera, abrir percepción y acompañar transformaciones internas. En esa línea conviven tecnología, ceremonialidad y escucha profunda. Hay resonancias con investigaciones y cruces que, desde distintos lugares, pensaron el vínculo entre sonido, cuerpo y conciencia: desde la dimensión vibracional de Hans Jenny, hasta la relación entre música, cultura y trance estudiada por Gilbert Rouget, pasando por enfoques contemporáneos de escucha profunda y percepción expandida.",
+    recomendaciones: [
+      "Escucharlo de noche o en un momento donde ya no tengas que responder al mundo.",
+      "Usar auriculares para percibir con mayor profundidad los movimientos internos de la mezcla.",
+      "Funciona especialmente bien antes de dormir o después de un día con mucha carga.",
+      "Entrar sin exigencia. No hace falta entender todo para que la experiencia opere."
+    ],
+    durante: [
+      "Disminución progresiva del diálogo interno.",
+      "Sensación de amplitud, alivio o descenso del ritmo mental.",
+      "Cansancio sano, necesidad de cerrar los ojos o aflojar el cuerpo.",
+      "Entrada gradual en una percepción más blanda y menos defensiva."
+    ],
+    cierre:
+      "Silencio Estelar no busca ocupar el espacio: busca volverlo respirable. Su potencia aparece cuando la escucha deja de empujar y empieza a entregarse."
+  },
+
+  "niebla-sagrada": {
+    subtitulo: "Purificación · Limpieza · Renovación",
+    frase:
+      "Un recorrido sonoro orientado a despejar carga, mover densidad y abrir un campo más limpio y disponible.",
+    proposito:
+      "Niebla Sagrada fue creado para momentos donde algo necesita correrse: tensión acumulada, pesadez, restos del día, saturación emocional o sensación de carga en el ambiente interno. No trabaja desde el golpe ni desde el dramatismo. Su recorrido propone una limpieza gradual, como si el espacio perceptivo pudiera ventilarse desde adentro.",
+    construccion:
+      "Su diseño combina capas envolventes, texturas en movimiento, resonancias prolongadas y afinaciones orientadas a producir una sensación de desplazamiento y limpieza. El trabajo en Ableton y distintos VST permite modelar atmósferas, filtrar densidades, abrir espacio y construir un tránsito sonoro que no sea decorativo, sino funcional. Cada vibración es tratada como parte de una arquitectura sensible que acompaña un proceso de reorganización interna.",
+    detras:
+      "Este viaje forma parte de un trabajo sostenido donde el sonido no se usa como fondo, sino como herramienta de transformación perceptiva. La elección de frecuencias, relaciones armónicas, planos, reverberaciones y respiración de la mezcla responde a años de exploración, escucha y práctica ritual. Lo digital no aparece como artificio vacío, sino como medio para esculpir estados con precisión.",
+    sonologia:
+      "La Sonología Ritual aparece aquí como un cruce entre composición, escucha profunda, ceremonialidad y tecnología. El objetivo no es ilustrar una idea espiritual, sino producir una atmósfera efectiva donde algo pueda despejarse, moverse o reordenarse. En esa perspectiva hay afinidades con estudios sobre vibración, resonancia, trance, cuerpo y percepción, pero el trabajo busca una formulación propia: una práctica donde la experiencia sonora se diseña como umbral.",
+    recomendaciones: [
+      "Ideal antes de iniciar un ritual, una meditación o un momento de trabajo interno.",
+      "También funciona muy bien después de jornadas pesadas o encuentros cargados.",
+      "Puede acompañarse con sahumo, respiración lenta o simplemente escucha inmóvil.",
+      "Conviene entrar con disposición de limpieza más que con lógica de entretenimiento."
+    ],
+    durante: [
+      "Sensación de despeje o ventilación interna.",
+      "Movimiento emocional sutil sin necesidad de catarsis.",
+      "Mayor presencia, alivio respiratorio o sensación de renovación.",
+      "Percepción de que algo se acomodó incluso sin poder explicarlo del todo."
+    ],
+    cierre:
+      "Niebla Sagrada trabaja por desplazamiento. No viene a imponerse, sino a correr capas para que la percepción vuelva a respirar."
+  }
+};
+const detalle = detallesViaje[viaje.slug] ?? {
+  subtitulo: "Escucha ritual",
+  frase: "Una experiencia sonora diseñada para abrir percepción y acompañar procesos internos.",
+  proposito:
+    "Este viaje forma parte del universo de Espíritu Sónico y fue concebido como una experiencia de escucha intencional.",
+  construccion:
+    "Su estructura responde a una lógica de diseño sonoro orientada a producir una experiencia sensible y significativa.",
+  detras:
+    "Detrás de cada viaje hay trabajo de escucha, composición, software, tratamiento de capas y búsqueda vibracional.",
+  sonologia:
+    "La Sonología Ritual integra escucha, composición, tecnología y percepción para diseñar experiencias sonoras con intención.",
+  recomendaciones: [
+    "Escuchar en un espacio cuidado.",
+    "Darse tiempo para entrar en la experiencia.",
+    "Permitir que el sonido actúe sin buscar controlar todo."
+  ],
+  durante: [
+    "Cambios de percepción.",
+    "Mayor quietud.",
+    "Movimientos internos sutiles."
+  ],
+  cierre:
+    "Cada escucha abre una experiencia distinta. Lo importante es entrar con presencia."
+};
+---
+
+<Layout title={viaje.titulo}>
+  <section class="relative min-h-screen overflow-hidden px-6 pb-24 pt-20 text-white">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute left-1/2 top-0 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-[#ecdcb8]/[0.04] blur-3xl"></div>
+      <div class="absolute -left-24 top-1/3 h-80 w-80 rounded-full bg-violet-400/[0.07] blur-3xl"></div>
+      <div class="absolute -right-20 bottom-10 h-96 w-96 rounded-full bg-fuchsia-300/[0.05] blur-3xl"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.03),transparent_45%)]"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-6xl">
+      <div class="mb-12 text-center">
+        <p class="mb-5 text-xs uppercase tracking-[0.45em] text-[#ecdcb8]/55">
+          Espíritu Sónico · Viaje Sonoro
+        </p>
+
+        <h1 class="mx-auto mb-4 max-w-4xl text-4xl font-light leading-tight text-[#ecdcb8] md:text-6xl">
+          {viaje.titulo}
+        </h1>
+
+        <p class="mb-6 text-xs uppercase tracking-[0.28em] text-white/45 md:text-sm">
+          {detalle.subtitulo}
+        </p>
+
+        <p class="mx-auto max-w-3xl text-base leading-relaxed text-white/72 md:text-lg">
+          {detalle.frase}
+        </p>
+
+        <div class="mx-auto mt-10 h-px w-40 bg-gradient-to-r from-transparent via-[#ecdcb8]/60 to-transparent"></div>
+      </div>
+
+      <div class="space-y-8">
+  <AudioPlayer
+    src={viaje.audioUrl}
+    title={viaje.titulo}
+    subtitle={detalle.subtitulo}
+    duration={viaje.duracion}
+  />
+
+  <article class="overflow-hidden rounded-[2.2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.025))] p-[1px] shadow-[0_10px_60px_rgba(0,0,0,0.22)]">
+    <div class="relative rounded-[2.1rem] bg-[#120a18]/80 px-7 py-8 backdrop-blur-2xl md:px-10 md:py-10">
+      <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-[2.1rem]">
+        <div class="absolute -left-10 top-0 h-40 w-40 rounded-full bg-[#ecdcb8]/[0.06] blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 h-36 w-36 rounded-full bg-violet-300/[0.07] blur-3xl"></div>
+      </div>
+
+      <div class="relative z-10">
+        <p class="mb-3 text-[11px] uppercase tracking-[0.32em] text-white/35">
+          Propósito del viaje
+        </p>
+        <p class="text-[15px] leading-relaxed text-white/75 md:text-[17px]">
+          {detalle.proposito}
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <article class="overflow-hidden rounded-[2.2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-[1px]">
+    <div class="relative rounded-[2.1rem] bg-[#140d1b]/75 px-7 py-8 backdrop-blur-2xl md:px-10 md:py-10">
+      <div class="relative z-10">
+        <h2 class="mb-4 text-2xl font-light text-[#ecdcb8] md:text-3xl">
+          Cómo está construido
+        </h2>
+        <p class="text-[15px] leading-relaxed text-white/72 md:text-base">
+          {detalle.construccion}
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <article class="overflow-hidden rounded-[2.2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-[1px]">
+    <div class="relative rounded-[2.1rem] bg-[#140d1b]/75 px-7 py-8 backdrop-blur-2xl md:px-10 md:py-10">
+      <div class="relative z-10">
+        <h2 class="mb-4 text-2xl font-light text-[#ecdcb8] md:text-3xl">
+          El trabajo detrás
+        </h2>
+        <p class="text-[15px] leading-relaxed text-white/72 md:text-base">
+          {detalle.detras}
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <div class="grid gap-8 lg:grid-cols-2">
+  <article class="card-viaje rounded-[2.2rem] px-6 py-7 md:px-8 md:py-8">
+    <h2 class="mb-5 text-2xl font-light text-[#ecdcb8]">
+      Recomendaciones de uso
+    </h2>
+
+    <div class="space-y-3">
+      {detalle.recomendaciones.map((item) => (
+        <div class="rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-4 text-sm leading-relaxed text-white/70">
+          {item}
+        </div>
+      ))}
+    </div>
+  </article>
+
+  <article class="card-viaje rounded-[2.2rem] px-7 py-8 md:px-10 md:py-10">
+    <div class="relative z-10">
+      <h2 class="mb-5 text-2xl font-light text-[#ecdcb8] md:text-3xl">
+        Qué puede mover esta escucha
+      </h2>
+
+      <div class="grid gap-3">
+        {detalle.durante.map((item) => (
+          <div class="rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-4 text-sm leading-relaxed text-white/70">
+            {item}
+          </div>
+        ))}
+      </div>
+    </div>
+  </article>
+</div>
+
+  <article class="overflow-hidden rounded-[2.2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015))] p-[1px]">
+    <div class="relative rounded-[2.1rem] bg-[#120a18]/78 px-6 py-7 backdrop-blur-2xl md:px-8 md:py-8">
+      <p class="mb-3 text-[11px] uppercase tracking-[0.32em] text-white/35">
+        Sonología Ritual
+      </p>
+
+      <h2 class="mb-4 text-2xl font-light text-[#ecdcb8]">
+  Sonología Ritual
+</h2>
+
+<p class="text-sm leading-relaxed text-white/70">
+  {detalle.sonologia}
+</p>
+    </div>
+  </article>
+
+  <div class="flex justify-center pt-2">
+    <a
+      href="/viajes"
+      class="inline-flex items-center justify-center rounded-full border border-white/10 px-5 py-2.5 text-sm tracking-[0.08em] text-white/70 transition duration-300 hover:border-white/25 hover:bg-white/5"
+    >
+      Volver a viajes
+    </a>
+  </div>
+</div>
+
+  <style>
+  .card-viaje {
+    position: relative;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.02) 100%
+      ),
+      rgba(20, 13, 27, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.02),
+      0 10px 60px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+</style>
+
+  </section>
+</Layout>

@@ -1,0 +1,861 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const API_BASE = import.meta.env.PUBLIC_API_URL ?? "http://127.0.0.1:3000";
+  const res = await fetch(`${API_BASE}/productos`);
+
+  if (!res.ok) return [];
+
+  const productos = await res.json();
+
+  return productos.map((producto) => ({
+    params: { slug: producto.slug },
+    props: { producto },
+  }));
+}
+
+const { producto } = Astro.props;
+
+const contenidoVisualPorSlug = {
+  "lavanda-eucaliptus-menta": {
+    resumenHero: "Frescura herbal · claridad · limpieza suave",
+    perfilIntro: "Una lectura sensible de cómo esta mezcla se expresa en el espacio.",
+    perfil: [
+      { label: "Frescura", value: 4.5 },
+      { label: "Suavidad", value: 4 },
+      { label: "Claridad", value: 4.5 },
+      { label: "Profundidad", value: 2.5 },
+      { label: "Apertura", value: 4 },
+    ],
+    presenciaEyebrow: "Presencia en el espacio",
+    presenciaTitulo: "Un sahumerio claro, herbáceo y respirable",
+    presenciaTexto1:
+      "Su carácter acompaña limpiezas suaves, aperturas del día, momentos de enfoque y pausas conscientes donde hace falta renovar el clima sin invadirlo.",
+    presenciaTexto2:
+      "Funciona especialmente bien en espacios donde se busca claridad, circulación y una sensación más ligera tanto en el ambiente como en la mente.",
+    caracter:
+      "Fresco, claro y aireado, con una presencia amable que limpia sin imponerse.",
+    momentoIdeal:
+      "Mañanas, reinicios, pausas conscientes o apertura previa a una práctica.",
+    descripcionTitulo: "Una presencia herbal que limpia sin invadir",
+    descripcionParrafos: [
+      "Este sahumerio fue pensado para quienes buscan una limpieza sutil pero efectiva, capaz de renovar el clima del espacio sin volverlo pesado ni excesivamente intenso. Su carácter es fresco, claro y vegetal.",
+      "La lavanda aporta serenidad y una cualidad envolvente que aquieta. El eucaliptus abre, despeja y refresca. La menta introduce una nota viva, ligera y revitalizante. Juntas, estas plantas generan una atmósfera que ayuda a cambiar el pulso del lugar y también el estado interno de quien lo habita.",
+      "Puede acompañar una mañana de trabajo, una práctica meditativa, una limpieza del hogar o simplemente ese momento en que hace falta cortar con la densidad acumulada y volver a respirar con mayor amplitud.",
+    ],
+    viajeDestacado:
+      "Esta combinación puede profundizarse con una escucha diseñada para acompañar su clima: claridad, respiración y ligereza. El viaje sonoro asociado no funciona como un agregado decorativo, sino como una extensión de la experiencia.",
+    propiedadesFallback: [
+      {
+        titulo: "Lavanda",
+        texto:
+          "Aporta calma, suavidad y una sensación de cobijo sutil que ayuda a relajar el campo interno.",
+      },
+      {
+        titulo: "Eucaliptus",
+        texto:
+          "Despeja, refresca y abre la percepción, generando una impresión de limpieza aérea y renovación.",
+      },
+      {
+        titulo: "Menta",
+        texto:
+          "Introduce vitalidad, claridad y una nota estimulante que ayuda a cortar la pesadez ambiental.",
+      },
+      {
+        titulo: "La combinación",
+        texto:
+          "El resultado es una alquimia fresca y armonizadora, ideal para limpiar, revitalizar y devolver ligereza al espacio.",
+      },
+    ],
+    recomendaciones: [
+      {
+        titulo: "Apertura del día",
+        texto:
+          "Encenderlo por la mañana, abrir una ventana unos minutos y dejar que el humo recorra el espacio antes de comenzar una actividad importante. Funciona muy bien como gesto de renovación y enfoque.",
+      },
+      {
+        titulo: "Limpieza previa a una práctica",
+        texto:
+          "Puede usarse antes de meditar, escribir, escuchar un viaje sonoro o simplemente para cambiar la densidad de una habitación. No exige una ceremonia compleja: alcanza con presencia, intención y escucha.",
+      },
+    ],
+    cierre:
+      "Cada combinación de Espíritu Sónico busca abrir un clima, no solo perfumar un ambiente.",
+  },
+
+  "salvia-benjui-palo-santo": {
+    resumenHero: "Purificación profunda · recogimiento · protección",
+    perfilIntro: "Una lectura sensible de cómo esta mezcla se expresa en el espacio.",
+    perfil: [
+      { label: "Frescura", value: 2.5 },
+      { label: "Suavidad", value: 3 },
+      { label: "Claridad", value: 4 },
+      { label: "Profundidad", value: 5 },
+      { label: "Apertura", value: 4 },
+    ],
+    presenciaEyebrow: "Presencia en el espacio",
+    presenciaTitulo: "Una presencia más ritual, densa y envolvente",
+    presenciaTexto1:
+      "Su carácter acompaña limpiezas profundas, momentos de recogimiento, cierres de etapa y situaciones donde hace falta restaurar una sensación de eje, protección y presencia.",
+    presenciaTexto2:
+      "Funciona especialmente bien en espacios que necesitan un cambio energético más marcado, una depuración simbólica o una atmósfera de mayor sostén ritual.",
+    caracter:
+      "Profundo, resinoso y ceremonial, con una impronta más intensa y concentrada.",
+    momentoIdeal:
+      "Atardeceres, cierres, limpiezas profundas, umbrales personales o apertura de trabajos rituales.",
+    descripcionTitulo: "Una combinación de raíz sagrada y limpieza profunda",
+    descripcionParrafos: [
+      "Este sahumerio fue pensado para momentos en los que no alcanza con refrescar el ambiente: hace falta transformar su densidad. Su presencia es más honda, más ritual y más marcada.",
+      "La salvia aporta purificación y corte. El benjuí suma una textura resinosa, cálida y protectora. El palo santo ordena, armoniza y deja una sensación de profundidad amable que sostiene el trabajo sin volverlo áspero.",
+      "Juntas, estas plantas crean un humo con impronta ceremonial, ideal para cierres, limpiezas simbólicas, preparación de altares o prácticas donde se busca mayor recogimiento y fuerza interna.",
+    ],
+    viajeDestacado:
+      "Su potencia se amplifica cuando se vincula con una escucha adecuada. El viaje sonoro asociado acompaña procesos de limpieza, reorganización y recentrado, expandiendo el trabajo de la mezcla más allá del momento del sahumo.",
+    propiedadesFallback: [
+      {
+        titulo: "Salvia",
+        texto:
+          "Aporta limpieza, depuración y una acción clara sobre ambientes cargados o momentos de transición.",
+      },
+      {
+        titulo: "Benjuí",
+        texto:
+          "Introduce una cualidad protectora, cálida y resinosa que envuelve el espacio con mayor densidad simbólica.",
+      },
+      {
+        titulo: "Palo Santo",
+        texto:
+          "Ordena, armoniza y suaviza la intensidad de la mezcla, dejando una sensación de eje y profundidad.",
+      },
+      {
+        titulo: "La combinación",
+        texto:
+          "El resultado es una alquimia protectora y transformadora, ideal para limpiar en profundidad y devolver centro al espacio.",
+      },
+    ],
+    recomendaciones: [
+      {
+        titulo: "Cierre de ciclo",
+        texto:
+          "Encenderlo al terminar una etapa, antes de ordenar el espacio o al cerrar una jornada intensa. Puede acompañar escrituras de cierre, respiración consciente o un momento de silencio intencional.",
+      },
+      {
+        titulo: "Protección del ambiente",
+        texto:
+          "Usarlo al ingresar a un lugar que se siente pesado, antes de una práctica profunda o para delimitar simbólicamente un espacio de trabajo interior. Su fuerza pide presencia y una intención clara.",
+      },
+    ],
+    cierre:
+      "Algunas combinaciones no solo armonizan: también ayudan a cortar, depurar y devolver centro.",
+  },
+
+  "sandalo-rojo-lavanda-eucaliptus-y-menta": {
+    resumenHero: "Calidez herbal · enfoque · expansión suave",
+    perfilIntro: "Una lectura sensible de cómo esta mezcla se expresa en el espacio.",
+    perfil: [
+      { label: "Frescura", value: 3.5 },
+      { label: "Suavidad", value: 4 },
+      { label: "Claridad", value: 4 },
+      { label: "Profundidad", value: 3.5 },
+      { label: "Apertura", value: 4.5 },
+    ],
+    presenciaEyebrow: "Presencia en el espacio",
+    presenciaTitulo: "Una mezcla cálida, fresca y de apertura progresiva",
+    presenciaTexto1:
+      "Su carácter acompaña momentos donde hace falta combinar claridad con suavidad, enfoque con respiración amplia y una atmósfera ritual que no se vuelva pesada.",
+    presenciaTexto2:
+      "Funciona especialmente bien en prácticas de introspección ligera, mañanas creativas o instancias donde el espacio necesita presencia sin exceso de densidad.",
+    caracter:
+      "Herbal, cálido y equilibrado, con una expansión gradual y amable.",
+    momentoIdeal:
+      "Inicio del día, trabajo creativo, escucha sonora o pausas de recentrado.",
+    descripcionTitulo: "Un equilibrio entre arraigo suave y circulación",
+    descripcionParrafos: [
+      "Esta combinación reúne una base más cálida con notas herbales y frescas que ordenan sin endurecer el ambiente. Su presencia se siente envolvente, pero deja aire.",
+      "El sándalo rojo aporta cuerpo, calidez y profundidad amable. La lavanda suaviza. El eucaliptus despeja y la menta activa una claridad ligera que ayuda a renovar el pulso del espacio.",
+      "El resultado es una mezcla versátil, útil tanto para acompañar una práctica como para transformar el clima cotidiano sin llevarlo a un extremo demasiado denso o demasiado etéreo.",
+    ],
+    viajeDestacado:
+      "La experiencia puede continuar en una escucha especialmente pensada para acompañar su carácter. El viaje sonoro asociado extiende la mezcla hacia una atmósfera más inmersiva y perceptiva.",
+    propiedadesFallback: [
+      {
+        titulo: "Sándalo rojo",
+        texto:
+          "Aporta base, calidez y una sensación de arraigo sutil que da sostén a la mezcla.",
+      },
+      {
+        titulo: "Lavanda",
+        texto:
+          "Suaviza el campo y ayuda a crear una atmósfera serena y receptiva.",
+      },
+      {
+        titulo: "Eucaliptus y menta",
+        texto:
+          "Abren, despejan y añaden una claridad aérea que evita que la mezcla se vuelva pesada.",
+      },
+      {
+        titulo: "La combinación",
+        texto:
+          "El resultado es una alquimia equilibrada, clara y envolvente, ideal para ordenar el espacio con suavidad.",
+      },
+    ],
+    recomendaciones: [
+      {
+        titulo: "Preparación de un espacio creativo",
+        texto:
+          "Encenderlo antes de escribir, producir, practicar o diseñar algo importante. Ayuda a limpiar el ruido del ambiente sin apagar el impulso interno.",
+      },
+      {
+        titulo: "Acompañamiento de escucha",
+        texto:
+          "Puede usarse antes de un viaje sonoro, una meditación guiada o una pausa de recentrado. Su presencia favorece una entrada gradual y respirable al momento.",
+      },
+    ],
+    cierre:
+      "Cuando una mezcla encuentra equilibrio, el espacio cambia sin necesidad de imponerse.",
+  },
+};
+
+const visual = contenidoVisualPorSlug[producto.slug] ?? {
+  resumenHero: producto.descripcionCorta ?? "",
+  perfilIntro: "Una lectura sensible de cómo esta mezcla se expresa en el espacio.",
+  perfil: [
+    { label: "Presencia", value: 4 },
+    { label: "Suavidad", value: 4 },
+    { label: "Claridad", value: 4 },
+    { label: "Profundidad", value: 4 },
+    { label: "Apertura", value: 4 },
+  ],
+  presenciaEyebrow: "Presencia en el espacio",
+  presenciaTitulo: producto.mezcla,
+  presenciaTexto1: producto.descripcionCorta ?? "",
+  presenciaTexto2:
+    "Una combinación pensada para acompañar el espacio con identidad propia dentro del universo Espíritu Sónico.",
+  caracter: "Perfil ceremonial con una presencia sensible y trabajada.",
+  momentoIdeal: "Prácticas, pausas conscientes o momentos de renovación.",
+  descripcionTitulo: producto.mezcla,
+  descripcionParrafos: producto.descripcionLarga
+    ? [producto.descripcionLarga]
+    : ["Este producto forma parte del universo ceremonial de Espíritu Sónico."],
+  viajeDestacado:
+    "Este producto puede expandirse a través de una experiencia sonora diseñada para acompañar su clima y su intención.",
+  propiedadesFallback: [
+    {
+      titulo: "La combinación",
+      texto:
+        "Una fórmula pensada para acompañar el espacio con identidad propia dentro del universo Espíritu Sónico.",
+    },
+  ],
+  recomendaciones: (producto.recomendacionesRituales ?? []).map((texto, i) => ({
+    titulo: `Recomendación ${i + 1}`,
+    texto,
+  })),
+  cierre:
+    "Cada combinación de Espíritu Sónico busca abrir un clima, no solo perfumar un ambiente.",
+};
+
+const propiedadesRaw = producto?.propiedadesCombinacion;
+
+const propiedades = Array.isArray(propiedadesRaw)
+  ? propiedadesRaw
+      .map((item, index) => {
+        if (typeof item === "string") {
+          const limpio = item.trim();
+          if (!limpio) return null;
+
+          const [titulo, ...resto] = limpio.split(":");
+
+          if (resto.length > 0) {
+            return {
+              titulo: titulo.trim(),
+              texto: resto.join(":").trim(),
+            };
+          }
+
+          return {
+            titulo:
+              index === propiedadesRaw.length - 1
+                ? "La combinación"
+                : `Propiedad ${index + 1}`,
+            texto: limpio,
+          };
+        }
+
+        if (item && typeof item === "object") {
+          const titulo = item.titulo?.trim?.() || `Propiedad ${index + 1}`;
+          const texto = item.texto?.trim?.() || "";
+          if (!texto) return null;
+          return { titulo, texto };
+        }
+
+        return null;
+      })
+      .filter(Boolean)
+  : [];
+
+const propiedadesFinales =
+  propiedades.length > 0 ? propiedades : visual.propiedadesFallback;
+
+const recomendacionesFinales =
+  visual.recomendaciones?.length > 0
+    ? visual.recomendaciones
+    : (producto.recomendacionesRituales ?? []).map((texto, i) => ({
+        titulo: `Recomendación ${i + 1}`,
+        texto,
+      }));
+
+const precioFormateado =
+  typeof producto.precio === "number"
+    ? `$${producto.precio.toLocaleString("es-AR")}`
+    : producto.precio
+      ? `$${producto.precio}`
+      : "Próximamente";
+
+const viajeHref = producto.viajeSonoroSlug
+  ? `/viajes/${producto.viajeSonoroSlug}`
+  : "/viajes";
+
+const viajeCta =
+  producto.viajeSonoroSlug ? "Explorar viaje asociado" : "Ver viajes sonoros";
+
+function getDots(value) {
+  return [1, 2, 3, 4, 5].map((n) => {
+    if (value >= n) return "full";
+    if (value >= n - 0.5) return "half";
+    return "empty";
+  });
+}
+---
+
+<Layout title={`${producto.nombre} · ${producto.mezcla}`}>
+  <section class="relative min-h-screen overflow-hidden px-5 pb-24 pt-20 text-white md:px-6">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute left-1/2 top-10 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-[#ecdcb8]/[0.05] blur-3xl"></div>
+      <div class="absolute -left-20 top-1/3 h-72 w-72 rounded-full bg-violet-400/[0.05] blur-3xl"></div>
+      <div class="absolute -right-20 bottom-10 h-80 w-80 rounded-full bg-fuchsia-300/[0.04] blur-3xl"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.025),transparent_45%)]"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-6xl">
+      <div class="grid gap-8 md:grid-cols-2">
+  <div class="panel-hero-deep overflow-hidden rounded-[2.2rem] p-[1px] shadow-[0_18px_76px_rgba(0,0,0,0.34)]">
+    <div class="relative h-full rounded-[2.1rem] bg-[#0a0610]/97 p-5 backdrop-blur-2xl md:p-6">
+      <div class="flex h-full min-h-[280px] items-center justify-center rounded-[1.8rem] bg-[radial-gradient(circle_at_center,rgba(236,220,184,0.06),transparent_64%)] md:min-h-[560px]">
+        <img
+          src={producto.imagenUrl}
+          alt={`Imagen de ${producto.mezcla}`}
+          class="mx-auto max-h-[240px] w-auto object-contain drop-shadow-[0_14px_44px_rgba(0,0,0,0.42)] md:max-h-[340px] lg:max-h-[380px]"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-hero-deep overflow-hidden rounded-[2.2rem] p-[1px] shadow-[0_18px_76px_rgba(0,0,0,0.34)]"">
+    <aside class="flex h-full flex-col rounded-[2.1rem] bg-[#0a0610]/97 px-6 py-7 backdrop-blur-2xl md:min-h-[560px] md:px-8 md:py-8">
+      <p class="mb-3 text-[11px] uppercase tracking-[0.34em] text-[#ecdcb8]/62">
+        Sahumerio artesanal
+      </p>
+
+      <h1 class="mb-3 text-4xl font-light leading-tight text-[#ecdcb8] md:text-5xl">
+        {producto.mezcla}
+      </h1>
+
+      <p class="mb-6 text-sm uppercase tracking-[0.18em] text-[#ecdcb8]/48">
+        {visual.resumenHero}
+      </p>
+
+      <p class="mb-7 text-base leading-relaxed text-white/72">
+        {producto.descripcionCorta}
+      </p>
+
+      <div class="subpanel-profile mb-7 rounded-[1.8rem] px-5 py-5">
+        <p class="mb-2 text-[11px] uppercase tracking-[0.3em] text-[#ecdcb8]/62">
+          Perfil del sahumerio
+        </p>
+
+        <h2 class="mb-3 text-[1.35rem] font-light leading-tight text-[#ecdcb8]">
+          Lectura sensible de su presencia
+        </h2>
+
+        <p class="mb-6 max-w-[34rem] text-sm leading-relaxed text-white/58">
+          {visual.perfilIntro}
+        </p>
+
+        <div class="space-y-4">
+          {visual.perfil.map((item) => (
+            <div class="perfil-row">
+              <span class="perfil-label">
+                {item.label}
+              </span>
+
+              <span class="perfil-line"></span>
+
+              <div class="flex items-center gap-1.5 pl-2">
+                {getDots(item.value).map((estado) => (
+                  <span
+                    class:list={[
+                      "nivel-dot",
+                      estado === "full" && "nivel-dot--full",
+                      estado === "half" && "nivel-dot--half",
+                    ]}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="mt-auto border-t border-[#ecdcb8]/10 pt-5">
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <p class="mb-1 text-[10px] uppercase tracking-[0.22em] text-[#ecdcb8]/40">
+              Precio
+            </p>
+            <p class="text-base text-[#ecdcb8]/92">
+              {precioFormateado}
+            </p>
+          </div>
+
+          <button class="cta-principal">
+            Agregar al carrito
+          </button>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+      <section class="card-ritual mt-8 rounded-[2.2rem] px-6 py-7 md:px-8">
+        <div class="grid gap-7 lg:grid-cols-[1.05fr_0.95fr]">
+          <div>
+            <p class="eyebrow-ritual">
+              {visual.presenciaEyebrow}
+            </p>
+
+            <h2 class="titulo-ritual mb-4">
+              {visual.presenciaTitulo}
+            </h2>
+
+            <p class="mb-4 leading-relaxed text-white/72">
+              {visual.presenciaTexto1}
+            </p>
+
+            <p class="leading-relaxed text-white/62">
+              {visual.presenciaTexto2}
+            </p>
+          </div>
+
+          <div class="subpanel-soft rounded-[1.7rem] px-5 py-5">
+            <div class="mb-5">
+              <p class="eyebrow-mini mb-2">
+                Carácter del sahumerio
+              </p>
+              <p class="text-[15px] leading-relaxed text-white/76">
+                {visual.caracter}
+              </p>
+            </div>
+
+            <div class="grid gap-5 md:grid-cols-2">
+              <div>
+                <p class="eyebrow-mini mb-2">
+                  Momento ideal
+                </p>
+                <p class="text-sm leading-relaxed text-white/68">
+                  {visual.momentoIdeal}
+                </p>
+              </div>
+
+              <div>
+                <p class="eyebrow-mini mb-2">
+                  Elaboración
+                </p>
+                <p class="text-sm leading-relaxed text-white/68">
+                  Elaborado con resinas molidas a mano y hierbas seleccionadas.
+                </p>
+              </div>
+            </div>
+           </div>
+        </div>
+      </section>
+
+      <section class="card-viaje-destacado mt-8 rounded-[2.2rem] px-6 py-7 md:px-8">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-[2.2rem]">
+    <div class="absolute -left-10 top-0 h-40 w-40 rounded-full bg-[#ecdcb8]/[0.05] blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 h-44 w-44 rounded-full bg-violet-300/[0.06] blur-3xl"></div>
+  </div>
+
+  <div class="relative z-10 grid gap-7 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+    <div>
+      <p class="eyebrow-ritual-bright mb-3">
+        Viaje sonoro asociado
+      </p>
+
+      <h2 class="titulo-viaje mb-4">
+        La experiencia no termina en el humo
+      </h2>
+
+      <p class="mb-4 text-[1.02rem] leading-relaxed text-white/80">
+        {visual.viajeDestacado}
+      </p>
+
+      <p class="leading-relaxed text-white/64">
+        La propuesta de Espíritu Sónico une presencia material y arquitectura sonora. Este sahumerio puede profundizarse a través de una escucha asociada, pensada para prolongar su clima, ampliar su resonancia y abrir una experiencia más inmersiva.
+      </p>
+    </div>
+
+    <div class="subpanel-viaje rounded-[1.8rem] px-5 py-5">
+      <p class="mb-2 text-[11px] uppercase tracking-[0.26em] text-[#ecdcb8]/58">
+        Portal de escucha
+      </p>
+
+      <h3 class="mb-3 text-[1.55rem] font-light leading-tight text-[#ecdcb8]">
+        {producto.viajeSonoroTitulo || "Explorá el universo sonoro"}
+      </h3>
+
+      <p class="mb-5 text-sm leading-relaxed text-white/70">
+        {producto.viajeSonoroTexto || "Podés acceder a un viaje asociado o recorrer la colección completa para elegir la escucha que mejor acompañe tu momento."}
+      </p>
+
+      <a href={viajeHref} class="cta-viaje">
+        {viajeCta}
+      </a>
+    </div>
+  </div>
+</section>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-[1fr_0.95fr]">
+        <section class="card-ritual rounded-[2.2rem] px-6 py-7 md:px-8">
+          <p class="eyebrow-ritual">
+            Descripción
+          </p>
+
+          <h2 class="titulo-ritual mb-5">
+            {visual.descripcionTitulo}
+          </h2>
+
+          <div class="space-y-4 leading-relaxed text-white/72">
+            {visual.descripcionParrafos.map((parrafo) => (
+              <p>{parrafo}</p>
+            ))}
+          </div>
+        </section>
+
+        <section class="card-ritual rounded-[2.2rem] px-6 py-7 md:px-8">
+          <p class="eyebrow-ritual">
+            Propiedades de la combinación
+          </p>
+
+          <h2 class="titulo-ritual mb-5">
+            Cómo dialogan sus elementos
+          </h2>
+
+          <div class="space-y-5">
+            {propiedadesFinales.map((item, index) => (
+              <div class={index === propiedadesFinales.length - 1 ? "border-t border-[#ecdcb8]/10 pt-4" : ""}>
+                <h3 class="mb-2 text-lg font-medium text-[#ecdcb8]">
+                  {item.titulo}
+                </h3>
+                <p class="leading-relaxed text-white/70">
+                  {item.texto}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
+<div class="mt-8 flex justify-center">
+  <section class="card-cta-final w-full max-w-3xl rounded-[2rem] px-6 py-7 text-center md:px-8">
+    <p class="mb-3 text-[11px] uppercase tracking-[0.3em] text-[#ecdcb8]/46">
+      Llevar esta experiencia
+    </p>
+
+    <p class="mx-auto mb-6 max-w-2xl text-sm leading-relaxed text-white/66">
+      Una combinación artesanal pensada para abrir un clima, acompañar el espacio y profundizarse a través de la escucha.
+    </p>
+
+    <button class="cta-principal">
+      Agregar al carrito
+    </button>
+  </section>
+</div>
+
+      {recomendacionesFinales.length > 0 && (
+        <section class="card-ritual mt-8 rounded-[2.2rem] px-6 py-7 md:px-8">
+          <p class="eyebrow-ritual">
+            Recomendaciones rituales
+          </p>
+
+          <h2 class="titulo-ritual mb-5">
+            Formas de entrar en relación con la mezcla
+          </h2>
+
+          <div class="grid gap-6 md:grid-cols-2">
+            {recomendacionesFinales.map((item) => (
+              <div>
+                <h3 class="mb-3 text-xl font-light text-[#ecdcb8]">
+                  {item.titulo}
+                </h3>
+                <p class="leading-relaxed text-white/70">
+                  {item.texto}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <div class="mx-auto mt-12 max-w-2xl text-center">
+        <p class="text-sm leading-relaxed text-white/40">
+          {visual.cierre}
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .panel-hero-deep {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(236, 220, 184, 0.02) 0%,
+      rgba(236, 220, 184, 0.004) 100%
+    ),
+    rgba(7, 4, 10, 0.96);
+}
+
+  .card-ritual {
+    position: relative;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(236, 220, 184, 0.045) 0%,
+        rgba(236, 220, 184, 0.015) 100%
+      ),
+      rgba(18, 10, 24, 0.82);
+    border: 1px solid rgba(236, 220, 184, 0.08);
+    box-shadow:
+      inset 0 1px 0 rgba(236, 220, 184, 0.03),
+      0 10px 60px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .card-viaje-destacado {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(236, 220, 184, 0.10) 0%,
+        rgba(236, 220, 184, 0.03) 100%
+      ),
+      rgba(18, 10, 24, 0.88);
+    border: 1px solid rgba(236, 220, 184, 0.12);
+    box-shadow:
+      inset 0 1px 0 rgba(236, 220, 184, 0.04),
+      0 14px 70px rgba(0, 0, 0, 0.24);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .subpanel-soft {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(236, 220, 184, 0.03) 0%,
+        rgba(236, 220, 184, 0.012) 100%
+      ),
+      rgba(255, 255, 255, 0.012);
+    border: 1px solid rgba(236, 220, 184, 0.07);
+    box-shadow: inset 0 1px 0 rgba(236, 220, 184, 0.025);
+  }
+
+  .subpanel-profile {
+    background:
+      radial-gradient(circle at top left, rgba(236, 220, 184, 0.05), transparent 55%),
+      linear-gradient(
+        180deg,
+        rgba(236, 220, 184, 0.03) 0%,
+        rgba(236, 220, 184, 0.012) 100%
+      ),
+      rgba(255, 255, 255, 0.012);
+    border: 1px solid rgba(236, 220, 184, 0.08);
+    box-shadow:
+      inset 0 1px 0 rgba(236, 220, 184, 0.035),
+      0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .subpanel-viaje {
+    background:
+      radial-gradient(circle at top left, rgba(236, 220, 184, 0.055), transparent 52%),
+      linear-gradient(
+        180deg,
+        rgba(236, 220, 184, 0.05) 0%,
+        rgba(236, 220, 184, 0.018) 100%
+      ),
+      rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(236, 220, 184, 0.10);
+    box-shadow:
+      inset 0 1px 0 rgba(236, 220, 184, 0.03),
+      0 8px 26px rgba(0, 0, 0, 0.14);
+  }
+
+  .eyebrow-ritual {
+    margin-bottom: 0.9rem;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    color: rgba(236, 220, 184, 0.46);
+  }
+
+  .eyebrow-ritual-bright {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    color: rgba(236, 220, 184, 0.62);
+  }
+
+  .eyebrow-mini {
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    color: rgba(236, 220, 184, 0.72);
+  }
+
+  .titulo-ritual {
+    font-size: clamp(1.95rem, 2.4vw, 2.65rem);
+    line-height: 1.08;
+    font-weight: 300;
+    color: #ecdcb8;
+  }
+
+  .titulo-viaje {
+    font-size: clamp(2rem, 2.8vw, 3rem);
+    line-height: 1.04;
+    font-weight: 300;
+    color: #ecdcb8;
+  }
+
+  .perfil-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .perfil-label {
+    min-width: 118px;
+    font-size: 0.94rem;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    color: rgba(236, 220, 184, 0.84);
+  }
+
+  .perfil-line {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(236, 220, 184, 0.18) 0%,
+      rgba(236, 220, 184, 0.06) 55%,
+      transparent 100%
+    );
+  }
+
+  .cta-principal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    padding: 0.82rem 1.3rem;
+    font-size: 0.94rem;
+    letter-spacing: 0.06em;
+    color: #1b1024;
+    background: linear-gradient(
+      135deg,
+      rgba(236, 220, 184, 0.96) 0%,
+      rgba(208, 176, 109, 0.96) 100%
+    );
+    box-shadow:
+      0 12px 34px rgba(0, 0, 0, 0.24),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+  }
+
+  .cta-principal:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+    box-shadow:
+      0 16px 38px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .cta-principal--secondary {
+    width: 100%;
+  }
+
+  .cta-viaje {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: 9999px;
+    border: 1px solid rgba(236, 220, 184, 0.26);
+    padding: 0.82rem 1.15rem;
+    font-size: 0.92rem;
+    letter-spacing: 0.06em;
+    color: #ecdcb8;
+    background: rgba(236, 220, 184, 0.06);
+    transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+  }
+
+  .cta-viaje:hover {
+    transform: translateY(-1px);
+    border-color: rgba(236, 220, 184, 0.5);
+    background: rgba(236, 220, 184, 0.09);
+  }
+
+  .nivel-dot {
+    width: 0.82rem;
+    height: 0.82rem;
+    border-radius: 9999px;
+    display: inline-block;
+    border: 1px solid rgba(91, 75, 109, 0.3);
+    box-shadow: inset 0 0 6px rgba(120, 92, 156, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .nivel-dot--full {
+    background: linear-gradient(135deg, #2a2235 0%, #433750 52%, #5b4b6d 100%);
+  }
+
+  .nivel-dot--half {
+    background: linear-gradient(
+      90deg,
+      #34293f 0%,
+      #5b4b6d 50%,
+      rgba(255, 255, 255, 0.03) 50%,
+      rgba(255, 255, 255, 0.03) 100%
+    );
+  }
+
+  .card-cta-final {
+  position: relative;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(236, 220, 184, 0.05) 0%,
+      rgba(236, 220, 184, 0.015) 100%
+    ),
+    rgba(18, 10, 24, 0.84);
+  border: 1px solid rgba(236, 220, 184, 0.09);
+  box-shadow:
+    inset 0 1px 0 rgba(236, 220, 184, 0.03),
+    0 10px 40px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+</style>
