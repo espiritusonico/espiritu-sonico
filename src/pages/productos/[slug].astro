@@ -1,21 +1,28 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import "../../styles/productos-slug.css";
 
 export async function getStaticPaths() {
-  const API_BASE = import.meta.env.PUBLIC_API_URL ?? "http://127.0.0.1:3000";
-  const res = await fetch(`${API_BASE}/productos`);
+  const API_URL = import.meta.env.PUBLIC_API_URL ?? "http://localhost:3000";
 
-  if (!res.ok) return [];
+  try {
+    const res = await fetch(`${API_URL}/productos`);
 
-  const productos = await res.json();
+    if (!res.ok) return [];
 
-  return productos.map((producto) => ({
-    params: { slug: producto.slug },
-    props: { producto },
-  }));
+    const productos = await res.json();
+
+    return productos.map((producto) => ({
+      params: { slug: producto.slug },
+      props: { producto },
+    }));
+  } catch (error) {
+    console.warn("No se pudieron obtener los productos para getStaticPaths:", error);
+    return [];
+  }
 }
 
-const { producto } = Astro.props;
+const producto = Astro.props?.producto ?? null;
 
 const contenidoVisualPorSlug = {
   "lavanda-eucaliptus-menta": {
@@ -150,7 +157,7 @@ const contenidoVisualPorSlug = {
       "Algunas combinaciones no solo armonizan: también ayudan a cortar, depurar y devolver centro.",
   },
 
-  "sandalo-rojo-lavanda-eucaliptus-y-menta": {
+  "sandalo-rojo-lavanda-eucaliptus-menta": {
     resumenHero: "Calidez herbal · enfoque · expansión suave",
     perfilIntro: "Una lectura sensible de cómo esta mezcla se expresa en el espacio.",
     perfil: [
@@ -306,18 +313,18 @@ const recomendacionesFinales =
       }));
 
 const precioFormateado =
-  typeof producto.precio === "number"
+  producto && typeof producto.precio === "number"
     ? `$${producto.precio.toLocaleString("es-AR")}`
-    : producto.precio
+    : producto?.precio
       ? `$${producto.precio}`
       : "Próximamente";
 
-const viajeHref = producto.viajeSonoroSlug
+const viajeHref = producto?.viajeSonoroSlug
   ? `/viajes/${producto.viajeSonoroSlug}`
   : "/viajes";
 
 const viajeCta =
-  producto.viajeSonoroSlug ? "Explorar viaje asociado" : "Ver viajes sonoros";
+  producto?.viajeSonoroSlug ? "Explorar viaje asociado" : "Ver viajes sonoros";
 
 function getDots(value) {
   return [1, 2, 3, 4, 5].map((n) => {
@@ -328,7 +335,7 @@ function getDots(value) {
 }
 ---
 
-<Layout title={`${producto.nombre} · ${producto.mezcla}`}>
+<Layout title={producto ? `${producto.nombre} · ${producto.mezcla}` : "Producto"}>
   <section class="relative min-h-screen overflow-hidden px-5 pb-24 pt-20 text-white md:px-6">
     <div class="pointer-events-none absolute inset-0 overflow-hidden">
       <div class="absolute left-1/2 top-10 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-[#ecdcb8]/[0.05] blur-3xl"></div>
@@ -342,16 +349,20 @@ function getDots(value) {
   <div class="panel-hero-deep overflow-hidden rounded-[2.2rem] p-[1px] shadow-[0_18px_76px_rgba(0,0,0,0.34)]">
     <div class="relative h-full rounded-[2.1rem] bg-[#0a0610]/97 p-5 backdrop-blur-2xl md:p-6">
       <div class="flex h-full min-h-[280px] items-center justify-center rounded-[1.8rem] bg-[radial-gradient(circle_at_center,rgba(236,220,184,0.06),transparent_64%)] md:min-h-[560px]">
-        <img
-          src={producto.imagenUrl}
-          alt={`Imagen de ${producto.mezcla}`}
-          class="mx-auto max-h-[240px] w-auto object-contain drop-shadow-[0_14px_44px_rgba(0,0,0,0.42)] md:max-h-[340px] lg:max-h-[380px]"
-        />
+       {producto?.imagenUrl ? (
+  <img
+    src={producto.imagenUrl}
+    alt={`Imagen de ${producto.mezcla}`}
+    class="mx-auto max-h-[240px] w-auto object-contain drop-shadow-[0_14px_44px_rgba(0,0,0,0.42)] md:max-h-[340px] lg:max-h-[380px]"
+  />
+) : (
+  <div class="h-[240px] w-full rounded-[1.8rem] border border-white/10 bg-white/[0.03] md:h-[340px] lg:h-[380px]"></div>
+)}
       </div>
     </div>
   </div>
 
-  <div class="panel-hero-deep overflow-hidden rounded-[2.2rem] p-[1px] shadow-[0_18px_76px_rgba(0,0,0,0.34)]"">
+  <div class="panel-hero-deep overflow-hidden rounded-[2.2rem] p-[1px] shadow-[0_18px_76px_rgba(0,0,0,0.34)]">
     <aside class="flex h-full flex-col rounded-[2.1rem] bg-[#0a0610]/97 px-6 py-7 backdrop-blur-2xl md:min-h-[560px] md:px-8 md:py-8">
       <p class="mb-3 text-[11px] uppercase tracking-[0.34em] text-[#ecdcb8]/62">
         Sahumerio artesanal
@@ -616,246 +627,3 @@ function getDots(value) {
   </section>
 </Layout>
 
-<style>
-  .panel-hero-deep {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(236, 220, 184, 0.02) 0%,
-      rgba(236, 220, 184, 0.004) 100%
-    ),
-    rgba(7, 4, 10, 0.96);
-}
-
-  .card-ritual {
-    position: relative;
-    background:
-      linear-gradient(
-        180deg,
-        rgba(236, 220, 184, 0.045) 0%,
-        rgba(236, 220, 184, 0.015) 100%
-      ),
-      rgba(18, 10, 24, 0.82);
-    border: 1px solid rgba(236, 220, 184, 0.08);
-    box-shadow:
-      inset 0 1px 0 rgba(236, 220, 184, 0.03),
-      0 10px 60px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-  }
-
-  .card-viaje-destacado {
-    position: relative;
-    overflow: hidden;
-    background:
-      linear-gradient(
-        180deg,
-        rgba(236, 220, 184, 0.10) 0%,
-        rgba(236, 220, 184, 0.03) 100%
-      ),
-      rgba(18, 10, 24, 0.88);
-    border: 1px solid rgba(236, 220, 184, 0.12);
-    box-shadow:
-      inset 0 1px 0 rgba(236, 220, 184, 0.04),
-      0 14px 70px rgba(0, 0, 0, 0.24);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-  }
-
-  .subpanel-soft {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(236, 220, 184, 0.03) 0%,
-        rgba(236, 220, 184, 0.012) 100%
-      ),
-      rgba(255, 255, 255, 0.012);
-    border: 1px solid rgba(236, 220, 184, 0.07);
-    box-shadow: inset 0 1px 0 rgba(236, 220, 184, 0.025);
-  }
-
-  .subpanel-profile {
-    background:
-      radial-gradient(circle at top left, rgba(236, 220, 184, 0.05), transparent 55%),
-      linear-gradient(
-        180deg,
-        rgba(236, 220, 184, 0.03) 0%,
-        rgba(236, 220, 184, 0.012) 100%
-      ),
-      rgba(255, 255, 255, 0.012);
-    border: 1px solid rgba(236, 220, 184, 0.08);
-    box-shadow:
-      inset 0 1px 0 rgba(236, 220, 184, 0.035),
-      0 8px 30px rgba(0, 0, 0, 0.12);
-  }
-
-  .subpanel-viaje {
-    background:
-      radial-gradient(circle at top left, rgba(236, 220, 184, 0.055), transparent 52%),
-      linear-gradient(
-        180deg,
-        rgba(236, 220, 184, 0.05) 0%,
-        rgba(236, 220, 184, 0.018) 100%
-      ),
-      rgba(255, 255, 255, 0.015);
-    border: 1px solid rgba(236, 220, 184, 0.10);
-    box-shadow:
-      inset 0 1px 0 rgba(236, 220, 184, 0.03),
-      0 8px 26px rgba(0, 0, 0, 0.14);
-  }
-
-  .eyebrow-ritual {
-    margin-bottom: 0.9rem;
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.32em;
-    color: rgba(236, 220, 184, 0.46);
-  }
-
-  .eyebrow-ritual-bright {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.32em;
-    color: rgba(236, 220, 184, 0.62);
-  }
-
-  .eyebrow-mini {
-    font-size: 0.82rem;
-    letter-spacing: 0.08em;
-    color: rgba(236, 220, 184, 0.72);
-  }
-
-  .titulo-ritual {
-    font-size: clamp(1.95rem, 2.4vw, 2.65rem);
-    line-height: 1.08;
-    font-weight: 300;
-    color: #ecdcb8;
-  }
-
-  .titulo-viaje {
-    font-size: clamp(2rem, 2.8vw, 3rem);
-    line-height: 1.04;
-    font-weight: 300;
-    color: #ecdcb8;
-  }
-
-  .perfil-row {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 0.8rem;
-  }
-
-  .perfil-label {
-    min-width: 118px;
-    font-size: 0.94rem;
-    line-height: 1;
-    letter-spacing: 0.03em;
-    color: rgba(236, 220, 184, 0.84);
-  }
-
-  .perfil-line {
-    height: 1px;
-    width: 100%;
-    background: linear-gradient(
-      90deg,
-      rgba(236, 220, 184, 0.18) 0%,
-      rgba(236, 220, 184, 0.06) 55%,
-      transparent 100%
-    );
-  }
-
-  .cta-principal {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 9999px;
-    padding: 0.82rem 1.3rem;
-    font-size: 0.94rem;
-    letter-spacing: 0.06em;
-    color: #1b1024;
-    background: linear-gradient(
-      135deg,
-      rgba(236, 220, 184, 0.96) 0%,
-      rgba(208, 176, 109, 0.96) 100%
-    );
-    box-shadow:
-      0 12px 34px rgba(0, 0, 0, 0.24),
-      inset 0 1px 0 rgba(255, 255, 255, 0.18);
-    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
-  }
-
-  .cta-principal:hover {
-    transform: translateY(-1px);
-    filter: brightness(1.02);
-    box-shadow:
-      0 16px 38px rgba(0, 0, 0, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  }
-
-  .cta-principal--secondary {
-    width: 100%;
-  }
-
-  .cta-viaje {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    border-radius: 9999px;
-    border: 1px solid rgba(236, 220, 184, 0.26);
-    padding: 0.82rem 1.15rem;
-    font-size: 0.92rem;
-    letter-spacing: 0.06em;
-    color: #ecdcb8;
-    background: rgba(236, 220, 184, 0.06);
-    transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
-  }
-
-  .cta-viaje:hover {
-    transform: translateY(-1px);
-    border-color: rgba(236, 220, 184, 0.5);
-    background: rgba(236, 220, 184, 0.09);
-  }
-
-  .nivel-dot {
-    width: 0.82rem;
-    height: 0.82rem;
-    border-radius: 9999px;
-    display: inline-block;
-    border: 1px solid rgba(91, 75, 109, 0.3);
-    box-shadow: inset 0 0 6px rgba(120, 92, 156, 0.08);
-    background: rgba(255, 255, 255, 0.03);
-  }
-
-  .nivel-dot--full {
-    background: linear-gradient(135deg, #2a2235 0%, #433750 52%, #5b4b6d 100%);
-  }
-
-  .nivel-dot--half {
-    background: linear-gradient(
-      90deg,
-      #34293f 0%,
-      #5b4b6d 50%,
-      rgba(255, 255, 255, 0.03) 50%,
-      rgba(255, 255, 255, 0.03) 100%
-    );
-  }
-
-  .card-cta-final {
-  position: relative;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(236, 220, 184, 0.05) 0%,
-      rgba(236, 220, 184, 0.015) 100%
-    ),
-    rgba(18, 10, 24, 0.84);
-  border: 1px solid rgba(236, 220, 184, 0.09);
-  box-shadow:
-    inset 0 1px 0 rgba(236, 220, 184, 0.03),
-    0 10px 40px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-</style>

@@ -17,15 +17,9 @@ const forceUtf8Plugin = {
 
 export default defineConfig({
   integrations: [tailwind()],
-  devToolbar: {
-    enabled: false,
-  },
+  devToolbar: { enabled: false },
   vite: {
     plugins: [forceUtf8Plugin],
-    server: {
-      fs: {
-        strict: false,
-      },
-    },
+    server: { fs: { strict: false } },
   },
 });

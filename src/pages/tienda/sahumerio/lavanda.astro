@@ -70,11 +70,11 @@ const perfil = [
 
                     <div class="flex items-center gap-2">
                       {Array.from({ length: fullDots }).map(() => (
-                        <span class="nivel-dot nivel-dot--full"></span>
+                        <span class="inline-block w-[0.82rem] h-[0.82rem] rounded-full border border-[rgba(84,68,112,0.22)] bg-[linear-gradient(135deg,#2a2235_0%,#433750_52%,#5b4b6d_100%)]"></span>
                       ))}
-                      {hasHalf && <span class="nivel-dot nivel-dot--half"></span>}
+                      {hasHalf && <span class="inline-block w-[0.82rem] h-[0.82rem] rounded-full border border-[rgba(84,68,112,0.22)] bg-[linear-gradient(90deg,#34293f_0%,#5b4b6d_50%,rgba(255,255,255,0.03)_50%,rgba(255,255,255,0.03)_100%)]"></span>}
                       {Array.from({ length: emptyDots }).map(() => (
-                        <span class="nivel-dot nivel-dot--empty"></span>
+                        <span class="inline-block w-[0.82rem] h-[0.82rem] rounded-full border border-[rgba(84,68,112,0.22)] bg-[linear-gradient(135deg,rgba(255,255,255,0.025)_0%,rgba(255,255,255,0.012)_100%)]"></span>
                       ))}
                     </div>
                   </div>
@@ -315,39 +315,3 @@ const perfil = [
     </div>
   </section>
 </Layout>
-
-<style>
-  .nivel-dot {
-    width: 0.82rem;
-    height: 0.82rem;
-    border-radius: 9999px;
-    display: inline-block;
-    border: 1px solid rgba(84, 68, 112, 0.22);
-    box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.02);
-  }
-
-  .nivel-dot--full {
-    background:
-      linear-gradient(135deg, #2a2235 0%, #433750 52%, #5b4b6d 100%);
-  }
-
-  .nivel-dot--half {
-    background:
-      linear-gradient(
-        90deg,
-        #34293f 0%,
-        #5b4b6d 50%,
-        rgba(255,255,255,0.03) 50%,
-        rgba(255,255,255,0.03) 100%
-      );
-  }
-
-  .nivel-dot--empty {
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,0.025) 0%,
-        rgba(255,255,255,0.012) 100%
-      );
-  }
-</style>

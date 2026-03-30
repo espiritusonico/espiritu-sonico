@@ -62,7 +62,12 @@ import Layout from "../../layouts/Layout.astro";
 </section>
 
   <script type="module">
-    import { initCoverflowCarousel } from '/scripts/coverflow.js';
+  import { initCoverflowCarousel } from '/scripts/coverflow.js';
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCoverflowCarousel, { once: true });
+  } else {
     initCoverflowCarousel();
-  </script>
+  }
+</script>
 </Layout>

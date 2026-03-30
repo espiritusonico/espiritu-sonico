@@ -1,0 +1,405 @@
+---
+interface Props {
+  src: string;
+  title?: string;
+  subtitle?: string;
+  duration?: string | null;
+}
+
+const {
+  src,
+  title = "Viaje Sonoro",
+  subtitle = "Escucha disponible",
+  duration = null,
+} = Astro.props;
+
+const playerId = `audio-player-${Math.random().toString(36).slice(2, 10)}`;
+---
+
+<div
+  id={playerId}
+  class="audio-player-shell rounded-[2.4rem] border border-[#ecdcb8]/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.025))] p-[1px] shadow-[0_14px_70px_rgba(0,0,0,0.28)]"
+>
+  <div class="relative overflow-hidden rounded-[2.3rem] bg-[#110916]/88 px-6 py-7 backdrop-blur-2xl md:px-8 md:py-8">
+    <div class="pointer-events-none absolute inset-0">
+      <div class="js-player-halo absolute left-1/2 top-0 h-56 w-56 -translate-x-1/2 rounded-full bg-[#ecdcb8]/[0.06] blur-3xl transition duration-700"></div>
+      <div class="absolute -left-10 bottom-0 h-40 w-40 rounded-full bg-violet-400/[0.06] blur-3xl"></div>
+      <div class="absolute -right-8 top-12 h-32 w-32 rounded-full bg-fuchsia-300/[0.05] blur-3xl"></div>
+    </div>
+
+    <div class="relative z-10">
+      <div class="mb-6 text-center">
+        <p class="mb-2 text-[11px] uppercase tracking-[0.34em] text-white/35">
+          {subtitle}
+        </p>
+        <h2 class="text-2xl font-light tracking-[0.02em] text-[#ecdcb8] md:text-3xl">
+          {title}
+        </h2>
+        {duration && (
+          <p class="mt-3 text-sm text-white/45">
+            Duración aproximada: {duration}
+          </p>
+        )}
+      </div>
+
+      <audio class="sr-only js-audio-element" preload="metadata">
+        <source src={src} type="audio/mpeg" />
+      </audio>
+
+      <div class="mb-6 flex flex-col items-center justify-center">
+        <div class="relative flex items-center justify-center">
+          <span class="js-orbit-ring hidden"></span>
+          <span class="js-orbit-ring-2 hidden"></span>
+
+          <button
+            type="button"
+            class="js-play-toggle group/play relative flex h-20 w-20 items-center justify-center rounded-full border border-[#ecdcb8]/25 bg-[#ecdcb8]/[0.06] text-[#ecdcb8] transition duration-300 hover:scale-[1.03] hover:border-[#ecdcb8]/50 hover:bg-[#ecdcb8]/[0.12] focus:outline-none focus:ring-2 focus:ring-[#ecdcb8]/30 md:h-24 md:w-24"
+            aria-label="Reproducir audio"
+          >
+            <span class="pointer-events-none absolute inset-0 rounded-full shadow-[0_0_40px_rgba(236,220,184,0.08)]"></span>
+
+            <svg class="js-icon-play ml-1 h-8 w-8 md:h-9 md:w-9" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5.14v13.72c0 .72.78 1.17 1.4.81l10.2-6.86a.94.94 0 0 0 0-1.62L9.4 4.33A.94.94 0 0 0 8 5.14Z" />
+            </svg>
+
+            <svg class="js-icon-pause hidden h-8 w-8 md:h-9 md:w-9" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M7 5.75A1.25 1.25 0 0 1 8.25 4.5h1.5A1.25 1.25 0 0 1 11 5.75v12.5a1.25 1.25 0 0 1-1.25 1.25h-1.5A1.25 1.25 0 0 1 7 18.25V5.75Zm6 0A1.25 1.25 0 0 1 14.25 4.5h1.5A1.25 1.25 0 0 1 17 5.75v12.5a1.25 1.25 0 0 1-1.25 1.25h-1.5A1.25 1.25 0 0 1 13 18.25V5.75Z" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="js-eq mt-4 flex h-5 items-end gap-[4px] opacity-25 transition duration-500">
+         <span class="js-eq-bar h-2 w-[3px] rounded-full bg-[#ecdcb8]/35"></span>
+         <span class="js-eq-bar h-3 w-[3px] rounded-full bg-[#ecdcb8]/40"></span>
+         <span class="js-eq-bar h-4 w-[3px] rounded-full bg-[#ecdcb8]/45"></span>
+         <span class="js-eq-bar h-3 w-[3px] rounded-full bg-[#ecdcb8]/40"></span>
+         <span class="js-eq-bar h-2 w-[3px] rounded-full bg-[#ecdcb8]/35"></span>
+       </div>
+      </div>
+
+      <div class="mb-5">
+        <div class="mb-3 flex items-center justify-between text-xs uppercase tracking-[0.24em] text-white/35">
+          <span class="js-current-time">00:00</span>
+          <span class="js-total-time">00:00</span>
+        </div>
+
+        <div class="group/progress relative">
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="0.1"
+            class="js-progress-slider audio-range h-2 w-full cursor-pointer appearance-none rounded-full bg-white/10"
+            aria-label="Progreso del audio"
+          />
+          <div class="pointer-events-none mt-3 text-center text-sm text-white/42">
+            Entrar sin apuro. Dejar que el sonido haga su trabajo.
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/8 pt-5">
+        <div class="mb-5 text-sm leading-relaxed text-white/55">
+          Una escucha diseñada desde la Sonología Ritual, con trabajo de capas, espacio,
+          resonancia y afinación perceptiva.
+        </div>
+
+        <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div class="min-w-0 flex-1">
+            <div class="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[0.24em] text-white/35">
+              <span class="flex items-center gap-2">
+                <button
+                  type="button"
+                  class="js-mute-toggle inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/55 transition duration-300 hover:border-white/20 hover:bg-white/[0.06] hover:text-[#ecdcb8]"
+                  aria-label="Silenciar audio"
+                >
+                  <svg class="js-volume-icon-high h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M14.5 4.25a.75.75 0 0 1 1.28.53v14.44a.75.75 0 0 1-1.28.53l-4.47-4.47H6a1.75 1.75 0 0 1-1.75-1.75v-3.06C4.25 8.95 5.03 8.25 6 8.25h4.03l4.47-4Z" />
+                    <path d="M18.12 9.47a.75.75 0 0 1 1.06 0 3.62 3.62 0 0 1 0 5.12.75.75 0 0 1-1.06-1.06 2.12 2.12 0 0 0 0-3 .75.75 0 0 1 0-1.06Z" />
+                    <path d="M19.96 6.96a.75.75 0 0 1 1.06 0 7.18 7.18 0 0 1 0 10.16.75.75 0 0 1-1.06-1.06 5.68 5.68 0 0 0 0-8.04.75.75 0 0 1 0-1.06Z" />
+                  </svg>
+
+                  <svg class="js-volume-icon-low hidden h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M14.5 4.25a.75.75 0 0 1 1.28.53v14.44a.75.75 0 0 1-1.28.53l-4.47-4.47H6a1.75 1.75 0 0 1-1.75-1.75v-3.06C4.25 8.95 5.03 8.25 6 8.25h4.03l4.47-4Z" />
+                    <path d="M18.12 9.47a.75.75 0 0 1 1.06 0 3.62 3.62 0 0 1 0 5.12.75.75 0 0 1-1.06-1.06 2.12 2.12 0 0 0 0-3 .75.75 0 0 1 0-1.06Z" />
+                  </svg>
+
+                  <svg class="js-volume-icon-mute hidden h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M14.5 4.25a.75.75 0 0 1 1.28.53v14.44a.75.75 0 0 1-1.28.53l-4.47-4.47H6a1.75 1.75 0 0 1-1.75-1.75v-3.06C4.25 8.95 5.03 8.25 6 8.25h4.03l4.47-4Z" />
+                    <path d="M18.47 9.47a.75.75 0 0 1 1.06 0L21 10.94l1.47-1.47a.75.75 0 1 1 1.06 1.06L22.06 12l1.47 1.47a.75.75 0 1 1-1.06 1.06L21 13.06l-1.47 1.47a.75.75 0 1 1-1.06-1.06L19.94 12l-1.47-1.47a.75.75 0 0 1 0-1.06Z" />
+                  </svg>
+                </button>
+
+                <span>Volumen</span>
+              </span>
+
+              <span class="js-volume-value">100%</span>
+            </div>
+
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value="1"
+              class="js-volume-slider audio-range h-2 w-full max-w-xs cursor-pointer appearance-none rounded-full bg-white/10"
+              aria-label="Volumen del audio"
+            />
+          </div>
+
+          <a
+            href={src}
+            download
+            class="inline-flex items-center justify-center rounded-full border border-[#ecdcb8]/30 px-5 py-2.5 text-sm tracking-[0.08em] text-[#ecdcb8] transition duration-300 hover:bg-[#ecdcb8]/10 hover:border-[#ecdcb8]/55"
+          >
+            Descargar audio
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ playerId }}>
+  function formatTime(seconds) {
+    if (!Number.isFinite(seconds)) return "00:00";
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+  }
+
+  const root = document.getElementById(playerId);
+
+  if (root) {
+    const audio = root.querySelector(".js-audio-element");
+    const playButton = root.querySelector(".js-play-toggle");
+    const playIcon = root.querySelector(".js-icon-play");
+    const pauseIcon = root.querySelector(".js-icon-pause");
+    const progress = root.querySelector(".js-progress-slider");
+    const currentTimeEl = root.querySelector(".js-current-time");
+    const totalTimeEl = root.querySelector(".js-total-time");
+    const volumeSlider = root.querySelector(".js-volume-slider");
+    const volumeValueEl = root.querySelector(".js-volume-value");
+    const muteButton = root.querySelector(".js-mute-toggle");
+    const halo = root.querySelector(".js-player-halo");
+    const iconHigh = root.querySelector(".js-volume-icon-high");
+    const iconLow = root.querySelector(".js-volume-icon-low");
+    const iconMute = root.querySelector(".js-volume-icon-mute");
+    const orbitRing = root.querySelector(".js-orbit-ring");
+    const orbitRing2 = root.querySelector(".js-orbit-ring-2");
+    const eq = root.querySelector(".js-eq");
+    const eqBars = root.querySelectorAll(".js-eq-bar");
+
+    let lastVolumeBeforeMute = 1;
+
+    const setPlayingState = (isPlaying) => {
+      if (!playIcon || !pauseIcon || !playButton) return;
+
+      playIcon.classList.toggle("hidden", isPlaying);
+      pauseIcon.classList.toggle("hidden", !isPlaying);
+      playButton.setAttribute("aria-label", isPlaying ? "Pausar audio" : "Reproducir audio");
+
+      if (halo) {
+       halo.classList.toggle("animate-player-breathe-soft", isPlaying);
+       halo.classList.toggle("bg-[#ecdcb8]/[0.08]", isPlaying);
+       halo.classList.toggle("bg-[#ecdcb8]/[0.05]", !isPlaying);
+      }
+
+      if (eq) {
+       eq.classList.toggle("opacity-55", isPlaying);
+       eq.classList.toggle("opacity-25", !isPlaying);
+      }
+
+      if (eqBars.length) {
+        eqBars.forEach((bar, index) => {
+          bar.classList.toggle("animate-eq-bar", isPlaying);
+          bar.style.animationDelay = `${index * 0.14}s`;
+        });
+      }
+    };
+
+    const setVolumeUI = (volume) => {
+      const percent = Math.round(volume * 100);
+
+      if (volumeSlider) {
+        volumeSlider.value = String(volume);
+        volumeSlider.style.setProperty("--range-progress", `${percent}%`);
+      }
+
+      if (volumeValueEl) {
+        volumeValueEl.textContent = `${percent}%`;
+      }
+
+      if (iconHigh && iconLow && iconMute) {
+        iconHigh.classList.toggle("hidden", volume <= 0 || volume <= 0.5);
+        iconLow.classList.toggle("hidden", volume <= 0 || volume > 0.5);
+        iconMute.classList.toggle("hidden", volume > 0);
+      }
+
+      if (muteButton) {
+        muteButton.setAttribute("aria-label", volume === 0 ? "Activar audio" : "Silenciar audio");
+      }
+    };
+
+    if (audio && playButton && progress && currentTimeEl && totalTimeEl) {
+      audio.volume = 1;
+      setVolumeUI(1);
+      progress.style.setProperty("--range-progress", "0%");
+
+      playButton.addEventListener("click", async () => {
+        if (audio.paused) {
+          try {
+            await audio.play();
+          } catch (error) {
+            console.error("No se pudo reproducir el audio", error);
+          }
+        } else {
+          audio.pause();
+        }
+      });
+
+      audio.addEventListener("play", () => setPlayingState(true));
+      audio.addEventListener("pause", () => setPlayingState(false));
+
+      audio.addEventListener("ended", () => {
+        setPlayingState(false);
+        progress.value = "0";
+        progress.style.setProperty("--range-progress", "0%");
+        currentTimeEl.textContent = "00:00";
+      });
+
+      audio.addEventListener("loadedmetadata", () => {
+        totalTimeEl.textContent = formatTime(audio.duration);
+      });
+
+      audio.addEventListener("timeupdate", () => {
+        currentTimeEl.textContent = formatTime(audio.currentTime);
+        if (audio.duration) {
+          const value = (audio.currentTime / audio.duration) * 100;
+          progress.value = String(value);
+          progress.style.setProperty("--range-progress", `${value}%`);
+        }
+      });
+
+      progress.addEventListener("input", () => {
+        if (!audio.duration) return;
+        const nextTime = (Number(progress.value) / 100) * audio.duration;
+        audio.currentTime = nextTime;
+        progress.style.setProperty("--range-progress", `${progress.value}%`);
+      });
+
+      if (volumeSlider) {
+        volumeSlider.addEventListener("input", () => {
+          const volume = Number(volumeSlider.value);
+          audio.volume = volume;
+
+          if (volume > 0) {
+            lastVolumeBeforeMute = volume;
+          }
+
+          setVolumeUI(volume);
+        });
+      }
+
+      if (muteButton) {
+        muteButton.addEventListener("click", () => {
+          if (audio.volume > 0) {
+            lastVolumeBeforeMute = audio.volume;
+            audio.volume = 0;
+            setVolumeUI(0);
+          } else {
+            const nextVolume = lastVolumeBeforeMute > 0 ? lastVolumeBeforeMute : 1;
+            audio.volume = nextVolume;
+            setVolumeUI(nextVolume);
+          }
+        });
+      }
+
+      setPlayingState(false);
+    }
+  }
+</script>
+
+<style is:global>
+  .audio-range {
+    background:
+      linear-gradient(
+        to right,
+        rgba(236, 220, 184, 0.7) 0%,
+        rgba(236, 220, 184, 0.7) var(--range-progress, 0%),
+        rgba(255, 255, 255, 0.08) var(--range-progress, 0%),
+        rgba(255, 255, 255, 0.08) 100%
+      );
+  }
+
+  .audio-range::-webkit-slider-runnable-track {
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: transparent;
+  }
+
+  .audio-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -4px;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(236, 220, 184, 0.55);
+    background: rgba(236, 220, 184, 0.95);
+    box-shadow: 0 0 18px rgba(236, 220, 184, 0.18);
+  }
+
+  .audio-range::-moz-range-track {
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .audio-range::-moz-range-progress {
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: rgba(236, 220, 184, 0.7);
+  }
+
+  .audio-range::-moz-range-thumb {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(236, 220, 184, 0.55);
+    background: rgba(236, 220, 184, 0.95);
+    box-shadow: 0 0 18px rgba(236, 220, 184, 0.18);
+  }
+
+   .animate-player-breathe-soft {
+   animation: playerBreatheSoft 4.8s ease-in-out infinite;
+  }
+
+   .animate-eq-bar {
+   animation: eqBarSoft 2.2s ease-in-out infinite;
+   transform-origin: bottom;
+  }
+
+  @keyframes playerBreatheSoft {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.03);
+    opacity: 0.8;
+  }
+}
+
+@keyframes eqBarSoft {
+  0%, 100% {
+    transform: scaleY(0.82);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 0.55;
+  }
+}
+</style>
