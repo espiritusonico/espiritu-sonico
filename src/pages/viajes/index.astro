@@ -1,15 +1,16 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { getViajes } from "../../lib/api";
+import { mapViajeCard } from "../../lib/mappers";
 
-const API_URL = import.meta.env.PUBLIC_API_URL ?? "http://localhost:3000";
+const data = await getViajes();
 
-const res = await fetch(`${API_URL}/viajes-sonoros`);
-
-if (!res.ok) {
-  throw new Error("No se pudieron obtener los viajes sonoros");
-}
-
-const viajes = await res.json();
+const viajes = Array.isArray(data)
+  ? data
+      .map(mapViajeCard)
+      .filter((viaje) => viaje.publicado)
+      .sort((a, b) => Number(b.destacado) - Number(a.destacado))
+  : [];
 
 const subtitulos = {
   "niebla-sagrada": "Purificación",

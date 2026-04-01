@@ -20,6 +20,25 @@ export default defineConfig({
   devToolbar: { enabled: false },
   vite: {
     plugins: [forceUtf8Plugin],
-    server: { fs: { strict: false } },
+    server: {
+      fs: { strict: false },
+      warmup: {
+        clientFiles: [
+          "./src/styles/tailwind.css",
+          "./public/scripts/*.js"
+        ],
+        ssrFiles: [
+          "./src/layouts/*.astro",
+          "./src/components/*.astro",
+          "./src/pages/index.astro",
+          "./src/pages/inicio/**/*.astro",
+          "./src/pages/tienda/**/*.astro",
+          "./src/pages/viajes/**/*.astro",
+          "./src/pages/productos/**/*.astro",
+          "./src/pages/formaciones/**/*.astro",
+          "./src/pages/universo/**/*.astro"
+        ]
+      }
+    }
   },
 });

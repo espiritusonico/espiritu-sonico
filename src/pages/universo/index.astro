@@ -1,0 +1,715 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const recorridos = [
+  {
+    id: "origen",
+    titulo: "Origen",
+    resumen:
+      "La parte donde se cruzan tecnología, intuición, quiebre personal y el comienzo de una búsqueda que después tomó forma real.",
+    destacado:
+      "Espíritu Sónico no apareció de golpe. Se fue armando a medida que distintas partes de mi vida empezaron a conectarse de verdad.",
+    contenido: [
+      "Antes de llegar a este universo hubo muchos trabajos y muchas etapas. La parte más larga y estructural fue haber pasado quince años dentro del mundo de sistemas. Eso dejó algo muy claro en mí: la capacidad de construir, ordenar, resolver, diseñar procesos y bajar ideas a tierra.",
+      "Esa base técnica no desapareció cuando empezó el camino más ritual, más sonoro y más interno. Al contrario. Hoy sigue viva en todo lo que hago. Está en la manera de pensar experiencias, de unir instrumentos ceremoniales con recursos digitales, de crear estructuras que ayuden a mover estados, y también en el desarrollo de herramientas concretas para acompañar a otras personas a convertir una intuición en algo real, habitable y hasta monetizable si hace falta.",
+      "A los 33 años renuncié. No fue una decisión prolija ni armada desde la seguridad. Fue un corte claro. Ya venía acercándome a los viajes sonoros desde un tiempo antes, pero después de esa salida el camino tomó otra fuerza.",
+      "Las sierras de Córdoba fueron un punto de giro. El monte, el silencio, el vínculo con los ciclos, la consagración de instrumentos y la escucha de la naturaleza me acomodaron internamente de otra manera. Ahí empezó a quedar mucho más claro que el sonido no iba a ocupar un lugar secundario en mi vida."
+    ],
+    media: ["image"],
+    portalLabel: "raíz",
+    portalHint: "Tecnología, quiebre y comienzo",
+  },
+  {
+    id: "musica",
+    titulo: "Música y canal",
+    resumen:
+      "La música no es una parte más. Está en el centro. La guitarra fue el primer puente y sigue siendo una raíz viva de todo esto.",
+    destacado:
+      "La música es mi vida entera. La guitarra fue mi primera conexión con las galaxias.",
+    contenido: [
+      "Soy guitarrista desde los 13 años y hoy, mirando todo el recorrido, veo que la relación con el sonido siempre fue mucho más profunda que tocar un instrumento. Había algo que vibraba en el pecho, una sensación concreta de estar en contacto con algo enorme, difícil de explicar pero imposible de negar.",
+      "Con el tiempo entendí que esa experiencia no era un detalle sensible ni una exageración personal. Era una forma de percepción. Una manera de recibir información, presencia y movimiento a través de las notas.",
+      "Todo lo que después se volvió viaje sonoro, voz guiada, atmósfera, frecuencia, ritual y diseño de experiencia, ya estaba latiendo ahí desde el principio. Espíritu Sónico también nace de esa historia."
+    ],
+    media: ["image"],
+    portalLabel: "canal",
+    portalHint: "La música como eje",
+  },
+  {
+    id: "exploracion",
+    titulo: "Exploración de la conciencia",
+    resumen:
+      "Una búsqueda sostenida alrededor de la psique, el símbolo, la percepción y todo lo que se mueve detrás del telón de lo evidente.",
+    destacado:
+      "Desde la adolescencia hubo una necesidad real de mirar más adentro, más atrás y más hondo.",
+    contenido: [
+      "Siempre existió una atracción fuerte por la conciencia, la inconsciencia, los estados internos y las dimensiones menos visibles de la experiencia humana. Esa exploración tomó muchas formas: observación, procesos personales, estudio, búsqueda simbólica y años de contacto con preguntas que no se resuelven rápido.",
+      "Carl Jung tuvo un lugar importante por su manera de pensar el símbolo, el inconsciente y las imágenes profundas que organizan la vida. Krishnamurti resonó por su claridad para mirar sin intermediarios. Terence McKenna abrió otra puerta con su forma de pensar la conciencia, el lenguaje y lo extraño. También hubo estudio en psicología social, que aportó lectura de grupos, vínculos, procesos humanos y construcción de sentido.",
+      "Nada de eso está puesto como lista de autores para decorar un discurso. Está porque ayudó a darle lenguaje a algo que ya venía siendo vivido desde adentro."
+    ],
+    media: ["note"],
+    portalLabel: "visión",
+    portalHint: "Psique, símbolo y percepción",
+  },
+  {
+    id: "sonologia",
+    titulo: "Sonología Ritual",
+    resumen:
+      "La disciplina donde se ordena todo: instrumentos ceremoniales, voz guiada, diseño sonoro, simbolismo y estados de conciencia.",
+    destacado:
+      "La Sonología Ritual fue apareciendo cuando la práctica dejó de ser solo intuición y empezó a tomar una forma propia.",
+    contenido: [
+      "Acá se integran instrumentos ceremoniales, narrativas guiadas con la voz y capas sonoras digitales afinadas para acompañar distintos estados según el viaje que se esté trabajando. Cada experiencia tiene una arquitectura. No se arma al azar.",
+      "Hay combinaciones de texturas, pulsos, atmósferas y melodías que ayudan a abrir relajación, profundidad, visión interna, memoria, conexión simbólica o retorno. La intención nunca fue volver técnico algo sensible, sino encontrar una manera precisa de componer experiencias que tengan dirección y coherencia.",
+      "La Sonología Ritual es el lugar donde se encuentran ancestralidad, percepción, símbolo y tecnología. Ahí se ordena gran parte del universo que sostiene a Espíritu Sónico."
+    ],
+    media: ["video", "image"],
+    portalLabel: "método",
+    portalHint: "Arquitectura de la experiencia",
+  },
+  {
+    id: "experiencias",
+    titulo: "Experiencias",
+    resumen:
+      "Viajes, activaciones, procesos individuales y grupales que fueron dándole cuerpo y profundidad a todo este recorrido.",
+    destacado:
+      "La experiencia del animal de poder ya fue atravesada por más de 300 personas.",
+    contenido: [
+      "Dentro de este universo viven propuestas como la activación y canalización del animal de poder, el viaje de la memoria ancestral y distintos recorridos sonoros pensados para abrir estados internos específicos.",
+      "Cada experiencia tiene su carácter. Algunas ordenan, otras revelan, otras conectan con imágenes profundas, otras ayudan a destrabar algo que venía pidiendo movimiento hace tiempo. La voz, el símbolo, los instrumentos y el diseño sonoro trabajan juntos para sostener ese proceso.",
+      "Que más de 300 personas hayan activado sus animales de poder dentro de este trabajo marca algo importante: este universo fue creciendo en contacto directo con la experiencia humana, no solamente desde una idea."
+    ],
+    media: ["image", "video"],
+    portalLabel: "práctica",
+    portalHint: "Proceso vivo y compartido",
+  },
+  {
+    id: "simbolo",
+    titulo: "Símbolo y sigilo",
+    resumen:
+      "La parte donde la imagen deja de ser adorno y empieza a funcionar como llave, dirección y condensación de sentido.",
+    destacado:
+      "El símbolo organiza, concentra y mueve. El sigilo aparece cuando esa potencia se diseña con intención.",
+    contenido: [
+      "El trabajo simbólico también forma parte de Espíritu Sónico. A veces una imagen contiene más movimiento que una explicación larga. El símbolo tiene la capacidad de reunir intención, emoción, memoria y dirección en una sola forma.",
+      "Dentro de ese campo aparece el arte del sigilo: una práctica de creación simbólica donde una intención se destila, se diseña y se carga para operar en planos más sutiles de la experiencia. No hace falta llegar sabiendo qué es un sigilo para percibir su fuerza. Primero se entiende el poder del símbolo. Después se abre esa puerta.",
+      "Por eso esta dimensión se relaciona de manera directa con los viajes sonoros, con la Sonología Ritual y con la construcción de procesos transformadores. Todo dialoga."
+    ],
+    media: ["image"],
+    portalLabel: "símbolo",
+    portalHint: "Condensación y dirección",
+  }
+];
+---
+
+<Layout title="Universo Espíritu Sónico">
+  <section class="relative min-h-screen overflow-hidden px-5 pb-24 pt-20 text-white md:px-6">
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="absolute left-1/2 top-10 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-[#ecdcb8]/[0.05] blur-3xl"></div>
+      <div class="absolute -left-20 top-1/3 h-72 w-72 rounded-full bg-violet-400/[0.05] blur-3xl"></div>
+      <div class="absolute -right-20 bottom-10 h-80 w-80 rounded-full bg-fuchsia-300/[0.04] blur-3xl"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.025),transparent_45%)]"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-6xl">
+      <!-- HEADER -->
+      <header class="mb-20 text-center">
+        <p class="mb-5 text-xs uppercase tracking-[0.45em] text-[#ecdcb8]/55">
+          Espíritu Sónico
+        </p>
+
+        <h1 class="mx-auto mb-6 max-w-4xl text-4xl font-light leading-tight text-[#ecdcb8] md:text-6xl">
+          Universo Espíritu Sónico
+        </h1>
+
+        <p class="mx-auto max-w-3xl text-base leading-relaxed text-white/70 md:text-lg">
+          Sonido, símbolo, conciencia y una manera muy concreta de transformar intuición en experiencia.
+        </p>
+
+        <div class="mx-auto mt-10 h-px w-32 bg-gradient-to-r from-transparent via-[#ecdcb8]/60 to-transparent"></div>
+      </header>
+
+      <!-- PORTAL -->
+      <section id="mapa" class="mx-auto mb-16 max-w-6xl">
+        <div class="portal-shell rounded-[2.2rem] p-[1px] shadow-[0_18px_76px_rgba(0,0,0,0.34)]">
+          <div class="relative rounded-[2.1rem] bg-[#0a0610]/97 px-6 py-7 backdrop-blur-2xl md:px-8 md:py-8">
+            <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-[2.1rem]">
+              <div class="absolute -left-10 top-0 h-40 w-40 rounded-full bg-[#ecdcb8]/[0.05] blur-3xl"></div>
+              <div class="absolute bottom-0 right-0 h-44 w-44 rounded-full bg-violet-300/[0.06] blur-3xl"></div>
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.02),transparent_50%)]"></div>
+            </div>
+
+            <div class="relative z-10">
+              <div class="mx-auto mb-8 max-w-3xl text-center">
+                <p class="mb-3 text-[11px] uppercase tracking-[0.34em] text-[#ecdcb8]/58">
+                  Entrá por acá
+                </p>
+
+                <h2 class="mb-4 text-[2rem] font-light leading-tight text-[#ecdcb8] md:text-[2.55rem]">
+                  Elegí por dónde empezar
+                </h2>
+
+                <p class="text-[15px] leading-relaxed text-white/68 md:text-base">
+                  Este bloque concentra las entradas principales del universo. Cada portal abre un sector y cierra el que estaba activo.
+                </p>
+              </div>
+
+              <div class="portal-grid">
+                {recorridos.map((recorrido) => (
+                  <button
+                    type="button"
+                    class:list={[
+                      "portal-card",
+                      `portal-card--${recorrido.id}`,
+                    ]}
+                    data-open={recorrido.id}
+                  >
+                    <span class="portal-card__glow"></span>
+
+                    <div class="portal-card__content">
+                      <p class="portal-card__label">
+                        {recorrido.portalLabel}
+                      </p>
+
+                      <h3 class="portal-card__title">
+                        {recorrido.titulo}
+                      </h3>
+
+                      <p class="portal-card__hint">
+                        {recorrido.portalHint}
+                      </p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BLOQUES -->
+      <section class="space-y-8">
+        {recorridos.map((recorrido) => (
+          <article
+            class:list={[
+              "universo-panel rounded-[2.2rem] p-[1px] shadow-[0_18px_76px_rgba(0,0,0,0.34)]",
+              recorrido.id === "sonologia" && "universo-panel--principal",
+              recorrido.id === "simbolo" && "universo-panel--compacto",
+            ]}
+            data-recorrido={recorrido.id}
+          >
+            <div class="relative rounded-[2.1rem] bg-[#0a0610]/97 backdrop-blur-2xl">
+              <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-[2.1rem]">
+                <div class="absolute -left-10 top-0 h-40 w-40 rounded-full bg-[#ecdcb8]/[0.04] blur-3xl"></div>
+                <div class="absolute bottom-0 right-0 h-44 w-44 rounded-full bg-violet-300/[0.05] blur-3xl"></div>
+              </div>
+
+              <button
+                class="universo-panel__toggle relative z-10 flex w-full items-start justify-between gap-5 px-6 py-7 text-left md:px-8 md:py-8"
+                type="button"
+                aria-expanded="false"
+                aria-controls={`contenido-${recorrido.id}`}
+              >
+                <div class="min-w-0">
+                  <p class="mb-3 text-[11px] uppercase tracking-[0.32em] text-white/32">
+                    Recorrido
+                  </p>
+
+                  <h2 class="mb-3 text-3xl font-light leading-tight text-[#ecdcb8] md:text-[2.5rem]">
+                    {recorrido.titulo}
+                  </h2>
+
+                  <p class="max-w-4xl text-[15px] leading-relaxed text-white/66 md:text-base">
+                    {recorrido.resumen}
+                  </p>
+                </div>
+
+                <span class="universo-panel__icon mt-1 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-xl text-[#ecdcb8] transition duration-300">
+                  +
+                </span>
+              </button>
+
+              <div
+                id={`contenido-${recorrido.id}`}
+                class="universo-panel__contenido"
+              >
+                <div class:list={[
+                  "relative z-10 gap-7 px-6 pb-7 md:px-8 md:pb-8",
+                  recorrido.id === "origen" && "grid lg:grid-cols-[1.08fr_0.92fr]",
+                  recorrido.id === "musica" && "grid lg:grid-cols-[0.95fr_1.05fr] lg:items-center",
+                  recorrido.id === "exploracion" && "mx-auto max-w-4xl",
+                  recorrido.id === "sonologia" && "grid lg:grid-cols-[1.15fr_0.85fr] lg:items-start",
+                  recorrido.id === "experiencias" && "grid lg:grid-cols-[0.92fr_1.08fr] lg:items-start",
+                  recorrido.id === "simbolo" && "mx-auto max-w-4xl",
+                ]}>
+                  <div class="universo-panel__texto">
+                    <p class="mb-5 text-[1.08rem] leading-relaxed text-white/86 md:text-[1.18rem]">
+                      {recorrido.destacado}
+                    </p>
+
+                    <div class="space-y-4 leading-relaxed text-white/72">
+                      {recorrido.contenido.map((parrafo) => (
+                        <p>{parrafo}</p>
+                      ))}
+                    </div>
+
+                    <div class="mt-8">
+                      <button class="volver-mapa" type="button" data-target="mapa">
+                        Volver arriba
+                      </button>
+                    </div>
+                  </div>
+
+                  {recorrido.media.length > 0 && (
+                    <aside class:list={[
+                      "universo-panel__media",
+                      recorrido.id === "exploracion" && "mt-7",
+                      recorrido.id === "simbolo" && "mt-7",
+                    ]}>
+                      {recorrido.media.includes("image") && (
+                        <div class:list={[
+                          "panel-media-deep overflow-hidden rounded-[2rem] p-[1px] shadow-[0_14px_60px_rgba(0,0,0,0.28)]",
+                          recorrido.id === "simbolo" && "mx-auto max-w-2xl",
+                        ]}>
+                          <div class="relative rounded-[1.9rem] bg-[#0a0610]/96 p-4 backdrop-blur-2xl md:p-5">
+                            <div class:list={[
+                              "flex items-center justify-center rounded-[1.7rem] bg-[radial-gradient(circle_at_center,rgba(236,220,184,0.06),transparent_64%)] px-5",
+                              recorrido.id === "origen" && "min-h-[320px] md:min-h-[430px]",
+                              recorrido.id === "musica" && "min-h-[280px] md:min-h-[360px]",
+                              recorrido.id === "sonologia" && "min-h-[220px] md:min-h-[280px]",
+                              recorrido.id === "experiencias" && "min-h-[220px] md:min-h-[280px]",
+                              recorrido.id === "simbolo" && "min-h-[260px] md:min-h-[340px]",
+                            ]}>
+                              <div class="text-center">
+                                <p class="mb-2 text-[11px] uppercase tracking-[0.28em] text-[#ecdcb8]/56">
+                                  {recorrido.mediaTitle}
+                                </p>
+                                <p class="mx-auto max-w-xs text-sm leading-relaxed text-white/50">
+                                  {recorrido.mediaText}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {recorrido.media.includes("video") && (
+                        <div class="subpanel-universo rounded-[1.8rem] px-5 py-5">
+                          <p class="mb-2 text-[11px] uppercase tracking-[0.26em] text-[#ecdcb8]/58">
+                            Capa audiovisual
+                          </p>
+
+                          <h3 class="mb-3 text-[1.35rem] font-light leading-tight text-[#ecdcb8]">
+                            Presencia expandida
+                          </h3>
+
+                          <p class="text-sm leading-relaxed text-white/68">
+                            Este espacio puede recibir un video embebido, una pieza breve o un portal visual que prolongue la resonancia del bloque.
+                          </p>
+                        </div>
+                      )}
+
+                      {recorrido.media.includes("note") && (
+                        <div class="subpanel-soft rounded-[1.8rem] px-5 py-5">
+                          <p class="mb-2 text-[11px] uppercase tracking-[0.26em] text-[#ecdcb8]/58">
+                            Punto de apoyo
+                          </p>
+
+                          <h3 class="mb-3 text-[1.2rem] font-light leading-tight text-[#ecdcb8]">
+                            Capa conceptual
+                          </h3>
+
+                          <p class="text-sm leading-relaxed text-white/68">
+                            Este bloque puede alojar una frase, una imagen mínima o una textura más abstracta, sin romper la lectura central.
+                          </p>
+                        </div>
+                      )}
+                    </aside>
+                  )}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <!-- CIERRE -->
+      <section class="mt-24 text-center">
+        <p class="mb-5 text-xs uppercase tracking-[0.45em] text-[#ecdcb8]/55">
+          Continuidad
+        </p>
+
+        <h2 class="mx-auto mb-6 max-w-4xl text-3xl font-light leading-tight text-[#ecdcb8] md:text-5xl">
+          Este universo sigue vivo en cada viaje, cada producto y cada experiencia.
+        </h2>
+
+        <p class="mx-auto max-w-3xl text-base leading-relaxed text-white/70 md:text-lg">
+          Si querés seguir entrando, podés ir por los viajes sonoros o por los productos. Las futuras capas de este mapa van a nacer desde la misma raíz.
+        </p>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a href="/viajes" class="mapa-chip">
+            Explorar viajes
+          </a>
+          <a href="/tienda" class="mapa-chip">
+            Ver productos
+          </a>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <script>
+    const initUniverso = () => {
+      const bloques = Array.from(document.querySelectorAll(".universo-panel"));
+      const mapButtons = Array.from(document.querySelectorAll("[data-open]"));
+      const volverButtons = Array.from(document.querySelectorAll('[data-target="mapa"]'));
+      const mapa = document.getElementById("mapa");
+
+      if (!bloques.length) return;
+
+      const closeBloque = (bloque) => {
+        const button = bloque.querySelector(".universo-panel__toggle");
+        const content = bloque.querySelector(".universo-panel__contenido");
+        const icon = bloque.querySelector(".universo-panel__icon");
+
+        if (!button || !content || !icon) return;
+
+        button.setAttribute("aria-expanded", "false");
+        content.style.maxHeight = "0px";
+        bloque.classList.remove("is-active");
+        icon.style.transform = "rotate(0deg)";
+      };
+
+      const openBloque = (bloque) => {
+        const button = bloque.querySelector(".universo-panel__toggle");
+        const content = bloque.querySelector(".universo-panel__contenido");
+        const icon = bloque.querySelector(".universo-panel__icon");
+
+        if (!button || !content || !icon) return;
+
+        bloques.forEach((item) => {
+          if (item !== bloque) closeBloque(item);
+        });
+
+        button.setAttribute("aria-expanded", "true");
+        content.style.maxHeight = `${content.scrollHeight}px`;
+        bloque.classList.add("is-active");
+        icon.style.transform = "rotate(45deg)";
+      };
+
+      bloques.forEach((bloque) => {
+        const button = bloque.querySelector(".universo-panel__toggle");
+        if (!button) return;
+
+        button.addEventListener("click", () => {
+          const isOpen = button.getAttribute("aria-expanded") === "true";
+
+          if (isOpen) {
+            closeBloque(bloque);
+          } else {
+            openBloque(bloque);
+            bloque.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        });
+      });
+
+      mapButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-open");
+          const target = document.querySelector(`[data-recorrido="${id}"]`);
+          if (!target) return;
+
+          openBloque(target);
+          target.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      });
+
+      volverButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          bloques.forEach(closeBloque);
+          if (mapa) {
+            mapa.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        });
+      });
+
+      window.addEventListener("resize", () => {
+        bloques.forEach((bloque) => {
+          const button = bloque.querySelector(".universo-panel__toggle");
+          const content = bloque.querySelector(".universo-panel__contenido");
+
+          if (!button || !content) return;
+
+          const isOpen = button.getAttribute("aria-expanded") === "true";
+          if (isOpen) {
+            content.style.maxHeight = `${content.scrollHeight}px`;
+          }
+        });
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initUniverso, { once: true });
+    } else {
+      initUniverso();
+    }
+  </script>
+
+  <style>
+    .mapa-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(236, 220, 184, 0.35);
+      padding: 0.7rem 1.1rem;
+      color: #ecdcb8;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.04);
+      transition: 0.3s ease;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      letter-spacing: 0.03em;
+    }
+
+    .mapa-chip:hover {
+      transform: translateY(-1px);
+      border-color: rgba(236, 220, 184, 0.55);
+      background: rgba(236, 220, 184, 0.1);
+    }
+
+    .portal-shell,
+    .universo-panel {
+      position: relative;
+    }
+
+    .portal-shell::before,
+    .universo-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 2.2rem;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.06),
+        rgba(255, 255, 255, 0.01)
+      );
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .portal-card {
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 1.6rem;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      padding: 1.2rem 1.1rem;
+      min-height: 7.2rem;
+      cursor: pointer;
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+
+    .portal-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(236, 220, 184, 0.24);
+      box-shadow:
+        0 14px 32px rgba(0,0,0,0.16),
+        inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .portal-card__glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 15%, rgba(236,220,184,0.14), transparent 55%);
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    .portal-card__content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+
+    .portal-card__label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: rgba(236, 220, 184, 0.52);
+    }
+
+    .portal-card__title {
+      font-size: 1.18rem;
+      line-height: 1.2;
+      color: #ecdcb8;
+      font-weight: 300;
+      max-width: 18ch;
+    }
+
+    .portal-card__hint {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.56);
+      max-width: 28ch;
+    }
+
+    .portal-card--origen {
+      grid-column: span 4;
+      min-height: 8.6rem;
+      background:
+        radial-gradient(circle at top left, rgba(236,220,184,0.08), transparent 45%),
+        linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+    }
+
+    .portal-card--musica {
+      grid-column: span 3;
+      min-height: 8rem;
+    }
+
+    .portal-card--exploracion {
+      grid-column: span 5;
+      min-height: 8rem;
+      background:
+        radial-gradient(circle at center, rgba(160,120,210,0.08), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
+    }
+
+    .portal-card--sonologia {
+      grid-column: span 7;
+      min-height: 9.4rem;
+      background:
+        radial-gradient(circle at center, rgba(236,220,184,0.12), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    }
+
+    .portal-card--experiencias {
+      grid-column: span 5;
+      min-height: 8.8rem;
+    }
+
+    .portal-card--simbolo {
+      grid-column: span 4;
+      min-height: 7.4rem;
+      text-align: center;
+    }
+
+    .portal-card--simbolo .portal-card__content {
+      align-items: center;
+      text-align: center;
+    }
+
+    .universo-panel--principal {
+      transform: scale(1.003);
+    }
+
+    .universo-panel--compacto {
+      max-width: 64rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .universo-panel__contenido {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 520ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .universo-panel.is-active .universo-panel__icon {
+      background: rgba(255, 255, 255, 0.08);
+      transform: rotate(45deg);
+    }
+
+    .universo-panel__texto p {
+      font-size: 1rem;
+    }
+
+    .universo-panel__media {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .subpanel-universo,
+    .subpanel-soft {
+      background:
+        radial-gradient(circle at top left, rgba(236, 220, 184, 0.05), transparent 40%),
+        rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(14px);
+    }
+
+    .volver-mapa {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.62);
+      font-size: 0.92rem;
+      transition: 0.25s ease;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .volver-mapa:hover {
+      color: rgba(255,255,255,0.9);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 1023px) {
+      .portal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .portal-card,
+      .portal-card--origen,
+      .portal-card--musica,
+      .portal-card--exploracion,
+      .portal-card--sonologia,
+      .portal-card--experiencias,
+      .portal-card--simbolo {
+        grid-column: span 1;
+        min-height: 7.6rem;
+      }
+
+      .portal-card--sonologia {
+        grid-column: span 2;
+      }
+
+      .universo-panel--principal {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portal-card,
+      .portal-card--origen,
+      .portal-card--musica,
+      .portal-card--exploracion,
+      .portal-card--sonologia,
+      .portal-card--experiencias,
+      .portal-card--simbolo {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</Layout>

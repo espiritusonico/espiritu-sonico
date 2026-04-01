@@ -1,5 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { getProductos } from "../../lib/api";
+import { mapProductoCard } from "../../lib/mappers";
+import { PLACEHOLDERS } from "../../lib/constants";
 
 const recursosGratuitos = [
   {
@@ -20,35 +23,18 @@ const recursosGratuitos = [
   },
 ];
 
-const sahumerios = [
-  {
-    nombre: "Lavanda, Eucaliptus y Menta",
-    descripcion:
-      "Sahumerio musical para despejar, limpiar y renovar el espacio, acompañado por un viaje sonoro exclusivo.",
-    href: "/tienda/sahumerio/lavanda",
-    imagen: "/iconos/icon-sahumerio.png",
-    estado: "Próximamente",
-    tipo: "Sahumerio musical",
-  },
-  {
-    nombre: "Salvia, Benjuí y Palo Santo",
-    descripcion:
-      "Sahumerio musical para protección, purificación y apertura, acompañado por un viaje sonoro exclusivo.",
-    href: "/tienda/sahumerio/salvia",
-    imagen: "/iconos/icon-sahumerio.png",
-    estado: "Próximamente",
-    tipo: "Sahumerio musical",
-  },
-  {
-    nombre: "Tercera variedad",
-    descripcion:
-      "Nueva pieza de la línea de sahumerios musicales, creada para ampliar la experiencia ritual junto a un viaje sonoro.",
-    href: "#",
-    imagen: "/iconos/icon-sahumerio.png",
-    estado: "En preparación",
-    tipo: "Sahumerio musical",
-  },
-];
+let productos = [];
+
+try {
+  const data = await getProductos();
+
+  productos = Array.isArray(data)
+    ? data.map(mapProductoCard)
+    : [];
+} catch (error) {
+  console.error("Error cargando productos en tienda:", error);
+  productos = [];
+}
 
 const bibliotecaViva = [
   {
@@ -116,7 +102,7 @@ const bibliotecaViva = [
             <input
               id="shop-search"
               type="text"
-              placeholder="Explorar sahumerios, recursos y materiales"
+              placeholder={PLACEHOLDERS.busquedaTienda}
               class="w-full rounded-full bg-[#120a18]/80 py-3 pl-11 pr-4 text-[15px] text-[#ecdcb8] placeholder:text-[#ecdcb8]/36 shadow-[inset_0_0_0_1px_rgba(236,220,184,0.08)] outline-none transition duration-300 focus:shadow-[inset_0_0_0_1px_rgba(236,220,184,0.18),0_0_0_6px_rgba(236,220,184,0.04)]"
             />
           </div>
@@ -137,6 +123,21 @@ const bibliotecaViva = [
           </div>
         </div>
       </section>
+
+      <div
+  id="shop-empty-state"
+  class="hidden rounded-[2rem] border border-[#ecdcb8]/10 bg-[linear-gradient(180deg,rgba(236,220,184,0.04),rgba(255,255,255,0.01))] px-6 py-10 text-center shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-xl"
+>
+  <p class="text-[11px] uppercase tracking-[0.28em] text-white/35">
+    Búsqueda
+  </p>
+  <h3 class="mt-3 text-2xl font-light text-[#ecdcb8]">
+    No se encontraron resultados
+  </h3>
+  <p class="mx-auto mt-3 max-w-2xl text-[15px] leading-7 text-white/68">
+    Probá con otra palabra o explorá una categoría diferente.
+  </p>
+</div>
 
       <section
         class="shop-section relative mb-8 overflow-hidden rounded-[2.4rem] bg-[linear-gradient(180deg,rgba(236,220,184,0.04),rgba(255,255,255,0.012))] shadow-[0_18px_60px_rgba(0,0,0,0.18)] backdrop-blur-xl"
@@ -260,66 +261,76 @@ const bibliotecaViva = [
               <div class="mb-6 h-px bg-gradient-to-r from-transparent via-[#ecdcb8]/22 to-transparent"></div>
 
               <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                {sahumerios.map((item) => (
-                  <a
-                    href={item.href}
-                    data-item
-                    data-category="rituales"
-                    data-search={`${item.nombre} ${item.descripcion} ${item.tipo} ${item.estado}`}
-                    class="group/card relative overflow-hidden rounded-[2.25rem] bg-[linear-gradient(180deg,rgba(236,220,184,0.08),rgba(120,86,162,0.035))] p-[1px] shadow-[0_20px_60px_rgba(0,0,0,0.24)] transition duration-500 hover:-translate-y-1.5 active:scale-[0.985] active:translate-y-[1px]"
-                  >
-                    <div class="relative flex h-full min-h-[24.5rem] flex-col rounded-[2.18rem] bg-[linear-gradient(180deg,rgba(18,10,24,0.95),rgba(24,13,32,0.89))] px-4 pb-5 pt-4 backdrop-blur-2xl sm:min-h-[26rem] sm:px-5 sm:pb-6 sm:pt-5">
-                      <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-[2.18rem]">
-                        <div class="absolute left-1/2 top-8 h-44 w-44 -translate-x-1/2 rounded-full bg-[#ecdcb8]/[0.08] blur-3xl transition duration-500 group-hover/card:bg-[#ecdcb8]/[0.14] group-active/card:bg-[#ecdcb8]/[0.14]"></div>
-                        <div class="absolute -left-6 bottom-10 h-28 w-28 rounded-full bg-violet-400/[0.08] blur-3xl"></div>
-                        <div class="absolute bottom-0 right-0 h-36 w-36 rounded-full bg-fuchsia-300/[0.06] blur-3xl"></div>
-                        <div class="absolute inset-[1px] rounded-[2.05rem] ring-1 ring-[#ecdcb8]/10 transition duration-500 group-hover/card:ring-[#ecdcb8]/20 group-active/card:ring-[#ecdcb8]/20"></div>
-                      </div>
+                {productos
+  .filter((p) => p.activo)
+  .sort((a, b) => a.orden - b.orden)
+  .map((item) => (
+    <a
+      href={item.href}
+      data-item
+      data-category="rituales"
+      data-search={`${item.nombre} ${item.descripcion} ${item.tipo} ${item.estado}`}
+      class="group/card relative overflow-hidden rounded-[2.25rem] bg-[linear-gradient(180deg,rgba(236,220,184,0.08),rgba(120,86,162,0.035))] p-[1px] shadow-[0_20px_60px_rgba(0,0,0,0.24)] transition duration-500 hover:-translate-y-1.5 active:scale-[0.985] active:translate-y-[1px]"
+    >
+      <div class="relative flex h-full min-h-[24.5rem] flex-col rounded-[2.18rem] bg-[linear-gradient(180deg,rgba(18,10,24,0.95),rgba(24,13,32,0.89))] px-4 pb-5 pt-4 backdrop-blur-2xl sm:min-h-[26rem] sm:px-5 sm:pb-6 sm:pt-5">
+        <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-[2.18rem]">
+          <div class="absolute left-1/2 top-8 h-44 w-44 -translate-x-1/2 rounded-full bg-[#ecdcb8]/[0.08] blur-3xl transition duration-500 group-hover/card:bg-[#ecdcb8]/[0.14] group-active/card:bg-[#ecdcb8]/[0.14]"></div>
+          <div class="absolute -left-6 bottom-10 h-28 w-28 rounded-full bg-violet-400/[0.08] blur-3xl"></div>
+          <div class="absolute bottom-0 right-0 h-36 w-36 rounded-full bg-fuchsia-300/[0.06] blur-3xl"></div>
+          <div class="absolute inset-[1px] rounded-[2.05rem] ring-1 ring-[#ecdcb8]/10 transition duration-500 group-hover/card:ring-[#ecdcb8]/20 group-active/card:ring-[#ecdcb8]/20"></div>
+        </div>
 
-                      <div class="relative z-10 mb-5 flex items-center justify-between gap-3">
-                        <span class="text-[10px] uppercase tracking-[0.26em] text-[#ecdcb8]/62">
-                          {item.tipo}
-                        </span>
+        <div class="relative z-10 mb-5 flex items-center justify-between gap-3">
+          <span class="text-[10px] uppercase tracking-[0.26em] text-[#ecdcb8]/62">
+            {item.tipo}
+          </span>
 
-                        <span class="rounded-full bg-[#ecdcb8]/10 px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-[#ecdcb8]/75 ring-1 ring-[#ecdcb8]/15">
-                          {item.estado}
-                        </span>
-                      </div>
+          <span class="rounded-full bg-[#ecdcb8]/10 px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-[#ecdcb8]/75 ring-1 ring-[#ecdcb8]/15">
+            {item.estado}
+          </span>
+        </div>
 
-                      <div class="relative z-10 flex min-h-[10.5rem] items-center justify-center sm:min-h-[12rem]">
-                        <img
-                          src={item.imagen}
-                          alt={item.nombre}
-                          class="max-h-[12rem] w-auto object-contain drop-shadow-[0_0_32px_rgba(236,220,184,0.18)] transition duration-500 group-hover/card:scale-[1.05] group-active/card:scale-[1.03]"
-                        />
-                      </div>
+        <div class="relative z-10 flex min-h-[10.5rem] items-center justify-center sm:min-h-[12rem]">
+          <img
+            src={item.imagen}
+            alt={item.nombre}
+            class="max-h-[12rem] w-auto object-contain drop-shadow-[0_0_32px_rgba(236,220,184,0.18)] transition duration-500 group-hover/card:scale-[1.05] group-active/card:scale-[1.03]"
+          />
+        </div>
 
-                      <div class="relative z-10 mt-2 flex flex-1 flex-col">
-                        <h3 class="mb-3 text-[1.35rem] font-light leading-tight text-[#ecdcb8] sm:text-[1.5rem]">
-                          {item.nombre}
-                        </h3>
+        <div class="relative z-10 mt-2 flex flex-1 flex-col">
+          <h3 class="mb-3 text-[1.35rem] font-light leading-tight text-[#ecdcb8] sm:text-[1.5rem]">
+            {item.nombre}
+          </h3>
 
-                        <p class="mb-3 text-[14.5px] leading-6 text-white/78 sm:text-[15px] sm:leading-7 md:text-[15.5px]">
-                          {item.descripcion}
-                        </p>
+          <p class="mb-3 text-[14.5px] leading-6 text-white/78 sm:text-[15px] sm:leading-7 md:text-[15.5px]">
+            {item.descripcion}
+          </p>
 
-                        <p class="mb-5 text-[12.5px] leading-5 text-[#ecdcb8]/72 sm:text-[13.5px] sm:leading-6 md:text-[14px]">
-                          Incluye acceso a un viaje sonoro asociado.
-                        </p>
+          <p class="mb-5 text-[12.5px] leading-5 text-[#ecdcb8]/72 sm:text-[13.5px] sm:leading-6 md:text-[14px]">
+            Incluye acceso a un viaje sonoro asociado.
+          </p>
 
-                        <div class="mt-auto flex items-center justify-between gap-4 border-t border-[#ecdcb8]/10 pt-5">
-                          <span class="text-sm text-[#ecdcb8]/82 transition duration-300 group-hover/card:text-[#ecdcb8] group-active/card:text-[#ecdcb8]">
-                            Entrar al producto
-                          </span>
+          <div class="mt-auto flex items-center justify-between gap-4 border-t border-[#ecdcb8]/10 pt-5">
+            <div class="flex flex-col">
+              <span class="text-sm text-[#ecdcb8]/82 transition duration-300 group-hover/card:text-[#ecdcb8] group-active/card:text-[#ecdcb8]">
+                Entrar al producto
+              </span>
+              {item.precio !== null && (
+                <span class="mt-1 text-[13px] text-white/60">
+                  ${item.precio}
+                </span>
+              )}
+            </div>
 
-                          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#ecdcb8]/6 text-[#ecdcb8]/80 ring-1 ring-[#ecdcb8]/15 transition duration-300 group-hover/card:bg-[#ecdcb8]/12 group-hover/card:text-[#ecdcb8] group-active/card:bg-[#ecdcb8]/12 group-active/card:text-[#ecdcb8]">
-                            →
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                ))}
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#ecdcb8]/6 text-[#ecdcb8]/80 ring-1 ring-[#ecdcb8]/15 transition duration-300 group-hover/card:bg-[#ecdcb8]/12 group-hover/card:text-[#ecdcb8] group-active/card:bg-[#ecdcb8]/12 group-active/card:text-[#ecdcb8]">
+              →
+            </span>
+          </div>
+        </div>
+      </div>
+    </a>
+))}
               </div>
             </div>
           </div>
@@ -455,36 +466,44 @@ const bibliotecaViva = [
     };
 
     const applySearchAndFilter = () => {
-      const query = (searchInput?.value || '').trim().toLowerCase();
+  const query = (searchInput?.value || '').trim().toLowerCase();
+  const emptyState = document.querySelector('#shop-empty-state');
 
-      sections.forEach((section) => {
-        const sectionName = section.dataset.section || '';
-        const items = Array.from(section.querySelectorAll('[data-item]'));
-        let visibleCount = 0;
+  let totalVisibleItems = 0;
 
-        items.forEach((item) => {
-          const category = item.dataset.category || '';
-          const searchable = (item.dataset.search || '').toLowerCase();
-          const matchFilter = activeFilter === 'all' || category === activeFilter;
-          const matchSearch = !query || searchable.includes(query);
-          const visible = matchFilter && matchSearch;
+  sections.forEach((section) => {
+    const sectionName = section.dataset.section || '';
+    const items = Array.from(section.querySelectorAll('[data-item]'));
+    let visibleCount = 0;
 
-          item.style.display = visible ? '' : 'none';
-          if (visible) visibleCount++;
-        });
+    items.forEach((item) => {
+      const category = item.dataset.category || '';
+      const searchable = (item.dataset.search || '').toLowerCase();
+      const matchFilter = activeFilter === 'all' || category === activeFilter;
+      const matchSearch = !query || searchable.includes(query);
+      const visible = matchFilter && matchSearch;
 
-        if (activeFilter !== 'all' && activeFilter !== sectionName && !query) {
-          section.style.display = 'none';
-          return;
-        }
+      item.style.display = visible ? '' : 'none';
 
-        section.style.display = '';
+      if (visible) {
+        visibleCount++;
+        totalVisibleItems++;
+      }
+    });
 
-        if (query || activeFilter !== 'all') {
-          setPanelState(section, visibleCount > 0);
-        }
-      });
-    };
+    const sectionMatchesFilter =
+      activeFilter === 'all' || activeFilter === sectionName;
+
+    const shouldShowSection = sectionMatchesFilter && visibleCount > 0;
+
+    section.style.display = shouldShowSection ? '' : 'none';
+    setPanelState(section, shouldShowSection);
+  });
+
+  if (emptyState) {
+    emptyState.classList.toggle('hidden', totalVisibleItems > 0);
+  }
+};
 
     sections.forEach((section) => {
       const button = section.querySelector('.shop-toggle');

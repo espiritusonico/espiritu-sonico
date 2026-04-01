@@ -1,16 +1,19 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import AudioPlayer from "../../components/AudioPlayer.astro";
+import { getViajes } from "../../lib/api";
+import { mapViajeDetail } from "../../lib/mappers";
+import { getViajeVisualFallback } from "../../lib/viajes-contenido";
 
 export async function getStaticPaths() {
-  const API_URL = import.meta.env.PUBLIC_API_URL ?? "http://localhost:3000";
-
   try {
-    const res = await fetch(`${API_URL}/viajes-sonoros`);
+    const data = await getViajes();
 
-    if (!res.ok) return [];
-
-    const viajes = await res.json();
+    const viajes = Array.isArray(data)
+  ? data
+      .map(mapViajeDetail)
+      .filter((viaje) => viaje.publicado)
+  : [];
 
     return viajes.map((viaje) => ({
       params: { slug: viaje.slug },
@@ -22,90 +25,10 @@ export async function getStaticPaths() {
   }
 }
 
-const { viaje } = Astro.props;
+const { viaje: viajeRaw } = Astro.props;
+const viaje = mapViajeDetail(viajeRaw);
 
-const detallesViaje = {
-  "silencio-estelar": {
-    subtitulo: "Descanso · Sueño · Regulación",
-    frase:
-      "Una arquitectura sonora orientada a reducir fricción interna, desacelerar el pensamiento y abrir un espacio real de descanso.",
-    proposito:
-      "Silencio Estelar fue desarrollado para acompañar momentos de ansiedad, saturación mental, dificultad para soltar el día o necesidad de entrar en una atmósfera de descanso profundo. No busca sedar ni impresionar. Su trabajo consiste en disminuir densidad interna, aflojar el ritmo perceptivo y permitir que el cuerpo recupere una relación más suave con el silencio.",
-    construccion:
-      "La construcción de este viaje combina composición, diseño sonoro y tratamiento fino de capas en software. Parte del proceso se trabaja en Ableton, utilizando distintos VST e instrumentos tratados como materia perceptiva más que como acompañamiento musical convencional. Los timbres, pulsos, colchones y desplazamientos espaciales se afinan según la función del viaje: en este caso, favorecer reposo, integración y una reducción progresiva de la tensión interna.",
-    detras:
-      "Detrás de esta escucha hay años de estudio, práctica y observación sobre cómo el sonido modifica estados. La búsqueda no se apoya en fórmulas rápidas sino en una investigación sostenida sobre frecuencia, ritmo, resonancia, silencio, repetición y ambiente. En ese cruce dialogan intuición ritual, producción digital y una sensibilidad afinada hacia cómo ciertas vibraciones inciden sobre el cuerpo y la mente cuando están dispuestas con intención.",
-    sonologia:
-      "La Sonología Ritual atraviesa todo este trabajo como una columna central. No se trata solo de música ni de meditación guiada: se trata de diseñar experiencias sonoras capaces de producir una atmósfera, abrir percepción y acompañar transformaciones internas. En esa línea conviven tecnología, ceremonialidad y escucha profunda. Hay resonancias con investigaciones y cruces que, desde distintos lugares, pensaron el vínculo entre sonido, cuerpo y conciencia: desde la dimensión vibracional de Hans Jenny, hasta la relación entre música, cultura y trance estudiada por Gilbert Rouget, pasando por enfoques contemporáneos de escucha profunda y percepción expandida.",
-    recomendaciones: [
-      "Escucharlo de noche o en un momento donde ya no tengas que responder al mundo.",
-      "Usar auriculares para percibir con mayor profundidad los movimientos internos de la mezcla.",
-      "Funciona especialmente bien antes de dormir o después de un día con mucha carga.",
-      "Entrar sin exigencia. No hace falta entender todo para que la experiencia opere."
-    ],
-    durante: [
-      "Disminución progresiva del diálogo interno.",
-      "Sensación de amplitud, alivio o descenso del ritmo mental.",
-      "Cansancio sano, necesidad de cerrar los ojos o aflojar el cuerpo.",
-      "Entrada gradual en una percepción más blanda y menos defensiva."
-    ],
-    cierre:
-      "Silencio Estelar no busca ocupar el espacio: busca volverlo respirable. Su potencia aparece cuando la escucha deja de empujar y empieza a entregarse."
-  },
-
-  "niebla-sagrada": {
-    subtitulo: "Purificación · Limpieza · Renovación",
-    frase:
-      "Un recorrido sonoro orientado a despejar carga, mover densidad y abrir un campo más limpio y disponible.",
-    proposito:
-      "Niebla Sagrada fue creado para momentos donde algo necesita correrse: tensión acumulada, pesadez, restos del día, saturación emocional o sensación de carga en el ambiente interno. No trabaja desde el golpe ni desde el dramatismo. Su recorrido propone una limpieza gradual, como si el espacio perceptivo pudiera ventilarse desde adentro.",
-    construccion:
-      "Su diseño combina capas envolventes, texturas en movimiento, resonancias prolongadas y afinaciones orientadas a producir una sensación de desplazamiento y limpieza. El trabajo en Ableton y distintos VST permite modelar atmósferas, filtrar densidades, abrir espacio y construir un tránsito sonoro que no sea decorativo, sino funcional. Cada vibración es tratada como parte de una arquitectura sensible que acompaña un proceso de reorganización interna.",
-    detras:
-      "Este viaje forma parte de un trabajo sostenido donde el sonido no se usa como fondo, sino como herramienta de transformación perceptiva. La elección de frecuencias, relaciones armónicas, planos, reverberaciones y respiración de la mezcla responde a años de exploración, escucha y práctica ritual. Lo digital no aparece como artificio vacío, sino como medio para esculpir estados con precisión.",
-    sonologia:
-      "La Sonología Ritual aparece aquí como un cruce entre composición, escucha profunda, ceremonialidad y tecnología. El objetivo no es ilustrar una idea espiritual, sino producir una atmósfera efectiva donde algo pueda despejarse, moverse o reordenarse. En esa perspectiva hay afinidades con estudios sobre vibración, resonancia, trance, cuerpo y percepción, pero el trabajo busca una formulación propia: una práctica donde la experiencia sonora se diseña como umbral.",
-    recomendaciones: [
-      "Ideal antes de iniciar un ritual, una meditación o un momento de trabajo interno.",
-      "También funciona muy bien después de jornadas pesadas o encuentros cargados.",
-      "Puede acompañarse con sahumo, respiración lenta o simplemente escucha inmóvil.",
-      "Conviene entrar con disposición de limpieza más que con lógica de entretenimiento."
-    ],
-    durante: [
-      "Sensación de despeje o ventilación interna.",
-      "Movimiento emocional sutil sin necesidad de catarsis.",
-      "Mayor presencia, alivio respiratorio o sensación de renovación.",
-      "Percepción de que algo se acomodó incluso sin poder explicarlo del todo."
-    ],
-    cierre:
-      "Niebla Sagrada trabaja por desplazamiento. No viene a imponerse, sino a correr capas para que la percepción vuelva a respirar."
-  }
-};
-
-const detalle = detallesViaje[viaje.slug] ?? {
-  subtitulo: "Escucha ritual",
-  frase: "Una experiencia sonora diseñada para abrir percepción y acompañar procesos internos.",
-  proposito:
-    "Este viaje forma parte del universo de Espíritu Sónico y fue concebido como una experiencia de escucha intencional.",
-  construccion:
-    "Su estructura responde a una lógica de diseño sonoro orientada a producir una experiencia sensible y significativa.",
-  detras:
-    "Detrás de cada viaje hay trabajo de escucha, composición, software, tratamiento de capas y búsqueda vibracional.",
-  sonologia:
-    "La Sonología Ritual integra escucha, composición, tecnología y percepción para diseñar experiencias sonoras con intención.",
-  recomendaciones: [
-    "Escuchar en un espacio cuidado.",
-    "Darse tiempo para entrar en la experiencia.",
-    "Permitir que el sonido actúe sin buscar controlar todo."
-  ],
-  durante: [
-    "Cambios de percepción.",
-    "Mayor quietud.",
-    "Movimientos internos sutiles."
-  ],
-  cierre:
-    "Cada escucha abre una experiencia distinta. Lo importante es entrar con presencia."
-};
+const visual = getViajeVisualFallback(viaje);
 ---
 
 <Layout title={viaje.titulo}>
@@ -128,11 +51,11 @@ const detalle = detallesViaje[viaje.slug] ?? {
         </h1>
 
         <p class="mb-6 text-xs uppercase tracking-[0.28em] text-white/45 md:text-sm">
-          {detalle.subtitulo}
+          {visual.subtitulo}
         </p>
 
         <p class="mx-auto max-w-3xl text-base leading-relaxed text-white/72 md:text-lg">
-          {detalle.frase}
+          {visual.frase}
         </p>
 
         <div class="mx-auto mt-10 h-px w-40 bg-gradient-to-r from-transparent via-[#ecdcb8]/60 to-transparent"></div>
@@ -142,7 +65,7 @@ const detalle = detallesViaje[viaje.slug] ?? {
   <AudioPlayer
     src={viaje.audioUrl}
     title={viaje.titulo}
-    subtitle={detalle.subtitulo}
+    subtitle={visual.subtitulo}
     duration={viaje.duracion}
   />
 
@@ -158,7 +81,7 @@ const detalle = detallesViaje[viaje.slug] ?? {
           Propósito del viaje
         </p>
         <p class="text-[15px] leading-relaxed text-white/75 md:text-[17px]">
-          {detalle.proposito}
+          {visual.proposito}
         </p>
       </div>
     </div>
@@ -171,7 +94,7 @@ const detalle = detallesViaje[viaje.slug] ?? {
           Cómo está construido
         </h2>
         <p class="text-[15px] leading-relaxed text-white/72 md:text-base">
-          {detalle.construccion}
+          {visual.construccion}
         </p>
       </div>
     </div>
@@ -184,7 +107,7 @@ const detalle = detallesViaje[viaje.slug] ?? {
           El trabajo detrás
         </h2>
         <p class="text-[15px] leading-relaxed text-white/72 md:text-base">
-          {detalle.detras}
+          {visual.detras}
         </p>
       </div>
     </div>
@@ -197,7 +120,7 @@ const detalle = detallesViaje[viaje.slug] ?? {
     </h2>
 
     <div class="space-y-3">
-      {detalle.recomendaciones.map((item) => (
+      {visual.recomendaciones.map((item) => (
         <div class="rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-4 text-sm leading-relaxed text-white/70">
           {item}
         </div>
@@ -212,7 +135,7 @@ const detalle = detallesViaje[viaje.slug] ?? {
       </h2>
 
       <div class="grid gap-3">
-        {detalle.durante.map((item) => (
+        {visual.durante.map((item) => (
           <div class="rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-4 text-sm leading-relaxed text-white/70">
             {item}
           </div>
@@ -233,7 +156,7 @@ const detalle = detallesViaje[viaje.slug] ?? {
 </h2>
 
 <p class="text-sm leading-relaxed text-white/70">
-  {detalle.sonologia}
+  {visual.sonologia}
 </p>
     </div>
   </article>
