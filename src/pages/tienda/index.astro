@@ -76,17 +76,17 @@ const bibliotecaViva = [
     </div>
 
     <div class="relative z-10 mx-auto max-w-7xl">
-      <header class="mb-10 text-center md:mb-12">
-        <h1 class="mx-auto mb-4 max-w-4xl text-4xl font-light leading-tight text-[#ecdcb8] md:text-6xl">
-          Tienda
-        </h1>
+      <header class="es-page-header mb-10 text-center md:mb-12">
+  <h1 class="es-page-title mx-auto mb-4 max-w-4xl text-4xl md:text-6xl">
+    Tienda
+  </h1>
 
-        <p class="mx-auto max-w-3xl text-[17px] leading-8 text-[#ecdcb8]/78 md:text-[19px]">
-          Objetos rituales, accesos digitales y materiales de estudio reunidos en un mismo espacio.
-        </p>
+  <p class="es-subtitle mx-auto max-w-3xl text-[17px] md:text-[19px]">
+    Objetos rituales, accesos digitales y materiales de estudio reunidos en un mismo espacio.
+  </p>
 
-        <div class="mx-auto mt-7 h-px w-24 bg-gradient-to-r from-transparent via-[#ecdcb8]/55 to-transparent"></div>
-      </header>
+  <div class="es-divider mx-auto mt-7 w-24"></div>
+</header>
 
       <section class="relative mb-8 overflow-hidden rounded-[2.4rem] bg-[linear-gradient(180deg,rgba(236,220,184,0.045),rgba(255,255,255,0.012))] px-4 py-4 shadow-[0_20px_70px_rgba(0,0,0,0.2)] backdrop-blur-xl sm:px-5 md:px-6">
         <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-[2.4rem]">
@@ -440,7 +440,7 @@ const bibliotecaViva = [
     const filterButtons = Array.from(document.querySelectorAll('.shop-filter'));
     const sections = Array.from(document.querySelectorAll('.shop-section'));
 
-    let activeFilter = 'all';
+    let activeFilter = null;
 
     const setPanelState = (section, open) => {
       const button = section.querySelector('.shop-toggle');
@@ -454,16 +454,22 @@ const bibliotecaViva = [
     };
 
     const updateFiltersUI = () => {
-      filterButtons.forEach((btn) => {
-        const isActive = btn.dataset.filter === activeFilter;
-        btn.classList.toggle('bg-[#ecdcb8]/12', isActive);
-        btn.classList.toggle('text-[#ecdcb8]', isActive);
-        btn.classList.toggle('ring-[#ecdcb8]/18', isActive);
-        btn.classList.toggle('bg-white/[0.04]', !isActive);
-        btn.classList.toggle('text-white/72', !isActive);
-        btn.classList.toggle('ring-white/8', !isActive);
-      });
-    };
+  filterButtons.forEach((btn) => {
+    const filter = btn.dataset.filter || null;
+
+    const isActive =
+      (activeFilter === null && filter === 'all') ||
+      activeFilter === filter;
+
+    btn.classList.toggle('bg-[#ecdcb8]/12', isActive);
+    btn.classList.toggle('text-[#ecdcb8]', isActive);
+    btn.classList.toggle('ring-[#ecdcb8]/18', isActive);
+
+    btn.classList.toggle('bg-white/[0.04]', !isActive);
+    btn.classList.toggle('text-white/72', !isActive);
+    btn.classList.toggle('ring-white/8', !isActive);
+  });
+};
 
     const applySearchAndFilter = () => {
   const query = (searchInput?.value || '').trim().toLowerCase();
@@ -474,12 +480,14 @@ const bibliotecaViva = [
   sections.forEach((section) => {
     const sectionName = section.dataset.section || '';
     const items = Array.from(section.querySelectorAll('[data-item]'));
+
     let visibleCount = 0;
 
     items.forEach((item) => {
       const category = item.dataset.category || '';
       const searchable = (item.dataset.search || '').toLowerCase();
-      const matchFilter = activeFilter === 'all' || category === activeFilter;
+
+      const matchFilter = activeFilter === null || category === activeFilter;
       const matchSearch = !query || searchable.includes(query);
       const visible = matchFilter && matchSearch;
 
@@ -491,17 +499,22 @@ const bibliotecaViva = [
       }
     });
 
-    const sectionMatchesFilter =
-      activeFilter === 'all' || activeFilter === sectionName;
+    const isFiltering = activeFilter !== null || query.length > 0;
 
-    const shouldShowSection = sectionMatchesFilter && visibleCount > 0;
+    if (isFiltering) {
+      const sectionMatchesFilter = activeFilter === null || activeFilter === sectionName;
+      const shouldShowSection = sectionMatchesFilter && visibleCount > 0;
 
-    section.style.display = shouldShowSection ? '' : 'none';
-    setPanelState(section, shouldShowSection);
+      section.style.display = shouldShowSection ? '' : 'none';
+      setPanelState(section, shouldShowSection);
+    } else {
+      section.style.display = '';
+      setPanelState(section, false);
+    }
   });
 
   if (emptyState) {
-    emptyState.classList.toggle('hidden', totalVisibleItems > 0);
+    emptyState.classList.toggle('hidden', totalVisibleItems > 0 || (!query && activeFilter === null));
   }
 };
 
@@ -518,12 +531,15 @@ const bibliotecaViva = [
     });
 
     filterButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        activeFilter = btn.dataset.filter || 'all';
-        updateFiltersUI();
-        applySearchAndFilter();
-      });
-    });
+  btn.addEventListener('click', () => {
+    const clickedFilter = btn.dataset.filter || null;
+
+    activeFilter = activeFilter === clickedFilter ? null : clickedFilter;
+
+    updateFiltersUI();
+    applySearchAndFilter();
+  });
+});
 
     searchInput?.addEventListener('input', applySearchAndFilter);
 

@@ -1,105 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-
-const recorridos = [
-  {
-    id: "origen",
-    titulo: "Origen",
-    resumen:
-      "La parte donde se cruzan tecnología, intuición, quiebre personal y el comienzo de una búsqueda que después tomó forma real.",
-    destacado:
-      "Espíritu Sónico no apareció de golpe. Se fue armando a medida que distintas partes de mi vida empezaron a conectarse de verdad.",
-    contenido: [
-      "Antes de llegar a este universo hubo muchos trabajos y muchas etapas. La parte más larga y estructural fue haber pasado quince años dentro del mundo de sistemas. Eso dejó algo muy claro en mí: la capacidad de construir, ordenar, resolver, diseñar procesos y bajar ideas a tierra.",
-      "Esa base técnica no desapareció cuando empezó el camino más ritual, más sonoro y más interno. Al contrario. Hoy sigue viva en todo lo que hago. Está en la manera de pensar experiencias, de unir instrumentos ceremoniales con recursos digitales, de crear estructuras que ayuden a mover estados, y también en el desarrollo de herramientas concretas para acompañar a otras personas a convertir una intuición en algo real, habitable y hasta monetizable si hace falta.",
-      "A los 33 años renuncié. No fue una decisión prolija ni armada desde la seguridad. Fue un corte claro. Ya venía acercándome a los viajes sonoros desde un tiempo antes, pero después de esa salida el camino tomó otra fuerza.",
-      "Las sierras de Córdoba fueron un punto de giro. El monte, el silencio, el vínculo con los ciclos, la consagración de instrumentos y la escucha de la naturaleza me acomodaron internamente de otra manera. Ahí empezó a quedar mucho más claro que el sonido no iba a ocupar un lugar secundario en mi vida."
-    ],
-    media: ["image"],
-    portalLabel: "raíz",
-    portalHint: "Tecnología, quiebre y comienzo",
-  },
-  {
-    id: "musica",
-    titulo: "Música y canal",
-    resumen:
-      "La música no es una parte más. Está en el centro. La guitarra fue el primer puente y sigue siendo una raíz viva de todo esto.",
-    destacado:
-      "La música es mi vida entera. La guitarra fue mi primera conexión con las galaxias.",
-    contenido: [
-      "Soy guitarrista desde los 13 años y hoy, mirando todo el recorrido, veo que la relación con el sonido siempre fue mucho más profunda que tocar un instrumento. Había algo que vibraba en el pecho, una sensación concreta de estar en contacto con algo enorme, difícil de explicar pero imposible de negar.",
-      "Con el tiempo entendí que esa experiencia no era un detalle sensible ni una exageración personal. Era una forma de percepción. Una manera de recibir información, presencia y movimiento a través de las notas.",
-      "Todo lo que después se volvió viaje sonoro, voz guiada, atmósfera, frecuencia, ritual y diseño de experiencia, ya estaba latiendo ahí desde el principio. Espíritu Sónico también nace de esa historia."
-    ],
-    media: ["image"],
-    portalLabel: "canal",
-    portalHint: "La música como eje",
-  },
-  {
-    id: "exploracion",
-    titulo: "Exploración de la conciencia",
-    resumen:
-      "Una búsqueda sostenida alrededor de la psique, el símbolo, la percepción y todo lo que se mueve detrás del telón de lo evidente.",
-    destacado:
-      "Desde la adolescencia hubo una necesidad real de mirar más adentro, más atrás y más hondo.",
-    contenido: [
-      "Siempre existió una atracción fuerte por la conciencia, la inconsciencia, los estados internos y las dimensiones menos visibles de la experiencia humana. Esa exploración tomó muchas formas: observación, procesos personales, estudio, búsqueda simbólica y años de contacto con preguntas que no se resuelven rápido.",
-      "Carl Jung tuvo un lugar importante por su manera de pensar el símbolo, el inconsciente y las imágenes profundas que organizan la vida. Krishnamurti resonó por su claridad para mirar sin intermediarios. Terence McKenna abrió otra puerta con su forma de pensar la conciencia, el lenguaje y lo extraño. También hubo estudio en psicología social, que aportó lectura de grupos, vínculos, procesos humanos y construcción de sentido.",
-      "Nada de eso está puesto como lista de autores para decorar un discurso. Está porque ayudó a darle lenguaje a algo que ya venía siendo vivido desde adentro."
-    ],
-    media: ["note"],
-    portalLabel: "visión",
-    portalHint: "Psique, símbolo y percepción",
-  },
-  {
-    id: "sonologia",
-    titulo: "Sonología Ritual",
-    resumen:
-      "La disciplina donde se ordena todo: instrumentos ceremoniales, voz guiada, diseño sonoro, simbolismo y estados de conciencia.",
-    destacado:
-      "La Sonología Ritual fue apareciendo cuando la práctica dejó de ser solo intuición y empezó a tomar una forma propia.",
-    contenido: [
-      "Acá se integran instrumentos ceremoniales, narrativas guiadas con la voz y capas sonoras digitales afinadas para acompañar distintos estados según el viaje que se esté trabajando. Cada experiencia tiene una arquitectura. No se arma al azar.",
-      "Hay combinaciones de texturas, pulsos, atmósferas y melodías que ayudan a abrir relajación, profundidad, visión interna, memoria, conexión simbólica o retorno. La intención nunca fue volver técnico algo sensible, sino encontrar una manera precisa de componer experiencias que tengan dirección y coherencia.",
-      "La Sonología Ritual es el lugar donde se encuentran ancestralidad, percepción, símbolo y tecnología. Ahí se ordena gran parte del universo que sostiene a Espíritu Sónico."
-    ],
-    media: ["video", "image"],
-    portalLabel: "método",
-    portalHint: "Arquitectura de la experiencia",
-  },
-  {
-    id: "experiencias",
-    titulo: "Experiencias",
-    resumen:
-      "Viajes, activaciones, procesos individuales y grupales que fueron dándole cuerpo y profundidad a todo este recorrido.",
-    destacado:
-      "La experiencia del animal de poder ya fue atravesada por más de 300 personas.",
-    contenido: [
-      "Dentro de este universo viven propuestas como la activación y canalización del animal de poder, el viaje de la memoria ancestral y distintos recorridos sonoros pensados para abrir estados internos específicos.",
-      "Cada experiencia tiene su carácter. Algunas ordenan, otras revelan, otras conectan con imágenes profundas, otras ayudan a destrabar algo que venía pidiendo movimiento hace tiempo. La voz, el símbolo, los instrumentos y el diseño sonoro trabajan juntos para sostener ese proceso.",
-      "Que más de 300 personas hayan activado sus animales de poder dentro de este trabajo marca algo importante: este universo fue creciendo en contacto directo con la experiencia humana, no solamente desde una idea."
-    ],
-    media: ["image", "video"],
-    portalLabel: "práctica",
-    portalHint: "Proceso vivo y compartido",
-  },
-  {
-    id: "simbolo",
-    titulo: "Símbolo y sigilo",
-    resumen:
-      "La parte donde la imagen deja de ser adorno y empieza a funcionar como llave, dirección y condensación de sentido.",
-    destacado:
-      "El símbolo organiza, concentra y mueve. El sigilo aparece cuando esa potencia se diseña con intención.",
-    contenido: [
-      "El trabajo simbólico también forma parte de Espíritu Sónico. A veces una imagen contiene más movimiento que una explicación larga. El símbolo tiene la capacidad de reunir intención, emoción, memoria y dirección en una sola forma.",
-      "Dentro de ese campo aparece el arte del sigilo: una práctica de creación simbólica donde una intención se destila, se diseña y se carga para operar en planos más sutiles de la experiencia. No hace falta llegar sabiendo qué es un sigilo para percibir su fuerza. Primero se entiende el poder del símbolo. Después se abre esa puerta.",
-      "Por eso esta dimensión se relaciona de manera directa con los viajes sonoros, con la Sonología Ritual y con la construcción de procesos transformadores. Todo dialoga."
-    ],
-    media: ["image"],
-    portalLabel: "símbolo",
-    portalHint: "Condensación y dirección",
-  }
-];
+import { recorridos } from "../../data/universoRecorridos";
 ---
 
 <Layout title="Universo Espíritu Sónico">
@@ -114,11 +15,7 @@ const recorridos = [
     <div class="relative z-10 mx-auto max-w-6xl">
       <!-- HEADER -->
       <header class="mb-20 text-center">
-        <p class="mb-5 text-xs uppercase tracking-[0.45em] text-[#ecdcb8]/55">
-          Espíritu Sónico
-        </p>
-
-        <h1 class="titulo-cinzel mx-auto mb-6 max-w-4xl text-4xl leading-tight text-[#ecdcb8] md:text-6xl">
+         <h1 class="titulo-cinzel mx-auto mb-6 max-w-4xl text-4xl leading-tight text-[#ecdcb8] md:text-6xl">
           Universo Espíritu Sónico
         </h1>
 
@@ -163,8 +60,8 @@ const recorridos = [
 
                       <div class="portal-piece__content">
                         <p class="portal-piece__label">{recorrido.portalLabel}</p>
-                        <h3 class="portal-piece__title">{recorrido.titulo}</h3>
-                        <p class="portal-piece__hint">{recorrido.portalHint}</p>
+                        <h3 class="portal-piece__title titulo-editorial">{recorrido.titulo}</h3>
+                        <p class="portal-piece__hint" set:html={recorrido.portalHint}></p>
                       </div>
                     </button>
                   ))}
@@ -180,8 +77,8 @@ const recorridos = [
                     >
                       <div class="portal-card__inner">
                         <p class="portal-card__label">{recorrido.portalLabel}</p>
-                        <h3 class="portal-card__title">{recorrido.titulo}</h3>
-                        <p class="portal-card__hint">{recorrido.portalHint}</p>
+                        <h3 class="portal-card__title titulo-editorial">{recorrido.titulo}</h3>
+                        <p class="portal-card__hint" set:html={recorrido.portalHint}></p>
                       </div>
                     </button>
                   ))}
@@ -194,7 +91,7 @@ const recorridos = [
 
       <!-- BLOQUES -->
       <section class="space-y-8">
-        {recorridos.map((recorrido) => (
+        {recorridos.map((recorrido, index) => (
           <article
             class:list={[
               "universo-panel rounded-[2.2rem] p-[1px] shadow-[0_18px_76px_rgba(0,0,0,0.34)]",
@@ -220,11 +117,11 @@ const recorridos = [
   {recorrido.portalLabel}
 </p>
 
-                  <h2 class="titulo-cinzel mb-3 text-3xl leading-tight text-[#ecdcb8] md:text-[2.5rem]">
-                    {recorrido.titulo}
-                  </h2>
+                  <h2 class="titulo-editorial mb-3 text-3xl leading-tight text-[#ecdcb8] md:text-[2.5rem]">
+  {recorrido.titulo}
+</h2>
 
-                  <p class="subtitulo-cormorant max-w-4xl text-[15px] leading-relaxed text-white/66 md:text-base">
+                  <p class="subtitulo-cormorant max-w-4xl text-base leading-relaxed text-white/66 md:text-[1.0625rem]">
                     {recorrido.resumen}
                   </p>
                 </div>
@@ -247,93 +144,102 @@ const recorridos = [
                   recorrido.id === "experiencias" && "grid lg:grid-cols-[0.92fr_1.08fr]",
                   recorrido.id === "simbolo" && "mx-auto max-w-6xl",
                 ]}>
-                  <div class:list={[
-                  "universo-panel__texto",
-                  `universo-panel__texto--${recorrido.id}`,
-                ]}>
-                    <p class="subtitulo-cormorant mb-5 text-[1.08rem] leading-relaxed text-white/86 md:text-[1.18rem]">
-                      <strong>{recorrido.destacado}</strong>
-                    </p>
+                 <div class:list={[
+  "universo-panel__texto",
+  `universo-panel__texto--${recorrido.id}`,
+]}>
+  <p class="universo-panel__destacado subtitulo-cormorant">
+    <strong>{recorrido.destacado}</strong>
+  </p>
 
-                    <div class="space-y-4 leading-relaxed text-white/72">
-                      {recorrido.contenido.map((parrafo) => (
-                        <p>{parrafo}</p>
-                      ))}
-                    </div>
+  <div class="universo-panel__cuerpo space-y-4 leading-relaxed text-white/72">
+    {recorrido.contenido.map((parrafo) => (
+      <p>{parrafo}</p>
+    ))}
+  </div>
 
-                    <div class="mt-8">
-                      <button class="volver-mapa" type="button" data-target="mapa">
-                        Volver arriba
-                      </button>
-                    </div>
-                  </div>
+  <div class="universo-panel__nav mt-8 flex gap-4 flex-wrap">
+    <button class="volver-mapa" type="button" data-target="mapa">
+      Volver arriba
+    </button>
+    {index < recorridos.length - 1 && (
+      <button
+        class="mapa-chip universo-panel__next"
+        type="button"
+        data-next={recorridos[index + 1].id}
+      >
+        Continuar
+      </button>
+    )}
+  </div>
+</div>
 
-                  {recorrido.media.length > 0 && (
-                    <aside class:list={[
-                      "universo-panel__media",
-                      recorrido.id === "exploracion" && "mt-7",
-                      recorrido.id === "simbolo" && "mt-7",
-                    ]}>
-                      {recorrido.media.includes("image") && (
-                        <div class:list={[
-                          "panel-media-deep overflow-hidden rounded-[2rem] p-[1px] shadow-[0_14px_60px_rgba(0,0,0,0.28)]",
-                          recorrido.id === "simbolo" && "mx-auto max-w-2xl",
-                        ]}>
-                          <div class="relative rounded-[1.9rem] bg-[#0a0610]/96 p-4 backdrop-blur-2xl md:p-5">
-                            <div class:list={[
-                              "flex items-center justify-center rounded-[1.7rem] bg-[radial-gradient(circle_at_center,rgba(236,220,184,0.06),transparent_64%)] px-5",
-                              recorrido.id === "origen" && "min-h-[320px] md:min-h-[430px]",
-                              recorrido.id === "musica" && "min-h-[280px] md:min-h-[360px]",
-                              recorrido.id === "sonologia" && "min-h-[220px] md:min-h-[280px]",
-                              recorrido.id === "experiencias" && "min-h-[220px] md:min-h-[280px]",
-                              recorrido.id === "simbolo" && "min-h-[260px] md:min-h-[340px]",
-                            ]}>
-                              <div class="text-center">
-                                <p class="mb-2 text-[11px] uppercase tracking-[0.28em] text-[#ecdcb8]/56">
-                                  {recorrido.mediaTitle}
-                                </p>
-                                <p class="subtitulo-cormorant mx-auto max-w-xs text-sm leading-relaxed text-white/50">
-                                  {recorrido.mediaText}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
+                 {recorrido.media?.length > 0 && (
+  <aside class:list={[
+    "universo-panel__media",
+    recorrido.id === "exploracion" && "mt-7",
+    recorrido.id === "simbolo" && "mt-7",
+  ]}>
+    {recorrido.media?.includes("image") && (
+      <div class:list={[
+        "panel-media-deep overflow-hidden rounded-[2rem] p-[1px] shadow-[0_14px_60px_rgba(0,0,0,0.28)]",
+        recorrido.id === "simbolo" && "mx-auto max-w-2xl",
+      ]}>
+        <div class="relative rounded-[1.9rem] bg-[#0a0610]/96 p-4 backdrop-blur-2xl md:p-5">
+          <div class:list={[
+            "flex items-center justify-center rounded-[1.7rem] bg-[radial-gradient(circle_at_center,rgba(236,220,184,0.06),transparent_64%)] px-5",
+            recorrido.id === "origen" && "min-h-[320px] md:min-h-[430px]",
+            recorrido.id === "musica" && "min-h-[280px] md:min-h-[360px]",
+            recorrido.id === "sonologia" && "min-h-[220px] md:min-h-[280px]",
+            recorrido.id === "experiencias" && "min-h-[220px] md:min-h-[280px]",
+            recorrido.id === "simbolo" && "min-h-[260px] md:min-h-[340px]",
+          ]}>
+            <div class="text-center">
+              <p class="mb-2 text-[11px] uppercase tracking-[0.28em] text-[#ecdcb8]/56">
+                Presencia visual
+              </p>
+              <p class="subtitulo-cormorant mx-auto max-w-xs text-sm leading-relaxed text-white/50">
+                Este espacio puede recibir una imagen, símbolo, textura o pieza visual asociada a este tramo del recorrido.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
 
-                      {recorrido.media.includes("video") && (
-                        <div class="subpanel-universo rounded-[1.8rem] px-5 py-5">
-                          <p class="mb-2 text-[11px] uppercase tracking-[0.26em] text-[#ecdcb8]/58">
-                            Capa audiovisual
-                          </p>
+    {recorrido.media?.includes("video") && (
+      <div class="subpanel-universo rounded-[1.8rem] px-5 py-5">
+        <p class="mb-2 text-[11px] uppercase tracking-[0.26em] text-[#ecdcb8]/58">
+          Capa audiovisual
+        </p>
 
-                          <h3 class="titulo-cinzel mb-3 text-[1.35rem] leading-tight text-[#ecdcb8]">
-                            Presencia expandida
-                          </h3>
+        <h3 class="titulo-editorial mb-3 text-[1.35rem] leading-tight text-[#ecdcb8]">
+          Presencia expandida
+        </h3>
 
-                          <p class="subtitulo-cormorant text-sm leading-relaxed text-white/68">
-                            Este espacio puede recibir un video embebido, una pieza breve o un portal visual que prolongue la resonancia del bloque.
-                          </p>
-                        </div>
-                      )}
+        <p class="subtitulo-cormorant text-sm leading-relaxed text-white/68">
+          Este espacio puede recibir un video embebido, una pieza breve o un portal visual que prolongue la resonancia del bloque.
+        </p>
+      </div>
+    )}
 
-                      {recorrido.media.includes("note") && (
-                        <div class="subpanel-soft rounded-[1.8rem] px-5 py-5">
-                          <p class="mb-2 text-[11px] uppercase tracking-[0.26em] text-[#ecdcb8]/58">
-                            Punto de apoyo
-                          </p>
+    {recorrido.media?.includes("note") && (
+      <div class="subpanel-soft rounded-[1.8rem] px-5 py-5">
+        <p class="mb-2 text-[11px] uppercase tracking-[0.26em] text-[#ecdcb8]/58">
+          Punto de apoyo
+        </p>
 
-                          <h3 class="titulo-cinzel mb-3 text-[1.2rem] leading-tight text-[#ecdcb8]">
-                            Capa conceptual
-                          </h3>
+        <h3 class="titulo-editorial mb-3 text-[1.2rem] leading-tight text-[#ecdcb8]">
+          Capa conceptual
+        </h3>
 
-                          <p class="subtitulo-cormorant text-sm leading-relaxed text-white/68">
-                            Este bloque puede alojar una frase, una imagen mínima o una textura más abstracta, sin romper la lectura central.
-                          </p>
-                        </div>
-                      )}
-                    </aside>
-                  )}
+        <p class="subtitulo-cormorant text-sm leading-relaxed text-white/68">
+          Este bloque puede alojar una frase, una imagen mínima o una textura más abstracta, sin romper la lectura central.
+        </p>
+      </div>
+    )}
+  </aside>
+)}
                 </div>
               </div>
             </div>
@@ -341,795 +247,674 @@ const recorridos = [
         ))}
       </section>
 
-      <!-- CIERRE -->
-      <div class="min-w-0 universo-head">
-    </div>
-  </section>
-
   <script>
-    const initUniverso = () => {
-      const bloques = Array.from(document.querySelectorAll(".universo-panel"));
-      const mapButtons = Array.from(document.querySelectorAll("[data-open]"));
-      const volverButtons = Array.from(document.querySelectorAll('[data-target="mapa"]'));
-      const mapa = document.getElementById("mapa");
+  const initUniverso = () => {
+    const bloques = Array.from(document.querySelectorAll(".universo-panel"));
+    const mapButtons = Array.from(document.querySelectorAll("[data-open]"));
+    const volverButtons = Array.from(document.querySelectorAll('[data-target="mapa"]'));
+    const continueButtons = Array.from(document.querySelectorAll("[data-next]"));
+    const mapa = document.getElementById("mapa");
 
-      if (!bloques.length) return;
+    if (!bloques.length) return;
 
-      const scrollToWithOffset = (element, offset = 96) => {
-        const top = element.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: "smooth" });
+    const scrollToWithOffset = (element, offset = 96) => {
+  if (!element) return;
+  const top = element.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top, behavior: "smooth" });
+};
+
+const scrollToBloqueHeader = (bloque, offset = 96) => {
+  if (!bloque) return;
+  const header = bloque.querySelector(".universo-panel__toggle");
+  scrollToWithOffset(header || bloque, offset);
+};
+
+const getTransitionMs = (element) => {
+  if (!element) return 0;
+
+  const styles = window.getComputedStyle(element);
+  const durations = styles.transitionDuration.split(",").map((value) => {
+    const v = value.trim();
+    return v.endsWith("ms") ? parseFloat(v) : parseFloat(v) * 1000;
+  });
+
+  const delays = styles.transitionDelay.split(",").map((value) => {
+    const v = value.trim();
+    return v.endsWith("ms") ? parseFloat(v) : parseFloat(v) * 1000;
+  });
+
+  const total = durations.map((duration, index) => {
+    return duration + (delays[index] || 0);
+  });
+
+  return Math.max(...total, 0);
+};
+
+const scrollToBloqueHeaderAfterTransition = (bloque, offset = 96) => {
+  const { content } = getParts(bloque);
+  const wait = getTransitionMs(content) + 28;
+
+  window.setTimeout(() => {
+    scrollToBloqueHeader(bloque, offset);
+  }, wait);
+};
+
+    const getParts = (bloque) => {
+      if (!bloque) return {};
+      return {
+        button: bloque.querySelector(".universo-panel__toggle"),
+        content: bloque.querySelector(".universo-panel__contenido"),
+        icon: bloque.querySelector(".universo-panel__icon"),
       };
-
-      const closeBloque = (bloque) => {
-        const button = bloque.querySelector(".universo-panel__toggle");
-        const content = bloque.querySelector(".universo-panel__contenido");
-        const icon = bloque.querySelector(".universo-panel__icon");
-
-        if (!button || !content || !icon) return;
-
-        button.setAttribute("aria-expanded", "false");
-        content.style.maxHeight = "0px";
-        bloque.classList.remove("is-active");
-        icon.style.transform = "rotate(0deg)";
-      };
-
-      const openBloque = (bloque) => {
-        const button = bloque.querySelector(".universo-panel__toggle");
-        const content = bloque.querySelector(".universo-panel__contenido");
-        const icon = bloque.querySelector(".universo-panel__icon");
-
-        if (!button || !content || !icon) return;
-
-        bloques.forEach((item) => {
-          if (item !== bloque) closeBloque(item);
-        });
-
-        button.setAttribute("aria-expanded", "true");
-        content.style.maxHeight = `${content.scrollHeight}px`;
-        bloque.classList.add("is-active");
-        icon.style.transform = "rotate(45deg)";
-      };
-
-      bloques.forEach((bloque) => {
-        const button = bloque.querySelector(".universo-panel__toggle");
-        if (!button) return;
-
-        button.addEventListener("click", () => {
-          const isOpen = button.getAttribute("aria-expanded") === "true";
-
-          if (isOpen) {
-            closeBloque(bloque);
-          } else {
-            openBloque(bloque);
-            scrollToWithOffset(bloque, 96);
-          }
-        });
-      });
-
-      mapButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const id = btn.getAttribute("data-open");
-          const target = document.querySelector(`[data-recorrido="${id}"]`);
-          if (!target) return;
-
-          openBloque(target);
-          scrollToWithOffset(target, 96);
-        });
-      });
-
-      volverButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          bloques.forEach(closeBloque);
-          if (mapa) {
-            scrollToWithOffset(mapa, 96);
-          }
-        });
-      });
-
-      window.addEventListener("resize", () => {
-        bloques.forEach((bloque) => {
-          const button = bloque.querySelector(".universo-panel__toggle");
-          const content = bloque.querySelector(".universo-panel__contenido");
-
-          if (!button || !content) return;
-
-          const isOpen = button.getAttribute("aria-expanded") === "true";
-          if (isOpen) {
-            content.style.maxHeight = `${content.scrollHeight}px`;
-          }
-        });
-      });
     };
 
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initUniverso, { once: true });
-    } else {
-      initUniverso();
-    }
-  </script>
+    const closeBloque = (bloque) => {
+      const { button, content, icon } = getParts(bloque);
+      if (!button || !content || !icon) return;
+
+      button.setAttribute("aria-expanded", "false");
+      bloque.classList.remove("is-open");
+      content.style.maxHeight = "0px";
+      icon.style.transform = "rotate(0deg)";
+    };
+
+    const openBloque = (bloque) => {
+      const { button, content, icon } = getParts(bloque);
+      if (!button || !content || !icon) return;
+
+      bloques.forEach((item) => {
+        if (item !== bloque) closeBloque(item);
+      });
+
+      button.setAttribute("aria-expanded", "true");
+      bloque.classList.add("is-open");
+      content.style.maxHeight = `${content.scrollHeight}px`;
+      icon.style.transform = "rotate(45deg)";
+    };
+
+    const toggleBloque = (bloque) => {
+  const { button } = getParts(bloque);
+  if (!button) return;
+
+  const isExpanded = button.getAttribute("aria-expanded") === "true";
+  if (isExpanded) {
+    closeBloque(bloque);
+  } else {
+    openBloque(bloque);
+    scrollToBloqueHeaderAfterTransition(bloque, 96);
+  }
+};
+
+    bloques.forEach((bloque) => {
+      const { button, content } = getParts(bloque);
+      if (!button || !content) return;
+
+      content.style.maxHeight = "0px";
+      button.setAttribute("aria-expanded", "false");
+
+      button.addEventListener("click", () => {
+        toggleBloque(bloque);
+      });
+    });
+
+    mapButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const targetId = btn.getAttribute("data-open");
+    if (!targetId) return;
+
+    const target = document.querySelector(`[data-recorrido="${targetId}"]`);
+    if (!target) return;
+
+    openBloque(target);
+    scrollToBloqueHeaderAfterTransition(target, 96);
+  });
+});
+
+    continueButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const nextId = btn.getAttribute("data-next");
+    if (!nextId) return;
+
+    const current = btn.closest("[data-recorrido]");
+    const target = document.querySelector(`[data-recorrido="${nextId}"]`);
+    if (!target) return;
+
+    btn.blur();
+
+    if (current) closeBloque(current);
+    openBloque(target);
+    scrollToBloqueHeaderAfterTransition(target, 96);
+  });
+});
+
+    volverButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        bloques.forEach(closeBloque);
+        if (mapa) scrollToWithOffset(mapa, 96);
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      const abierto = document.querySelector(".universo-panel.is-open");
+      if (!abierto) return;
+
+      const { content } = getParts(abierto);
+      if (!content) return;
+
+      content.style.maxHeight = `${content.scrollHeight}px`;
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initUniverso);
+  } else {
+    initUniverso();
+  }
+</script>
 
   <style>
-    .titulo-cinzel,
-    h1,
-    h2,
-    h3,
-    .portal-piece__title,
-    .portal-card__title,
-    .universo-panel__toggle h2,
-    .subpanel-universo h3,
-    .subpanel-soft h3 {
-      font-family: "Cinzel", "Cinzel Decorative", serif;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      text-transform: none;
-    }
-
-    .subtitulo-cormorant,
-    .portal-piece__hint,
-    .portal-card__hint,
-    .universo-panel__toggle > div > p,
-    .universo-panel__texto > p,
-    .subpanel-universo p:not(:first-child),
-    .subpanel-soft p:not(:first-child) {
-      font-family: "Cormorant Garamond", serif;
-    }
-
-    .mapa-chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(236, 220, 184, 0.35);
-      padding: 0.7rem 1.1rem;
-      color: #ecdcb8;
-      text-decoration: none;
-      background: rgba(255, 255, 255, 0.04);
-      transition: 0.3s ease;
-      border-radius: 999px;
-      font-size: 0.92rem;
-      letter-spacing: 0.03em;
-    }
-
-    .mapa-chip:hover {
-      transform: translateY(-1px);
-      border-color: rgba(236, 220, 184, 0.55);
-      background: rgba(236, 220, 184, 0.1);
-    }
-
-    .portal-shell,
-    .universo-panel {
-      position: relative;
-    }
-
-    .portal-shell::before,
-    .universo-panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 2.2rem;
-      background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.06),
-        rgba(255, 255, 255, 0.01)
-      );
-      pointer-events: none;
-      opacity: 0.5;
-    }
-
-    .portal-wrapper {
-      position: relative;
-    }
-
-    .portal-desktop {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1.08fr 1.72fr 1.08fr;
-      gap: 0;
-      align-items: stretch;
-      min-height: 390px;
-    }
-
-    .portal-mobile {
-      display: none;
-    }
-
-    .portal-piece {
-      position: relative;
-      height: 212px;
-      border: none;
-      background: transparent;
-      padding: 0;
-      cursor: pointer;
-      isolation: isolate;
-    }
-
-    .portal-piece__bg {
-      position: absolute;
-      inset: 0;
-      display: block;
-      background:
-        radial-gradient(circle at top left, rgba(236, 220, 184, 0.08), transparent 42%),
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-      box-shadow:
-        0 18px 40px rgba(0,0,0,0.24),
-        inset 0 1px 0 rgba(255,255,255,0.05);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      transition:
-        transform 240ms ease,
-        box-shadow 240ms ease,
-        filter 240ms ease;
-      z-index: 0;
-    }
-
-    .portal-piece:hover .portal-piece__bg {
-      transform: translateY(-2px) scale(1.012);
-      box-shadow:
-        0 22px 46px rgba(0,0,0,0.3),
-        inset 0 1px 0 rgba(255,255,255,0.07);
-      filter: brightness(1.04);
-    }
-
-    .portal-piece__content {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      gap: 0.5rem;
-      padding: 1rem 1.1rem 0.96rem;
-    }
-
-    .portal-piece__label {
-      font-size: 11px;
-      line-height: 1;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: rgba(236, 220, 184, 0.55);
-      font-weight: 600;
-      text-shadow: 0 0 14px rgba(236, 220, 184, 0.08);
-    }
-
-    .portal-piece__title {
-  font-size: clamp(1.32rem, 1.65vw, 1.9rem);
-  line-height: 0.98;
-  color: #f0dfb8;
+    .titulo-cinzel {
+  font-family: "Cinzel", "Cinzel Decorative", serif;
   font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.titulo-editorial,
+.portal-piece__title,
+.portal-card__title,
+.universo-panel__toggle h2,
+.subpanel-universo h3,
+.subpanel-soft h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.subtitulo-cormorant,
+.portal-piece__hint,
+.portal-card__hint,
+.universo-panel__toggle > div > p,
+.universo-panel__texto > p,
+.subpanel-universo p:not(:first-child),
+.subpanel-soft p:not(:first-child),
+.volver-mapa {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.mapa-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(236, 220, 184, 0.35);
+  padding: 0.7rem 1.1rem;
+  color: #ecdcb8;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.04);
+  transition: 0.3s ease;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  letter-spacing: 0.03em;
+}
+
+.mapa-chip:hover {
+  transform: translateY(-1px);
+  border-color: rgba(236, 220, 184, 0.55);
+  background: rgba(236, 220, 184, 0.1);
+}
+
+.portal-shell,
+.universo-panel {
+  position: relative;
+}
+
+.portal-shell::before,
+.universo-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 2.2rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.01)
+  );
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* =========================
+   PORTAL WRAPPER
+========================= */
+
+.portal-wrapper {
+  position: relative;
+}
+
+.portal-desktop {
+  position: relative;
+  height: 26.8rem;
+}
+
+.portal-mobile {
+  display: none;
+}
+
+.portal-piece {
+  position: absolute;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.portal-piece__bg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background:
+    radial-gradient(circle at top left, rgba(236, 220, 184, 0.08), transparent 42%),
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.24),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition:
+    transform 240ms ease,
+    box-shadow 240ms ease,
+    filter 240ms ease;
+  z-index: 0;
+}
+
+.portal-piece:hover .portal-piece__bg {
+  transform: translateY(-2px) scale(1.012);
+  box-shadow:
+    0 22px 46px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.07);
+  filter: brightness(1.04);
+}
+
+.portal-piece__content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 0.48rem;
+  padding: 1rem 1.05rem 0.96rem;
+}
+
+.portal-piece__label {
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(236, 220, 184, 0.55);
+  font-weight: 600;
+  text-shadow: 0 0 14px rgba(236, 220, 184, 0.08);
+}
+
+.portal-piece__title {
+  font-size: clamp(1.2rem, 1.34vw, 1.52rem);
+  line-height: 0.92;
+  color: #f0dfb8;
+  font-weight: 500;
   text-wrap: balance;
   align-self: center;
-  letter-spacing: 0.012em;
+  letter-spacing: 0.01em;
   text-shadow: 0 0 18px rgba(240, 223, 184, 0.08);
 }
-    .portal-piece__hint {
-      font-size: 1rem;
-      line-height: 1.08;
-      color: rgba(255,255,255,0.74);
-      font-weight: 500;
-      font-style: italic;
-    }
 
-    /* fila superior */
-
-    .portal-piece--1 {
-      z-index: 1;
-      margin-right: -0.3rem;
-    }
-
-    .portal-piece--1 .portal-piece__bg {
-      clip-path: polygon(0 0, 100% 0, 84% 100%, 0 100%);
-      border-radius: 1.55rem 1rem 0.85rem 1.55rem;
-    }
-
-    .portal-piece--1 .portal-piece__content {
-      padding: 0.95rem 2.05rem 0.95rem 1.15rem;
-      text-align: left;
-      justify-items: start;
-    }
-
-    .portal-piece--1 .portal-piece__title {
-  max-width: 10ch;
-  font-size: clamp(1.5rem, 1.8vw, 2rem);
+.portal-piece__hint {
+  font-size: 0.9rem;
+  line-height: 1.08;
+  color: rgba(255,255,255,0.74);
+  font-weight: 500;
+  font-style: italic;
 }
 
-    .portal-piece--1 .portal-piece__hint {
-      max-width: 14ch;
-      font-size: 1.02rem;
-    }
+/* =========================
+   DESKTOP — BOTONERA
+========================= */
 
-    .portal-piece--2 {
-      z-index: 3;
-      margin-left: -2.45rem;
-      margin-right: -2.45rem;
-    }
-
-    .portal-piece--2 .portal-piece__bg {
-      clip-path: polygon(30% 0, 70% 0, 85% 100%, 15% 100%);
-      border-radius: 0;
-    }
-
-    .portal-piece--2 .portal-piece__content {
-      padding: 0.95rem 1.35rem 1rem 1.35rem;
-      text-align: center;
-      justify-items: center;
-    }
-
-    .portal-piece--2 .portal-piece__title {
-  max-width: 8.8ch;
-  font-size: clamp(1.42rem, 1.7vw, 1.82rem);
+.portal-piece--1,
+.portal-piece--2,
+.portal-piece--3,
+.portal-piece--4,
+.portal-piece--5,
+.portal-piece--6 {
+  height: 49.35%;
 }
 
-    .portal-piece--2 .portal-piece__hint {
-      max-width: 13ch;
-      font-size: 1rem;
-      text-align: center;
-    }
-
-    .portal-piece--3 {
-      z-index: 2;
-      margin-left: -1.9rem;
-    }
-
-    .portal-piece--3 .portal-piece__bg {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 18% 100%);
-      border-radius: 0.9rem 1.55rem 1.55rem 1rem;
-    }
-
-    .portal-piece--3 .portal-piece__content {
-      padding: 0.95rem 1.15rem 0.95rem 2.15rem;
-      text-align: right;
-      justify-items: end;
-    }
-
-    .portal-piece--3 .portal-piece__title {
-  max-width: 8.4ch;
-  font-size: clamp(1.34rem, 1.62vw, 1.82rem);
+.portal-piece--1 {
+  top: 0;
+  left: 0;
+  width: 32.6%;
+  z-index: 1;
 }
 
-    .portal-piece--3 .portal-piece__hint {
-      max-width: 14ch;
-      font-size: 1.02rem;
-      text-align: right;
-    }
-
-    /* fila inferior */
-
-    .portal-piece--4 {
-      z-index: 1;
-      margin-top: -0.08rem;
-      margin-right: -0.3rem;
-    }
-
-    .portal-piece--4 .portal-piece__bg {
-      clip-path: polygon(0 0, 84% 0, 100% 100%, 0 100%);
-      border-radius: 1.55rem 0.85rem 1rem 1.55rem;
-    }
-
-    .portal-piece--4 .portal-piece__content {
-      padding: 0.95rem 2.05rem 0.95rem 1.15rem;
-      text-align: left;
-      justify-items: start;
-    }
-
-    .portal-piece--4 .portal-piece__title {
-  max-width: 10.5ch;
-  font-size: clamp(1.7rem, 2.05vw, 2.25rem);
+.portal-piece--2 {
+  top: 0;
+  left: 30%;
+  width: 40%;
+  z-index: 2;
 }
 
-    .portal-piece--4 .portal-piece__hint {
-      max-width: 14ch;
-      font-size: 1.02rem;
-    }
-
-    .portal-piece--5 {
-      z-index: 3;
-      margin-left: -2.45rem;
-      margin-right: -2.45rem;
-      margin-top: -0.05rem;
-    }
-
-    .portal-piece--5 .portal-piece__bg {
-      clip-path: polygon(15% 0, 85% 0, 70% 100%, 30% 100%);
-      border-radius: 0;
-    }
-
-    .portal-piece--5 .portal-piece__content {
-      padding: 0.95rem 1.35rem 1rem 1.35rem;
-      text-align: center;
-      justify-items: center;
-    }
-
-    .portal-piece--5 .portal-piece__title {
-  max-width: 8.8ch;
-  font-size: clamp(1.42rem, 1.7vw, 1.82rem);
+.portal-piece--3 {
+  top: 0;
+  right: 0;
+  width: 32.6%;
+  z-index: 1;
 }
 
-    .portal-piece--5 .portal-piece__hint {
-      max-width: 13ch;
-      font-size: 1rem;
-      text-align: center;
-    }
-
-    .portal-piece--6 {
-      z-index: 2;
-      margin-left: -1.9rem;
-      margin-top: -0.05rem;
-    }
-
-    .portal-piece--6 .portal-piece__bg {
-      clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
-      border-radius: 1rem 1.55rem 1.55rem 0.9rem;
-    }
-
-    .portal-piece--6 .portal-piece__content {
-      padding: 0.95rem 1.15rem 0.95rem 2.15rem;
-      text-align: right;
-      justify-items: end;
-    }
-
-    .portal-piece--6 .portal-piece__title {
-  max-width: 8.4ch;
-  font-size: clamp(1.34rem, 1.62vw, 1.82rem);
+.portal-piece--4 {
+  bottom: 0;
+  left: 0;
+  width: 32.6%;
+  z-index: 1;
 }
 
-    .portal-piece--6 .portal-piece__hint {
-      max-width: 14ch;
-      font-size: 1.02rem;
-      text-align: right;
-    }
+.portal-piece--5 {
+  bottom: 0;
+  left: 30%;
+  width: 40%;
+  z-index: 2;
+}
 
-    .portal-piece--2 .portal-piece__bg,
-    .portal-piece--5 .portal-piece__bg {
-      background:
-        radial-gradient(circle at center, rgba(236, 220, 184, 0.11), transparent 54%),
-        linear-gradient(180deg, rgba(255,255,255,0.058), rgba(255,255,255,0.02));
-    }
+.portal-piece--6 {
+  bottom: 0;
+  right: 0;
+  width: 32.6%;
+  z-index: 1;
+}
 
-    .portal-piece--3 .portal-piece__bg,
-    .portal-piece--6 .portal-piece__bg {
-      background:
-        radial-gradient(circle at top right, rgba(148,111,214,0.14), transparent 52%),
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    }
+/* =========================
+   DESKTOP — FORMAS
+========================= */
 
-    .portal-piece--3 .portal-piece__title {
+.portal-piece--1 .portal-piece__bg {
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+  border-radius: 1.55rem 1rem 0.9rem 1.55rem;
+}
+
+.portal-piece--2 .portal-piece__bg {
+  clip-path: polygon(8% 0, 92% 0, 100% 100%, 0 100%);
+  border-radius: 0;
+}
+
+.portal-piece--3 .portal-piece__bg {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 10% 100%);
+  border-radius: 1rem 1.55rem 1.55rem 0.9rem;
+}
+
+.portal-piece--4 .portal-piece__bg {
+  clip-path: polygon(0 0, 90% 0, 100% 100%, 0 100%);
+  border-radius: 1.55rem 0.9rem 1rem 1.55rem;
+}
+
+.portal-piece--5 .portal-piece__bg {
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 8% 100%);
+  border-radius: 0;
+}
+
+.portal-piece--6 .portal-piece__bg {
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+  border-radius: 0.9rem 1.55rem 1.55rem 1rem;
+}
+
+.portal-piece--2 .portal-piece__bg,
+.portal-piece--5 .portal-piece__bg {
+  background:
+    radial-gradient(circle at center, rgba(236, 220, 184, 0.11), transparent 54%),
+    linear-gradient(180deg, rgba(255,255,255,0.058), rgba(255,255,255,0.02));
+}
+
+.portal-piece--3 .portal-piece__bg,
+.portal-piece--6 .portal-piece__bg {
+  background:
+    radial-gradient(circle at top right, rgba(148,111,214,0.14), transparent 52%),
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+}
+
+[data-recorrido="exploracion"] .universo-panel__toggle,
+[data-recorrido="simbolo"] .universo-panel__toggle {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+[data-recorrido="exploracion"] .universo-panel__toggle .universo-head,
+[data-recorrido="simbolo"] .universo-panel__toggle .universo-head {
+  flex: 1 1 auto;
+  max-width: 980px;
+  text-align: left;
+}
+
+[data-recorrido="exploracion"] .universo-panel__toggle h2,
+[data-recorrido="simbolo"] .universo-panel__toggle h2,
+[data-recorrido="exploracion"] .universo-panel__toggle .subtitulo-cormorant,
+[data-recorrido="simbolo"] .universo-panel__toggle .subtitulo-cormorant {
+  text-align: left;
+}
+
+[data-recorrido="simbolo"] .universo-panel__toggle h2 {
+  font-size: clamp(1.875rem, 3vw, 2.5rem);
+  line-height: 1.05;
+}
+
+[data-recorrido="exploracion"] .universo-panel__toggle .universo-panel__icon,
+[data-recorrido="simbolo"] .universo-panel__toggle .universo-panel__icon {
+  margin-left: auto;
+}
+
+/* =========================
+   DESKTOP — CONTENIDO
+========================= */
+
+.portal-piece--1 .portal-piece__content,
+.portal-piece--4 .portal-piece__content {
+  padding: 0.95rem 1.7rem 0.95rem 1.15rem;
+  text-align: left;
+  justify-items: start;
+}
+
+.portal-piece--2 .portal-piece__content,
+.portal-piece--5 .portal-piece__content {
+  padding: 0.95rem 1.5rem 1rem 1.5rem;
+  text-align: center;
+  justify-items: center;
+}
+
+.portal-piece--3 .portal-piece__content,
+.portal-piece--6 .portal-piece__content {
+  padding: 0.95rem 1.15rem 0.95rem 1.75rem;
   text-align: right;
-  text-wrap: pretty;
-  line-height: 0.9;
+  justify-items: end;
 }
 
-.portal-piece--3 .portal-piece__hint {
-  text-align: right;
+/* título base unificado */
+.portal-piece__title {
+  font-size: clamp(1.5rem, 1.72vw, 1.95rem);
+  line-height: 0.94;
+  color: #f0dfb8;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 18px rgba(240, 223, 184, 0.08);
+  align-self: center;
+  margin: 0;
 }
 
-.portal-piece--3 .portal-piece__content {
-  align-content: space-between;
+/* hints base unificados */
+.portal-piece__hint {
+  font-size: 0.94rem;
+  line-height: 1.08;
+  color: rgba(255,255,255,0.74);
+  font-weight: 500;
+  font-style: italic;
+  margin: 0;
 }
 
+/* izquierda */
+.portal-piece--1 .portal-piece__title,
+.portal-piece--4 .portal-piece__title {
+  max-width: 9.4ch;
+  text-align: left;
+  justify-self: start;
+  text-wrap: balance;
+}
+
+.portal-piece--1 .portal-piece__hint,
+.portal-piece--4 .portal-piece__hint {
+  max-width: 13.5ch;
+  text-align: left;
+  justify-self: start;
+  text-wrap: normal;
+}
+
+/* centro */
+.portal-piece--2 .portal-piece__title,
 .portal-piece--5 .portal-piece__title {
-    text-wrap: pretty;
+  width: 100%;
+  max-width: none;
+  text-align: center;
+  justify-self: stretch;
+  text-wrap: balance;
+}
+
+@media (min-width: 901px) {
+  .portal-piece--5 .portal-piece__title {
+    transform: translateX(0.28rem);
   }
+}
 
-    /* MOBILE / TABLET */
+.portal-piece--2 .portal-piece__hint,
+.portal-piece--5 .portal-piece__hint {
+  max-width: 13.2ch;
+  text-align: center;
+  justify-self: center;
+  text-wrap: normal;
+}
 
-    .portal-card {
-      position: relative;
-      border: none;
-      background: transparent;
-      padding: 0;
-      height: 180px;
-      cursor: pointer;
-    }
+/* derecha */
+.portal-piece--3 .portal-piece__title,
+.portal-piece--6 .portal-piece__title {
+  max-width: 10.4ch;
+  text-align: right;
+  justify-self: end;
+  text-wrap: normal;
+}
 
-    .portal-card__inner {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      gap: 0.5rem;
-      padding: 1rem 1rem 0.95rem;
-      background:
-        radial-gradient(circle at top left, rgba(236,220,184,0.08), transparent 40%),
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow:
-        0 18px 40px rgba(0,0,0,0.24),
-        inset 0 1px 0 rgba(255,255,255,0.05);
-      transition: transform 0.24s ease;
-    }
+.portal-piece--3 .portal-piece__hint,
+.portal-piece--6 .portal-piece__hint {
+  max-width: 12.4ch;
+  text-align: right;
+  justify-self: end;
+  text-wrap: normal;
+}
 
-    .portal-card:hover .portal-card__inner {
-      transform: translateY(-2px) scale(1.01);
-    }
+/* =========================
+   MOBILE / TABLET
+========================= */
 
-    .portal-card__label {
-      font-size: 0.56rem;
-      line-height: 1;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(236,220,184,0.58);
-      font-weight: 600;
-      text-shadow: 0 0 10px rgba(236,220,184,0.08);
-    }
+.portal-card {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  height: 180px;
+  cursor: pointer;
+}
 
-    .portal-card__title {
-  font-family: "Cinzel", "Cinzel Decorative", serif;
+.portal-card__inner {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 0.5rem;
+  padding: 1rem 1rem 0.95rem;
+  background:
+    radial-gradient(circle at top left, rgba(236,220,184,0.08), transparent 40%),
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.24),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  transition: transform 0.24s ease;
+}
+
+.portal-card:hover .portal-card__inner {
+  transform: translateY(-2px) scale(1.01);
+}
+
+.portal-card__label {
+  font-size: 0.56rem;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(236,220,184,0.58);
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(236,220,184,0.08);
+}
+
+.portal-card__title {
   font-size: clamp(0.94rem, 2.6vw, 1.18rem);
   line-height: 1.02;
   color: #f0dfb8;
-  font-weight: 400;
+  font-weight: 500;
   text-wrap: balance;
   align-self: center;
   letter-spacing: 0.012em;
   text-shadow: 0 0 12px rgba(240, 223, 184, 0.08);
 }
 
-    .portal-card__hint {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 0.82rem;
-      line-height: 1.08;
-      color: rgba(255,255,255,0.7);
-      font-weight: 500;
-      font-style: italic;
-    }
-
-    @media (max-width: 1023px) {
-      .portal-desktop {
-        display: none;
-      }
-
-      .portal-mobile {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.78rem;
-      }
-
-      .portal-card--slot-1 .portal-card__inner,
-      .portal-card--slot-3 .portal-card__inner,
-      .portal-card--slot-5 .portal-card__inner {
-        clip-path: polygon(0 0, 100% 0, 86% 100%, 0 100%);
-        border-radius: 1.3rem 0.9rem 0.9rem 1.3rem;
-        padding-right: 1.9rem;
-        text-align: left;
-        justify-items: start;
-      }
-
-      .portal-card--slot-2 .portal-card__inner,
-      .portal-card--slot-4 .portal-card__inner,
-      .portal-card--slot-6 .portal-card__inner {
-        clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%);
-        border-radius: 0.9rem 1.3rem 1.3rem 0.9rem;
-        padding-left: 1.9rem;
-        text-align: right;
-        justify-items: end;
-      }
-
-      .portal-card--slot-1 .portal-card__title,
-      .portal-card--slot-3 .portal-card__title,
-      .portal-card--slot-5 .portal-card__title {
-        max-width: 9.2ch;
-        text-align: left;
-        font-size: clamp(0.98rem, 3.1vw, 1.22rem);
-        line-height: 1.02;
-      }
-
-      .portal-card--slot-1 .portal-card__hint,
-      .portal-card--slot-3 .portal-card__hint,
-      .portal-card--slot-5 .portal-card__hint {
-        max-width: 12ch;
-        text-align: left;
-      }
-
-      .portal-card--slot-2 .portal-card__title,
-.portal-card--slot-4 .portal-card__title,
-.portal-card--slot-6 .portal-card__title {
-  max-width: 9.2ch;
-  text-align: right;
-  font-size: clamp(0.98rem, 3.1vw, 1.22rem);
-  line-height: 1.02;
+.portal-card__hint {
+  font-size: 0.82rem;
+  line-height: 1.08;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+  font-style: italic;
 }
 
-      .portal-card--slot-2 .portal-card__hint,
-      .portal-card--slot-4 .portal-card__hint,
-      .portal-card--slot-6 .portal-card__hint {
-        max-width: 12ch;
-        text-align: right;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .portal-mobile {
-        gap: 0.72rem;
-      }
-
-      .portal-card {
-        height: 170px;
-      }
-
-      .portal-card__inner {
-        gap: 0.45rem;
-        padding-top: 0.9rem;
-        padding-bottom: 0.88rem;
-      }
-
-      .portal-card__label {
-        font-size: 0.52rem;
-        letter-spacing: 0.16em;
-      }
-
-      .portal-card__title {
-  font-size: clamp(0.9rem, 3.4vw, 1.05rem);
-  font-weight: 400;
-  line-height: 1.04;
+.universo-panel--principal {
+  transform: scale(1.003);
 }
 
-      .portal-card__hint {
-        font-size: 0.76rem;
-      }
-
-      .portal-card--slot-1 .portal-card__inner,
-      .portal-card--slot-3 .portal-card__inner,
-      .portal-card--slot-5 .portal-card__inner {
-        padding-right: 1.65rem;
-      }
-
-      .portal-card--slot-2 .portal-card__inner,
-      .portal-card--slot-4 .portal-card__inner,
-      .portal-card--slot-6 .portal-card__inner {
-        padding-left: 1.65rem;
-      }
-    }
-
-/* ORIGEN: texto izquierda / media derecha */
-[data-recorrido="origen"] .universo-panel__contenido > div {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: start;
+.universo-panel--compacto {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
 }
 
-[data-recorrido="origen"] .universo-panel__texto {
-  order: 1;
-  text-align: left;
+.universo-panel__contenido {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-[data-recorrido="origen"] .universo-panel__media {
-  order: 2;
-  align-self: start;
+.universo-panel.is-open .universo-panel__icon {
+  background: rgba(255, 255, 255, 0.08);
+  transform: rotate(45deg);
 }
 
-/* MUSICA: texto derecha / media izquierda */
-[data-recorrido="musica"] .universo-panel__contenido > div {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  align-items: center;
+.universo-panel__texto p {
+  font-size: 1.0625rem;
 }
 
-[data-recorrido="musica"] .universo-panel__texto {
-  order: 2;
-  text-align: right;
+.universo-panel__texto strong {
+  font-weight: 700;
+  color: rgba(255,255,255,0.94);
 }
 
-[data-recorrido="musica"] .universo-panel__texto .universo-panel__cuerpo,
-[data-recorrido="musica"] .universo-panel__texto .universo-panel__destacado,
-[data-recorrido="musica"] .universo-panel__texto .volver-mapa {
-  margin-left: auto;
-  text-align: right;
-}
-
-[data-recorrido="musica"] .universo-panel__media {
-  order: 1;
-  align-self: center;
-}
-
-/* EXPLORACION: todo centrado */
-[data-recorrido="exploracion"] .universo-panel__contenido > div {
-  max-width: 760px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-[data-recorrido="exploracion"] .universo-panel__texto,
-[data-recorrido="exploracion"] .universo-head {
-  text-align: center;
-}
-
-[data-recorrido="exploracion"] .universo-panel__texto .universo-panel__cuerpo,
-[data-recorrido="exploracion"] .universo-panel__texto .universo-panel__destacado {
-  max-width: 46rem;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-/* SONOLOGIA: integrado */
-[data-recorrido="sonologia"] .universo-panel__contenido > div {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  align-items: center;
-}
-
-[data-recorrido="sonologia"] .universo-panel__texto {
-  text-align: left;
-  display: grid;
-  align-content: center;
-}
-
-[data-recorrido="sonologia"] .universo-panel__texto .universo-panel__destacado,
-[data-recorrido="sonologia"] .universo-panel__texto .universo-panel__cuerpo {
-  max-width: 34rem;
-}
-
-[data-recorrido="sonologia"] .universo-panel__media {
-  align-self: center;
+.universo-panel__media {
   display: grid;
   gap: 1rem;
+  align-content: start;
 }
 
-/* EXPERIENCIAS: se mantiene */
-[data-recorrido="experiencias"] .universo-panel__texto .universo-panel__destacado {
-  max-width: 34rem;
-}
-
-[data-recorrido="experiencias"] .universo-panel__texto .universo-panel__cuerpo {
-  max-width: 36rem;
-}
-
-/* SIMBOLO: centrado y ancho real */
-[data-recorrido="simbolo"] .universo-panel__contenido > div {
-  max-width: 980px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-[data-recorrido="simbolo"] .universo-panel__texto,
-[data-recorrido="simbolo"] .universo-head {
-  text-align: center;
-}
-
-[data-recorrido="simbolo"] .universo-panel__texto .universo-panel__cuerpo,
-[data-recorrido="simbolo"] .universo-panel__texto .universo-panel__destacado {
-  max-width: 50rem;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-    .universo-panel--principal {
-      transform: scale(1.003);
-    }
-
-    .universo-panel--compacto {
-      max-width: 64rem;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .universo-panel__contenido {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 520ms cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .universo-panel.is-active .universo-panel__icon {
-      background: rgba(255, 255, 255, 0.08);
-      transform: rotate(45deg);
-    }
-
-    .universo-panel__texto p {
-      font-size: 1rem;
-    }
-
-    .universo-panel__texto strong {
-      font-weight: 700;
-      color: rgba(255,255,255,0.94);
-    }
-
-    .universo-panel__media {
-      display: grid;
-      gap: 1rem;
-      align-content: start;
-    }
-
-    .universo-head {
+.universo-head {
   margin-bottom: 1.5rem;
   border-bottom: 1px solid rgba(255,255,255,0.05);
   padding-bottom: 1rem;
@@ -1163,91 +948,318 @@ const recorridos = [
   letter-spacing: 0.32em;
   text-transform: uppercase;
   color: rgba(236,220,184,0.55);
-  font-family: "Cinzel", serif;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
 }
 
-    .subpanel-universo,
-    .subpanel-soft {
-      background:
-        radial-gradient(circle at top left, rgba(236, 220, 184, 0.05), transparent 40%),
-        rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(14px);
-    }
-
-    .volver-mapa {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: none;
-      background: transparent;
-      color: rgba(255,255,255,0.62);
-      font-size: 0.96rem;
-      transition: 0.25s ease;
-      cursor: pointer;
-      padding: 0;
-      font-family: "Cormorant Garamond", serif;
-      font-style: italic;
-    }
-
-    .volver-mapa:hover {
-      color: rgba(255,255,255,0.9);
-      transform: translateY(-1px);
-    }
-
-    .universo-label {
-  font-size: 11px;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: rgba(236,220,184,0.55);
-  font-family: "Cinzel", serif;
+.subpanel-universo,
+.subpanel-soft {
+  background:
+    radial-gradient(circle at top left, rgba(236, 220, 184, 0.05), transparent 40%),
+    rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(14px);
 }
 
-/* MUSICA invertido real */
+.volver-mapa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.58);
+  font-size: 1rem;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  padding: 0;
+  cursor: pointer;
+  transition:
+    color 220ms ease,
+    opacity 220ms ease,
+    transform 220ms ease;
+  opacity: 0.9;
+}
+
+.volver-mapa::before {
+  content: "‹";
+  font-size: 1.05em;
+  line-height: 1;
+  color: rgba(236,220,184,0.7);
+  transition:
+    transform 220ms ease,
+    color 220ms ease,
+    opacity 220ms ease;
+  opacity: 0.85;
+}
+
+.volver-mapa:hover {
+  color: rgba(255,255,255,0.88);
+  transform: translateY(-1px);
+}
+
+.volver-mapa:hover::before {
+  color: rgba(236,220,184,0.95);
+  transform: translateX(-2px);
+  opacity: 1;
+}
+
+.universo-panel__next {
+  appearance: none;
+  position: relative;
+  border: none;
+  background: transparent;
+  color: #ecdcb8;
+  font-size: 1rem;
+  font-style: italic;
+  letter-spacing: 0.012em;
+  padding: 0 0 0.18rem;
+  cursor: pointer;
+  transition:
+    color 240ms ease,
+    transform 240ms ease,
+    opacity 240ms ease;
+  opacity: 0.94;
+}
+
+.universo-panel__next::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 1.3rem;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(236,220,184,0.0) 0%,
+    rgba(236,220,184,0.42) 18%,
+    rgba(236,220,184,0.85) 55%,
+    rgba(236,220,184,0.0) 100%
+  );
+  transform: scaleX(0.72);
+  transform-origin: left center;
+  transition:
+    transform 260ms ease,
+    opacity 260ms ease,
+    filter 260ms ease;
+  opacity: 0.72;
+}
+
+.universo-panel__next::after {
+  content: "↗";
+  display: inline-block;
+  margin-left: 0.42rem;
+  font-size: 0.9em;
+  line-height: 1;
+  transform: translateY(-1px);
+  transition:
+    transform 240ms ease,
+    color 240ms ease,
+    opacity 240ms ease;
+  opacity: 0.9;
+}
+
+.universo-panel__next:hover {
+  color: #f2e3bf;
+  transform: translateY(-1px);
+}
+
+.universo-panel__next:hover::before {
+  transform: scaleX(1);
+  opacity: 1;
+  filter: drop-shadow(0 0 6px rgba(236,220,184,0.22));
+}
+
+.universo-panel__next:hover::after {
+  transform: translate(3px, -1px);
+  opacity: 1;
+}
+
+/* =========================
+   BLOQUES POR RECORRIDO
+========================= */
+
+[data-recorrido="origen"] .universo-panel__contenido > div {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: start;
+}
+
+[data-recorrido="origen"] .universo-panel__texto {
+  order: 1;
+  text-align: left;
+}
+
+[data-recorrido="origen"] .universo-panel__media {
+  order: 2;
+  align-self: start;
+}
+
+[data-recorrido="musica"] .universo-panel__contenido > div {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+}
+
 [data-recorrido="musica"] .universo-panel__texto {
   order: 2;
   text-align: right;
 }
 
+[data-recorrido="musica"] .universo-panel__texto .universo-panel__cuerpo,
+[data-recorrido="musica"] .universo-panel__texto .universo-panel__destacado,
+[data-recorrido="musica"] .universo-panel__texto .volver-mapa {
+  margin-left: auto;
+  text-align: right;
+}
+
 [data-recorrido="musica"] .universo-panel__media {
   order: 1;
+  align-self: center;
 }
 
 [data-recorrido="exploracion"] .universo-panel__contenido > div {
-  max-width: 760px;
-  margin: 0 auto;
-  text-align: center;
+  max-width: 980px;
+  margin: 0;
+  text-align: left;
+}
+
+[data-recorrido="exploracion"] .universo-panel__texto,
+[data-recorrido="exploracion"] .universo-head {
+  text-align: left;
+}
+
+[data-recorrido="exploracion"] .universo-panel__texto .universo-panel__cuerpo,
+[data-recorrido="exploracion"] .universo-panel__texto .universo-panel__destacado {
+  max-width: 50rem;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
 }
 
 [data-recorrido="sonologia"] .universo-panel__contenido > div {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.05fr 0.95fr;
   align-items: center;
 }
 
-[data-recorrido="simbolo"] .universo-panel__contenido > div {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
+[data-recorrido="sonologia"] .universo-panel__texto {
+  text-align: left;
+  display: grid;
+  align-content: center;
 }
 
-.universo-head {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+[data-recorrido="sonologia"] .universo-panel__texto .universo-panel__destacado,
+[data-recorrido="sonologia"] .universo-panel__texto .universo-panel__cuerpo {
+  max-width: 34rem;
+}
+
+[data-recorrido="sonologia"] .universo-panel__media {
+  align-self: center;
+  display: grid;
+  gap: 1rem;
+}
+
+[data-recorrido="experiencias"] .universo-panel__texto .universo-panel__destacado {
+  max-width: 34rem;
+}
+
+[data-recorrido="experiencias"] .universo-panel__texto .universo-panel__cuerpo {
+  max-width: 36rem;
+}
+
+[data-recorrido="simbolo"] .universo-panel__contenido > div {
+  max-width: 980px;
+  margin: 0;
+  text-align: left;
+}
+
+[data-recorrido="simbolo"] .universo-panel__texto,
+[data-recorrido="simbolo"] .universo-head {
+  text-align: left;
+}
+
+[data-recorrido="simbolo"] .universo-panel__texto .universo-panel__cuerpo,
+[data-recorrido="simbolo"] .universo-panel__texto .universo-panel__destacado {
+  max-width: 50rem;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
 }
 
 @media (max-width: 1023px) {
-  .portal-card--slot-3 .portal-card__title,
-  .portal-card--slot-4 .portal-card__title,
-  .portal-card--slot-5 .portal-card__title {
-    text-wrap: pretty;
+  .portal-desktop {
+    display: none;
   }
 
+  .portal-mobile {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .portal-card--slot-1,
+  .portal-card--slot-3,
+  .portal-card--slot-5 {
+    margin-right: -0.6rem;
+  }
+
+  .portal-card--slot-2,
+  .portal-card--slot-4,
+  .portal-card--slot-6 {
+    margin-left: -0.6rem;
+  }
+
+  .portal-card--slot-1 .portal-card__inner,
+  .portal-card--slot-3 .portal-card__inner,
+  .portal-card--slot-5 .portal-card__inner {
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+    border-radius: 1.3rem 0.9rem 0.9rem 1.3rem;
+    padding-right: 1.5rem;
+    text-align: left;
+    justify-items: start;
+  }
+
+  .portal-card--slot-2 .portal-card__inner,
+  .portal-card--slot-4 .portal-card__inner,
+  .portal-card--slot-6 .portal-card__inner {
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+    border-radius: 0.9rem 1.3rem 1.3rem 0.9rem;
+    padding-left: 1.5rem;
+    text-align: right;
+    justify-items: end;
+  }
+
+  .portal-card--slot-1 .portal-card__title,
+  .portal-card--slot-3 .portal-card__title,
+  .portal-card--slot-5 .portal-card__title {
+    max-width: 9.2ch;
+    text-align: left;
+    font-size: clamp(0.98rem, 3.1vw, 1.22rem);
+    line-height: 1.02;
+  }
+
+  .portal-card--slot-1 .portal-card__hint,
   .portal-card--slot-3 .portal-card__hint,
   .portal-card--slot-5 .portal-card__hint {
-    max-width: 11ch;
+    max-width: 12ch;
+    text-align: left;
+  }
+
+  .portal-card--slot-2 .portal-card__title,
+  .portal-card--slot-4 .portal-card__title,
+  .portal-card--slot-6 .portal-card__title {
+    max-width: 9.2ch;
+    text-align: right;
+    font-size: clamp(0.98rem, 3.1vw, 1.22rem);
+    line-height: 1.02;
+  }
+
+  .portal-card--slot-2 .portal-card__hint,
+  .portal-card--slot-4 .portal-card__hint,
+  .portal-card--slot-6 .portal-card__hint {
+    max-width: 12ch;
+    text-align: right;
   }
 
   [data-recorrido="origen"] .universo-panel__contenido > div,
@@ -1283,6 +1295,61 @@ const recorridos = [
   [data-recorrido="musica"] .universo-panel__media,
   [data-recorrido="sonologia"] .universo-panel__media {
     align-self: start;
+  }
+}
+
+@media (max-width: 640px) {
+  .portal-mobile {
+    gap: 0;
+  }
+
+  .portal-card--slot-1,
+  .portal-card--slot-3,
+  .portal-card--slot-5 {
+    margin-right: -0.48rem;
+  }
+
+  .portal-card--slot-2,
+  .portal-card--slot-4,
+  .portal-card--slot-6 {
+    margin-left: -0.48rem;
+  }
+
+  .portal-card {
+    height: 170px;
+  }
+
+  .portal-card__inner {
+    gap: 0.45rem;
+    padding-top: 0.9rem;
+    padding-bottom: 0.88rem;
+  }
+
+  .portal-card__label {
+    font-size: 0.52rem;
+    letter-spacing: 0.16em;
+  }
+
+  .portal-card__title {
+    font-size: clamp(0.9rem, 3.4vw, 1.05rem);
+    font-weight: 500;
+    line-height: 1.04;
+  }
+
+  .portal-card__hint {
+    font-size: 0.76rem;
+  }
+
+  .portal-card--slot-1 .portal-card__inner,
+  .portal-card--slot-3 .portal-card__inner,
+  .portal-card--slot-5 .portal-card__inner {
+    padding-right: 1.35rem;
+  }
+
+  .portal-card--slot-2 .portal-card__inner,
+  .portal-card--slot-4 .portal-card__inner,
+  .portal-card--slot-6 .portal-card__inner {
+    padding-left: 1.35rem;
   }
 }
   </style>

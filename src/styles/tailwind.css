@@ -33,6 +33,145 @@ nav a, .btn-gold {
   background: rgba(236, 220, 184, 0.1);
 }
 
+:root {
+  --es-bg-deep: #0a0610;
+  --es-gold: #ecdcb8;
+  --es-gold-soft: rgba(236, 220, 184, 0.62);
+  --es-gold-faint: rgba(236, 220, 184, 0.42);
+
+  --es-text-strong: rgba(255, 255, 255, 0.82);
+  --es-text-body: rgba(255, 255, 255, 0.72);
+  --es-text-soft: rgba(255, 255, 255, 0.58);
+  --es-text-faint: rgba(255, 255, 255, 0.38);
+
+  --es-border-soft: rgba(255, 255, 255, 0.08);
+  --es-border-gold: rgba(236, 220, 184, 0.14);
+
+  --es-shadow-panel: 0 18px 76px rgba(0,0,0,0.34);
+  --es-shadow-soft: 0 12px 42px rgba(0,0,0,0.18);
+}
+
+/* =========================
+   ESPÍRITU SÓNICO — SISTEMA GLOBAL
+========================= */
+
+.es-page-title {
+  font-family: "Cinzel", "Cinzel Decorative", serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--es-gold);
+  line-height: 1.08;
+}
+
+.es-section-title {
+  font-family: "Cinzel", "Cinzel Decorative", serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--es-gold);
+  line-height: 1.12;
+}
+
+.es-editorial-title {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--es-gold);
+}
+
+.es-subtitle {
+  font-family: "Cormorant Garamond", serif;
+  color: var(--es-text-body);
+  line-height: 1.75;
+}
+
+.es-body {
+  font-family: "Cormorant Garamond", serif;
+  color: var(--es-text-body);
+  line-height: 1.75;
+}
+
+.es-body-soft {
+  font-family: "Cormorant Garamond", serif;
+  color: var(--es-text-soft);
+  line-height: 1.7;
+}
+
+.es-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(236, 220, 184, 0.55);
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+}
+
+.es-eyebrow-soft {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.34);
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+}
+
+.es-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(236, 220, 184, 0.6),
+    transparent
+  );
+}
+
+.es-panel-shell {
+  position: relative;
+  border-radius: 2.2rem;
+  padding: 1px;
+  box-shadow: var(--es-shadow-panel);
+}
+
+.es-panel-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 2.2rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.06),
+    rgba(255,255,255,0.01)
+  );
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.es-panel {
+  position: relative;
+  border-radius: 2.1rem;
+  background: rgba(10, 6, 16, 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.es-panel-soft {
+  position: relative;
+  border-radius: 1.8rem;
+  background:
+    radial-gradient(circle at top left, rgba(236, 220, 184, 0.05), transparent 40%),
+    rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.es-page-header {
+  text-align: center;
+}
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
