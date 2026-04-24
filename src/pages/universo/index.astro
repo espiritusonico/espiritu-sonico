@@ -2017,5 +2017,137 @@ mapButtons.forEach((btn) => {
 .portal-card:active .portal-card__content {
   transform: translateY(1.5px) scale(0.992);
 }
+
+@media (max-width: 1023px) {
+  .portal-mobile {
+    contain: layout paint;
+  }
+
+  .portal-card {
+    height: 172px;
+    contain: layout paint style;
+  }
+
+  .portal-card__svg {
+    transition: transform 140ms ease, opacity 140ms ease;
+    filter: none;
+    will-change: transform;
+  }
+
+  .portal-card__shape-base {
+    fill: rgba(255, 255, 255, 0.02);
+  }
+
+  .portal-card__shape-material {
+    opacity: 0.92;
+  }
+
+  .portal-card__shape-halo {
+    opacity: 0.38;
+    mix-blend-mode: normal;
+  }
+
+  .portal-card__shape-border {
+    stroke: rgba(236, 220, 184, 0.11);
+    opacity: 0.94;
+  }
+
+  .portal-card__content {
+    gap: 0.4rem;
+    padding-top: 0.9rem;
+    padding-bottom: 0.88rem;
+    transition: transform 120ms ease;
+    backface-visibility: hidden;
+  }
+
+  .portal-card__label {
+    text-shadow: none;
+  }
+
+  .portal-card__title {
+    text-shadow: none;
+  }
+
+  .portal-card:hover .portal-card__svg,
+  .portal-card.is-pressing .portal-card__svg,
+  .portal-card:active .portal-card__svg {
+    filter: none;
+  }
+
+  .portal-card:hover .portal-card__svg {
+    transform: translateY(-0.5px);
+  }
+
+  .portal-card:hover .portal-card__shape-border {
+    stroke: rgba(236, 220, 184, 0.12);
+    opacity: 0.96;
+  }
+
+  .portal-card:hover .portal-card__shape-halo {
+    opacity: 0.42;
+  }
+
+  .portal-card:hover .portal-card__title {
+    text-shadow: none;
+  }
+
+  .portal-card.is-pressing .portal-card__svg,
+  .portal-card:active .portal-card__svg {
+    transform: translateY(1px) scale(0.992);
+  }
+
+  .portal-card.is-pressing .portal-card__shape-material,
+  .portal-card:active .portal-card__shape-material {
+    opacity: 0.82;
+  }
+
+  .portal-card.is-pressing .portal-card__shape-border,
+  .portal-card:active .portal-card__shape-border {
+    stroke: rgba(236, 220, 184, 0.16);
+  }
+
+  .portal-card.is-pressing .portal-card__content,
+  .portal-card:active .portal-card__content {
+    transform: translateY(1px) scale(0.996);
+  }
+
+  .universo-panel__contenido {
+    transition-duration: 360ms;
+  }
+
+  .universo-panel__toggle {
+    gap: 1rem;
+  }
+
+  .universo-panel__icon {
+    transition-duration: 180ms;
+  }
+
+  .subpanel-universo,
+  .subpanel-soft {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background:
+      radial-gradient(circle at top left, rgba(236, 220, 184, 0.035), transparent 42%),
+      rgba(255, 255, 255, 0.035);
+  }
+}
+
+@media (max-width: 640px) {
+  .portal-card {
+    height: 164px;
+  }
+
+  .portal-card .portal-card__title.es-portal-title-mobile {
+    font-size: clamp(1.2rem, 5.8vw, 1.56rem);
+    line-height: 0.96;
+  }
+
+  .portal-card .portal-card__hint.es-portal-hint-mobile {
+    font-size: clamp(0.74rem, 2.6vw, 0.86rem);
+    line-height: 1.08;
+    opacity: 0.72;
+  }
+}
   </style>
 </Layout>
