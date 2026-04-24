@@ -349,16 +349,15 @@ const playPress = (button, callback) => {
   }, 135);
 };
 
-    const scrollToWithOffset = (element, offset = 96) => {
+    const scrollElementIntoView = (element) => {
       if (!element) return;
-      const top = element.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     };
 
-    const scrollToBloqueHeader = (bloque, offset = 96) => {
+    const scrollToBloqueHeader = (bloque) => {
       if (!bloque) return;
       const header = bloque.querySelector(".universo-panel__toggle");
-      scrollToWithOffset(header || bloque, offset);
+      scrollElementIntoView(header || bloque);
     };
 
     const getTransitionMs = (element) => {
@@ -379,12 +378,12 @@ const playPress = (button, callback) => {
   return Math.max(...total, 0);
 };
 
-const scrollToBloqueHeaderAfterTransition = (bloque, offset = 96) => {
+const scrollToBloqueHeaderAfterTransition = (bloque) => {
   const { content } = getParts(bloque);
   const wait = getTransitionMs(content) + 28;
 
   window.setTimeout(() => {
-    scrollToBloqueHeader(bloque, offset);
+    scrollToBloqueHeader(bloque);
   }, wait);
 };
 
@@ -405,20 +404,15 @@ const revealBloqueCollapsed = (bloque) => {
   icon.style.transform = "rotate(0deg)";
 };
 
-const waitForScrollThenOpen = (bloque, offset = 96) => {
-  let settled = false;
+const navigateToBloque = (bloque) => {
+  if (!bloque) return;
 
-  const done = () => {
-    if (settled) return;
-    settled = true;
-    window.removeEventListener("scrollend", done);
+  revealBloqueCollapsed(bloque);
+
+  window.requestAnimationFrame(() => {
     openBloque(bloque);
-    scrollToBloqueHeaderAfterTransition(bloque, offset);
-  };
-
-  scrollToBloqueHeader(bloque, offset);
-  window.addEventListener("scrollend", done, { once: true });
-  window.setTimeout(done, 420);
+    scrollToBloqueHeaderAfterTransition(bloque);
+  });
 };
 
     const getParts = (bloque) => {
@@ -466,7 +460,7 @@ const waitForScrollThenOpen = (bloque, offset = 96) => {
         closeBloque(bloque);
       } else {
         openBloque(bloque);
-        scrollToBloqueHeaderAfterTransition(bloque, 96);
+        scrollToBloqueHeaderAfterTransition(bloque);
       }
     };
 
@@ -483,9 +477,9 @@ const waitForScrollThenOpen = (bloque, offset = 96) => {
     });
 
 mapButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const targetId = btn.getAttribute("data-open");
-    if (!targetId) return;
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-open");
+      if (!targetId) return;
 
     const target = document.querySelector(`[data-recorrido="${targetId}"]`);
     if (!target) return;
@@ -493,8 +487,7 @@ mapButtons.forEach((btn) => {
     btn.blur();
 
     playPress(btn, () => {
-      revealBloqueCollapsed(target);
-      waitForScrollThenOpen(target, 96);
+      navigateToBloque(target);
     });
   });
 });
@@ -511,7 +504,7 @@ mapButtons.forEach((btn) => {
         btn.blur();
 
         if (current) closeBloque(current);
-toggleBloque(target);
+        navigateToBloque(target);
       });
     });
 
@@ -520,7 +513,7 @@ toggleBloque(target);
         const current = btn.closest("[data-recorrido]");
         if (current) closeBloque(current);
 
-        if (mapa) scrollToWithOffset(mapa, 96);
+        if (mapa) scrollElementIntoView(mapa);
       });
     });
 
@@ -1982,6 +1975,7 @@ toggleBloque(target);
 .portal-piece,
 .portal-card {
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .portal-piece:hover .portal-piece__svg,
