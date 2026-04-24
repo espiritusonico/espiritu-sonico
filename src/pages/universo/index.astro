@@ -349,43 +349,18 @@ const playPress = (button, callback) => {
   }, 135);
 };
 
-    const scrollElementIntoView = (element) => {
+    const scrollElementIntoView = (element, offset = 96) => {
       if (!element) return;
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      const top = element.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: "smooth" });
     };
 
-    const scrollToBloqueHeader = (bloque) => {
+    const scrollToBloqueHeader = (bloque, offset = 96) => {
       if (!bloque) return;
       const header = bloque.querySelector(".universo-panel__toggle");
-      scrollElementIntoView(header || bloque);
+      scrollElementIntoView(header || bloque, offset);
     };
-
-    const getTransitionMs = (element) => {
-  if (!element) return 0;
-
-  const styles = window.getComputedStyle(element);
-  const durations = styles.transitionDuration.split(",").map((value) => {
-    const v = value.trim();
-    return v.endsWith("ms") ? parseFloat(v) : parseFloat(v) * 1000;
-  });
-
-  const delays = styles.transitionDelay.split(",").map((value) => {
-    const v = value.trim();
-    return v.endsWith("ms") ? parseFloat(v) : parseFloat(v) * 1000;
-  });
-
-  const total = durations.map((duration, index) => duration + (delays[index] || 0));
-  return Math.max(...total, 0);
-};
-
-const scrollToBloqueHeaderAfterTransition = (bloque) => {
-  const { content } = getParts(bloque);
-  const wait = getTransitionMs(content) + 28;
-
-  window.setTimeout(() => {
-    scrollToBloqueHeader(bloque);
-  }, wait);
-};
 
 const revealBloqueCollapsed = (bloque) => {
   const { button, content, icon } = getParts(bloque);
@@ -408,10 +383,10 @@ const navigateToBloque = (bloque) => {
   if (!bloque) return;
 
   revealBloqueCollapsed(bloque);
+  scrollToBloqueHeader(bloque, 96);
 
   window.requestAnimationFrame(() => {
     openBloque(bloque);
-    scrollToBloqueHeaderAfterTransition(bloque);
   });
 };
 
@@ -460,7 +435,7 @@ const navigateToBloque = (bloque) => {
         closeBloque(bloque);
       } else {
         openBloque(bloque);
-        scrollToBloqueHeaderAfterTransition(bloque);
+        scrollToBloqueHeader(bloque, 96);
       }
     };
 
