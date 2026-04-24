@@ -141,3 +141,315 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
+
+/* =========================
+   ESPÍRITU SÓNICO — LECTURA PREMIUM GLOBAL
+========================= */
+
+.es-reading {
+  font-family: "Cormorant Garamond", serif;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.es-reading p {
+  font-size: clamp(1.18rem, 1.08rem + 0.34vw, 1.3rem);
+  line-height: 1.94;
+  margin: 0;
+}
+
+.es-reading-stack {
+  display: grid;
+  gap: 1.18rem;
+}
+
+.es-reading-summary {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.14rem, 1.04rem + 0.3vw, 1.24rem);
+  line-height: 1.82;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.es-reading-highlight {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.2rem, 1.08rem + 0.34vw, 1.34rem);
+  line-height: 1.76;
+  font-style: italic;
+  color: rgba(236, 220, 184, 0.92);
+  padding: 1.08rem 1.18rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(236, 220, 184, 0.10);
+  background:
+    linear-gradient(180deg, rgba(236, 220, 184, 0.032) 0%, rgba(236, 220, 184, 0.012) 100%),
+    rgba(255, 255, 255, 0.015);
+  box-shadow: inset 0 1px 0 rgba(236, 220, 184, 0.02);
+}
+
+.es-reading-highlight strong {
+  font-weight: 600;
+  color: rgba(236, 220, 184, 0.97);
+}
+
+.es-sidecopy {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.06rem, 1rem + 0.18vw, 1.14rem);
+  line-height: 1.78;
+  color: rgba(255, 255, 255, 0.70);
+}
+
+.es-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(236, 220, 184, 0.58);
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+}
+
+.es-reading-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.24rem;
+}
+
+/* =========================
+   ESPÍRITU SÓNICO — SISTEMA TIPOGRÁFICO GLOBAL
+========================= */
+
+/* títulos secundarios (ej: dentro de recorrido) */
+.es-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.65rem, 1.4rem + 1vw, 2.1rem);
+  line-height: 1.05;
+  color: #ecdcb8;
+}
+
+/* subtítulos suaves */
+.es-subtitle {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.08rem, 1rem + 0.28vw, 1.22rem);
+  line-height: 1.75;
+  color: rgba(255,255,255,0.78);
+}
+
+/* labels tipo RAÍZ */
+.es-label {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(236,220,184,0.58);
+}
+
+/* botonera desktop */
+.es-portal-title {
+  font-size: clamp(1.7rem, 2vw, 2.1rem);
+  line-height: 0.95;
+}
+
+.es-portal-hint {
+  font-size: clamp(1rem, 0.96rem + 0.18vw, 1.08rem);
+  line-height: 1.2;
+}
+
+/* botonera mobile */
+.es-portal-title-mobile {
+  font-size: clamp(1.05rem, 3.5vw, 1.25rem);
+}
+
+.es-portal-hint-mobile {
+  font-size: clamp(0.85rem, 2.6vw, 0.98rem);
+}
+
+/* =========================
+   OVERRIDES GLOBALES — UNIVERSO / PORTALES
+========================= */
+
+.universo-panel__destacado.es-reading-highlight {
+  font-style: italic;
+  color: rgba(236, 220, 184, 0.96);
+}
+
+.universo-panel__destacado.es-reading-highlight strong {
+  color: rgba(236, 220, 184, 0.98);
+  font-weight: 600;
+}
+
+.es-page-subtitle {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: clamp(1.14rem, 1.04rem + 0.34vw, 1.28rem);
+  line-height: 1.74;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+/* Ventana Elegí un portal */
+.card-viaje-destacado .eyebrow-ritual {
+  font-size: 0.78rem;
+}
+
+.card-viaje-destacado .subtitulo-cormorant {
+  font-size: clamp(1.02rem, 0.96rem + 0.22vw, 1.12rem);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* Card de recorrido */
+.universo-panel__toggle .es-eyebrow {
+  font-size: 0.78rem;
+  color: rgba(236, 220, 184, 0.62);
+}
+
+.universo-panel__toggle .es-title {
+  font-size: clamp(2.12rem, 2.3vw, 2.85rem);
+  line-height: 1.04;
+}
+
+.universo-panel__toggle .es-reading-summary {
+  font-style: italic;
+  font-size: clamp(1.18rem, 1.04rem + 0.38vw, 1.32rem);
+  color: rgba(255, 255, 255, 0.76);
+}
+
+/* Botonera desktop */
+.portal-piece .portal-piece__label.es-label {
+  font-size: 0.82rem !important;
+  letter-spacing: 0.24em !important;
+  color: rgba(236, 220, 184, 0.66);
+}
+
+.portal-piece .portal-piece__title.es-portal-title {
+  font-size: 2rem !important;
+  line-height: 0.95 !important;
+  color: #f0dfb8;
+}
+
+.portal-piece .portal-piece__hint.es-portal-hint {
+  font-size: 1.08rem !important;
+  line-height: 1.16 !important;
+  opacity: 0.76;
+}
+
+/* Exploración desktop */
+.portal-piece.portal-piece--3 .portal-piece__title.es-portal-title {
+  font-size: 1.72rem !important;
+  line-height: 1.02 !important;
+  max-width: 12.8ch !important;
+  text-align: right !important;
+  justify-self: end !important;
+}
+
+/* Botonera tablet/mobile */
+.portal-card .portal-card__label.es-label {
+  font-size: 0.66rem !important;
+  letter-spacing: 0.17em !important;
+  line-height: 1 !important;
+  color: rgba(236, 220, 184, 0.60);
+}
+
+.portal-card .portal-card__title.es-portal-title-mobile {
+  font-size: 1.28rem !important;
+  line-height: 0.98 !important;
+  letter-spacing: 0.003em;
+  color: #f0dfb8;
+}
+
+.portal-card .portal-card__hint.es-portal-hint-mobile {
+  font-size: 0.88rem !important;
+  line-height: 1.14 !important;
+  opacity: 0.70;
+  max-width: 15ch;
+}
+
+/* Exploración mobile/tablet */
+.portal-card.portal-card--slot-3 .portal-card__title.es-portal-title-mobile {
+  font-size: 1.08rem !important;
+  line-height: 1.02 !important;
+  max-width: 12.8ch !important;
+  text-align: left !important;
+}
+
+/* Líneas forzadas del título largo */
+.portal-title-line {
+  display: block;
+  white-space: nowrap;
+}
+
+/* Tablet: evita que se achique en el rango intermedio */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .portal-card .portal-card__label.es-label {
+    font-size: 0.74rem !important;
+  }
+
+  .portal-card .portal-card__title.es-portal-title-mobile {
+    font-size: 1.52rem !important;
+  }
+
+  .portal-card .portal-card__hint.es-portal-hint-mobile {
+    font-size: 0.98rem !important;
+  }
+
+  .portal-card.portal-card--slot-3 .portal-card__title.es-portal-title-mobile {
+    font-size: 1.24rem !important;
+    max-width: 12.8ch !important;
+  }
+}
+
+/* Mobile real */
+@media (max-width: 640px) {
+  .portal-card .portal-card__title.es-portal-title-mobile {
+    font-size: 1.24rem !important;
+  }
+
+  .portal-card.portal-card--slot-3 .portal-card__title.es-portal-title-mobile {
+    font-size: 1.06rem !important;
+    max-width: 12.8ch !important;
+  }
+}
+
+/* =========================
+   CIERRE FINAL — BOTONERA RESPONSIVA
+========================= */
+
+.portal-title-line {
+  display: block;
+  white-space: nowrap;
+}
+
+/* desktop: respeta alineación derecha del botón visión */
+.portal-piece.portal-piece--3 .portal-piece__title.es-portal-title {
+  font-size: clamp(1.58rem, 1.45rem + 0.35vw, 1.82rem);
+  line-height: 1.02;
+  max-width: 100%;
+  text-align: right;
+}
+
+/* tablet / ventana intermedia: no achicar la botonera */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .portal-card .portal-card__label.es-label {
+    font-size: 0.74rem;
+  }
+
+  .portal-card .portal-card__title.es-portal-title-mobile {
+    font-size: clamp(1.38rem, 1.18rem + 0.9vw, 1.7rem);
+    line-height: 0.98;
+  }
+
+  .portal-card .portal-card__hint.es-portal-hint-mobile {
+    font-size: clamp(0.94rem, 0.86rem + 0.3vw, 1.04rem);
+  }
+
+  .portal-card.portal-card--slot-3 .portal-card__title.es-portal-title-mobile {
+    font-size: clamp(1.26rem, 1.06rem + 0.75vw, 1.5rem);
+    line-height: 1.02;
+    text-align: left;
+  }
+}
+
+/* mobile real */
+@media (max-width: 640px) {
+  .portal-card.portal-card--slot-3 .portal-card__title.es-portal-title-mobile {
+    font-size: clamp(1.04rem, 4.25vw, 1.18rem);
+    line-height: 1.04;
+    text-align: left;
+  }
+}

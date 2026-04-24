@@ -1,155 +1,484 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import "../../styles/productos-slug.css";
+import { API_URL } from "../../lib/api";
+
+const motivos = [
+  {
+    value: "Vivir una experiencia",
+    description: "Recibir información sobre una experiencia individual o grupal.",
+    prefill:
+      "Estoy sintiendo el llamado a vivir una experiencia dentro de Espíritu Sónico y me gustaría recibir orientación para dar el siguiente paso."
+  },
+  {
+    value: "Consultar por productos o viajes",
+    description: "Sahumerios, viajes sonoros y recursos disponibles.",
+    prefill:
+      "Quiero explorar los productos y los viajes sonoros disponibles para encontrar el que mejor acompañe este momento."
+  },
+  {
+    value: "Propuesta o colaboración",
+    description: "Invitaciones, alianzas, cruces creativos o propuestas de trabajo.",
+    prefill:
+      "Siento que puede haber un punto de encuentro y me gustaría acercar una propuesta para explorar una posible colaboración."
+  },
+  {
+    value: "No sé bien por dónde empezar",
+    description: "Una primera conversación para orientar lo que estás buscando.",
+    prefill:
+      "No tengo del todo claro por dónde comenzar, pero quiero compartir lo que estoy buscando para recibir una orientación."
+  }
+];
 ---
 
 <Layout title="Contacto">
   <section class="relative min-h-screen overflow-hidden px-6 pb-24 pt-20 text-white">
-    <!-- FONDO -->
     <div class="pointer-events-none absolute inset-0 overflow-hidden">
       <div class="absolute left-1/2 top-0 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-[#ecdcb8]/[0.04] blur-3xl"></div>
       <div class="absolute -left-20 top-1/3 h-72 w-72 rounded-full bg-violet-400/[0.05] blur-3xl"></div>
       <div class="absolute -right-20 bottom-10 h-80 w-80 rounded-full bg-fuchsia-300/[0.04] blur-3xl"></div>
     </div>
 
-    <div class="relative z-10 mx-auto max-w-3xl">
-      <!-- HEADER -->
-      <header class="text-center mb-12">
+    <div class="relative z-10 mx-auto max-w-4xl">
+      <header class="es-page-header mb-12">
         <h1 class="es-page-title mb-4 text-4xl md:text-5xl">
           Contacto
         </h1>
 
-        <p class="text-sm text-white/60 max-w-xl mx-auto leading-relaxed">
-          Si sentís que algo de este universo resuena con vos, consultá.
-          No hace falta llegar con todo resuelto.
+        <p class="es-contact-intro mx-auto max-w-2xl">
+          Este espacio está pensado para acercar una consulta, iniciar una experiencia
+          o abrir una conversación dentro del universo Espíritu Sónico.
         </p>
 
-        <div class="es-divider mx-auto mt-8 w-32"></div>
+        <div class="es-divider mx-auto mt-8 w-36"></div>
       </header>
 
-      <!-- FORMULARIO -->
-      <section class="card-ritual rounded-[2.2rem] px-6 py-7 md:px-8">
-        <p class="eyebrow-ritual mb-3">
-          Enviar mensaje
-        </p>
+      <section class="card-ritual rounded-[2.2rem] px-6 py-7 md:px-8 md:py-9">
+        <p class="eyebrow-ritual mb-3">Enviar mensaje</p>
 
-        <h2 class="titulo-ritual mb-6">
+        <h2 class="titulo-ritual mb-8">
           Abrir una conversación
         </h2>
 
-        <div class="space-y-5">
-          <!-- ORIENTACIÓN INTEGRADA -->
+        <form
+          id="contacto-form"
+          class="space-y-6"
+          data-api-url={API_URL}
+          novalidate
+        >
+          <input type="hidden" name="motivo" id="motivo-hidden" value="" />
+
+          <!-- TIPO DE CONSULTA -->
           <div class="subpanel-soft rounded-[1.7rem] px-5 py-5">
-            <label for="motivo" class="block">
-              <p class="eyebrow-mini mb-3">
-                ¿Sobre qué querés escribir?
-              </p>
+            <p class="eyebrow-mini mb-4">¿Qué querés acercar?</p>
 
-              <select
-                id="motivo"
-                class="w-full rounded-[1.2rem] border border-[#ecdcb8]/10 bg-[#0a0610]/70 px-4 py-3 text-white/80 outline-none transition duration-300 focus:border-[#ecdcb8]/20"
-              >
-                <option value="">Elegir una opción</option>
-                <option value="Quiero vivir un viaje sonoro.">
-                  Quiero vivir un viaje sonoro
-                </option>
-                <option value="Me interesa una experiencia grupal.">
-                  Me interesa una experiencia grupal
-                </option>
-                <option value="Quiero saber más sobre los sahumerios.">
-                  Quiero saber más sobre los sahumerios
-                </option>
-                <option value="Estoy buscando algo pero no sé bien qué.">
-                  Estoy buscando algo pero no sé bien qué
-                </option>
-                <option value="Quiero hacer una consulta personal.">
-                  Quiero hacer una consulta personal
-                </option>
-              </select>
-            </label>
+            <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+              {motivos.map((item) => (
+                <button
+                  type="button"
+                  class="es-contact-choice rounded-[1.3rem] px-4 py-4 text-left"
+                  data-motivo={item.value}
+                  data-prefill={item.prefill}
+                >
+                  <span class="es-contact-choice__title">{item.value}</span>
+                  <span class="es-contact-choice__desc">{item.description}</span>
+                </button>
+              ))}
+            </div>
 
-            <p class="mt-4 text-sm leading-relaxed text-white/58">
-              Elegir una opción puede ayudarte a empezar. Después podés escribir con tus propias palabras.
+            <p class="mt-4 es-body-soft">
+              Elegí la opción que más se acerque a lo que buscás. Después podés ajustar el mensaje con tus propias palabras.
             </p>
           </div>
 
-          <!-- CAMPOS -->
-          <div class="space-y-5">
-            <input
-              type="text"
-              placeholder="Nombre"
-              class="w-full rounded-[1.4rem] bg-[#0a0610]/80 border border-[#ecdcb8]/10 px-4 py-3 text-white/80 placeholder:text-white/40 focus:outline-none focus:border-[#ecdcb8]/20 transition"
-            />
+          <!-- CANAL PREFERIDO -->
+          <div id="contacto-canal" class="subpanel-soft rounded-[1.7rem] px-5 py-5 es-contact-step-target">
+  <p class="eyebrow-mini mb-4">¿Cómo preferís que te respondan?</p>
 
-            <input
-              type="email"
-              placeholder="Email"
-              class="w-full rounded-[1.4rem] bg-[#0a0610]/80 border border-[#ecdcb8]/10 px-4 py-3 text-white/80 placeholder:text-white/40 focus:outline-none focus:border-[#ecdcb8]/20 transition"
-            />
+            <div class="flex flex-col gap-3 sm:flex-row">
+              <button
+                type="button"
+                class="es-contact-channel"
+                data-canal="whatsapp"
+                aria-pressed="false"
+              >
+                Por WhatsApp
+              </button>
 
+              <button
+                type="button"
+                class="es-contact-channel"
+                data-canal="email"
+                aria-pressed="false"
+              >
+                Por email
+              </button>
+            </div>
+
+            <input type="hidden" name="canalPreferido" id="canal-hidden" value="" />
+
+            <p id="canal-ayuda" class="mt-4 es-body-soft">
+              Elegí el canal por el que querés recibir respuesta.
+            </p>
+          </div>
+
+          <!-- DATOS -->
+          <div id="contacto-datos" class="space-y-5 es-contact-step-target">
+            <div>
+              <label for="nombre" class="es-contact-label">Nombre</label>
+              <input
+                id="nombre"
+                name="nombre"
+                type="text"
+                placeholder="Tu nombre"
+                class="es-contact-input"
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+              <div>
+                <label for="telefono" class="es-contact-label">
+                  WhatsApp <span id="telefono-indicador" class="es-contact-optional">(opcional)</span>
+                </label>
+                <input
+                  id="telefono"
+                  name="telefono"
+                  type="text"
+                  inputmode="tel"
+                  placeholder="Ej. 11 2345 6789"
+                  class="es-contact-input"
+                  autocomplete="tel"
+                />
+              </div>
+
+              <div>
+                <label for="email" class="es-contact-label">
+                  Email <span id="email-indicador" class="es-contact-optional">(opcional)</span>
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="tuemail@ejemplo.com"
+                  class="es-contact-input"
+                  autocomplete="email"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- MENSAJE -->
+          <div>
+            <label for="mensaje" class="es-contact-label">Tu mensaje</label>
             <textarea
               id="mensaje"
-              rows="5"
-              placeholder="Mensaje..."
-              class="w-full rounded-[1.4rem] bg-[#0a0610]/80 border border-[#ecdcb8]/10 px-4 py-3 text-white/80 placeholder:text-white/40 focus:outline-none focus:border-[#ecdcb8]/20 transition resize-none"
+              name="mensaje"
+              rows="6"
+              placeholder="Escribí acá lo que querés compartir o consultar..."
+              class="es-contact-textarea"
             ></textarea>
           </div>
-        </div>
 
-        <!-- BOTONES -->
-        <div class="mt-6 flex flex-col gap-3">
-          <a
-            href="https://wa.me/1125171969"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="cta-principal text-center"
-          >
-            Enviar por WhatsApp
-          </a>
+          <!-- ESTADOS -->
+          <div id="contacto-feedback" class="hidden rounded-[1.2rem] px-4 py-3 text-sm"></div>
 
-          <a
-            href="mailto:espiritusonicoviajero@gmail.com"
-            class="cta-viaje text-center"
-          >
-            Enviar por Email
-          </a>
-        </div>
-      </section>
+          <!-- CTA -->
+          <div class="flex flex-col gap-3">
+            <button id="contacto-submit" type="submit" class="cta-principal w-full">
+              Enviar
+            </button>
 
-      <!-- REDES -->
-      <section class="mt-8 text-center">
-        <p class="text-xs uppercase tracking-[0.3em] text-[#ecdcb8]/50 mb-4">
-          También podés escribir por acá
-        </p>
+            <div class="subpanel-soft es-contact-alt-panel mt-2 rounded-[1.5rem] px-5 py-5 text-center">
+  <p class="es-contact-alt-title mb-2">Otras vías de contacto</p>
 
-        <a
-          href="https://instagram.com/espiritu.sonico"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-[#ecdcb8] hover:text-white transition"
-        >
-          Instagram
-        </a>
+  <p class="es-body-soft mx-auto max-w-xl">
+    Si preferís comunicarte por otro canal, también podés hacerlo desde acá.
+  </p>
+
+  <div class="mt-4 flex flex-wrap items-center justify-center gap-3">
+    <a
+      href="https://wa.me/1125171969"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="es-contact-alt-link"
+    >
+      WhatsApp
+    </a>
+
+    <a
+      href="mailto:espiritusonicoviajero@gmail.com"
+      class="es-contact-alt-link"
+    >
+      Email
+    </a>
+
+    <a
+      href="https://instagram.com/espiritu.sonico"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="es-contact-alt-link"
+    >
+      Instagram
+    </a>
+  </div>
+</div>
+          </div>
+        </form>
       </section>
     </div>
   </section>
 
-  <script>
+  <script is:inline>
     const initContacto = () => {
-      const motivo = document.getElementById("motivo");
+      const form = document.getElementById("contacto-form");
+      if (!(form instanceof HTMLFormElement)) return;
+
+      const apiUrl = form.dataset.apiUrl || "http://localhost:3000";
+
+      const motivoHidden = document.getElementById("motivo-hidden");
+      const canalHidden = document.getElementById("canal-hidden");
       const mensaje = document.getElementById("mensaje");
+      const nombre = document.getElementById("nombre");
+      const telefono = document.getElementById("telefono");
+      const email = document.getElementById("email");
+      const feedback = document.getElementById("contacto-feedback");
+      const submitBtn = document.getElementById("contacto-submit");
+      const canalAyuda = document.getElementById("canal-ayuda");
+      const telefonoIndicador = document.getElementById("telefono-indicador");
+      const emailIndicador = document.getElementById("email-indicador");
 
-      if (!motivo || !mensaje) return;
+      const motivoButtons = Array.from(document.querySelectorAll("[data-motivo]"));
+      const canalButtons = Array.from(document.querySelectorAll("[data-canal]"));
 
-      motivo.addEventListener("change", () => {
-        const value = motivo.value?.trim();
-        if (!value) return;
+      let canalSeleccionado = "";
+      let motivoSeleccionado = "";
+      let mensajeAutocompletado = false;
+      let ultimoPrefill = "";
 
-        if (!mensaje.value.trim()) {
-          mensaje.value = value + " ";
-          mensaje.focus();
-          mensaje.setSelectionRange(mensaje.value.length, mensaje.value.length);
+      const setFeedback = (type, text) => {
+        if (!feedback) return;
+
+        feedback.classList.remove("hidden", "es-feedback-success", "es-feedback-error", "es-feedback-loading");
+        feedback.textContent = text;
+
+        if (type === "success") feedback.classList.add("es-feedback-success");
+        if (type === "error") feedback.classList.add("es-feedback-error");
+        if (type === "loading") feedback.classList.add("es-feedback-loading");
+      };
+
+      const clearFeedback = () => {
+        if (!feedback) return;
+        feedback.className = "hidden rounded-[1.2rem] px-4 py-3 text-sm";
+        feedback.textContent = "";
+      };
+
+      const setRequiredFieldState = () => {
+        const telefonoWrap = telefono?.closest("div");
+        const emailWrap = email?.closest("div");
+
+        telefono?.classList.remove("is-required-focus");
+        email?.classList.remove("is-required-focus");
+        telefonoWrap?.classList.remove("is-required-block");
+        emailWrap?.classList.remove("is-required-block");
+
+        if (canalSeleccionado === "whatsapp") {
+          telefono?.classList.add("is-required-focus");
+          telefonoWrap?.classList.add("is-required-block");
+        }
+
+        if (canalSeleccionado === "email") {
+          email?.classList.add("is-required-focus");
+          emailWrap?.classList.add("is-required-block");
+        }
+      };
+
+      const updateCanalUI = () => {
+        canalButtons.forEach((button) => {
+          const isActive = button.dataset.canal === canalSeleccionado;
+          button.classList.toggle("is-active", isActive);
+          button.setAttribute("aria-pressed", isActive ? "true" : "false");
+        });
+
+        if (canalHidden instanceof HTMLInputElement) {
+          canalHidden.value = canalSeleccionado;
+        }
+
+        if (telefonoIndicador && emailIndicador && canalAyuda) {
+          if (canalSeleccionado === "whatsapp") {
+            telefonoIndicador.textContent = "(obligatorio)";
+            emailIndicador.textContent = "(opcional)";
+            canalAyuda.textContent = "Vas a dejar tu número como canal principal de respuesta.";
+          } else if (canalSeleccionado === "email") {
+            telefonoIndicador.textContent = "(opcional)";
+            emailIndicador.textContent = "(obligatorio)";
+            canalAyuda.textContent = "Vas a dejar tu email como canal principal de respuesta.";
+          } else {
+            telefonoIndicador.textContent = "(opcional)";
+            emailIndicador.textContent = "(opcional)";
+            canalAyuda.textContent = "Elegí el canal por el que querés recibir respuesta.";
+          }
+        }
+
+        setRequiredFieldState();
+      };
+
+      const shouldReplaceMessage = () => {
+        if (!(mensaje instanceof HTMLTextAreaElement)) return false;
+        const current = mensaje.value.trim();
+
+        if (!current) return true;
+        if (mensajeAutocompletado) return true;
+        if (ultimoPrefill && current === ultimoPrefill.trim()) return true;
+
+        return false;
+      };
+
+      motivoButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          motivoSeleccionado = button.dataset.motivo || "";
+          const prefill = button.dataset.prefill || "";
+
+          motivoButtons.forEach((item) => item.classList.remove("is-active"));
+          button.classList.add("is-active");
+
+          if (motivoHidden instanceof HTMLInputElement) {
+            motivoHidden.value = motivoSeleccionado;
+          }
+
+          if (mensaje instanceof HTMLTextAreaElement && shouldReplaceMessage()) {
+  mensaje.value = prefill;
+  ultimoPrefill = prefill;
+  mensajeAutocompletado = true;
+}
+
+const canalSection = document.getElementById("contacto-canal");
+if (canalSection instanceof HTMLElement) {
+  canalSection.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+        });
+      });
+
+      canalButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    canalSeleccionado = button.dataset.canal || "";
+    updateCanalUI();
+
+    const datosSection = document.getElementById("contacto-datos");
+    if (datosSection instanceof HTMLElement) {
+      datosSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  });
+});
+
+      if (mensaje instanceof HTMLTextAreaElement) {
+        mensaje.addEventListener("input", () => {
+          const current = mensaje.value.trim();
+
+          if (!current) {
+            mensajeAutocompletado = false;
+            return;
+          }
+
+          mensajeAutocompletado = current === ultimoPrefill.trim();
+        });
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        clearFeedback();
+
+        const nombreValue = nombre instanceof HTMLInputElement ? nombre.value.trim() : "";
+        const telefonoValue = telefono instanceof HTMLInputElement ? telefono.value.trim() : "";
+        const emailValue = email instanceof HTMLInputElement ? email.value.trim() : "";
+        const mensajeValue = mensaje instanceof HTMLTextAreaElement ? mensaje.value.trim() : "";
+
+        if (!nombreValue) {
+          setFeedback("error", "Por favor, escribí tu nombre.");
+          return;
+        }
+
+        if (!motivoSeleccionado) {
+          setFeedback("error", "Elegí el motivo de tu consulta para poder orientar mejor la respuesta.");
+          return;
+        }
+
+        if (!canalSeleccionado) {
+          setFeedback("error", "Elegí cómo preferís que te respondan.");
+          return;
+        }
+
+        if (canalSeleccionado === "whatsapp" && !telefonoValue) {
+          setFeedback("error", "Si preferís respuesta por WhatsApp, necesitás dejar tu número.");
+          return;
+        }
+
+        if (canalSeleccionado === "email" && !emailValue) {
+          setFeedback("error", "Si preferís respuesta por email, necesitás dejar tu correo.");
+          return;
+        }
+
+        if (!mensajeValue) {
+          setFeedback("error", "Escribí tu mensaje antes de enviar.");
+          return;
+        }
+
+        const payload = {
+          nombre: nombreValue,
+          telefono: telefonoValue,
+          email: emailValue,
+          motivo: motivoSeleccionado,
+          canalPreferido: canalSeleccionado,
+          mensaje: mensajeValue
+        };
+
+        try {
+          if (submitBtn instanceof HTMLButtonElement) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Enviando...";
+          }
+
+          setFeedback("loading", "Enviando mensaje...");
+
+          const response = await fetch(`${apiUrl}/contacto`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          if (!response.ok) {
+            throw new Error("No se pudo procesar el envío");
+          }
+
+          form.reset();
+          motivoSeleccionado = "";
+          canalSeleccionado = "";
+          mensajeAutocompletado = false;
+          ultimoPrefill = "";
+
+          motivoButtons.forEach((item) => item.classList.remove("is-active"));
+          updateCanalUI();
+
+          setFeedback("success", "Tu mensaje fue enviado. Pronto recibirás una respuesta.");
+        } catch (error) {
+          setFeedback("error", "No se pudo enviar el mensaje. Probá nuevamente en unos instantes.");
+        } finally {
+          if (submitBtn instanceof HTMLButtonElement) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Enviar";
+          }
         }
       });
+
+      updateCanalUI();
     };
 
     if (document.readyState === "loading") {

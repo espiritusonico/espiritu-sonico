@@ -1,20 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-const recomendaciones = [
-  "No hace falta hacer mucho. A veces lo más potente es simplemente frenar.",
-  "Hoy puede ser un buen momento para bajar un poco el ruido y dejar que el cuerpo marque el ritmo.",
-  "Si algo está pidiendo orden, empezá por generar un pequeño espacio para vos.",
-  "Hay días para avanzar y días para acomodar. Este puede ser uno de esos.",
-  "Una pausa breve puede cambiar completamente la forma en la que sigue el día.",
-  "Si sentís dispersión, puede ser un buen momento para volver a algo simple.",
-  "Hoy puede ser un buen día para limpiar, soltar y dejar que algo se reordene.",
-  "Antes de seguir, probá escuchar sin intención. Algo puede aparecer ahí.",
-  "Hay momentos donde no se trata de buscar, sino de permitir.",
-  "No todo necesita resolverse hoy. A veces alcanza con escuchar un poco más."
-];
-
-const recomendacionDelDia =
-  recomendaciones[new Date().getDate() % recomendaciones.length];
 ---
 <Layout>
   <section class="min-h-screen flex flex-col items-center justify-start px-0 pt-6 sm:pt-8 text-center text-gold font-serif relative z-10 space-y-10 sm:space-y-14 overflow-x-hidden">
@@ -25,7 +10,7 @@ const recomendacionDelDia =
     Espíritu Sónico
   </h1>
 
-  <p class="es-subtitle mx-auto mt-5 max-w-3xl text-[17px] md:text-[19px]">
+  <p class="italic es-subtitle mx-auto mt-5 max-w-3xl text-[17px] md:text-[19px]">
   Un sitio donde viajes sonoros, símbolo, materia y tecnología
   <br class="hidden md:block" />
   trabajan juntos para abrir otros estados.
@@ -34,7 +19,7 @@ const recomendacionDelDia =
   <div class="es-divider mx-auto mt-8 w-32"></div>
 </header>
 
-<p class="es-eyebrow mt-6">
+<p class="es-instruction mt-4 text-center">
   <span class="md:hidden">Deslizá para recorrer el Universo</span>
   <span class="hidden md:inline">Usá las flechas para recorrer el Universo</span>
 </p>

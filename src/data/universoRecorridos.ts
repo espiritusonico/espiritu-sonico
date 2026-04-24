@@ -59,7 +59,7 @@ export const recorridos: UniversoRecorrido[] = [
 
   {
   id: "exploracion",
-  titulo: "Exploración de la conciencia",
+  titulo: "Exploración de\u00A0la conciencia",
   resumen:
     "Un recorrido real entre experiencia, estudio y prácticas que fueron abriendo otra forma de entender lo que pasa adentro.",
   destacado:
