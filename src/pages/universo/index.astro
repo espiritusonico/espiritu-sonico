@@ -349,17 +349,17 @@ const playPress = (button, callback) => {
   }, 135);
 };
 
-    const scrollElementIntoView = (element, offset = 96) => {
+    const scrollElementIntoView = (element, offset = 96, behavior = "smooth") => {
       if (!element) return;
 
       const top = element.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: "smooth" });
+      window.scrollTo({ top, behavior });
     };
 
-    const scrollToBloqueHeader = (bloque, offset = 96) => {
+    const scrollToBloqueHeader = (bloque, offset = 96, behavior = "smooth") => {
       if (!bloque) return;
       const header = bloque.querySelector(".universo-panel__toggle");
-      scrollElementIntoView(header || bloque, offset);
+      scrollElementIntoView(header || bloque, offset, behavior);
     };
 
 const revealBloqueCollapsed = (bloque) => {
@@ -383,11 +383,30 @@ const navigateToBloque = (bloque) => {
   if (!bloque) return;
 
   revealBloqueCollapsed(bloque);
+  openBloque(bloque);
   scrollToBloqueHeader(bloque, 96);
 
-  window.requestAnimationFrame(() => {
-    openBloque(bloque);
-  });
+  const { content } = getParts(bloque);
+  if (!content) return;
+
+  let settled = false;
+  const realign = () => {
+    if (settled) return;
+    settled = true;
+    content.removeEventListener("transitionend", handleTransitionEnd);
+    window.clearTimeout(fallbackTimer);
+    window.requestAnimationFrame(() => {
+      scrollToBloqueHeader(bloque, 96, "auto");
+    });
+  };
+
+  const handleTransitionEnd = (event) => {
+    if (event.target !== content || event.propertyName !== "max-height") return;
+    realign();
+  };
+
+  const fallbackTimer = window.setTimeout(realign, 560);
+  content.addEventListener("transitionend", handleTransitionEnd);
 };
 
     const getParts = (bloque) => {
